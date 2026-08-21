@@ -33,9 +33,9 @@ gh workflow run sync.yml --repo yeisme/yeisme-dist -f product=auctra
 gh workflow run sync.yml --repo yeisme/yeisme-dist -f catalog_only=true
 gh workflow run ci.yml --repo yeisme/yeisme-dist
 # Immediate mirror after an upstream GitHub Release (same event product workflows send):
-gh api repos/yeisme/yeisme-dist/dispatches \
-  -f event_type=product-release \
-  --raw-field 'client_payload={"product":"sonora"}'
+gh api repos/yeisme/yeisme-dist/dispatches --input - <<'EOF'
+{"event_type":"product-release","client_payload":{"product":"sonora"}}
+EOF
 ```
 
 ## Add a product
