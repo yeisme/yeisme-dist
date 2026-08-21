@@ -5,6 +5,10 @@ repositories stay private; their release artifacts are mirrored here
 byte-identically so anyone can download and install **without a GitHub
 token**.
 
+`catalog.json` is the public index of every mirrored `<product>/vX.Y.Z`
+release (latest tag, asset names, counts). The installer reads it first
+so it does not have to page through GitHub Releases.
+
 ## Products
 
 | Product | Latest | Upstream repo | Notes |
@@ -17,7 +21,7 @@ token**.
 
 Releases are tagged `<product>/vX.Y.Z`. More products are appended to
 `products.txt` as they ship binary releases (sonora, anatomia, ordo,
-inferrum, …).
+inferrum, credentialctl, quaestor, mediahub, mcp-gateway, aigora, cohors, …).
 
 ## Install
 
@@ -37,7 +41,7 @@ https://github.com/yeisme/yeisme-dist/releases/download/<product>/<version>/<ass
 ```
 
 e.g. `https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.6.4/eikona_0.6.4_Linux_x86_64.tar.gz`
-(see a release page for its full asset list).
+(see a release page or `catalog.json` for the full asset list).
 
 ## Integrity
 
@@ -48,21 +52,33 @@ e.g. `https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.6.4/eiko
   `sha256sum --ignore-missing -c checksums.txt`.
 - The sync refuses asset file names matching secret patterns
   (token/secret/credential/pem/key/env/…).
+- Incomplete mirrors (asset count ≠ upstream) are deleted and re-copied
+  on the next sync.
 
 ## Maintenance
 
 - `scripts/sync.sh` mirrors releases listed in `products.txt`; it is
-  idempotent (existing `<product>/<version>` tags are skipped).
-- `.github/workflows/sync.yml` runs it every 6 hours and on manual
+  idempotent (complete `<product>/<version>` tags are skipped) and
+  paginates GitHub Releases (no 100-release cap).
+- `scripts/sync.sh --catalog-only` regenerates `catalog.json` from the
+  current public releases without downloading assets.
+- `scripts/check.sh` is the no-credential CI gate (syntax, products.txt,
+  catalog schema, Linux archive presence, installer argument checks).
+- `.github/workflows/sync.yml` runs every 6 hours and on manual
   dispatch (`Actions → Sync → Run workflow`, options: single product,
-  release window, dry-run). It authenticates with the `DIST_SYNC_TOKEN`
-  secret (fine-grained PAT: read contents on the upstream repos, write
-  contents on this repo).
+  release window, dry-run, catalog-only). It authenticates with the
+  `DIST_SYNC_TOKEN` secret (fine-grained PAT: read contents on the
+  upstream repos, write contents on this repo) and commits an updated
+  `catalog.json`.
+- `.github/workflows/ci.yml` runs `scripts/check.sh` and an anonymous
+  `install.sh gitea-mcp` smoke on every push/PR.
 - To add a product: append `name|yeisme/<repo>|<tag-prefix-to-strip>` to
   `products.txt`, then dispatch a sync.
 - To backfill history: dispatch a sync with limit 0, or locally run
   `scripts/sync.sh` (no limit) with a token that can read the upstream
   repos.
+- To repair a partial mirror: re-run sync (default); pass `--no-repair`
+  only when investigating.
 
 ## License
 

@@ -4,21 +4,35 @@
 #
 #   curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s <product> [version] [--to DIR]
 #
-# Resolves the newest <product>/vX.Y.Z release, picks the archive for the
-# detected OS/arch, verifies it against the release checksums, extracts the
-# binary, and installs it to ~/.yeisme/bin (override with --to).
+# Resolves the newest <product>/vX.Y.Z release (catalog.json first, then
+# paginated GitHub Releases), picks the archive for the detected OS/arch,
+# verifies it against the release checksums, extracts the binary, and
+# installs it to ~/.yeisme/bin (override with --to).
 set -euo pipefail
 
 DIST_REPO="${DIST_REPO:-yeisme/yeisme-dist}"
+DIST_CATALOG_URL="${DIST_CATALOG_URL:-https://raw.githubusercontent.com/${DIST_REPO}/main/catalog.json}"
 DEST="${HOME}/.yeisme/bin"
 product=""
 version=""
 
+KNOWN_FALLBACK="eikona pinax auctra scaena gitea-mcp"
+
+product_list() {
+  if [[ -f products.txt ]]; then
+    awk -F'|' '/^[[:space:]]*#/ {next} NF>=2 {gsub(/[[:space:]]/,"",$1); if($1!="") print $1}' products.txt
+    return
+  fi
+  printf '%s\n' $KNOWN_FALLBACK
+}
+
 usage() {
-  cat <<'EOF'
+  local products
+  products="$(product_list | paste -sd, - | sed 's/,/, /g')"
+  cat <<EOF
 usage: install.sh <product> [version] [--to DIR]
 
-  product   one of: eikona, pinax, auctra, scaena, gitea-mcp
+  product   one of: ${products:-eikona, pinax, auctra, scaena, gitea-mcp}
   version   vX.Y.Z (default: newest release); plain X.Y.Z also accepted
   --to      install directory (default: ~/.yeisme/bin)
 EOF
@@ -62,38 +76,120 @@ esac
 auth=()
 [[ -n "${GH_TOKEN:-}" ]] && auth=(-H "Authorization: Bearer $GH_TOKEN")
 
-# Newest release for the product (releases are listed newest-first).
-rel_tag="$version"
-if [[ -z "$rel_tag" ]]; then
-  rel_tag="$(curl -fsSL --retry 3 --retry-delay 2 "${auth[@]}" \
-    "https://api.github.com/repos/$DIST_REPO/releases?per_page=100" \
-    | grep -o "\"tag_name\": \"${product}/[^\"]*\"" | head -n1 \
-    | sed 's/.*: "//;s/"$//')" || rel_tag=""
-  [[ -n "$rel_tag" ]] || die "no release found for '$product' in $DIST_REPO"
+curl_json() {
+  curl -fsSL --retry 3 --retry-delay 2 "${auth[@]}" "$1"
+}
+
+load_catalog() {
+  if [[ -f catalog.json ]]; then
+    cat catalog.json
+    return 0
+  fi
+  curl_json "$DIST_CATALOG_URL" 2>/dev/null || true
+}
+
+catalog_has_product() {
+  local catalog="$1"
+  if command -v jq >/dev/null 2>&1; then
+    jq -e --arg p "$product" '(.products // []) | any(.name == $p)' <<<"$catalog" >/dev/null 2>&1
+  else
+    grep -q "\"name\": \"$product\"" <<<"$catalog"
+  fi
+}
+
+latest_from_catalog() {
+  local catalog="$1"
+  if command -v jq >/dev/null 2>&1; then
+    jq -r --arg p "$product" '
+      (.products // [])[]
+      | select(.name == $p)
+      | .latest // empty
+    ' <<<"$catalog" | head -n1
+  else
+    # Fallback: first <product>/v* tag_name-shaped latest field after the product object.
+    grep -A20 "\"name\": \"$product\"" <<<"$catalog" | grep -o "\"latest\": \"[^\"]*\"" | head -n1 | sed 's/.*: "//;s/"$//'
+  fi
+}
+
+latest_from_api() {
+  local page=1 json tag
+  while [[ "$page" -le 20 ]]; do
+    json="$(curl_json "https://api.github.com/repos/$DIST_REPO/releases?per_page=100&page=$page" 2>/dev/null || true)"
+    [[ -n "$json" ]] || return 1
+    if command -v jq >/dev/null 2>&1; then
+      if [[ "$(jq -r 'length' <<<"$json" 2>/dev/null || echo 0)" -eq 0 ]]; then
+        return 1
+      fi
+      tag="$(jq -r --arg p "$product/" '
+        [.[] | select(.draft != true) | .tag_name | select(startswith($p))]
+        | .[0] // empty
+      ' <<<"$json")"
+    else
+      if grep -q '^\[\]$' <<<"$json"; then
+        return 1
+      fi
+      tag="$(grep -o "\"tag_name\": \"${product}/[^\"]*\"" <<<"$json" | head -n1 | sed 's/.*: "//;s/"$//')"
+    fi
+    [[ -n "$tag" ]] && { printf '%s\n' "$tag"; return 0; }
+    page=$((page+1))
+  done
+  return 1
+}
+
+catalog="$(load_catalog || true)"
+if [[ -n "$catalog" ]]; then
+  catalog_has_product "$catalog" || die "unknown product '$product' (not in catalog.json)"
 fi
 
-rel_json="$(curl -fsSL --retry 3 --retry-delay 2 "${auth[@]}" "https://api.github.com/repos/$DIST_REPO/releases/tags/$rel_tag")" \
+rel_tag="$version"
+if [[ -z "$rel_tag" ]]; then
+  if [[ -n "$catalog" ]]; then
+    rel_tag="$(latest_from_catalog "$catalog" || true)"
+  fi
+  if [[ -z "$rel_tag" || "$rel_tag" == "null" ]]; then
+    rel_tag="$(latest_from_api || true)"
+  fi
+  [[ -n "$rel_tag" && "$rel_tag" != "null" ]] || die "no release found for '$product' in $DIST_REPO"
+fi
+
+rel_json="$(curl_json "https://api.github.com/repos/$DIST_REPO/releases/tags/$rel_tag")" \
   || die "release $rel_tag not found"
-urls="$(grep -o '"browser_download_url": "[^"]*"' <<<"$rel_json" | sed 's/"browser_download_url": "//;s/"$//')"
+
+if command -v jq >/dev/null 2>&1; then
+  urls="$(jq -r '.assets[].browser_download_url' <<<"$rel_json")"
+else
+  urls="$(grep -o '"browser_download_url": "[^"]*"' <<<"$rel_json" | sed 's/"browser_download_url": "//;s/"$//')"
+fi
 [[ -n "$urls" ]] || die "release $rel_tag has no assets"
 
-# Pick the archive for this platform; prefer the main binary over *-installer.
-asset_url="$(printf '%s\n' "$urls" \
-  | grep -E "[-_]${os_re}[-_]${arch_re}\.(tar\.gz|tgz|zip)$" | grep -v -- '-installer' | head -n1 || true)"
+# Prefer the main binary archive over installer bundles, Linux packages, and SBOMs.
+pick_archive() {
+  local pattern="$1"
+  printf '%s\n' "$urls" \
+    | grep -E "$pattern" \
+    | grep -vE '\.(spdx|sbom)\.json$' \
+    | grep -v -- '-installer' \
+    | grep -vE '\.(deb|rpm|apk)$' \
+    | head -n1 || true
+}
+
+asset_url="$(pick_archive "[-_]${os_re}[-_]${arch_re}\.(tar\.gz|tgz|zip)$")"
 if [[ -z "$asset_url" ]]; then
   asset_url="$(printf '%s\n' "$urls" \
-    | grep -E "[-_]${os_re}[-_]${arch_re}\.(tar\.gz|tgz|zip)$" | head -n1 || true)"
+    | grep -E "[-_]${os_re}[-_]${arch_re}\.(tar\.gz|tgz|zip)$" \
+    | grep -vE '\.(spdx|sbom)\.json$' \
+    | head -n1 || true)"
 fi
 [[ -n "$asset_url" ]] || die "no $os/$arch archive in $rel_tag"
 
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
-curl -fsSL -o "$TMP/$(basename "$asset_url")" "$asset_url" || die "download failed: $asset_url"
+curl -fsSL --retry 3 --retry-delay 2 -o "$TMP/$(basename "$asset_url")" "$asset_url" \
+  || die "download failed: $asset_url"
 
-# Verify against the release checksums when shipped.
 ck_url="$(printf '%s\n' "$urls" | grep -E 'checksums[^/]*\.txt$' | head -n1 || true)"
 if [[ -n "$ck_url" ]]; then
-  curl -fsSL -o "$TMP/$(basename "$ck_url")" "$ck_url" || true
+  curl -fsSL --retry 3 --retry-delay 2 -o "$TMP/$(basename "$ck_url")" "$ck_url" || true
   ckfile="$TMP/$(basename "$ck_url")"
   if [[ -f "$ckfile" ]]; then
     want="$(grep -F "$(basename "$asset_url")" "$ckfile" | head -n1 | awk '{print $1}')"
@@ -121,6 +217,12 @@ case "$asset_url" in
 esac
 
 bin="$(find "$TMP/extract" -type f -name "$product" | head -n1 || true)"
+if [[ -z "$bin" ]]; then
+  bin="$(find "$TMP/extract" -type f -name "${product}.exe" | head -n1 || true)"
+fi
+if [[ -z "$bin" ]]; then
+  bin="$(find "$TMP/extract" -type f -executable | grep -vE '\.(txt|md|json|yml|yaml)$' | head -n1 || true)"
+fi
 if [[ -z "$bin" ]]; then
   bin="$(find "$TMP/extract" -type f -exec du -k {} + 2>/dev/null | sort -rn | head -n1 | cut -f2-)"
 fi

@@ -4,7 +4,9 @@
 #   source_repo       upstream repo (private unless noted); must have releases
 #   strip_tag_prefix  optional prefix stripped from upstream tags (e.g. "scaena/")
 # Lines starting with # are comments. Products without published assets yet
-# (sonora, anatomia, ordo, inferrum, ...) get appended when they ship binaries.
+# (sonora, anatomia, ordo, inferrum, credentialctl, quaestor, mediahub,
+# mcp-gateway, aigora, cohors, ...) get appended when they ship binaries.
+# After each sync, scripts/sync.sh regenerates catalog.json (public index).
 eikona|yeisme/eikona|
 pinax|yeisme/pinax|
 auctra|yeisme/auctra|

@@ -15,6 +15,10 @@ on:
         description: "Print planned syncs only"
         type: boolean
         default: false
+      catalog_only:
+        description: "Regenerate catalog.json without mirroring"
+        type: boolean
+        default: false
   schedule:
     - cron: "17 */6 * * *"
 
@@ -30,6 +34,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DIST_SYNC_TOKEN }}
 
       - name: Check sync token
         env:
@@ -48,7 +54,24 @@ jobs:
           DIST_REPO: ${{ github.repository }}
         run: |
           args=()
+          if [[ "${{ inputs.catalog_only }}" == "true" ]]; then
+            scripts/sync.sh --catalog-only
+            exit 0
+          fi
           if [[ -n "${{ inputs.product }}" ]]; then args+=(--product "${{ inputs.product }}"); fi
           if [[ -n "${{ inputs.limit }}" && "${{ inputs.limit }}" != "0" ]]; then args+=(--limit "${{ inputs.limit }}"); fi
           if [[ "${{ inputs.dry_run }}" == "true" ]]; then args+=(--dry-run); fi
           scripts/sync.sh "${args[@]}"
+
+      - name: Commit catalog.json
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add catalog.json
+          if git diff --cached --quiet; then
+            echo "catalog.json unchanged"
+            exit 0
+          fi
+          git commit -m "chore: refresh catalog.json"
+          git push

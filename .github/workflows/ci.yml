@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dist-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Syntax and catalog checks
+        run: scripts/check.sh
+
+  install-smoke:
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Anonymous install (gitea-mcp)
+        env:
+          GH_TOKEN: ""
+          GITHUB_TOKEN: ""
+          DIST_SYNC_TOKEN: ""
+        run: |
+          dest="$(mktemp -d)/bin"
+          # Drop every GitHub credential so this matches env -i installers.
+          env -u GH_TOKEN -u GITHUB_TOKEN -u DIST_SYNC_TOKEN -u GH_ENTERPRISE_TOKEN \
+            bash install.sh gitea-mcp --to "$dest"
+          test -x "$dest/gitea-mcp"
+          "$dest/gitea-mcp" --help >/dev/null
+          echo "install-smoke: gitea-mcp ok"

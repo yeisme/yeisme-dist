@@ -3,30 +3,36 @@
 #
 # For every product in products.txt, copies each non-draft release (assets
 # byte-identical, notes preserved) from the source repo into
-# yeisme/yeisme-dist as release "<name>/<version>". Idempotent: releases
-# already mirrored are skipped. Never rebuilds from source; refuses to
-# mirror assets whose names trip the secret-pattern denylist.
+# yeisme/yeisme-dist as release "<name>/<version>". Idempotent: complete
+# mirrors are skipped. Incomplete mirrors are deleted and re-copied.
+# Never rebuilds from source; refuses assets whose names trip the
+# secret-pattern denylist.
 #
 # Usage: scripts/sync.sh [--limit N] [--product NAME] [--dry-run]
-#   --limit N     mirror at most the newest N releases per product (0 = all)
-#   --product X   mirror only product X
-#   --dry-run     print what would be mirrored, change nothing
+#                        [--no-repair] [--catalog-only]
+#   --limit N       mirror at most the newest N releases per product (0 = all)
+#   --product X     mirror only product X
+#   --dry-run       print what would be mirrored, change nothing
+#   --no-repair     leave incomplete mirrors in place (default: repair)
+#   --catalog-only  regenerate catalog.json from existing dist releases
 # Auth: GH_TOKEN with read access to the source repos and write access to
 # this repo. CI uses the DIST_SYNC_TOKEN secret; locally `gh auth login`
 # suffices. Requires gh, jq, sha256sum.
-#
-# Note: source release listing is capped at 100 per product per run.
 set -euo pipefail
 
 DIST_REPO="${DIST_REPO:-yeisme/yeisme-dist}"
 LIMIT=0
 ONLY_PRODUCT=""
 DRY_RUN=0
+REPAIR=1
+CATALOG_ONLY=0
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --limit) LIMIT="$2"; shift 2 ;;
     --product) ONLY_PRODUCT="$2"; shift 2 ;;
     --dry-run) DRY_RUN=1; shift ;;
+    --no-repair) REPAIR=0; shift ;;
+    --catalog-only) CATALOG_ONLY=1; shift ;;
     *) printf 'unknown flag: %s\n' "$1" >&2; exit 2 ;;
   esac
 done
@@ -43,7 +49,6 @@ PRODUCTS_FILE="${PRODUCTS_FILE:-$ROOT/products.txt}"
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
 
-# Tripwire: asset file names that must never become public.
 denied() {
   local low
   low="$(basename "$1" | tr '[:upper:]' '[:lower:]')"
@@ -53,7 +58,62 @@ denied() {
   esac
 }
 
-synced=0 skipped=0 failed=0
+# Stream every JSON object from every GitHub API page into stdout.
+# gh --paginate applies --jq per page; '.[]' emits one value per release.
+list_releases() {
+  local repo="$1"
+  gh api --paginate "repos/$repo/releases?per_page=100" --jq '.[]'
+}
+
+write_catalog() {
+  local generated products_json
+  generated="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  list_releases "$DIST_REPO" > "$WORK/dist-all.ndjson"
+  products_json='[]'
+  while IFS='|' read -r name src strip; do
+    name="${name//[[:space:]]/}"; src="${src//[[:space:]]/}"
+    [[ -z "$name" || "$name" == \#* ]] && continue
+    local releases latest
+    releases="$(jq -s --arg p "$name/" '
+      [.[] | select(.tag_name | startswith($p)) | {
+        tag: .tag_name,
+        version: (.tag_name | sub("^.*/";"")),
+        published_at: (.published_at // ""),
+        prerelease: .prerelease,
+        asset_count: (.assets | length),
+        assets: [.assets[].name]
+      }]
+    ' "$WORK/dist-all.ndjson")"
+    latest="$(jq -r '
+      (map(select(.prerelease == false)) | .[0].tag)
+      // .[0].tag
+      // empty
+    ' <<<"$releases")"
+    products_json="$(jq --arg name "$name" --arg src "$src" --arg latest "$latest" --argjson releases "$releases" '
+      . + [{
+        name: $name,
+        source_repo: $src,
+        latest: (if $latest == "" then null else $latest end),
+        release_count: ($releases | length),
+        releases: $releases
+      }]
+    ' <<<"$products_json")"
+  done < "$PRODUCTS_FILE"
+  jq -n --arg generated "$generated" --argjson products "$products_json" '{
+    schema_version: 1,
+    generated_at: $generated,
+    dist_repo: "yeisme/yeisme-dist",
+    products: $products
+  }' > "$ROOT/catalog.json"
+  echo "wrote $ROOT/catalog.json"
+}
+
+if [[ "$CATALOG_ONLY" -eq 1 ]]; then
+  write_catalog
+  exit 0
+fi
+
+synced=0 skipped=0 repaired=0 failed=0
 failures=()
 
 while IFS='|' read -r name src strip; do
@@ -62,13 +122,18 @@ while IFS='|' read -r name src strip; do
   [[ -n "$ONLY_PRODUCT" && "$name" != "$ONLY_PRODUCT" ]] && continue
   echo "==> $name  (source $src)"
 
-  gh api "repos/$src/releases?per_page=100" \
-    --jq '[.[] | select(.draft == false)]' > "$WORK/$name.json" \
-    || { failures+=("$name: release list failed"); failed=$((failed+1)); continue; }
+  if ! list_releases "$src" | jq -s '[.[] | select(.draft == false)]' > "$WORK/$name.json"; then
+    failures+=("$name: release list failed")
+    failed=$((failed+1))
+    continue
+  fi
 
-  # Release tags already mirrored here (idempotency set).
-  gh api --paginate "repos/$DIST_REPO/releases?per_page=100" \
-    --jq '.[].tag_name' 2>/dev/null | grep -F "$name/" > "$WORK/$name.existing" || true
+  if ! list_releases "$DIST_REPO" | jq -s --arg p "$name/" \
+      '[.[] | select(.tag_name | startswith($p)) | {tag:.tag_name, n:(.assets|length)}]' \
+      > "$WORK/$name.existing.json"; then
+    echo "    warn: could not list existing dist releases; treating as empty"
+    echo '[]' > "$WORK/$name.existing.json"
+  fi
 
   mapfile -t tags < <(jq -r '.[].tag_name' "$WORK/$name.json")
   idx=0
@@ -78,22 +143,40 @@ while IFS='|' read -r name src strip; do
     ver="${tag#"$strip"}"
     dist_tag="$name/$ver"
 
-    if grep -qxF "$dist_tag" "$WORK/$name.existing"; then
-      echo "    skip  $dist_tag (already mirrored)"
-      skipped=$((skipped+1)); continue
-    fi
-
     n_assets="$(jq -r --arg t "$tag" '.[] | select(.tag_name == $t) | .assets | length' "$WORK/$name.json")"
+    existing_n="$(jq -r --arg t "$dist_tag" '.[] | select(.tag == $t) | .n' "$WORK/$name.existing.json" | head -n1)"
+    [[ -z "$existing_n" || "$existing_n" == "null" ]] && existing_n=0
+
     if [[ "$n_assets" -eq 0 ]]; then
       echo "    skip  $dist_tag (no assets)"
       skipped=$((skipped+1)); continue
     fi
+
+    if [[ "$existing_n" -eq "$n_assets" ]]; then
+      echo "    skip  $dist_tag (already mirrored, $n_assets assets)"
+      skipped=$((skipped+1)); continue
+    fi
+
+    if [[ "$existing_n" -gt 0 ]]; then
+      echo "    repair $dist_tag (dist has $existing_n/$n_assets assets)"
+      if [[ "$REPAIR" -eq 0 ]]; then
+        echo "    skip  $dist_tag (--no-repair)"
+        skipped=$((skipped+1)); continue
+      fi
+      if [[ "$DRY_RUN" -eq 1 ]]; then
+        echo "    dry-run would delete and re-mirror $dist_tag"
+        continue
+      fi
+      gh release delete "$dist_tag" --repo "$DIST_REPO" --cleanup-tag --yes \
+        || { failures+=("$name: $dist_tag delete failed"); failed=$((failed+1)); continue; }
+      repaired=$((repaired+1))
+    fi
+
     if [[ "$DRY_RUN" -eq 1 ]]; then
       echo "    dry-run would mirror $dist_tag ($n_assets assets)"
       continue
     fi
 
-    # Denylist check before touching the network for downloads.
     jq -r --arg t "$tag" '.[] | select(.tag_name == $t) | .assets[].name' \
       "$WORK/$name.json" > "$WORK/assets.txt"
     bad=""
@@ -110,7 +193,6 @@ while IFS='|' read -r name src strip; do
     gh release download "$tag" -R "$src" --dir "$dir" --clobber \
       || { failures+=("$name: $dist_tag download failed"); failed=$((failed+1)); continue; }
 
-    # Verify integrity before publishing when the release ships checksums.
     ck="$(cd "$dir" && ls -- *checksums*.txt 2>/dev/null | head -n1 || true)"
     if [[ -n "$ck" ]]; then
       (cd "$dir" && sha256sum --check "$ck" --ignore-missing >/dev/null) \
@@ -147,8 +229,12 @@ while IFS='|' read -r name src strip; do
   done
 done < "$PRODUCTS_FILE"
 
+if [[ "$DRY_RUN" -eq 0 ]]; then
+  write_catalog
+fi
+
 echo
-echo "sync done: synced=$synced skipped=$skipped failed=$failed"
+echo "sync done: synced=$synced skipped=$skipped repaired=$repaired failed=$failed"
 if [[ ${#failures[@]} -gt 0 ]]; then
   printf '  - %s\n' "${failures[@]}" >&2
   exit 1
