@@ -21,6 +21,9 @@ Numbers below come from `catalog.json` (regenerated on every sync).
 | auctra | auctra/v0.2.0 | 4 | `yeisme/auctra` |
 | scaena | scaena/v0.1.2 | 1 | `yeisme/scaena-agent` |
 | gitea-mcp | gitea-mcp/v2.3.3 | 2 | `yeisme/gitea-mcp` |
+| sonora | - | 0 | `yeisme/sonora` |
+| anatomia | - | 0 | `yeisme/anatomia` |
+| mcp-gateway | - | 0 | `yeisme/mcp-gateway` |
 <!-- catalog-products:end -->
 
 Releases are tagged `<product>/vX.Y.Z`. More products are appended to
@@ -73,12 +76,12 @@ e.g. `https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.6.4/eiko
   current public releases without downloading assets.
 - `scripts/check.sh` is the no-credential CI gate (syntax, products.txt,
   catalog schema, Linux archive presence, installer argument checks).
-- `.github/workflows/sync.yml` runs every 6 hours and on manual
-  dispatch (`Actions → Sync → Run workflow`, options: single product,
-  release window, dry-run, catalog-only). It authenticates with the
-  `DIST_SYNC_TOKEN` secret (fine-grained PAT: read contents on the
-  upstream repos, write contents on this repo) and commits an updated
-  `catalog.json`.
+- `.github/workflows/sync.yml` runs every 6 hours, on manual dispatch,
+  and on `repository_dispatch` `product-release` from product release
+  workflows. Options: single product, release window, dry-run,
+  catalog-only. It authenticates with the `DIST_SYNC_TOKEN` secret
+  (fine-grained PAT: read contents on the upstream repos, write
+  contents on this repo) and commits an updated `catalog.json`.
 - `.github/workflows/ci.yml` runs `scripts/check.sh` and an anonymous
   `install.sh gitea-mcp` smoke on every push/PR.
 - To add a product: append `name|yeisme/<repo>|<tag-prefix-to-strip>` to

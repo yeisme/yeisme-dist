@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-21T07:07:20Z",
+  "generated_at": "2026-08-21T08:13:19Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -945,6 +945,27 @@
           ]
         }
       ]
+    },
+    {
+      "name": "sonora",
+      "source_repo": "yeisme/sonora",
+      "latest": null,
+      "release_count": 0,
+      "releases": []
+    },
+    {
+      "name": "anatomia",
+      "source_repo": "yeisme/anatomia",
+      "latest": null,
+      "release_count": 0,
+      "releases": []
+    },
+    {
+      "name": "mcp-gateway",
+      "source_repo": "yeisme/mcp-gateway",
+      "latest": null,
+      "release_count": 0,
+      "releases": []
     }
   ]
 }

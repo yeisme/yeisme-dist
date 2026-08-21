@@ -12,7 +12,7 @@ private product code here. Do not rebuild binaries.
 | `install.sh` | Anonymous OS/arch installer |
 | `scripts/sync.sh` | Mirror + repair + catalog/README refresh |
 | `scripts/check.sh` | No-credential CI gate |
-| `.github/workflows/sync.yml` | Every 6 hours + manual dispatch |
+| `.github/workflows/sync.yml` | Every 6 hours, manual dispatch, and `repository_dispatch` `product-release` |
 | `.github/workflows/ci.yml` | `check.sh` + anonymous `install.sh gitea-mcp` |
 
 ## Commands
@@ -32,6 +32,10 @@ GitHub Actions:
 gh workflow run sync.yml --repo yeisme/yeisme-dist -f product=auctra
 gh workflow run sync.yml --repo yeisme/yeisme-dist -f catalog_only=true
 gh workflow run ci.yml --repo yeisme/yeisme-dist
+# Immediate mirror after an upstream GitHub Release (same event product workflows send):
+gh api repos/yeisme/yeisme-dist/dispatches \
+  -f event_type=product-release \
+  --raw-field 'client_payload={"product":"sonora"}'
 ```
 
 ## Add a product
@@ -42,8 +46,10 @@ gh workflow run ci.yml --repo yeisme/yeisme-dist
 4. Confirm `catalog.json` and the README product table list the new latest tag.
 5. Anonymous-install it once: `bash install.sh <name>`.
 
-Do not add a product whose latest release has zero assets (inferrum `v1.0.0`,
-mcp-gateway `v0.1.0`, aigora `v0.0.0-alpha` as of 2026-08-21).
+Products with a working tag→GoReleaser pipeline may be listed before the first
+asset exists (`sonora`, `anatomia`, `mcp-gateway`): sync skips zero-asset
+releases. Do not list products with no publish pipeline (inferrum/aigora tags
+with 0 assets, ordo experimental artifact, credentialctl/quaestor/mediahub/cohors).
 
 ## Rotate DIST_SYNC_TOKEN
 

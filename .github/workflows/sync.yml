@@ -21,6 +21,8 @@ on:
         default: false
   schedule:
     - cron: "17 */6 * * *"
+  repository_dispatch:
+    types: [product-release]
 
 permissions:
   contents: write
@@ -54,17 +56,31 @@ jobs:
           DIST_REPO: ${{ github.repository }}
         run: |
           args=()
-          if [[ "${{ inputs.catalog_only }}" == "true" ]]; then
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.catalog_only }}" == "true" ]]; then
             scripts/sync.sh --catalog-only
             exit 0
           fi
-          if [[ -n "${{ inputs.product }}" ]]; then args+=(--product "${{ inputs.product }}"); fi
-          if [[ -n "${{ inputs.limit }}" && "${{ inputs.limit }}" != "0" ]]; then args+=(--limit "${{ inputs.limit }}"); fi
-          if [[ "${{ inputs.dry_run }}" == "true" ]]; then args+=(--dry-run); fi
+          product=""
+          if [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
+            product="${{ github.event.client_payload.product }}"
+            if [[ -z "$product" ]]; then
+              echo "::error::repository_dispatch product-release requires client_payload.product"
+              exit 1
+            fi
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            product="${{ inputs.product }}"
+          fi
+          if [[ -n "$product" ]]; then args+=(--product "$product"); fi
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && -n "${{ inputs.limit }}" && "${{ inputs.limit }}" != "0" ]]; then
+            args+=(--limit "${{ inputs.limit }}")
+          fi
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.dry_run }}" == "true" ]]; then
+            args+=(--dry-run)
+          fi
           scripts/sync.sh "${args[@]}"
 
       - name: Commit catalog.json
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.dry_run != 'true' }}
+        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.dry_run != 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

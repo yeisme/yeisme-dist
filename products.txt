@@ -4,11 +4,17 @@
 #   source_repo       upstream repo (private unless noted); must have releases
 #   strip_tag_prefix  optional prefix stripped from upstream tags (e.g. "scaena/")
 # Lines starting with # are comments. Products without published assets yet
-# (sonora, anatomia, ordo, inferrum, credentialctl, quaestor, mediahub,
-# mcp-gateway, aigora, cohors, ...) get appended when they ship binaries.
+# stay commented until the first archive+checksums GitHub Release exists.
 # After each sync, scripts/sync.sh regenerates catalog.json (public index).
 eikona|yeisme/eikona|
 pinax|yeisme/pinax|
 auctra|yeisme/auctra|
 scaena|yeisme/scaena-agent|scaena/
 gitea-mcp|yeisme/gitea-mcp|
+# Ready pipelines (goreleaser + tag workflow). Sync skips until assets exist.
+sonora|yeisme/sonora|
+anatomia|yeisme/anatomia|
+mcp-gateway|yeisme/mcp-gateway|
+# Not yet: ordo (experimental linux-x64 artifact only), inferrum/aigora
+# (tags with 0 assets and no current goreleaser publish), credentialctl,
+# quaestor, mediahub, cohors.
