@@ -1,0 +1,54 @@
+name: Sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      product:
+        description: "Single product to sync (default: all in products.txt)"
+        required: false
+        default: ""
+      limit:
+        description: "Max releases per product (0 = all)"
+        required: false
+        default: "0"
+      dry_run:
+        description: "Print planned syncs only"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dist-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check sync token
+        env:
+          DIST_SYNC_TOKEN: ${{ secrets.DIST_SYNC_TOKEN }}
+        run: |
+          if [[ -z "${DIST_SYNC_TOKEN}" ]]; then
+            echo "::error::DIST_SYNC_TOKEN secret is not configured."
+            echo "It needs read access (contents) on the private product repos"
+            echo "in products.txt and write access (contents) on this repo."
+            exit 1
+          fi
+
+      - name: Mirror releases
+        env:
+          GH_TOKEN: ${{ secrets.DIST_SYNC_TOKEN }}
+          DIST_REPO: ${{ github.repository }}
+        run: |
+          args=()
+          if [[ -n "${{ inputs.product }}" ]]; then args+=(--product "${{ inputs.product }}"); fi
+          if [[ -n "${{ inputs.limit }}" && "${{ inputs.limit }}" != "0" ]]; then args+=(--limit "${{ inputs.limit }}"); fi
+          if [[ "${{ inputs.dry_run }}" == "true" ]]; then args+=(--dry-run); fi
+          scripts/sync.sh "${args[@]}"
