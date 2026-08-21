@@ -11,13 +11,17 @@ so it does not have to page through GitHub Releases.
 
 ## Products
 
-| Product | Latest | Upstream repo | Notes |
+Numbers below come from `catalog.json` (regenerated on every sync).
+
+<!-- catalog-products:start -->
+| Product | Latest | Releases | Upstream repo |
 |---|---|---|---|
-| eikona | v0.6.4 | `yeisme/eikona` (private) | visual asset CLI/TUI; ships installer manifest + SBOM |
-| pinax | v0.2.0 | `yeisme/pinax` | notes CLI |
-| auctra | v0.2.0 | `yeisme/auctra` (private) | short-drama production CLI/TUI |
-| scaena | v0.1.2 | `yeisme/scaena-agent` (private) | agent control plane |
-| gitea-mcp | v2.3.3 | `yeisme/gitea-mcp` (private) | Gitea MCP server |
+| eikona | eikona/v0.6.4 | 13 | `yeisme/eikona` |
+| pinax | pinax/v0.2.0 | 9 | `yeisme/pinax` |
+| auctra | auctra/v0.2.0 | 4 | `yeisme/auctra` |
+| scaena | scaena/v0.1.2 | 1 | `yeisme/scaena-agent` |
+| gitea-mcp | gitea-mcp/v2.3.3 | 2 | `yeisme/gitea-mcp` |
+<!-- catalog-products:end -->
 
 Releases are tagged `<product>/vX.Y.Z`. More products are appended to
 `products.txt` as they ship binary releases (sonora, anatomia, ordo,
@@ -32,7 +36,12 @@ curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh 
 ```
 
 The installer picks the archive for your OS/arch, verifies it against the
-release's checksum file, and installs to `~/.yeisme/bin`.
+release's checksum file, and installs to `~/.yeisme/bin`. Add that directory
+to `PATH`. List mirrored products without installing:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- --list
+```
 
 ## Direct download
 

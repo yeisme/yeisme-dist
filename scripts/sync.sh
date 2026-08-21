@@ -106,6 +106,33 @@ write_catalog() {
     products: $products
   }' > "$ROOT/catalog.json"
   echo "wrote $ROOT/catalog.json"
+  write_readme_products
+}
+
+write_readme_products() {
+  local table tmp
+  [[ -f "$ROOT/README.md" ]] || return 0
+  table="$(jq -r '
+    ["| Product | Latest | Releases | Upstream repo |",
+     "|---|---|---|---|"]
+    + [.products[] | "| \(.name) | \(.latest // "-") | \(.release_count) | `\(.source_repo)` |"]
+    | .[]
+  ' "$ROOT/catalog.json")"
+  tmp="$(mktemp)"
+  awk -v table="$table" '
+    BEGIN { n = split(table, rows, "\n") }
+    $0 == "<!-- catalog-products:start -->" {
+      print
+      for (i = 1; i <= n; i++) print rows[i]
+      skip = 1
+      next
+    }
+    $0 == "<!-- catalog-products:end -->" { skip = 0 }
+    skip { next }
+    { print }
+  ' "$ROOT/README.md" > "$tmp"
+  mv "$tmp" "$ROOT/README.md"
+  echo "updated $ROOT/README.md product table"
 }
 
 if [[ "$CATALOG_ONLY" -eq 1 ]]; then

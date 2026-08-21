@@ -18,6 +18,21 @@ version=""
 
 KNOWN_FALLBACK="eikona pinax auctra scaena gitea-mcp"
 
+auth=()
+[[ -n "${GH_TOKEN:-}" ]] && auth=(-H "Authorization: Bearer $GH_TOKEN")
+
+curl_json() {
+  curl -fsSL --retry 3 --retry-delay 2 "${auth[@]}" "$1"
+}
+
+load_catalog() {
+  if [[ -f catalog.json ]]; then
+    cat catalog.json
+    return 0
+  fi
+  curl_json "$DIST_CATALOG_URL" 2>/dev/null || true
+}
+
 product_list() {
   if [[ -f products.txt ]]; then
     awk -F'|' '/^[[:space:]]*#/ {next} NF>=2 {gsub(/[[:space:]]/,"",$1); if($1!="") print $1}' products.txt
@@ -26,21 +41,34 @@ product_list() {
   printf '%s\n' $KNOWN_FALLBACK
 }
 
+list_products() {
+  local catalog
+  catalog="$(load_catalog 2>/dev/null || true)"
+  if [[ -n "$catalog" ]] && command -v jq >/dev/null 2>&1; then
+    jq -r '.products[] | "\(.name)  \(.latest // "-")  \(.release_count) releases"' <<<"$catalog"
+    return
+  fi
+  product_list
+}
+
 usage() {
   local products
   products="$(product_list | paste -sd, - | sed 's/,/, /g')"
   cat <<EOF
 usage: install.sh <product> [version] [--to DIR]
+       install.sh --list
 
   product   one of: ${products:-eikona, pinax, auctra, scaena, gitea-mcp}
   version   vX.Y.Z (default: newest release); plain X.Y.Z also accepted
   --to      install directory (default: ~/.yeisme/bin)
+  --list    print mirrored products and latest tags
 EOF
 }
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --to) DEST="$2"; shift 2 ;;
+    --list) list_products; exit 0 ;;
     -h|--help) usage; exit 0 ;;
     *)
       if [[ -z "$product" ]]; then product="$1"
@@ -72,21 +100,6 @@ case "$arch" in
   arm64|aarch64) arch_re='(arm64|aarch64)' ;;
   *) die "unsupported arch '$arch'" ;;
 esac
-
-auth=()
-[[ -n "${GH_TOKEN:-}" ]] && auth=(-H "Authorization: Bearer $GH_TOKEN")
-
-curl_json() {
-  curl -fsSL --retry 3 --retry-delay 2 "${auth[@]}" "$1"
-}
-
-load_catalog() {
-  if [[ -f catalog.json ]]; then
-    cat catalog.json
-    return 0
-  fi
-  curl_json "$DIST_CATALOG_URL" 2>/dev/null || true
-}
 
 catalog_has_product() {
   local catalog="$1"
@@ -231,4 +244,8 @@ fi
 mkdir -p "$DEST"
 install -m 0755 "$bin" "$DEST/$product" || die "install to $DEST failed"
 echo "install: $product $rel_tag -> $DEST/$product"
+if [[ ":$PATH:" != *":$DEST:"* ]]; then
+  echo "install: add $DEST to PATH, for example:"
+  echo "  export PATH=\"$DEST:\$PATH\""
+fi
 "$DEST/$product" --version 2>/dev/null || echo "install: done (run '$DEST/$product --version' yourself)"

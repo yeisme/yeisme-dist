@@ -75,6 +75,10 @@ fi
 
 help_out="$(bash install.sh --help)"
 echo "$help_out" | grep -q 'usage: install.sh' || { echo "FAIL install.sh --help" >&2; fail=1; }
+echo "$help_out" | grep -q -- '--list' || { echo "FAIL install.sh --help missing --list" >&2; fail=1; }
+list_out="$(bash install.sh --list)"
+echo "$list_out" | grep -q eikona || { echo "FAIL install.sh --list missing eikona" >&2; fail=1; }
+echo "ok  install.sh --list"
 if bash install.sh 2>/dev/null; then
   echo "FAIL install.sh without product should exit non-zero" >&2
   fail=1

@@ -68,9 +68,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add catalog.json
+          git add catalog.json README.md
           if git diff --cached --quiet; then
-            echo "catalog.json unchanged"
+            echo "catalog.json / README.md unchanged"
             exit 0
           fi
           git commit -m "chore: refresh catalog.json"
