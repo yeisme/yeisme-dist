@@ -65,14 +65,14 @@ auth=()
 # Newest release for the product (releases are listed newest-first).
 rel_tag="$version"
 if [[ -z "$rel_tag" ]]; then
-  rel_tag="$(curl -fsSL "${auth[@]}" \
+  rel_tag="$(curl -fsSL --retry 3 --retry-delay 2 "${auth[@]}" \
     "https://api.github.com/repos/$DIST_REPO/releases?per_page=100" \
     | grep -o "\"tag_name\": \"${product}/[^\"]*\"" | head -n1 \
     | sed 's/.*: "//;s/"$//')" || rel_tag=""
   [[ -n "$rel_tag" ]] || die "no release found for '$product' in $DIST_REPO"
 fi
 
-rel_json="$(curl -fsSL "${auth[@]}" "https://api.github.com/repos/$DIST_REPO/releases/tags/$rel_tag")" \
+rel_json="$(curl -fsSL --retry 3 --retry-delay 2 "${auth[@]}" "https://api.github.com/repos/$DIST_REPO/releases/tags/$rel_tag")" \
   || die "release $rel_tag not found"
 urls="$(grep -o '"browser_download_url": "[^"]*"' <<<"$rel_json" | sed 's/"browser_download_url": "//;s/"$//')"
 [[ -n "$urls" ]] || die "release $rel_tag has no assets"
