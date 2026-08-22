@@ -21,7 +21,7 @@ Numbers below come from `catalog.json` (regenerated on every sync).
 | auctra | auctra/v0.2.0 | 4 | `yeisme/auctra` |
 | scaena | scaena/v0.1.2 | 1 | `yeisme/scaena-agent` |
 | gitea-mcp | gitea-mcp/v2.3.3 | 2 | `yeisme/gitea-mcp` |
-| sonora | - | 0 | `yeisme/sonora` |
+| sonora | sonora/v0.1.0 | 1 | `yeisme/sonora` |
 | anatomia | - | 0 | `yeisme/anatomia` |
 | mcp-gateway | - | 0 | `yeisme/mcp-gateway` |
 <!-- catalog-products:end -->
