@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-24T16:56:16Z",
+  "generated_at": "2026-08-24T17:29:39Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -855,9 +855,39 @@
     {
       "name": "auctra",
       "source_repo": "yeisme/auctra",
-      "latest": "auctra/v0.2.0",
-      "release_count": 4,
+      "latest": "auctra/v0.3.0",
+      "release_count": 5,
       "releases": [
+        {
+          "tag": "auctra/v0.3.0",
+          "version": "v0.3.0",
+          "published_at": "2026-08-24T17:29:38Z",
+          "prerelease": false,
+          "asset_count": 21,
+          "assets": [
+            "artifacts.json",
+            "auctra_0.3.0_darwin_amd64.tar.gz",
+            "auctra_0.3.0_darwin_amd64.tar.gz.sbom.json",
+            "auctra_0.3.0_darwin_arm64.tar.gz",
+            "auctra_0.3.0_darwin_arm64.tar.gz.sbom.json",
+            "auctra_0.3.0_linux_amd64.deb",
+            "auctra_0.3.0_linux_amd64.rpm",
+            "auctra_0.3.0_linux_amd64.tar.gz",
+            "auctra_0.3.0_linux_amd64.tar.gz.sbom.json",
+            "auctra_0.3.0_linux_arm64.deb",
+            "auctra_0.3.0_linux_arm64.rpm",
+            "auctra_0.3.0_linux_arm64.tar.gz",
+            "auctra_0.3.0_linux_arm64.tar.gz.sbom.json",
+            "auctra_0.3.0_windows_amd64.zip",
+            "auctra_0.3.0_windows_amd64.zip.sbom.json",
+            "auctra_0.3.0_windows_arm64.zip",
+            "auctra_0.3.0_windows_arm64.zip.sbom.json",
+            "CHANGELOG.md",
+            "checksums.txt",
+            "config.yaml",
+            "metadata.json"
+          ]
+        },
         {
           "tag": "auctra/v0.2.0",
           "version": "v0.2.0",
