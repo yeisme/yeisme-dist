@@ -26,11 +26,15 @@ jobs:
   install-smoke:
     runs-on: ubuntu-latest
     needs: check
+    strategy:
+      fail-fast: false
+      matrix:
+        product: [gitea-mcp, sonora]
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Anonymous install (gitea-mcp)
+      - name: Anonymous install (${{ matrix.product }})
         env:
           GH_TOKEN: ""
           GITHUB_TOKEN: ""
@@ -39,7 +43,7 @@ jobs:
           dest="$(mktemp -d)/bin"
           # Drop every GitHub credential so this matches env -i installers.
           env -u GH_TOKEN -u GITHUB_TOKEN -u DIST_SYNC_TOKEN -u GH_ENTERPRISE_TOKEN \
-            bash install.sh gitea-mcp --to "$dest"
-          test -x "$dest/gitea-mcp"
-          "$dest/gitea-mcp" --help >/dev/null
-          echo "install-smoke: gitea-mcp ok"
+            bash install.sh "${{ matrix.product }}" --to "$dest"
+          test -x "$dest/${{ matrix.product }}"
+          "$dest/${{ matrix.product }}" --help >/dev/null
+          echo "install-smoke: ${{ matrix.product }} ok"

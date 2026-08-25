@@ -33,9 +33,9 @@ inferrum, credentialctl, quaestor, mediahub, mcp-gateway, aigora, cohors, …).
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s eikona
+curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- sonora
 # or a pinned version / custom destination:
-curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s auctra v0.2.0 --to /usr/local/bin
+curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- sonora v0.1.0 --to /usr/local/bin
 ```
 
 The installer picks the archive for your OS/arch, verifies it against the
@@ -82,8 +82,8 @@ e.g. `https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.6.4/eiko
   catalog-only. It authenticates with the `DIST_SYNC_TOKEN` secret
   (fine-grained PAT: read contents on the upstream repos, write
   contents on this repo) and commits an updated `catalog.json`.
-- `.github/workflows/ci.yml` runs `scripts/check.sh` and an anonymous
-  `install.sh gitea-mcp` smoke on every push/PR.
+- `.github/workflows/ci.yml` runs `scripts/check.sh` and anonymous
+  `install.sh` smokes for `gitea-mcp` and `sonora` on every push/PR.
 - To add a product: append `name|yeisme/<repo>|<tag-prefix-to-strip>` to
   `products.txt`, then dispatch a sync.
 - To backfill history: dispatch a sync with limit 0, or locally run

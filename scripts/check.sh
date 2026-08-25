@@ -26,7 +26,21 @@ else
   echo "ok  products.txt has eikona"
 fi
 
-while IFS='|' read -r name src strip; do
+if ! grep -qE '^sonora\|yeisme/sonora\|' products.txt; then
+  echo "FAIL products.txt missing sonora row" >&2
+  fail=1
+else
+  echo "ok  products.txt has sonora"
+fi
+
+if ! grep -qE '^KNOWN_FALLBACK=\(.*sonora' install.sh; then
+  echo "FAIL install.sh fallback missing sonora" >&2
+  fail=1
+else
+  echo "ok  install.sh fallback has sonora"
+fi
+
+while IFS='|' read -r name src _strip; do
   name="${name//[[:space:]]/}"; src="${src//[[:space:]]/}"
   [[ -z "$name" || "$name" == \#* ]] && continue
   if [[ ! "$name" =~ ^[a-z0-9-]+$ ]]; then
@@ -76,8 +90,10 @@ fi
 help_out="$(bash install.sh --help)"
 echo "$help_out" | grep -q 'usage: install.sh' || { echo "FAIL install.sh --help" >&2; fail=1; }
 echo "$help_out" | grep -q -- '--list' || { echo "FAIL install.sh --help missing --list" >&2; fail=1; }
+grep -q sonora <<<"$help_out" || { echo "FAIL install.sh --help missing sonora" >&2; fail=1; }
 list_out="$(bash install.sh --list)"
 echo "$list_out" | grep -q eikona || { echo "FAIL install.sh --list missing eikona" >&2; fail=1; }
+grep -q sonora <<<"$list_out" || { echo "FAIL install.sh --list missing sonora" >&2; fail=1; }
 echo "ok  install.sh --list"
 if bash install.sh 2>/dev/null; then
   echo "FAIL install.sh without product should exit non-zero" >&2

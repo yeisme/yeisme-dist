@@ -16,7 +16,7 @@ DEST="${HOME}/.yeisme/bin"
 product=""
 version=""
 
-KNOWN_FALLBACK="eikona pinax auctra scaena gitea-mcp"
+KNOWN_FALLBACK=(eikona pinax auctra scaena gitea-mcp sonora anatomia mcp-gateway)
 
 auth=()
 [[ -n "${GH_TOKEN:-}" ]] && auth=(-H "Authorization: Bearer $GH_TOKEN")
@@ -38,14 +38,18 @@ product_list() {
     awk -F'|' '/^[[:space:]]*#/ {next} NF>=2 {gsub(/[[:space:]]/,"",$1); if($1!="") print $1}' products.txt
     return
   fi
-  printf '%s\n' $KNOWN_FALLBACK
+  printf '%s\n' "${KNOWN_FALLBACK[@]}"
 }
 
 list_products() {
   local catalog
   catalog="$(load_catalog 2>/dev/null || true)"
-  if [[ -n "$catalog" ]] && command -v jq >/dev/null 2>&1; then
-    jq -r '.products[] | "\(.name)  \(.latest // "-")  \(.release_count) releases"' <<<"$catalog"
+  if [[ -n "$catalog" ]]; then
+    if command -v jq >/dev/null 2>&1; then
+      jq -r '.products[] | "\(.name)  \(.latest // "-")  \(.release_count) releases"' <<<"$catalog"
+    else
+      sed -n 's/^[[:space:]]*"name": "\([^"]*\)",[[:space:]]*$/\1/p' <<<"$catalog"
+    fi
     return
   fi
   product_list
@@ -58,7 +62,7 @@ usage() {
 usage: install.sh <product> [version] [--to DIR]
        install.sh --list
 
-  product   one of: ${products:-eikona, pinax, auctra, scaena, gitea-mcp}
+  product   one of: ${products:-eikona, pinax, auctra, scaena, gitea-mcp, sonora, anatomia, mcp-gateway}
   version   vX.Y.Z (default: newest release); plain X.Y.Z also accepted
   --to      install directory (default: ~/.yeisme/bin)
   --list    print mirrored products and latest tags
