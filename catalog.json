@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T07:09:27Z",
+  "generated_at": "2026-08-26T11:55:28Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -1057,10 +1057,22 @@
     {
       "name": "scaena",
       "source_repo": "yeisme/scaena-agent",
-      "latest": "scaena/v0.1.2",
+      "latest": "scaena/v0.2.1",
       "verified_latest": null,
-      "release_count": 1,
+      "release_count": 2,
       "releases": [
+        {
+          "tag": "scaena/v0.2.1",
+          "version": "v0.2.1",
+          "published_at": "2026-08-26T11:55:28Z",
+          "prerelease": false,
+          "asset_count": 3,
+          "assets": [
+            "checksums.txt",
+            "scaena.spdx.json",
+            "scaena_linux_amd64.tar.gz"
+          ]
+        },
         {
           "tag": "scaena/v0.1.2",
           "version": "v0.1.2",

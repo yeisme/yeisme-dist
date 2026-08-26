@@ -19,7 +19,7 @@ Numbers below come from `catalog.json` (regenerated on every sync).
 | eikona | eikona/v0.6.7 | 16 | `yeisme/eikona` |
 | pinax | pinax/v0.2.0 | 9 | `yeisme/pinax` |
 | auctra | auctra/v0.3.0 | 5 | `yeisme/auctra` |
-| scaena | scaena/v0.1.2 | 1 | `yeisme/scaena-agent` |
+| scaena | scaena/v0.2.1 | 2 | `yeisme/scaena-agent` |
 | gitea-mcp | gitea-mcp/v2.3.3 | 2 | `yeisme/gitea-mcp` |
 | sonora | sonora/v0.2.0 | 2 | `yeisme/sonora` |
 | anatomia | - | 0 | `yeisme/anatomia` |
