@@ -1,12 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T01:58:33Z",
+  "generated_at": "2026-08-26T05:05:27Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
       "name": "eikona",
       "source_repo": "yeisme/eikona",
       "latest": "eikona/v0.6.7",
+      "verified_latest": null,
       "release_count": 16,
       "releases": [
         {
@@ -632,6 +633,7 @@
       "name": "pinax",
       "source_repo": "yeisme/pinax",
       "latest": "pinax/v0.2.0",
+      "verified_latest": null,
       "release_count": 9,
       "releases": [
         {
@@ -901,6 +903,7 @@
       "name": "auctra",
       "source_repo": "yeisme/auctra",
       "latest": "auctra/v0.3.0",
+      "verified_latest": null,
       "release_count": 5,
       "releases": [
         {
@@ -1055,6 +1058,7 @@
       "name": "scaena",
       "source_repo": "yeisme/scaena-agent",
       "latest": "scaena/v0.1.2",
+      "verified_latest": null,
       "release_count": 1,
       "releases": [
         {
@@ -1075,6 +1079,7 @@
       "name": "gitea-mcp",
       "source_repo": "yeisme/gitea-mcp",
       "latest": "gitea-mcp/v2.3.3",
+      "verified_latest": null,
       "release_count": 2,
       "releases": [
         {
@@ -1115,6 +1120,7 @@
       "name": "sonora",
       "source_repo": "yeisme/sonora",
       "latest": "sonora/v0.2.0",
+      "verified_latest": null,
       "release_count": 2,
       "releases": [
         {
@@ -1181,6 +1187,7 @@
       "name": "anatomia",
       "source_repo": "yeisme/anatomia",
       "latest": null,
+      "verified_latest": null,
       "release_count": 0,
       "releases": []
     },
@@ -1188,6 +1195,7 @@
       "name": "mcp-gateway",
       "source_repo": "yeisme/mcp-gateway",
       "latest": null,
+      "verified_latest": null,
       "release_count": 0,
       "releases": []
     }
