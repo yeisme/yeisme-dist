@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/yeisme/yeisme-dist/blob/main/schemas/dist-receipt-v1.schema.json",
+  "title": "yeisme.dist_receipt.v1",
+  "description": "Immutable distributor receipt binding a verified upstream release to an exactly mirrored public asset set. Informative for external consumers; scripts/check.sh enforces the same structure with jq. See docs/distribution-contracts.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "product",
+    "channel",
+    "status",
+    "upstream_tag",
+    "upstream_release_ref",
+    "dist_tag",
+    "source_revision",
+    "handoff",
+    "policy",
+    "verified",
+    "mirrored_assets",
+    "distribution_revision",
+    "fingerprint_sha256",
+    "produced_at"
+  ],
+  "properties": {
+    "schema_version": {"const": "yeisme.dist_receipt.v1"},
+    "product": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "channel": {"enum": ["stable"]},
+    "status": {"enum": ["success"]},
+    "upstream_tag": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "upstream_release_ref": {"type": "string", "format": "uri"},
+    "dist_tag": {"type": "string", "pattern": "^[a-z0-9-]+/v[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "source_revision": {"type": "string", "pattern": "^[0-9a-f]{40}$|^none$"},
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "sha256"],
+      "properties": {
+        "schema_version": {"const": "yeisme.product_release_handoff.v1"},
+        "sha256": {
+          "oneOf": [
+            {"type": "null"},
+            {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+          ]
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "sha256"],
+      "properties": {
+        "file": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      }
+    },
+    "verified": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checksums",
+        "asset_matrix",
+        "upstream_assets",
+        "provenance"
+      ],
+      "properties": {
+        "checksums": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "sha256"],
+          "properties": {
+            "name": {"type": "string"},
+            "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+          }
+        },
+        "asset_matrix": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["expected", "matched"],
+          "properties": {
+            "expected": {"type": "integer", "minimum": 1},
+            "matched": {"type": "integer", "minimum": 0}
+          }
+        },
+        "upstream_assets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "sha256"],
+            "properties": {
+              "name": {"type": "string"},
+              "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+            }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sbom_assets"],
+          "properties": {
+            "sbom_assets": {"type": "array", "items": {"type": "string"}},
+            "attestation_subject": {"type": "string"}
+          }
+        }
+      }
+    },
+    "mirrored_assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "sha256"],
+        "properties": {
+          "name": {"type": "string"},
+          "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "distribution_revision": {"type": "integer", "minimum": 1},
+    "fingerprint_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "produced_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}
+  }
+}

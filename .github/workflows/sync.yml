@@ -54,6 +54,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.DIST_SYNC_TOKEN }}
           DIST_REPO: ${{ github.repository }}
+          # repository_dispatch payload as data only: parsed with jq, never
+          # interpolated into shell (see docs/distribution-contracts.md).
+          DIST_HINT_JSON: ${{ github.event_name == 'repository_dispatch' && toJson(github.event.client_payload) || '' }}
         run: |
           args=()
           if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.catalog_only }}" == "true" ]]; then
@@ -62,7 +65,7 @@ jobs:
           fi
           product=""
           if [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
-            product="${{ github.event.client_payload.product }}"
+            product="$(jq -r '.product // empty' <<<"${DIST_HINT_JSON:-}")"
             if [[ -z "$product" ]]; then
               echo "::error::repository_dispatch product-release requires client_payload.product"
               exit 1
@@ -85,9 +88,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add catalog.json README.md
+          [[ -d receipts ]] && git add receipts
           if git diff --cached --quiet; then
-            echo "catalog.json / README.md unchanged"
+            echo "catalog.json / README.md / receipts unchanged"
             exit 0
           fi
-          git commit -m "chore: refresh catalog.json"
+          git commit -m "chore: refresh catalog.json and receipts"
           git push

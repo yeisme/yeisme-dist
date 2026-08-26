@@ -1,0 +1,35 @@
+{
+  "schema_version": "yeisme.dist_verify_policy.v1",
+  "product": "anatomia",
+  "source_repo": "yeisme/anatomia",
+  "channel": "stable",
+  "eligible_tag_pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$",
+  "exclude_prerelease": true,
+  "expected_assets": [
+    "anatomia_{version}_Darwin_arm64.tar.gz",
+    "anatomia_{version}_Darwin_x86_64.tar.gz",
+    "anatomia_{version}_Linux_arm64.tar.gz",
+    "anatomia_{version}_Linux_x86_64.tar.gz",
+    "anatomia-server_{version}_Linux_arm64.tar.gz",
+    "anatomia-server_{version}_Linux_x86_64.tar.gz"
+  ],
+  "required_assets": ["checksums.txt"],
+  "allowed_extra_assets": ["{expected_archive}.spdx.json"],
+  "source_revision_required": true,
+  "checksums": {
+    "required": true,
+    "algorithm": "sha256",
+    "must_cover": "expected_assets"
+  },
+  "provenance": {
+    "sbom_required_per_archive": true,
+    "attestation": {
+      "expected": "github-attestation",
+      "enforcement": "record-only"
+    }
+  },
+  "handoff": {
+    "expected_schema_version": "yeisme.product_release_handoff.v1",
+    "correlation_fields": ["channel", "release_tag", "source_revision", "handoff_sha256"]
+  }
+}

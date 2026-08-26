@@ -49,14 +49,11 @@ PRODUCTS_FILE="${PRODUCTS_FILE:-$ROOT/products.txt}"
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
 
-denied() {
-  local low
-  low="$(basename "$1" | tr '[:upper:]' '[:lower:]')"
-  case "$low" in
-    *token*|*secret*|*credential*|*.pem|*.key|*.env|*.p12|*id_rsa*|*.kdbx) return 0 ;;
-    *) return 1 ;;
-  esac
-}
+# Upstream fetch-and-verify + distribution receipts (see
+# docs/distribution-contracts.md). Products with policy/<name>.json take the
+# verify-before-mutate path; all others keep the legacy mirror flow below.
+# On repository_dispatch the workflow sets DIST_HINT_JSON (data-only hint).
+source "$ROOT/scripts/lib/verify.sh"
 
 # Stream every JSON object from every GitHub API page into stdout.
 # gh --paginate applies --jq per page; '.[]' emits one value per release.
@@ -73,7 +70,7 @@ write_catalog() {
   while IFS='|' read -r name src strip; do
     name="${name//[[:space:]]/}"; src="${src//[[:space:]]/}"
     [[ -z "$name" || "$name" == \#* ]] && continue
-    local releases latest
+    local releases latest verified_latest
     releases="$(jq -s --arg p "$name/" '
       [.[] | select(.tag_name | startswith($p)) | {
         tag: .tag_name,
@@ -84,16 +81,25 @@ write_catalog() {
         assets: [.assets[].name]
       }]
     ' "$WORK/dist-all.ndjson")"
+    # Additive receipt fields come from the local receipts/ directory so they
+    # survive every regeneration; catalog schema_version stays 1.
+    releases="$(catalog_join_receipts "$name" "$releases")"
     latest="$(jq -r '
       (map(select(.prerelease == false)) | .[0].tag)
       // .[0].tag
       // empty
     ' <<<"$releases")"
-    products_json="$(jq --arg name "$name" --arg src "$src" --arg latest "$latest" --argjson releases "$releases" '
+    verified_latest="$(jq -r '
+      (map(select(.prerelease == false and .verification.status == "verified")) | .[0].tag)
+      // empty
+    ' <<<"$releases")"
+    products_json="$(jq --arg name "$name" --arg src "$src" --arg latest "$latest" \
+        --arg vlatest "$verified_latest" --argjson releases "$releases" '
       . + [{
         name: $name,
         source_repo: $src,
         latest: (if $latest == "" then null else $latest end),
+        verified_latest: (if $vlatest == "" then null else $vlatest end),
         release_count: ($releases | length),
         releases: $releases
       }]
@@ -140,14 +146,35 @@ if [[ "$CATALOG_ONLY" -eq 1 ]]; then
   exit 0
 fi
 
-synced=0 skipped=0 repaired=0 failed=0
+synced=0 skipped=0 repaired=0 failed=0 receipted=0
 failures=()
+
+write_release_notes() { # <src> <tag> <releases_json> <dir>
+  local src="$1" tag="$2" reljson="$3" dir="$4"
+  jq -r --arg t "$tag" '.[] | select(.tag_name == $t) | .body // ""' \
+    "$reljson" > "$dir/.notes.md" || printf '' > "$dir/.notes.md"
+  {
+    echo "Mirror of \`${src}\` release \`${tag}\` (upstream repo is private)."
+    echo
+    echo "Assets are byte-identical copies of the upstream release. Verify with the bundled checksums and SBOM. Binaries © Yeisme, provided as-is."
+    echo
+    echo '---'
+    echo
+    cat "$dir/.notes.md"
+  } > "$dir/.notes-full.md"
+}
 
 while IFS='|' read -r name src strip; do
   name="${name//[[:space:]]/}"; src="${src//[[:space:]]/}"; strip="${strip//[[:space:]]/}"
   [[ -z "$name" || "$name" == \#* ]] && continue
   [[ -n "$ONLY_PRODUCT" && "$name" != "$ONLY_PRODUCT" ]] && continue
   echo "==> $name  (source $src)"
+
+  POLICY_FILE=""
+  if verify_policy_has "$name"; then
+    POLICY_FILE="$ROOT/policy/$name.json"
+    echo "    policy: policy/$name.json (verify-before-mutate)"
+  fi
 
   if ! list_releases "$src" | jq -s '[.[] | select(.draft == false)]' > "$WORK/$name.json"; then
     failures+=("$name: release list failed")
@@ -177,6 +204,95 @@ while IFS='|' read -r name src strip; do
     if [[ "$n_assets" -eq 0 ]]; then
       echo "    skip  $dist_tag (no assets)"
       skipped=$((skipped+1)); continue
+    fi
+
+    if [[ -n "$POLICY_FILE" ]]; then
+      # Verify-before-mutate path (docs/distribution-contracts.md): the
+      # dispatch/handoff hint is a wake-up only; independently downloaded
+      # upstream evidence is verified before any mirror or catalog mutation.
+      jq --arg t "$tag" '.[] | select(.tag_name == $t)' \
+        "$WORK/$name.json" > "$WORK/$name.rel.json"
+      if ! reason="$(policy_check_eligibility "$WORK/$name.rel.json" "$POLICY_FILE")"; then
+        echo "    skip  $dist_tag (policy excludes: $reason)"
+        skipped=$((skipped+1)); continue
+      fi
+
+      receipt_file="$ROOT/receipts/$name/$ver.json"
+      if [[ "$existing_n" -eq "$n_assets" && -f "$receipt_file" ]]; then
+        echo "    skip  $dist_tag (already mirrored, receipt present)"
+        skipped=$((skipped+1)); continue
+      fi
+
+      if [[ "$DRY_RUN" -eq 1 ]]; then
+        if [[ "$existing_n" -eq "$n_assets" ]]; then
+          echo "    dry-run would verify and write receipt for $dist_tag ($n_assets assets)"
+        else
+          echo "    dry-run would verify and mirror/repair $dist_tag ($n_assets assets)"
+        fi
+        continue
+      fi
+
+      dir="$WORK/$name/$ver"; rm -rf "$dir"; mkdir -p "$dir"
+      if ! gh release download "$tag" -R "$src" --dir "$dir" --clobber; then
+        record_failed_attempt "$name" "$ver" "$(emit_fail upstream_download_failed)"
+        failures+=("$name: $dist_tag upstream download failed"); failed=$((failed+1)); continue
+      fi
+
+      hint="$(hint_for_product "$name" || true)"
+      if ! result="$(verify_release_evidence "$name" "$src" "$strip" "$POLICY_FILE" \
+                     "$WORK/$name.rel.json" "$dir" "$hint")"; then
+        reason="$(jq -r '.reason // "verify_failed"' <<<"$result")"
+        echo "    ERROR $dist_tag verification failed: $reason" >&2
+        record_failed_attempt "$name" "$ver" "$result"
+        failures+=("$name: $dist_tag verify: $reason"); failed=$((failed+1)); continue
+      fi
+
+      action="mirror"
+      if [[ "$existing_n" -eq "$n_assets" ]]; then
+        action="receipt-only"   # pre-policy mirror converging to a receipt
+      elif [[ "$existing_n" -gt 0 ]]; then
+        action="repair"
+        echo "    repair $dist_tag (dist has $existing_n/$n_assets assets, upstream verified)"
+        gh release delete "$dist_tag" --repo "$DIST_REPO" --cleanup-tag --yes \
+          || { failures+=("$name: $dist_tag delete failed"); failed=$((failed+1)); continue; }
+        repaired=$((repaired+1))
+      fi
+
+      if [[ "$action" != "receipt-only" ]]; then
+        write_release_notes "$src" "$tag" "$WORK/$name.json" "$dir"
+        if ! gh release create "$dist_tag" --repo "$DIST_REPO" \
+             --title "$name $ver" --notes-file "$dir/.notes-full.md" "$dir"/*; then
+          record_failed_attempt "$name" "$ver" "$(emit_fail mirror_publish_failed)"
+          failures+=("$name: $dist_tag publish failed"); failed=$((failed+1)); continue
+        fi
+      fi
+
+      # Post-mirror exact digest verification: re-download the public mirror
+      # and re-hash every expected asset before writing the receipt.
+      vdir="$dir.verify"; rm -rf "$vdir"; mkdir -p "$vdir"
+      if ! gh release download "$dist_tag" -R "$DIST_REPO" --dir "$vdir" --clobber; then
+        record_failed_attempt "$name" "$ver" "$(emit_fail mirror_download_failed)"
+        failures+=("$name: $dist_tag mirror download failed"); failed=$((failed+1)); continue
+      fi
+      if ! mirrored="$(verify_mirror_assets \
+          "$(jq -c '.verified.upstream_assets' <<<"$result")" "$vdir")"; then
+        record_failed_attempt "$name" "$ver" "$(emit_fail mirror_digest_mismatch)"
+        failures+=("$name: $dist_tag mirrored digest mismatch"); failed=$((failed+1)); continue
+      fi
+
+      facts="$(jq --argjson m "$mirrored" '. + {mirrored_assets: $m}' <<<"$result")"
+      if ! wout="$(write_receipt "$name" "$ver" "$facts")"; then
+        record_failed_attempt "$name" "$ver" "$(emit_fail receipt_fingerprint_conflict)"
+        failures+=("$name: $dist_tag receipt fingerprint conflict"); failed=$((failed+1)); continue
+      fi
+      if [[ "$action" == "receipt-only" ]]; then
+        echo "    receipt-only $dist_tag ($wout)"
+        receipted=$((receipted+1))
+      else
+        echo "    sync  $dist_tag ($n_assets assets, $wout)"
+        synced=$((synced+1))
+      fi
+      continue
     fi
 
     if [[ "$existing_n" -eq "$n_assets" ]]; then
@@ -226,17 +342,7 @@ while IFS='|' read -r name src strip; do
         || { failures+=("$name: $dist_tag checksum mismatch"); failed=$((failed+1)); continue; }
     fi
 
-    jq -r --arg t "$tag" '.[] | select(.tag_name == $t) | .body // ""' \
-      "$WORK/$name.json" > "$dir/.notes.md" || printf '' > "$dir/.notes.md"
-    {
-      echo "Mirror of \`${src}\` release \`${tag}\` (upstream repo is private)."
-      echo
-      echo "Assets are byte-identical copies of the upstream release. Verify with the bundled checksums and SBOM. Binaries © Yeisme, provided as-is."
-      echo
-      echo '---'
-      echo
-      cat "$dir/.notes.md"
-    } > "$dir/.notes-full.md"
+    write_release_notes "$src" "$tag" "$WORK/$name.json" "$dir"
 
     args=(release create "$dist_tag" --repo "$DIST_REPO"
           --title "$name $ver" --notes-file "$dir/.notes-full.md")
@@ -261,7 +367,7 @@ if [[ "$DRY_RUN" -eq 0 ]]; then
 fi
 
 echo
-echo "sync done: synced=$synced skipped=$skipped repaired=$repaired failed=$failed"
+echo "sync done: synced=$synced skipped=$skipped repaired=$repaired receipt-only=$receipted failed=$failed"
 if [[ ${#failures[@]} -gt 0 ]]; then
   printf '  - %s\n' "${failures[@]}" >&2
   exit 1

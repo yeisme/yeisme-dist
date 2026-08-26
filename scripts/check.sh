@@ -17,7 +17,10 @@ check() {
 
 check bash -n scripts/sync.sh
 check bash -n scripts/check.sh
+check bash -n scripts/lib/verify.sh
+check bash -n scripts/test-offline.sh
 check bash -n install.sh
+check scripts/test-offline.sh
 
 if ! grep -qE '^eikona\|yeisme/eikona\|' products.txt; then
   echo "FAIL products.txt missing eikona row" >&2
@@ -106,6 +109,50 @@ if bash install.sh definitely-not-a-product 2>/dev/null; then
   fail=1
 else
   echo "ok  install.sh rejects unknown product"
+fi
+
+# Receipt / catalog cross-consistency (only when receipts exist). Additive
+# receipt fields must survive catalog regeneration: a join regression fails
+# here instead of silently dropping verification evidence.
+if [[ -d receipts ]]; then
+  bad_receipt=0
+  while IFS= read -r r; do
+    [[ "$r" == */failures/* ]] && continue
+    if ! jq -e '.schema_version == "yeisme.dist_receipt.v1" and .status == "success"
+                and (.fingerprint_sha256 | test("^sha256:[0-9a-f]{64}$"))' \
+         "$r" >/dev/null 2>&1; then
+      echo "FAIL receipt schema: $r" >&2
+      bad_receipt=1
+    fi
+  done < <(find receipts -name '*.json' -type f)
+  if [[ $bad_receipt -eq 0 ]]; then echo "ok  receipts schema"; else fail=1; fi
+
+  if [[ -f catalog.json ]]; then
+    bad_join=0
+    while IFS=$'\t' read -r product receipt rsha; do
+      [[ -n "$product" ]] || continue
+      if [[ ! -f "$receipt" ]]; then
+        echo "FAIL catalog receipt missing: $receipt" >&2
+        bad_join=1; continue
+      fi
+      actual="sha256:$(sha256sum "$receipt" | cut -d' ' -f1)"
+      if [[ "$actual" != "$rsha" ]]; then
+        echo "FAIL catalog receipt_sha256 mismatch: $receipt" >&2
+        bad_join=1
+      fi
+    done < <(jq -r '.products[] as $p | $p.releases[]? | select(.receipt) |
+                    "\($p.name)\t\(.receipt)\t\(.receipt_sha256)"' catalog.json)
+    while IFS=$'\t' read -r product vl; do
+      [[ -n "$product" ]] || continue
+      if ! jq -e --arg p "$product" --arg vl "$vl" \
+           '.products[] | select(.name == $p) | .releases[] | select(.tag == $vl) |
+            .verification.status == "verified"' catalog.json >/dev/null 2>&1; then
+        echo "FAIL verified_latest $product/$vl lacks a verified receipt" >&2
+        bad_join=1
+      fi
+    done < <(jq -r '.products[] | select(.verified_latest) | "\(.name)\t\(.verified_latest)"' catalog.json)
+    if [[ $bad_join -eq 0 ]]; then echo "ok  catalog receipt join"; else fail=1; fi
+  fi
 fi
 
 exit "$fail"

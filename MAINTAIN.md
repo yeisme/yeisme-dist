@@ -10,8 +10,14 @@ private product code here. Do not rebuild binaries.
 | `products.txt` | Manifest: `name\|source_repo\|strip_tag_prefix` |
 | `catalog.json` | Public index (generated; do not hand-edit) |
 | `install.sh` | Anonymous OS/arch installer |
+| `policy/<product>.json` | Optional verify policy (`yeisme.dist_verify_policy.v1`); products without one keep the legacy mirror path |
+| `receipts/<product>/<version>.json` | Immutable distribution receipts (`yeisme.dist_receipt.v1`), append-only |
+| `schemas/` | Informative JSON Schemas for external consumers |
+| `docs/distribution-contracts.md` | Handoff-hint, verify-policy, receipt and catalog contracts |
 | `scripts/sync.sh` | Mirror + repair + catalog/README refresh |
+| `scripts/lib/verify.sh` | Upstream fetch-and-verify + receipt library (sourced by `sync.sh`) |
 | `scripts/check.sh` | No-credential CI gate |
+| `scripts/test-offline.sh` | No-credential offline fixture tests for the verify/receipt path |
 | `.github/workflows/sync.yml` | Every 6 hours, manual dispatch, and `repository_dispatch` `product-release` |
 | `.github/workflows/ci.yml` | `check.sh` + anonymous `install.sh gitea-mcp` |
 
@@ -19,6 +25,7 @@ private product code here. Do not rebuild binaries.
 
 ```bash
 scripts/check.sh
+scripts/test-offline.sh                   # no credentials, no network
 scripts/sync.sh --catalog-only
 scripts/sync.sh --product scaena --dry-run
 scripts/sync.sh --product eikona          # needs GH_TOKEN that can read yeisme/eikona
@@ -66,5 +73,10 @@ gh workflow run sync.yml --repo yeisme/yeisme-dist -f dry_run=true
 - Rebuild from source or retag an existing `<product>/vX.Y.Z` with different bits.
 - Commit secrets, tokens, or private source.
 - Hand-edit `catalog.json` (run `scripts/sync.sh --catalog-only`).
+- Edit, regenerate or rewrite an existing `receipts/<product>/<version>.json`
+  (append-only; a changed verification set is a failure record under
+  `receipts/<product>/failures/`, never a receipt rewrite).
+- Promote a policy product's release to the catalog without a successful
+  receipt; keep the last verified entry on stale or mismatched evidence.
 - Remove a product from `products.txt` without also deleting its mirrored releases
   if it must leave the public channel.
