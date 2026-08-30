@@ -1,0 +1,94 @@
+{
+  "schema_version": "yeisme.dist_receipt.v1",
+  "product": "anatomia",
+  "channel": "stable",
+  "status": "success",
+  "upstream_tag": "v0.3.0",
+  "upstream_release_ref": "https://github.com/yeisme/anatomia/releases/tag/v0.3.0",
+  "dist_tag": "anatomia/v0.3.0",
+  "source_revision": "c5eb9730642d252c7236ea3eb6a6687df44dbfc2",
+  "handoff": {
+    "schema_version": "yeisme.product_release_handoff.v1",
+    "sha256": "sha256:28d71e33c69de8a166e99db4db9cbd29b7cf1b7e6166cc9d8386e1384ff076e2"
+  },
+  "policy": {
+    "file": "policy/anatomia.json",
+    "sha256": "sha256:d6fd1231f9ae733d56d44345e5984d56cdf689455f192d707fdd9810d63da1c4"
+  },
+  "verified": {
+    "checksums": {
+      "name": "checksums.txt",
+      "sha256": "sha256:45376c42e0b97e00263f90e14516052342f1b81848742c0c84abdea33edefa1e"
+    },
+    "asset_matrix": {
+      "expected": 6,
+      "matched": 6
+    },
+    "upstream_assets": [
+      {
+        "name": "anatomia_0.3.0_Darwin_arm64.tar.gz",
+        "sha256": "sha256:0553f252d04e3ad2af1c677e0eb8d5d591e25840f8061e8ceac321baedaa549d"
+      },
+      {
+        "name": "anatomia_0.3.0_Darwin_x86_64.tar.gz",
+        "sha256": "sha256:406abef0dbec91fdf0734e5858f28eec90a7fd60bfdf04a9f221c024012f4041"
+      },
+      {
+        "name": "anatomia_0.3.0_Linux_arm64.tar.gz",
+        "sha256": "sha256:2af1f3c72dcc40233d969246023aace3be9d1d5056306e5c3eab3f98e39ecbd0"
+      },
+      {
+        "name": "anatomia_0.3.0_Linux_x86_64.tar.gz",
+        "sha256": "sha256:e2ba699e9f2155a76de06d1f684ee1740033cb7492795d4ebbe5f6b0a7bb49b5"
+      },
+      {
+        "name": "anatomia-server_0.3.0_Linux_arm64.tar.gz",
+        "sha256": "sha256:6a7cf4f2ef50a544f4e1165fa15c5b91555d07b00e10a09d67ca2347dffd43be"
+      },
+      {
+        "name": "anatomia-server_0.3.0_Linux_x86_64.tar.gz",
+        "sha256": "sha256:ba490838e2d379da40edad9584ff17f10cde451880914b3f2ae1a40f947a3a61"
+      }
+    ],
+    "provenance": {
+      "sbom_assets": [
+        "anatomia_0.3.0_Darwin_arm64.tar.gz.spdx.json",
+        "anatomia_0.3.0_Darwin_x86_64.tar.gz.spdx.json",
+        "anatomia_0.3.0_Linux_arm64.tar.gz.spdx.json",
+        "anatomia_0.3.0_Linux_x86_64.tar.gz.spdx.json",
+        "anatomia-server_0.3.0_Linux_arm64.tar.gz.spdx.json",
+        "anatomia-server_0.3.0_Linux_x86_64.tar.gz.spdx.json"
+      ],
+      "attestation_subject": "github-attestation:sha256:45376c42e0b97e00263f90e14516052342f1b81848742c0c84abdea33edefa1e"
+    }
+  },
+  "mirrored_assets": [
+    {
+      "name": "anatomia_0.3.0_Darwin_arm64.tar.gz",
+      "sha256": "sha256:0553f252d04e3ad2af1c677e0eb8d5d591e25840f8061e8ceac321baedaa549d"
+    },
+    {
+      "name": "anatomia_0.3.0_Darwin_x86_64.tar.gz",
+      "sha256": "sha256:406abef0dbec91fdf0734e5858f28eec90a7fd60bfdf04a9f221c024012f4041"
+    },
+    {
+      "name": "anatomia_0.3.0_Linux_arm64.tar.gz",
+      "sha256": "sha256:2af1f3c72dcc40233d969246023aace3be9d1d5056306e5c3eab3f98e39ecbd0"
+    },
+    {
+      "name": "anatomia_0.3.0_Linux_x86_64.tar.gz",
+      "sha256": "sha256:e2ba699e9f2155a76de06d1f684ee1740033cb7492795d4ebbe5f6b0a7bb49b5"
+    },
+    {
+      "name": "anatomia-server_0.3.0_Linux_arm64.tar.gz",
+      "sha256": "sha256:6a7cf4f2ef50a544f4e1165fa15c5b91555d07b00e10a09d67ca2347dffd43be"
+    },
+    {
+      "name": "anatomia-server_0.3.0_Linux_x86_64.tar.gz",
+      "sha256": "sha256:ba490838e2d379da40edad9584ff17f10cde451880914b3f2ae1a40f947a3a61"
+    }
+  ],
+  "distribution_revision": 1,
+  "fingerprint_sha256": "sha256:b158f8cba6e39404d86e41e2255850a6d90f71a7a6bb430d8f6262bb5775843a",
+  "produced_at": "2026-08-30T06:38:36Z"
+}

@@ -22,7 +22,7 @@ Numbers below come from `catalog.json` (regenerated on every sync).
 | scaena | scaena/v0.2.1 | 2 | `yeisme/scaena-agent` |
 | gitea-mcp | gitea-mcp/v2.3.3 | 2 | `yeisme/gitea-mcp` |
 | sonora | sonora/v0.2.0 | 2 | `yeisme/sonora` |
-| anatomia | - | 0 | `yeisme/anatomia` |
+| anatomia | anatomia/v0.3.0 | 1 | `yeisme/anatomia` |
 | mcp-gateway | - | 0 | `yeisme/mcp-gateway` |
 <!-- catalog-products:end -->
 

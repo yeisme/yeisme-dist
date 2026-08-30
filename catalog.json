@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-30T05:24:46Z",
+  "generated_at": "2026-08-30T06:38:36Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -1243,10 +1243,43 @@
     {
       "name": "anatomia",
       "source_repo": "yeisme/anatomia",
-      "latest": null,
-      "verified_latest": null,
-      "release_count": 0,
-      "releases": []
+      "latest": "anatomia/v0.3.0",
+      "verified_latest": "anatomia/v0.3.0",
+      "release_count": 1,
+      "releases": [
+        {
+          "tag": "anatomia/v0.3.0",
+          "version": "v0.3.0",
+          "published_at": "2026-08-30T06:38:34Z",
+          "prerelease": false,
+          "asset_count": 13,
+          "assets": [
+            "anatomia-server_0.3.0_Linux_arm64.tar.gz",
+            "anatomia-server_0.3.0_Linux_arm64.tar.gz.spdx.json",
+            "anatomia-server_0.3.0_Linux_x86_64.tar.gz",
+            "anatomia-server_0.3.0_Linux_x86_64.tar.gz.spdx.json",
+            "anatomia_0.3.0_Darwin_arm64.tar.gz",
+            "anatomia_0.3.0_Darwin_arm64.tar.gz.spdx.json",
+            "anatomia_0.3.0_Darwin_x86_64.tar.gz",
+            "anatomia_0.3.0_Darwin_x86_64.tar.gz.spdx.json",
+            "anatomia_0.3.0_Linux_arm64.tar.gz",
+            "anatomia_0.3.0_Linux_arm64.tar.gz.spdx.json",
+            "anatomia_0.3.0_Linux_x86_64.tar.gz",
+            "anatomia_0.3.0_Linux_x86_64.tar.gz.spdx.json",
+            "checksums.txt"
+          ],
+          "receipt": "receipts/anatomia/v0.3.0.json",
+          "receipt_sha256": "sha256:3b9b75c396c49e58e99c067f499853c19506ab6aa404653f47d4169cea1ede14",
+          "verification": {
+            "status": "verified",
+            "channel": "stable",
+            "upstream_tag": "v0.3.0",
+            "source_revision": "c5eb9730642d252c7236ea3eb6a6687df44dbfc2",
+            "handoff_sha256": "sha256:28d71e33c69de8a166e99db4db9cbd29b7cf1b7e6166cc9d8386e1384ff076e2",
+            "distribution_revision": 1
+          }
+        }
+      ]
     },
     {
       "name": "mcp-gateway",
