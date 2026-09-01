@@ -16,7 +16,7 @@ Numbers below come from `catalog.json` (regenerated on every sync).
 <!-- catalog-products:start -->
 | Product | Latest | Releases | Upstream repo |
 |---|---|---|---|
-| eikona | eikona/v0.6.9 | 17 | `yeisme/eikona` |
+| eikona | eikona/v0.7.3 | 18 | `yeisme/eikona` |
 | pinax | pinax/v0.2.0 | 9 | `yeisme/pinax` |
 | auctra | auctra/v0.3.0 | 5 | `yeisme/auctra` |
 | scaena | scaena/v0.2.1 | 2 | `yeisme/scaena-agent` |
