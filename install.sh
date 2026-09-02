@@ -253,3 +253,7 @@ if [[ ":$PATH:" != *":$DEST:"* ]]; then
   echo "  export PATH=\"$DEST:\$PATH\""
 fi
 "$DEST/$product" --version 2>/dev/null || echo "install: done (run '$DEST/$product --version' yourself)"
+if [[ "$product" == "eikona" ]]; then
+  echo "install: next (preview): $DEST/eikona setup"
+  echo "install: next (apply):   $DEST/eikona setup --yes"
+fi

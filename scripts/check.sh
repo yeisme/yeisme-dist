@@ -19,6 +19,7 @@ check bash -n scripts/sync.sh
 check bash -n scripts/check.sh
 check bash -n scripts/lib/verify.sh
 check bash -n scripts/test-offline.sh
+check bash -n scripts/generate-package-manifests.sh
 check bash -n install.sh
 check scripts/test-offline.sh
 
@@ -27,6 +28,67 @@ if ! grep -qE '^eikona\|yeisme/eikona\|' products.txt; then
   fail=1
 else
   echo "ok  products.txt has eikona"
+fi
+
+if [[ -f catalog.json ]]; then
+  package_tmp="$(mktemp -d)"
+  if scripts/generate-package-manifests.sh --output-root "$package_tmp" \
+      && cmp -s Casks/eikona.rb "$package_tmp/Casks/eikona.rb" \
+      && cmp -s bucket/eikona.json "$package_tmp/bucket/eikona.json"; then
+    echo "ok  public package manifests are generated from catalog.json"
+  else
+    echo "FAIL public package manifests are stale or cannot be generated" >&2
+    fail=1
+  fi
+  rm -rf "$package_tmp"
+
+  if ruby -c Casks/eikona.rb >/dev/null \
+      && ! grep -q 'github.com/yeisme/eikona/releases/download' Casks/eikona.rb \
+      && grep -q 'github.com/yeisme/yeisme-dist/releases/download/eikona/' Casks/eikona.rb \
+      && grep -q 'eikona setup' Casks/eikona.rb \
+      && grep -q 'eikona setup --yes' Casks/eikona.rb; then
+    echo "ok  Homebrew cask syntax, public download source, and setup hints"
+  else
+    echo "FAIL Homebrew cask must use the public yeisme-dist release" >&2
+    fail=1
+  fi
+
+  if jq -e '
+      .version | test("^[0-9]+\\.[0-9]+\\.[0-9]+$")
+    ' bucket/eikona.json >/dev/null \
+      && ! grep -q 'github.com/yeisme/eikona/releases/download' bucket/eikona.json \
+      && grep -q 'github.com/yeisme/yeisme-dist/releases/download/eikona/' bucket/eikona.json \
+      && jq -e '.notes | any(contains("eikona setup")) and any(contains("eikona setup --yes"))' bucket/eikona.json >/dev/null; then
+    echo "ok  Scoop manifest schema, public download source, and setup notes"
+  else
+    echo "FAIL Scoop manifest must use the public yeisme-dist release" >&2
+    fail=1
+  fi
+
+  latest_eikona="$(jq -r '.products[] | select(.name == "eikona") | .latest' catalog.json)"
+  latest_eikona_version="${latest_eikona#eikona/v}"
+  missing_asset_catalog="$(mktemp)"
+  missing_digest_catalog="$(mktemp)"
+  jq --arg tag "$latest_eikona" --arg name "eikona-skills_${latest_eikona_version}.tar.gz" '
+    (.products[] | select(.name == "eikona") | .releases[] | select(.tag == $tag) | .assets) -= [$name]
+  ' catalog.json > "$missing_asset_catalog"
+  if scripts/generate-package-manifests.sh --catalog "$missing_asset_catalog" --output-root "$package_tmp" >/dev/null 2>&1; then
+    echo "FAIL package manifest generation accepted a missing Skills asset" >&2
+    fail=1
+  else
+    echo "ok  package manifest generation fails on missing required assets"
+  fi
+  jq --arg tag "$latest_eikona" --arg name "eikona_${latest_eikona_version}_Darwin_arm64.tar.gz" '
+    del(.products[] | select(.name == "eikona") | .releases[] | select(.tag == $tag) | .asset_digests[$name])
+  ' catalog.json > "$missing_digest_catalog"
+  if scripts/generate-package-manifests.sh --catalog "$missing_digest_catalog" --output-root "$package_tmp" >/dev/null 2>&1; then
+    echo "FAIL package manifest generation accepted a missing archive digest" >&2
+    fail=1
+  else
+    echo "ok  package manifest generation fails on missing archive digests"
+  fi
+  rm -f "$missing_asset_catalog" "$missing_digest_catalog"
+  rm -rf "$package_tmp"
 fi
 
 if ! grep -qE '^sonora\|yeisme/sonora\|' products.txt; then
@@ -98,6 +160,8 @@ list_out="$(bash install.sh --list)"
 echo "$list_out" | grep -q eikona || { echo "FAIL install.sh --list missing eikona" >&2; fail=1; }
 grep -q sonora <<<"$list_out" || { echo "FAIL install.sh --list missing sonora" >&2; fail=1; }
 echo "ok  install.sh --list"
+grep -q 'eikona setup' install.sh || { echo "FAIL install.sh missing Eikona setup hint" >&2; fail=1; }
+grep -q 'eikona setup --yes' install.sh || { echo "FAIL install.sh missing Eikona apply hint" >&2; fail=1; }
 if bash install.sh 2>/dev/null; then
   echo "FAIL install.sh without product should exit non-zero" >&2
   fail=1

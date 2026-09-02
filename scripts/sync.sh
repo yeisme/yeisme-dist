@@ -79,7 +79,19 @@ write_catalog() {
         prerelease: .prerelease,
         asset_count: (.assets | length),
         assets: [.assets[].name]
-      }]
+      } + (if $p == "eikona/" then {
+        asset_digests: (
+          .assets
+          | map(select(
+              (.name | test("^eikona_[0-9]+\\.[0-9]+\\.[0-9]+_(Darwin|Linux)_(arm64|x86_64)\\.tar\\.gz$|^eikona_[0-9]+\\.[0-9]+\\.[0-9]+_Windows_(arm64|x86_64)\\.zip$"))
+              and ((.digest // "") | startswith("sha256:"))
+            ) | {
+              key: .name,
+              value: .digest
+            })
+          | from_entries
+        )
+      } else {} end)]
     ' "$WORK/dist-all.ndjson")"
     # Additive receipt fields come from the local receipts/ directory so they
     # survive every regeneration; catalog schema_version stays 1.
@@ -105,14 +117,15 @@ write_catalog() {
       }]
     ' <<<"$products_json")"
   done < "$PRODUCTS_FILE"
-  jq -n --arg generated "$generated" --argjson products "$products_json" '{
+  jq --arg generated "$generated" '{
     schema_version: 1,
     generated_at: $generated,
     dist_repo: "yeisme/yeisme-dist",
-    products: $products
-  }' > "$ROOT/catalog.json"
+    products: .
+  }' <<<"$products_json" > "$ROOT/catalog.json"
   echo "wrote $ROOT/catalog.json"
   write_readme_products
+  "$ROOT/scripts/generate-package-manifests.sh"
 }
 
 write_readme_products() {

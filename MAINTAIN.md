@@ -10,6 +10,8 @@ private product code here. Do not rebuild binaries.
 | `products.txt` | Manifest: `name\|source_repo\|strip_tag_prefix` |
 | `catalog.json` | Public index (generated; do not hand-edit) |
 | `install.sh` | Anonymous OS/arch installer |
+| `Casks/eikona.rb` | Generated public Homebrew cask; downloads only from this repository |
+| `bucket/eikona.json` | Generated public Scoop manifest; downloads only from this repository |
 | `policy/<product>.json` | Optional verify policy (`yeisme.dist_verify_policy.v1`); products without one keep the legacy mirror path |
 | `receipts/<product>/<version>.json` | Immutable distribution receipts (`yeisme.dist_receipt.v1`), append-only |
 | `schemas/` | Informative JSON Schemas for external consumers |
@@ -18,6 +20,7 @@ private product code here. Do not rebuild binaries.
 | `scripts/lib/verify.sh` | Upstream fetch-and-verify + receipt library (sourced by `sync.sh`) |
 | `scripts/check.sh` | No-credential CI gate |
 | `scripts/test-offline.sh` | No-credential offline fixture tests for the verify/receipt path |
+| `scripts/generate-package-manifests.sh` | Generate public Homebrew/Scoop manifests from `catalog.json` |
 | `.github/workflows/sync.yml` | Every 6 hours, manual dispatch, and `repository_dispatch` `product-release` |
 | `.github/workflows/ci.yml` | `check.sh` + anonymous `install.sh gitea-mcp` |
 
@@ -27,10 +30,12 @@ private product code here. Do not rebuild binaries.
 scripts/check.sh
 scripts/test-offline.sh                   # no credentials, no network
 scripts/sync.sh --catalog-only
+scripts/generate-package-manifests.sh
 scripts/sync.sh --product scaena --dry-run
 scripts/sync.sh --product eikona          # needs GH_TOKEN that can read yeisme/eikona
 bash install.sh --list
 bash install.sh gitea-mcp --to /tmp/yeisme-bin
+scripts/generate-package-manifests.sh       # Eikona fails closed unless all setup assets exist
 ```
 
 GitHub Actions:
@@ -52,6 +57,12 @@ EOF
 3. Dispatch Sync for that product.
 4. Confirm `catalog.json` and the README product table list the new latest tag.
 5. Anonymous-install it once: `bash install.sh <name>`.
+
+For Eikona, additionally confirm the release contains all six CLI archives,
+`checksums.txt`, `eikona-install-manifest.json`, the version-matched Skills
+bundle and metadata, and the version-matched command catalog. The generated
+Homebrew caveat, Scoop notes, and Bash installer must all point users to
+`eikona setup` before any provider operation.
 
 Products with a working tag→GoReleaser pipeline may be listed before the first
 asset exists (`sonora`, `anatomia`, `mcp-gateway`): sync skips zero-asset

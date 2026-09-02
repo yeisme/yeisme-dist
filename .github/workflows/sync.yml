@@ -82,15 +82,15 @@ jobs:
           fi
           scripts/sync.sh "${args[@]}"
 
-      - name: Commit catalog.json
+      - name: Commit generated distribution metadata
         if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.dry_run != 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add catalog.json README.md
+          git add catalog.json README.md Casks bucket
           [[ -d receipts ]] && git add receipts
           if git diff --cached --quiet; then
-            echo "catalog.json / README.md / receipts unchanged"
+            echo "catalog.json / README.md / package manifests / receipts unchanged"
             exit 0
           fi
           git commit -m "chore: refresh catalog.json and receipts"

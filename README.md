@@ -46,6 +46,60 @@ to `PATH`. List mirrored products without installing:
 curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- --list
 ```
 
+### Homebrew (public tap)
+
+Eikona can be installed without access to its private product repository. The
+tap manifest and archives both come from this public repository:
+
+```bash
+brew tap yeisme/dist https://github.com/yeisme/yeisme-dist
+brew install --cask yeisme/dist/eikona
+eikona --version
+eikona setup
+eikona setup --yes
+```
+
+Update with:
+
+```bash
+brew update
+brew upgrade --cask yeisme/dist/eikona
+```
+
+If an older installation still uses `yeisme/tap/eikona`, migrate it to the
+public tap. This keeps `~/.eikona` user configuration intact:
+
+```bash
+brew uninstall --cask eikona
+brew untap yeisme/tap
+brew tap yeisme/dist https://github.com/yeisme/yeisme-dist
+brew install --cask yeisme/dist/eikona
+```
+
+### Scoop (public bucket)
+
+```powershell
+scoop bucket add yeisme-dist https://github.com/yeisme/yeisme-dist
+scoop install eikona
+eikona --version
+eikona setup
+eikona setup --yes
+```
+
+`eikona setup` uses only the installed binary, local user state, and the public
+`yeisme-dist` release that exactly matches the running CLI. The default command
+is a preview; `--yes` creates only missing user configuration and installs
+Agent Skills without replacing the package-manager-owned CLI. It does not clone
+or require access to the private product repository, collect credentials, probe
+a provider, or perform a paid generation.
+
+Persistent local credentials and redacted environment discovery remain explicit:
+
+```bash
+eikona auth set openai --protocol openai --api-key-stdin
+eikona config env --provider openai --agent
+```
+
 ## Direct download
 
 ```text
@@ -82,6 +136,11 @@ e.g. `https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.6.4/eiko
   catalog-only. It authenticates with the `DIST_SYNC_TOKEN` secret
   (fine-grained PAT: read contents on the upstream repos, write
   contents on this repo) and commits an updated `catalog.json`.
+- `scripts/generate-package-manifests.sh` derives `Casks/eikona.rb` and
+  `bucket/eikona.json` from the latest fully mirrored Eikona release and its
+  GitHub-provided SHA-256 digests. It requires the six CLI archives,
+  `checksums.txt`, install manifest, version-matched Skills bundle/metadata,
+  and command catalog; missing assets, archive digests, or version drift fail closed.
 - `.github/workflows/ci.yml` runs `scripts/check.sh` and anonymous
   `install.sh` smokes for `gitea-mcp` and `sonora` on every push/PR.
 - To add a product: append `name|yeisme/<repo>|<tag-prefix-to-strip>` to
@@ -97,3 +156,7 @@ e.g. `https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.6.4/eiko
 Binaries © Yeisme. Provided as-is for evaluation and internal use; no
 license is granted beyond downloading and running them. Sources remain
 private.
+
+## CI/CD
+
+- [模块化、分级 CI/CD](docs/delivery/ci-cd.md)：quick、full、integration、release 的触发场景、真实命令和权限边界。
