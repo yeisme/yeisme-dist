@@ -29,6 +29,8 @@ Anonymous PR CI and controlled upstream artifact sync remain separate.
 
 手动触发只允许验证、integration 或 snapshot。正式发布必须来自项目约定的 SemVer tag，并在 publish job 重新执行 mandatory gates。
 
+Scaena `v0.4.0` package-channel work adds a risk-triggered full fixture matrix for changes to the Scaena verify policy, static aliases, installer selection, manifest generation, catalog digests, receipts or package smoke. Ordinary unrelated PRs keep the existing quick gate. RC validation renders three Casks and three Scoop manifests only in a temporary directory/Tap/Bucket; stable generated files change only after exact-byte mirror and all public smoke gates pass.
+
 ## 模块和兼容
 
 - 小于 100 行且职责单一的 workflow 可以保持单文件。

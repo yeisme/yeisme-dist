@@ -309,9 +309,71 @@ t_fail_closed() {
   return 0
 }
 
+# 13. Shared Scaena install manifest declares an exact four-file Skills set.
+t_scaena_skills_assets() {
+  local dir="$SBX/scaena-skills" version=1.2.3
+  rm -rf "$dir"; mkdir -p "$dir"
+  printf 'bundle\n' > "$dir/scaena-skills_${version}.tar.gz"
+  printf '{"schema_version":"yeisme.agent_skills.bundle.v1"}\n' > "$dir/scaena-skills_${version}.json"
+  printf '{"schema_version":"yeisme.agent_skills.catalog.v1"}\n' > "$dir/scaena-skills-catalog_${version}.json"
+  local bundle_sha manifest_sha catalog_sha
+  bundle_sha="$(sha256sum "$dir/scaena-skills_${version}.tar.gz" | cut -d' ' -f1)"
+  manifest_sha="$(sha256sum "$dir/scaena-skills_${version}.json" | cut -d' ' -f1)"
+  catalog_sha="$(sha256sum "$dir/scaena-skills-catalog_${version}.json" | cut -d' ' -f1)"
+  jq -n --arg version "$version" --arg bundle "$bundle_sha" --arg manifest "$manifest_sha" --arg catalog "$catalog_sha" '
+    {schema_version:"yeisme.product_install_manifest.v1", product:"scaena",
+     product_version:$version, tag:("scaena/v"+$version), commit:("a"*40),
+     skills:{bundle_version:$version, source:{repository:"https://github.com/yeisme/yeisme-agent-my-skills",commit:("b"*40)},
+       runtime_targets:["agents","codex","claude"],
+       bundle:{name:("scaena-skills_"+$version+".tar.gz"),kind:"skills_bundle",url:("https://example.invalid/scaena-skills_"+$version+".tar.gz"),sha256:("sha256:"+$bundle)},
+       manifest:{name:("scaena-skills_"+$version+".json"),kind:"skills_manifest",url:("https://example.invalid/scaena-skills_"+$version+".json"),sha256:("sha256:"+$manifest)},
+       catalog:{name:("scaena-skills-catalog_"+$version+".json"),kind:"skills_catalog",url:("https://example.invalid/scaena-skills-catalog_"+$version+".json"),sha256:("sha256:"+$catalog)}}}
+  ' > "$dir/scaena-install-manifest.json"
+  (cd "$dir" && sha256sum scaena-* > checksums.txt)
+
+  local result
+  result="$(verify_declared_skills_assets scaena "scaena/v$version" "$dir")" || return 1
+  jq -e '.status == "verified" and (.assets | length == 4)
+         and ([.assets[].name] | index("scaena-install-manifest.json") != null)' <<<"$result" >/dev/null || return 1
+  printf 'bitrot\n' >> "$dir/scaena-skills_${version}.tar.gz"
+  result="$(verify_declared_skills_assets scaena "scaena/v$version" "$dir")" && return 1
+  expect_reason "$result" skills_asset_checksum_mismatch || return 1
+  printf 'bundle\n' > "$dir/scaena-skills_${version}.tar.gz"
+  rm "$dir/scaena-skills-catalog_${version}.json"
+  result="$(verify_declared_skills_assets scaena "scaena/v$version" "$dir")" && return 1
+  expect_reason "$result" skills_asset_missing
+}
+
+# 14. Eikona's legacy manifest remains readable and adopts metadata/catalog
+#     when the release declares them through files/checksums.
+t_eikona_skills_assets() {
+  local dir="$SBX/eikona-skills" version=0.7.4
+  rm -rf "$dir"; mkdir -p "$dir"
+  printf 'bundle\n' > "$dir/eikona-skills_${version}.tar.gz"
+  printf '{"schema_version":"eikona.skills_bundle.v1"}\n' > "$dir/eikona-skills_${version}.json"
+  printf '{"schema_version":"eikona.command_catalog.v1"}\n' > "$dir/eikona-command-catalog_${version}.json"
+  local bundle_sha
+  bundle_sha="$(sha256sum "$dir/eikona-skills_${version}.tar.gz" | cut -d' ' -f1)"
+  jq -n --arg version "$version" --arg sha "$bundle_sha" '
+    {schema_version:"eikona.install_manifest.v1", repository:"https://github.com/yeisme/eikona",
+     owner:"yeisme", name:"eikona", channel:"stable", tag:("v"+$version), commit:("a"*40),
+     cli_version:$version, skills_bundle_version:$version,
+     skills_source_repository:"https://github.com/yeisme/yeisme-agent-my-skills", skills_source_commit:("b"*40),
+     runtime_targets:["agents","claude","codex"], skills:[{name:"example",files:[{path:"SKILL.md",sha256:("c"*64)}]}],
+     assets:{skills_bundle:{name:("eikona-skills_"+$version+".tar.gz"),kind:"skills_bundle",sha256:$sha}}}
+  ' > "$dir/eikona-install-manifest.json"
+  (cd "$dir" && sha256sum eikona-* > checksums.txt)
+
+  local result
+  result="$(verify_declared_skills_assets eikona "v$version" "$dir")" || return 1
+  jq -e '.status == "verified" and (.assets | length == 4)
+         and ([.assets[].name] | index("eikona-command-catalog_0.7.4.json") != null)' <<<"$result" >/dev/null
+}
+
 tests=(t_happy t_idempotent t_corrupt_retains_last_verified t_missing_matrix
        t_no_checksums t_snapshot_excluded t_hint_mismatch t_fingerprint_conflict
-       t_denied_asset t_catalog_join t_mirror_verify t_fail_closed)
+       t_denied_asset t_catalog_join t_mirror_verify t_fail_closed
+       t_scaena_skills_assets t_eikona_skills_assets)
 for t in "${tests[@]}"; do
   if "$t"; then ok "$t"; else bad "$t"; fi
 done

@@ -67,6 +67,129 @@ emit_fail() { # <reason> [detail_json] — redacted failure result on stdout
   jq -n --arg r "$1" --argjson d "${2:-{\}}" '{status:"failed", reason:$r, detail:$d}'
 }
 
+checksum_digest_for_asset() { # <checksums-file> <asset-name>
+  awk -v expected="$2" '
+    NF >= 2 {
+      name = $2
+      sub(/^\*/, "", name)
+      sub(/^\.\//, "", name)
+      if (name == expected) print tolower($1)
+    }
+  ' "$1"
+}
+
+# Validate the optional product-owned Agent Skills asset declaration without
+# expanding or rebuilding the bundle. Old releases without an install
+# manifest remain compatible. Supported manifests are the shared product
+# contract and Eikona's release-bound legacy contract.
+verify_declared_skills_assets() { # <product> <upstream-tag> <assets-dir>
+  local product="$1" tag="$2" dir="$3"
+  local manifest="$dir/$product-install-manifest.json"
+  if [[ ! -f "$manifest" ]]; then
+    jq -cn '{status:"absent", assets:[]}'
+    return 0
+  fi
+
+  local ck schema version declared_assets
+  ck="$(cd "$dir" && ls -- *checksums*.txt 2>/dev/null | head -n1 || true)"
+  if [[ -z "$ck" ]]; then
+    emit_fail skills_checksums_missing; return 1
+  fi
+  if ! schema="$(jq -er '.schema_version | strings' "$manifest" 2>/dev/null)"; then
+    emit_fail skills_install_manifest_invalid; return 1
+  fi
+  version="${tag##*/}"; version="${version#v}"
+
+  case "$schema" in
+    yeisme.product_install_manifest.v1)
+      if ! jq -e --arg product "$product" --arg tag "$tag" --arg version "$version" '
+          .product == $product and .tag == $tag and .product_version == $version and
+          (.skills | type == "object") and
+          .skills.bundle.kind == "skills_bundle" and
+          .skills.manifest.kind == "skills_manifest" and
+          .skills.catalog.kind == "skills_catalog" and
+          ([.skills.bundle, .skills.manifest, .skills.catalog] | all(
+            . as $asset |
+            ($asset.name | type == "string" and length > 0) and
+            ($asset.sha256 | type == "string" and test("^(sha256:)?[0-9a-fA-F]{64}$")) and
+            ($asset.url | type == "string" and endswith("/" + $asset.name))
+          ))
+        ' "$manifest" >/dev/null 2>&1; then
+        emit_fail skills_install_manifest_invalid; return 1
+      fi
+      declared_assets="$(jq -c '[.skills.bundle, .skills.manifest, .skills.catalog]
+        | map({name, sha256})' "$manifest")"
+      ;;
+    eikona.install_manifest.v1)
+      if [[ "$product" != "eikona" ]] || ! jq -e --arg tag "$tag" --arg version "$version" '
+          .name == "eikona" and .tag == $tag and
+          .cli_version == $version and .skills_bundle_version == $version and
+          (.assets.skills_bundle.name | type == "string" and length > 0) and
+          (.assets.skills_bundle.sha256 | type == "string" and test("^(sha256:)?[0-9a-fA-F]{64}$"))
+        ' "$manifest" >/dev/null 2>&1; then
+        emit_fail skills_install_manifest_invalid; return 1
+      fi
+      declared_assets="$(jq -c '[.assets.skills_bundle | {name, sha256}]' "$manifest")"
+      local legacy_name
+      for legacy_name in "eikona-skills_${version}.json" "eikona-command-catalog_${version}.json"; do
+        if [[ -f "$dir/$legacy_name" ]] \
+           || [[ -n "$(checksum_digest_for_asset "$dir/$ck" "$legacy_name")" ]]; then
+          declared_assets="$(jq -cn --argjson assets "$declared_assets" --arg name "$legacy_name" \
+            '$assets + [{name:$name, sha256:""}]')"
+        fi
+      done
+      ;;
+    *)
+      emit_fail skills_install_manifest_schema_unsupported \
+        "$(jq -cn --arg schema "$schema" '{schema:$schema}')"; return 1
+      ;;
+  esac
+
+  declared_assets="$(jq -cn --argjson assets "$declared_assets" \
+    --arg name "$(basename "$manifest")" '$assets + [{name:$name, sha256:""}]')"
+
+  local rows="" name declared actual checksum_digest
+  local -a checksum_matches=()
+  local -A seen=()
+  while IFS=$'\t' read -r name declared; do
+    if [[ ! "$name" =~ ^[A-Za-z0-9._+-]+$ ]] || [[ "$name" != "$(basename "$name")" ]] \
+       || denied "$name" || [[ -n "${seen[$name]:-}" ]]; then
+      emit_fail skills_asset_name_invalid \
+        "$(jq -cn --arg asset "$name" '{asset:$asset}')"; return 1
+    fi
+    seen[$name]=1
+    if [[ ! -f "$dir/$name" ]]; then
+      emit_fail skills_asset_missing \
+        "$(jq -cn --arg asset "$name" '{asset:$asset}')"; return 1
+    fi
+
+    mapfile -t checksum_matches < <(checksum_digest_for_asset "$dir/$ck" "$name")
+    if [[ "${#checksum_matches[@]}" -ne 1 ]] \
+       || [[ ! "${checksum_matches[0]}" =~ ^[0-9a-f]{64}$ ]]; then
+      emit_fail skills_asset_checksum_undeclared \
+        "$(jq -cn --arg asset "$name" '{asset:$asset}')"; return 1
+    fi
+    checksum_digest="${checksum_matches[0]}"
+    actual="$(sha256sum "$dir/$name" | cut -d' ' -f1)"
+    if [[ "$checksum_digest" != "$actual" ]]; then
+      emit_fail skills_asset_checksum_mismatch \
+        "$(jq -cn --arg asset "$name" '{asset:$asset}')"; return 1
+    fi
+    declared="${declared#sha256:}"; declared="${declared,,}"
+    if [[ -n "$declared" ]] && { [[ ! "$declared" =~ ^[0-9a-f]{64}$ ]] || [[ "$declared" != "$actual" ]]; }; then
+      emit_fail skills_asset_manifest_digest_mismatch \
+        "$(jq -cn --arg asset "$name" '{asset:$asset}')"; return 1
+    fi
+    rows+="$(jq -cn --arg name "$name" --arg sha "sha256:$actual" \
+      '{name:$name, sha256:$sha}')"$'\n'
+  done < <(jq -r '.[] | [.name, (.sha256 // "")] | @tsv' <<<"$declared_assets")
+
+  local assets
+  assets="$(jq -s 'sort_by(.name)' <<<"$rows")"
+  jq -cn --arg manifest "$(basename "$manifest")" --argjson assets "$assets" \
+    '{status:"verified", manifest:$manifest, assets:$assets}'
+}
+
 # Verify independently downloaded upstream assets in <assets_dir> against the
 # policy and the (optional, untrusted) producer wake-up hint. On success,
 # prints the verified facts JSON (receipt input minus mirrored_assets) and
@@ -163,6 +286,19 @@ verify_release_evidence() { # <product> <src> <strip> <policy_file> <release_jso
   assets_json+="]"
   sbom_json+="]"
 
+  # Product install manifests are optional for old releases. Once present,
+  # their complete Skills asset set becomes part of the exact mirrored digest
+  # set and therefore of the immutable receipt fingerprint.
+  local skills_result skills_assets
+  if ! skills_result="$(verify_declared_skills_assets "$product" "$tag" "$dir")"; then
+    printf '%s\n' "$skills_result"
+    return 1
+  fi
+  skills_assets="$(jq -c '.assets' <<<"$skills_result")"
+  assets_json="$(jq -cn --argjson base "$assets_json" --argjson skills "$skills_assets" \
+    'reduce ($base + $skills)[] as $item ([];
+      if (map(.name) | index($item.name)) != null then . else . + [$item] end)')"
+
   # Resolve the tag to a commit SHA (annotated tags need the extra hop).
   local revision="none"
   if [[ "$(jq -r '.source_revision_required // false' "$policy")" == "true" ]]; then
@@ -237,7 +373,7 @@ verify_release_evidence() { # <product> <src> <strip> <policy_file> <release_jso
 # Re-hash mirrored assets and compare against the verified upstream digests.
 # On success prints the mirrored_assets JSON array and returns 0.
 verify_mirror_assets() { # <upstream_assets_json> <mirror_dir>
-  local expected="$1" dir="$2"
+  local expected_json="$1" dir="$2"
   local mirrored="[" ok=0 name d exp
   ok=1
   while IFS= read -r name; do
@@ -246,14 +382,14 @@ verify_mirror_assets() { # <upstream_assets_json> <mirror_dir>
       ok=0; continue
     fi
     d="$(sha256sum "$dir/$name" | cut -d' ' -f1)"
-    exp="$(jq -r --arg n "$name" '.[] | select(.name == $n) | .sha256' <<<"$expected")"
+    exp="$(jq -r --arg n "$name" '.[] | select(.name == $n) | .sha256' <<<"$expected_json")"
     if [[ "sha256:$d" != "$exp" ]]; then
       echo "mirrored digest mismatch: $name" >&2
       ok=0; continue
     fi
     [[ "$mirrored" == "[" ]] || mirrored+=","
     mirrored+="{\"name\":\"$name\",\"sha256\":\"sha256:$d\"}"
-  done < <(jq -r '.[].name' <<<"$expected")
+  done < <(jq -r '.[].name' <<<"$expected_json")
   mirrored+="]"
   [[ "$ok" -eq 1 ]] || return 1
   printf '%s\n' "$mirrored"

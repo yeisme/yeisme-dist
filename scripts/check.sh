@@ -33,7 +33,7 @@ fi
 if [[ -f catalog.json ]]; then
   package_tmp="$(mktemp -d)"
   if scripts/generate-package-manifests.sh --output-root "$package_tmp" \
-      && cmp -s Casks/eikona.rb "$package_tmp/Casks/eikona.rb" \
+      && diff -ru Casks "$package_tmp/Casks" >/dev/null \
       && cmp -s bucket/eikona.json "$package_tmp/bucket/eikona.json"; then
     echo "ok  public package manifests are generated from catalog.json"
   else
@@ -42,14 +42,21 @@ if [[ -f catalog.json ]]; then
   fi
   rm -rf "$package_tmp"
 
-  if ruby -c Casks/eikona.rb >/dev/null \
-      && ! grep -q 'github.com/yeisme/eikona/releases/download' Casks/eikona.rb \
-      && grep -q 'github.com/yeisme/yeisme-dist/releases/download/eikona/' Casks/eikona.rb \
-      && grep -q 'eikona setup' Casks/eikona.rb \
+  for cask in Casks/*.rb; do
+    product="$(basename "$cask" .rb)"
+    if ruby -c "$cask" >/dev/null \
+        && grep -q "github.com/yeisme/yeisme-dist/releases/download/$product/" "$cask"; then
+      echo "ok  Homebrew cask $product syntax and public download source"
+    else
+      echo "FAIL Homebrew cask $product must use the public yeisme-dist release" >&2
+      fail=1
+    fi
+  done
+  if grep -q 'eikona setup' Casks/eikona.rb \
       && grep -q 'eikona setup --yes' Casks/eikona.rb; then
-    echo "ok  Homebrew cask syntax, public download source, and setup hints"
+    echo "ok  Homebrew Eikona setup hints"
   else
-    echo "FAIL Homebrew cask must use the public yeisme-dist release" >&2
+    echo "FAIL Homebrew Eikona cask missing setup hints" >&2
     fail=1
   fi
 
@@ -87,7 +94,64 @@ if [[ -f catalog.json ]]; then
   else
     echo "ok  package manifest generation fails on missing archive digests"
   fi
-  rm -f "$missing_asset_catalog" "$missing_digest_catalog"
+  missing_non_eikona_digest_catalog="$(mktemp)"
+  latest_pinax="$(jq -r '.products[] | select(.name == "pinax") | .latest' catalog.json)"
+  latest_pinax_linux_amd64="$(jq -r --arg tag "$latest_pinax" '
+    .products[] | select(.name == "pinax") | .releases[] | select(.tag == $tag)
+    | .assets[] | select(ascii_downcase | test("linux.*(amd64|x86_64).*\\.tar\\.gz$"))
+  ' catalog.json | head -n1)"
+  jq --arg tag "$latest_pinax" --arg name "$latest_pinax_linux_amd64" '
+    del(.products[] | select(.name == "pinax") | .releases[] | select(.tag == $tag) | .asset_digests[$name])
+  ' catalog.json > "$missing_non_eikona_digest_catalog"
+  if scripts/generate-package-manifests.sh --catalog "$missing_non_eikona_digest_catalog" --output-root "$package_tmp" >/dev/null 2>&1; then
+    echo "FAIL package manifest generation accepted a non-Eikona missing archive digest" >&2
+    fail=1
+  else
+    echo "ok  package manifest generation fails on non-Eikona missing archive digests"
+  fi
+  credentialctl_catalog="$(mktemp)"
+  credentialctl_output="$(mktemp -d)"
+  jq '
+    .products += [{
+      name: "credentialctl",
+      source_repo: "yeisme/credentialctl",
+      latest: "credentialctl/v0.3.0",
+      verified_latest: null,
+      release_count: 1,
+      releases: [{
+        tag: "credentialctl/v0.3.0",
+        version: "v0.3.0",
+        published_at: "2026-09-02T00:00:00Z",
+        prerelease: false,
+        asset_count: 5,
+        assets: [
+          "credentialctl_0.3.0_darwin_aarch64.tar.gz",
+          "credentialctl_0.3.0_darwin_x86_64.tar.gz",
+          "credentialctl_0.3.0_linux_aarch64.tar.gz",
+          "credentialctl_0.3.0_linux_x86_64.tar.gz",
+          "credentialctl_0.3.0_windows_x86_64.zip"
+        ],
+        asset_digests: {
+          "credentialctl_0.3.0_darwin_aarch64.tar.gz": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "credentialctl_0.3.0_darwin_x86_64.tar.gz": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "credentialctl_0.3.0_linux_aarch64.tar.gz": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "credentialctl_0.3.0_linux_x86_64.tar.gz": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "credentialctl_0.3.0_windows_x86_64.zip": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      }]
+    }]
+  ' catalog.json > "$credentialctl_catalog"
+  if scripts/generate-package-manifests.sh --catalog "$credentialctl_catalog" --output-root "$credentialctl_output" >/dev/null \
+      && ruby -c "$credentialctl_output/Casks/credentialctl.rb" >/dev/null \
+      && grep -q 'github.com/yeisme/yeisme-dist/releases/download/credentialctl/v0.3.0/' \
+        "$credentialctl_output/Casks/credentialctl.rb"; then
+    echo "ok  future credentialctl Homebrew cask fixture"
+  else
+    echo "FAIL future credentialctl Homebrew cask fixture" >&2
+    fail=1
+  fi
+  rm -f "$missing_asset_catalog" "$missing_digest_catalog" "$missing_non_eikona_digest_catalog" "$credentialctl_catalog"
+  rm -rf "$credentialctl_output"
   rm -rf "$package_tmp"
 fi
 

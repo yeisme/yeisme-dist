@@ -48,8 +48,12 @@ curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh 
 
 ### Homebrew (public tap)
 
-Eikona can be installed without access to its private product repository. The
-tap manifest and archives both come from this public repository:
+The tap manifests and archives both come from this public repository. Current
+generated casks are `eikona`, `pinax`, `auctra`, `gitea-mcp`, `sonora`, and
+`anatomia`. Scaena currently remains a Linux/amd64 direct-install CLI; its
+`v0.4.0` three-package Homebrew/Scoop contract is planned and is not active.
+Availability follows the remote generated Casks/bucket files and verified
+`catalog.json`, not local working-tree manifests.
 
 ```bash
 brew tap yeisme/dist https://github.com/yeisme/yeisme-dist
@@ -64,6 +68,16 @@ Update with:
 ```bash
 brew update
 brew upgrade --cask yeisme/dist/eikona
+```
+
+For another available product, replace `eikona` with its cask name:
+
+```bash
+brew install --cask yeisme/dist/pinax
+brew install --cask yeisme/dist/auctra
+brew install --cask yeisme/dist/gitea-mcp
+brew install --cask yeisme/dist/sonora
+brew install --cask yeisme/dist/anatomia
 ```
 
 If an older installation still uses `yeisme/tap/eikona`, migrate it to the
@@ -136,11 +150,14 @@ e.g. `https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.6.4/eiko
   catalog-only. It authenticates with the `DIST_SYNC_TOKEN` secret
   (fine-grained PAT: read contents on the upstream repos, write
   contents on this repo) and commits an updated `catalog.json`.
-- `scripts/generate-package-manifests.sh` derives `Casks/eikona.rb` and
-  `bucket/eikona.json` from the latest fully mirrored Eikona release and its
-  GitHub-provided SHA-256 digests. It requires the six CLI archives,
+- `scripts/generate-package-manifests.sh` derives supported Casks/Scoop
+  manifests from the latest fully mirrored, digest-complete releases. Product
+  requirements remain explicit: Eikona requires its six CLI archives,
   `checksums.txt`, install manifest, version-matched Skills bundle/metadata,
-  and command catalog; missing assets, archive digests, or version drift fail closed.
+  and command catalog. Planned Scaena v0.4 support additionally requires three
+  roles, 18 archives, per-archive SBOMs, command catalog, distribution notice,
+  a successful receipt, and static package aliases. Missing assets, digests or
+  version evidence fail closed before generated files are replaced.
 - `.github/workflows/ci.yml` runs `scripts/check.sh` and anonymous
   `install.sh` smokes for `gitea-mcp` and `sonora` on every push/PR.
 - To add a product: append `name|yeisme/<repo>|<tag-prefix-to-strip>` to
@@ -153,9 +170,11 @@ e.g. `https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.6.4/eiko
 
 ## License
 
-Binaries © Yeisme. Provided as-is for evaluation and internal use; no
-license is granted beyond downloading and running them. Sources remain
-private.
+Binaries © Yeisme. Users may download and run unmodified binaries from Yeisme
+official Release, mirror, Tap, or Bucket channels. Third-party redistribution,
+repackaging, modification, resale, or representation as an official build is
+not permitted. Sources remain private; product-specific notices remain the
+authoritative distribution terms.
 
 ## CI/CD
 

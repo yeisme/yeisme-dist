@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T15:11:53Z",
+  "generated_at": "2026-09-02T16:16:18Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -55,12 +55,42 @@
             "eikona_0.7.4_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:f875f70ed3dfb82f1696baa4d8fa0de2176c0d593089d9231743497722c8fe5c",
+            "eikona-command-catalog_0.7.4.json": "sha256:3f7a157aab0e44e3ede24ef989cf84f971e3cbafecee6e940e66ffb25cb517ff",
+            "eikona-install-manifest.json": "sha256:0c8ce88e2b9c307694c11a50f2b3b0a0fe70d497fc54e21d8895130b16a9d682",
+            "eikona-installer_0.7.4_Darwin_arm64.tar.gz": "sha256:abadfa801768b4db3b2e203e806309023d2022e25e70d7cbd0fba9bf10b611e4",
+            "eikona-installer_0.7.4_Darwin_arm64.tar.gz.spdx.json": "sha256:fdcc8066ec05e9bdce0ba0ad62c5b5204750b31f8b2190d75e3e3072314132ec",
+            "eikona-installer_0.7.4_Darwin_x86_64.tar.gz": "sha256:8197236815c7c0c201cafe14168e03e82449e60c7c09e0a0fbee127b3d4dd410",
+            "eikona-installer_0.7.4_Darwin_x86_64.tar.gz.spdx.json": "sha256:ae1b08d8ac1251b8915283aa6f0a6c663d47b6aa5d231fb5db5b92e715e7d084",
+            "eikona-installer_0.7.4_Linux_arm64.tar.gz": "sha256:fe4719f5a055b9fd26d6148d170a61f6069136809473ab9a97d9053f1c766d6f",
+            "eikona-installer_0.7.4_Linux_arm64.tar.gz.spdx.json": "sha256:4f6cc88e08ebc837ef5b305bc042dd7722b45451b19e24b6ff864914b16f40b5",
+            "eikona-installer_0.7.4_Linux_x86_64.tar.gz": "sha256:f284708b1927dfaf63ef5cbd1008e131a0108ca10f81f766b5ebe9f37cc53fdd",
+            "eikona-installer_0.7.4_Linux_x86_64.tar.gz.spdx.json": "sha256:86aab2628a7274d149258a0adef0ce9242597fa3e9bdf386dabb136907864393",
+            "eikona-installer_0.7.4_Windows_arm64.zip": "sha256:cfaa0a4fab2e78d76642fafbc08cf97ed4e50648a5e06b08a5931079d179bcde",
+            "eikona-installer_0.7.4_Windows_arm64.zip.spdx.json": "sha256:2e7862cbc3f9d61cc670677d23391f05bc0cac1b665633c7e0cc63bda7a2a73d",
+            "eikona-installer_0.7.4_Windows_x86_64.zip": "sha256:25312a09c7e79a9fc8702f1dd162ef301a097295c03488e7a4e102a5a2acaca0",
+            "eikona-installer_0.7.4_Windows_x86_64.zip.spdx.json": "sha256:81029e4f2c49c9db8b1ae0b7a4c09b759a75e04cd962d05686cad167955d9d4f",
+            "eikona-skills_0.7.4.json": "sha256:ead09de336b495765393bd5b739386462c87d139fd6e5fdad939fff545584e0b",
+            "eikona-skills_0.7.4.tar.gz": "sha256:877d5e44e23216b3db98e2458041773cb7d10dfbf06a139829da6b7d3049ae13",
             "eikona_0.7.4_Darwin_arm64.tar.gz": "sha256:89b191f4ec3d39235bf5cc72748b6e392df671010ae7d6055afffe7adc3ee1a5",
+            "eikona_0.7.4_Darwin_arm64.tar.gz.spdx.json": "sha256:8e3a9cfb824499178ed4891f462109bbb6bbe9e4d549576c8e178b943fa2fbd0",
             "eikona_0.7.4_Darwin_x86_64.tar.gz": "sha256:fd896a1141b579ab5632fc788b4d07afd8a11fe84b7b71a9caba9b2d53681e11",
+            "eikona_0.7.4_Darwin_x86_64.tar.gz.spdx.json": "sha256:5c6ed97a8d0537e9cec3930082d5ec0f0037ae0013873ef246824fc17167bb0e",
+            "eikona_0.7.4_linux_amd64.apk": "sha256:e6d5eaadf272a0ee159c352e27126b34efa4f9a5763e3ceae8f5195faf2bfdde",
+            "eikona_0.7.4_linux_amd64.deb": "sha256:7ffeda98095b64d91ddc529de1cbd94c44a63b1f974a457214df7ba6929b9843",
+            "eikona_0.7.4_linux_amd64.rpm": "sha256:616cad483277f3a35baf66c7b6a6477d766522bd3da289f0ad61d9e4a861f39f",
+            "eikona_0.7.4_linux_arm64.apk": "sha256:fc40cbe8b74c910c733d698c42d46e8fb577ce44f621dc7f5076c039d6f9755a",
+            "eikona_0.7.4_linux_arm64.deb": "sha256:be61fa85c48b9c16c5e016e624a9ea6817565fa620642d0a887869994cb503a2",
+            "eikona_0.7.4_linux_arm64.rpm": "sha256:5d7f7dd5b54c54d782ec3bc5db72e78de6046d7ec039c05b638e5c9e28435a4c",
             "eikona_0.7.4_Linux_arm64.tar.gz": "sha256:f0dd331955121f37e4126d1fa106c6cbae1cdc56879f4e1a9a839ece9cbc3e74",
+            "eikona_0.7.4_Linux_arm64.tar.gz.spdx.json": "sha256:3bd61159571ece90876b648d2e4f1d4ba5b59b9083225aec0ebb1db838f98ef9",
             "eikona_0.7.4_Linux_x86_64.tar.gz": "sha256:db7017cab98a5b8bbcfad6bd67f7012bd9e09648ab33c906a9d7776871d2a4b5",
+            "eikona_0.7.4_Linux_x86_64.tar.gz.spdx.json": "sha256:b1914588d7700b3380d79b86ae1a1fc9c1440b69b007395aa1fb9512b7ee2b4e",
+            "eikona_0.7.4_source.tar.gz": "sha256:37172ad8e6cfda31ae07fe035f8160aa9278b2fff20e45c073db40fc1e0cb52f",
             "eikona_0.7.4_Windows_arm64.zip": "sha256:cda350b1cec1b71a973a95a5b3de25053978a743314f78868c86b5ce34331be4",
-            "eikona_0.7.4_Windows_x86_64.zip": "sha256:61ebaed9537a2dcfa795961517a58cc3e0e6f9dd876109179e96bc060e3e8d8e"
+            "eikona_0.7.4_Windows_arm64.zip.spdx.json": "sha256:39618dce659d06b4c2820e1b5f14b3792d0c70af1cb237a2f90fbca0e96aa846",
+            "eikona_0.7.4_Windows_x86_64.zip": "sha256:61ebaed9537a2dcfa795961517a58cc3e0e6f9dd876109179e96bc060e3e8d8e",
+            "eikona_0.7.4_Windows_x86_64.zip.spdx.json": "sha256:15c7796d2e5a20de227df57c65fabc067cd1ad535729cc6ce135b871edf8abf1"
           }
         },
         {
@@ -108,12 +138,42 @@
             "eikona_0.7.3_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:c4a79910b7b75a45de225d085300037037406c1045d454eccecdc18c3f4688bf",
+            "eikona-command-catalog_0.7.3.json": "sha256:73a49c5c9b8dd8b183194dbe2985d0da6529fd68278edba93b025a4ab1063b94",
+            "eikona-install-manifest.json": "sha256:0ede8a152f86990f7fa3fd98e59cd9b6a92219d0a4ae73383360e591b401f2dc",
+            "eikona-installer_0.7.3_Darwin_arm64.tar.gz": "sha256:e272cb4310824c39f5c90527e3418739eeebdc040e39adddc94c8d6be61ea775",
+            "eikona-installer_0.7.3_Darwin_arm64.tar.gz.spdx.json": "sha256:12b2a10af4e6914b76ca6bb672b5bc5dad739e8fad8a75e7bca4f1b6f78a5d10",
+            "eikona-installer_0.7.3_Darwin_x86_64.tar.gz": "sha256:e9938b8afdb9677dc7916a8ac84580d86bf6059fe99536a6937c49761fa21df5",
+            "eikona-installer_0.7.3_Darwin_x86_64.tar.gz.spdx.json": "sha256:e173c5e3c61bb0393dfb321771e963fd75cfc037cba00555cf411229c3f3beee",
+            "eikona-installer_0.7.3_Linux_arm64.tar.gz": "sha256:77184823e53a49169043f7b13c8b0fa6a20aff0a946d95ca4c98725c7b43f786",
+            "eikona-installer_0.7.3_Linux_arm64.tar.gz.spdx.json": "sha256:6387328a514d3e557fa50c59cf75672a20d2fc6a973e47b2aae6809af7ac16d3",
+            "eikona-installer_0.7.3_Linux_x86_64.tar.gz": "sha256:3da0e189c663f711a6569dff7c263e6bf6a5b4a081e279bd3e564cd4ed5c653e",
+            "eikona-installer_0.7.3_Linux_x86_64.tar.gz.spdx.json": "sha256:3cfe6739fbb58bb64f84d16095e912b3fe43b768770c18206901c872fe798e9c",
+            "eikona-installer_0.7.3_Windows_arm64.zip": "sha256:bf1d1be66c8590cc9c3a00418c40a4927fd92f758e6089623b14458af2ee30ca",
+            "eikona-installer_0.7.3_Windows_arm64.zip.spdx.json": "sha256:dc850a7bc6dd96f13a5289917c37573b4b102294f082678ff2bca8a03fed64c4",
+            "eikona-installer_0.7.3_Windows_x86_64.zip": "sha256:930660e6ced03b1221e9890ecea26f2cf258bf8f051fbec1576e902084ed5510",
+            "eikona-installer_0.7.3_Windows_x86_64.zip.spdx.json": "sha256:c54c65cb68b2909f012f6d046aef2486169247bf05059876be58bcfe21ad1e7a",
+            "eikona-skills_0.7.3.json": "sha256:c1f21b2fe8ee316763a664676e529730cd97eb9e2a74340575102afd4715e3d4",
+            "eikona-skills_0.7.3.tar.gz": "sha256:4933c133c3a92b7b9b0f38c91aad928114df6c764ba4cfda49156de857e8f001",
             "eikona_0.7.3_Darwin_arm64.tar.gz": "sha256:533ae70ffda65fdf2415907bddc8e75ff77bedf37740cbd2ec6c93a295e0d86b",
+            "eikona_0.7.3_Darwin_arm64.tar.gz.spdx.json": "sha256:f56049f9928c170383aa9dbe89c9ebc8c23c0d8652a3dd47022f6e9face82a35",
             "eikona_0.7.3_Darwin_x86_64.tar.gz": "sha256:6af75ef95a2da05d234803f2bb132410df4ba5bd54bbe72dff3439d9c9c9dbb7",
+            "eikona_0.7.3_Darwin_x86_64.tar.gz.spdx.json": "sha256:34361f47ef5d72257a369087072e9b3c8c9b03ac7cf4434a3cd8cac4a2f91feb",
+            "eikona_0.7.3_linux_amd64.apk": "sha256:4205f534cde393cd3b6f0d9b0cde5f715f4d5ccaaafb4982dfcde765a054cd04",
+            "eikona_0.7.3_linux_amd64.deb": "sha256:3a4c5cf05532a2fcdcb4ce9fa18b866eedfa4ed2cf2240361e26f5815367cf25",
+            "eikona_0.7.3_linux_amd64.rpm": "sha256:960046a26ad53874840cb8a524845c70dc4f9f07c4c120e704f6d4c10580f995",
+            "eikona_0.7.3_linux_arm64.apk": "sha256:64c168b96545e57ce065d36c062871a3b17ca22933abfcdca29f44c62c7c402b",
+            "eikona_0.7.3_linux_arm64.deb": "sha256:e6139bdb18da79ba210f6cbc8ba2de38cddd35101534ba1b77cbcf6bb8c06397",
+            "eikona_0.7.3_linux_arm64.rpm": "sha256:8cd468104258ce1a8669858ccc9a0a5976236fa3ddc94a31dd1a65d0f872040c",
             "eikona_0.7.3_Linux_arm64.tar.gz": "sha256:6da70b6ba190320e4becae43c3b2a8290a73168459fe9296b7490c6ee1eae14a",
+            "eikona_0.7.3_Linux_arm64.tar.gz.spdx.json": "sha256:0a8d904f9df1cf97d8db032519cd0a4f453c58e6881f726bb86ed8e4dbb1de5b",
             "eikona_0.7.3_Linux_x86_64.tar.gz": "sha256:1b2d8384d61e4725ed745a143db6272a053489f5867c1b8bbce32cb453c0a312",
+            "eikona_0.7.3_Linux_x86_64.tar.gz.spdx.json": "sha256:6693538baa01bf43162f7e5762f393771a61827abaf2747adf5d214c6b1c17bc",
+            "eikona_0.7.3_source.tar.gz": "sha256:200edfe4493a7f2b04ddec83a11b8cff8c0736b6fb6cbae69c0fa70c06e85561",
             "eikona_0.7.3_Windows_arm64.zip": "sha256:771ed1717a45e59e1bab603983c5de44735a6c72d7a46f390bce2531d722adb3",
-            "eikona_0.7.3_Windows_x86_64.zip": "sha256:fcb7f5bdeb1409d31e3c1b41a42d84e7368c7f2bc617592966836280d153a183"
+            "eikona_0.7.3_Windows_arm64.zip.spdx.json": "sha256:9c30bc9ffeb77a2aa8caea2e890f80dd281c6849861d77efbdc5c0aacfd29849",
+            "eikona_0.7.3_Windows_x86_64.zip": "sha256:fcb7f5bdeb1409d31e3c1b41a42d84e7368c7f2bc617592966836280d153a183",
+            "eikona_0.7.3_Windows_x86_64.zip.spdx.json": "sha256:d9f21e279d96ae3f0e2f453bda3bc6f57d27c62e4e1f68584391aec3cf277646"
           }
         },
         {
@@ -161,12 +221,42 @@
             "eikona_0.6.9_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:5e3b048164efeda65f658d7d21d846ba348059e9a86d54768071375b2259bfcc",
+            "eikona-command-catalog_0.6.9.json": "sha256:11bc38f8f72bb8d36fcba76ad4398288e0e01bce7cf35006a75ba6df86949cd2",
+            "eikona-install-manifest.json": "sha256:1a50f800b71afcf5c306a87abb0e83ef8abf505452fc7055a0a34e5d0f13b313",
+            "eikona-installer_0.6.9_Darwin_arm64.tar.gz": "sha256:38b4619daf7e7c7a777fc18dfa8e4cafbfcb10a7cd01496777263b004fec1ffd",
+            "eikona-installer_0.6.9_Darwin_arm64.tar.gz.spdx.json": "sha256:0d8151a82227a61396ce1f95a808aa5ccaea8f73ba25180c785dd2c21b94eadd",
+            "eikona-installer_0.6.9_Darwin_x86_64.tar.gz": "sha256:d830883b54e4c0176e20232873946434d85beb11ac1e0c4534c6fdc2347543ed",
+            "eikona-installer_0.6.9_Darwin_x86_64.tar.gz.spdx.json": "sha256:eac9b323996dad0b3af32bab22339bca6c21413dca4c1e5c922e70457a4c6c15",
+            "eikona-installer_0.6.9_Linux_arm64.tar.gz": "sha256:388646f58bf058e3c62a761dcf0aea66e93979a6b90881c6a7964a18c34c503b",
+            "eikona-installer_0.6.9_Linux_arm64.tar.gz.spdx.json": "sha256:fa8258dc77b2d3bcdef9d0595116c5a9baa4de05f03169b41102c48593fd9cf6",
+            "eikona-installer_0.6.9_Linux_x86_64.tar.gz": "sha256:c271e1e3ef0679cb6cba249210b4fec21049595428093216138fda77791603f7",
+            "eikona-installer_0.6.9_Linux_x86_64.tar.gz.spdx.json": "sha256:cb44b855b801a298e39481691a79be823a6c4c02db7c33dfa5992b7ccb87df38",
+            "eikona-installer_0.6.9_Windows_arm64.zip": "sha256:c4f8b5729beedb28d61ccea3fc4461a20122661be21619a7f520ac6446f2b32c",
+            "eikona-installer_0.6.9_Windows_arm64.zip.spdx.json": "sha256:d4af68460283ee3364c6edb66456f0bbd9ee154b4354e4ef92b50c874ed8064c",
+            "eikona-installer_0.6.9_Windows_x86_64.zip": "sha256:250f49c17673e5c262601340f52af4c95cdda97190d79975b21484f1f7c8b84a",
+            "eikona-installer_0.6.9_Windows_x86_64.zip.spdx.json": "sha256:7f10a6f961c4c0ac0b495611d5411b88030cc73a3496464742a92f21b91e1861",
+            "eikona-skills_0.6.9.json": "sha256:c551391df94a03d988e22773e82ad56720f3059c70f4d2aa8e2357f2c51f0c1d",
+            "eikona-skills_0.6.9.tar.gz": "sha256:7ab83c88ba5460e61cda42a9c68a43c7729b627eb3928d8c228e747539f2a9d3",
             "eikona_0.6.9_Darwin_arm64.tar.gz": "sha256:ca0f4f3af1c444bda78c97240b6279ba11b04b119a155f22e553431bb1a58787",
+            "eikona_0.6.9_Darwin_arm64.tar.gz.spdx.json": "sha256:07e35ca02745c2f63a963fe4bd7d4da3e1375fa62977946128fd197cda225296",
             "eikona_0.6.9_Darwin_x86_64.tar.gz": "sha256:111767964d61fba9ec44cac1ec9a3b0e8b55ffc5f3965dbb2236627834485de7",
+            "eikona_0.6.9_Darwin_x86_64.tar.gz.spdx.json": "sha256:9dedda2ebff5cdc739b526017fade17da61c4664b5862ddd83840302913fd63e",
+            "eikona_0.6.9_linux_amd64.apk": "sha256:f655d7e69d7d3bbeca62dcf63e4e9755359f25e8a3047dd2cfd2a812dd305b07",
+            "eikona_0.6.9_linux_amd64.deb": "sha256:2f1d7f9220dec40d379a8ab9c48647b08732b8593ae845e737ed287cf3ccfe03",
+            "eikona_0.6.9_linux_amd64.rpm": "sha256:1115d4cf9524afcd4a43c5e49bcaea320e08bd6df8342cd8ed5e86ea7b881198",
+            "eikona_0.6.9_linux_arm64.apk": "sha256:073082795c7965f5603e0f81486f5e8fc59604b366d32ff5071d6331407dd90d",
+            "eikona_0.6.9_linux_arm64.deb": "sha256:eb5e43911bc7c807bad4c6c2abbdddc536026fa767d1a47701e393707b437f98",
+            "eikona_0.6.9_linux_arm64.rpm": "sha256:02bacf900bf0f3bfd9d90d13aeccf2c22b1f2dbeccf93b5673ea081c392a3d9a",
             "eikona_0.6.9_Linux_arm64.tar.gz": "sha256:291babd90ddb6eec0dcb71b9d027c7936d76c68eed930c378225cb5acd380b4f",
+            "eikona_0.6.9_Linux_arm64.tar.gz.spdx.json": "sha256:4ab6d0119ae92051d548227effbd67d5040e0caa163cbb6a45b67aa973314d09",
             "eikona_0.6.9_Linux_x86_64.tar.gz": "sha256:879961b57a9c70fc257507e624358f603c66869eaf4b30c5944f497da60b4431",
+            "eikona_0.6.9_Linux_x86_64.tar.gz.spdx.json": "sha256:7216ca1890b01ea656d2ea09c1f7775f80763ff3eae0a8a2c8bbea29542b5675",
+            "eikona_0.6.9_source.tar.gz": "sha256:0c69e8088d27bd327670762c5849de15a9d91e5f3d9bf08661cd30021110c84a",
             "eikona_0.6.9_Windows_arm64.zip": "sha256:5247150d6fe6264f4deb3d985f240e4d0c8325502028e09653a5c68914327d45",
-            "eikona_0.6.9_Windows_x86_64.zip": "sha256:8befe6740dbec8a0282ffc8560fc5babdeef00e45e7ef1cbc4d1324b2221911a"
+            "eikona_0.6.9_Windows_arm64.zip.spdx.json": "sha256:0f61811bb2338dea158a4e1376843f8844cd8ca65ac658f9209581d53b08e52f",
+            "eikona_0.6.9_Windows_x86_64.zip": "sha256:8befe6740dbec8a0282ffc8560fc5babdeef00e45e7ef1cbc4d1324b2221911a",
+            "eikona_0.6.9_Windows_x86_64.zip.spdx.json": "sha256:0302dc68057ad7af26b5167d60446b1474c46494e94b4e426bda42daaf811aab"
           }
         },
         {
@@ -214,12 +304,42 @@
             "eikona_0.6.7_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:d0250ed3cbf3ccb18ee056f59cb8731d03911d6bba67b7d09e25cf7d7824af7c",
+            "eikona-command-catalog_0.6.7.json": "sha256:fd6958d9bb0de4a7693d4ce001abd25401511c8d5f8725358376bb407564d2ed",
+            "eikona-install-manifest.json": "sha256:d82f9662797d711da3519c8db75ce12644778ca6e856383ede5c57f048bcb2be",
+            "eikona-installer_0.6.7_Darwin_arm64.tar.gz": "sha256:83b94b30fe267fa8f2dcc2c7ee3703ca9eec3ed2165538c77f94703edee538cd",
+            "eikona-installer_0.6.7_Darwin_arm64.tar.gz.spdx.json": "sha256:4557c868e2412fc04cecf452a6a2a72be9489a5b1a781276ca4fbe9889a84cf6",
+            "eikona-installer_0.6.7_Darwin_x86_64.tar.gz": "sha256:b6febc0bc1b26e2bb62d183b826f5f548637409b82d8ef6d2e4a5999b6bd7719",
+            "eikona-installer_0.6.7_Darwin_x86_64.tar.gz.spdx.json": "sha256:728992f73c7de01b6d189cce545e9dc17de53c1318558f183e6217c1b77c21b9",
+            "eikona-installer_0.6.7_Linux_arm64.tar.gz": "sha256:fbf41404af6b1c8a42d39231c353dfe5e3b1670b772e45801b7d8670dfe538d6",
+            "eikona-installer_0.6.7_Linux_arm64.tar.gz.spdx.json": "sha256:295840f6081f32a3eae2868db87650aae9f4705c0f5dc5c27c981e181341007d",
+            "eikona-installer_0.6.7_Linux_x86_64.tar.gz": "sha256:6aedab6c49393681568b9bd924d740c66b3851c75c6a7b671e57b1cb8956e7f5",
+            "eikona-installer_0.6.7_Linux_x86_64.tar.gz.spdx.json": "sha256:73a68ab213ea48005e2a5a5ead05bfa370f1d3728883bf74042cb128d09136c2",
+            "eikona-installer_0.6.7_Windows_arm64.zip": "sha256:aeb4d44ad32651996ac6124745b25cb33165732d19b4f3fbba107f63e83367f9",
+            "eikona-installer_0.6.7_Windows_arm64.zip.spdx.json": "sha256:9ae5527effdebc05810e586ef6202cd269f9434e5fddd1c6dfb1a0d893ae77cb",
+            "eikona-installer_0.6.7_Windows_x86_64.zip": "sha256:23bec2bbb18bcea2d5cfbf31507dc78b889e891406e263e2ae4cc70242ae546e",
+            "eikona-installer_0.6.7_Windows_x86_64.zip.spdx.json": "sha256:b38f9ae7d5fc0ca82c8f7eff9e287b83ab1276d53432bad8cb575890372666f7",
+            "eikona-skills_0.6.7.json": "sha256:f265a6c10e9d995dd9c4771ea0dff51b4c583f6a539554d212e660f930d3e128",
+            "eikona-skills_0.6.7.tar.gz": "sha256:94fe2aba5040b1a018b8430a13bebe779a07355e825507365d5764b176c54535",
             "eikona_0.6.7_Darwin_arm64.tar.gz": "sha256:74732812230c00de868d7924eccf59472207fb6251ad35411105848109a63850",
+            "eikona_0.6.7_Darwin_arm64.tar.gz.spdx.json": "sha256:894d792c53301d775f4e9bb4fecf8ba5025ce01b0f5203ad56655adf6d9ade34",
             "eikona_0.6.7_Darwin_x86_64.tar.gz": "sha256:93d50b5867f91d2d70050523f8d70329ff74714ec8e6608fa13536e063570b6f",
+            "eikona_0.6.7_Darwin_x86_64.tar.gz.spdx.json": "sha256:76e0260f3c307a7dab7dd2bc3c844e904d8ef1b3f54628a80996fb2f812d3cb6",
+            "eikona_0.6.7_linux_amd64.apk": "sha256:7be671c7d91b1fc70e5e005274e2a9b129b09a9c05c30540f0c3b5ed280669aa",
+            "eikona_0.6.7_linux_amd64.deb": "sha256:f6d0880ef3a387ce58d63c4ed5f296191d1feaab312608aa0c6b8d5876ebd775",
+            "eikona_0.6.7_linux_amd64.rpm": "sha256:9ff4354fe0ce3d20d3a5306b42745b27747c26d0c3b147b5f9e0058b6f4f1adf",
+            "eikona_0.6.7_linux_arm64.apk": "sha256:f3ee2d17448906b076b3c554500c08e9fd8b549cbe235ccb92cfac0b50a7f98f",
+            "eikona_0.6.7_linux_arm64.deb": "sha256:a03b4a2a16c9097b5f2b4bf32206b0e91e0f3714e99fd001683908efe02e0831",
+            "eikona_0.6.7_linux_arm64.rpm": "sha256:fd739c2e1f72eb78867df795b319cf1e492bba21b34fe57cb92d0fa7d3c1836f",
             "eikona_0.6.7_Linux_arm64.tar.gz": "sha256:69737a4a02728f5e94cef94aa35a56b7904f2708149d1ed0b2e9c80813357bd6",
+            "eikona_0.6.7_Linux_arm64.tar.gz.spdx.json": "sha256:77f5e4e047acca73d0c33409c0af9119d0ad76163aeb3d609ddc8bff6179e6ff",
             "eikona_0.6.7_Linux_x86_64.tar.gz": "sha256:508a8fb0bdd464e93fed7360d7eac7824346f881dbfe8665acd9dfc51d1f2196",
+            "eikona_0.6.7_Linux_x86_64.tar.gz.spdx.json": "sha256:180e7b4e2b0b75a4a601208511f0a3a2a1433f7c65e446bbb15fc9338e81b92a",
+            "eikona_0.6.7_source.tar.gz": "sha256:16edd551d6c881b5b11112207192140dd5a192dce0d1f4d0c590587a10dc9f98",
             "eikona_0.6.7_Windows_arm64.zip": "sha256:4af16e19b45c53e48701dd788aeb2e94236b0d4b6208fd99c52dfd4046c25627",
-            "eikona_0.6.7_Windows_x86_64.zip": "sha256:e063726402ab7c37ef9cfabef7b7c0d7092385b75d4852642a0027037179a667"
+            "eikona_0.6.7_Windows_arm64.zip.spdx.json": "sha256:9b803f40be334ae3657f449632219a474a6f4736bd2d2fe1ceccc66a9b8fa4cc",
+            "eikona_0.6.7_Windows_x86_64.zip": "sha256:e063726402ab7c37ef9cfabef7b7c0d7092385b75d4852642a0027037179a667",
+            "eikona_0.6.7_Windows_x86_64.zip.spdx.json": "sha256:e304a8b15e936a1e1dccfbc73f629a6ee99d1ca4d4980c87c10a54484eece717"
           }
         },
         {
@@ -267,12 +387,42 @@
             "eikona_0.6.6_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:c3d957db4a6470269d6f114f7aaef708192d7707e7e33589a28e1cabc8e77cad",
+            "eikona-command-catalog_0.6.6.json": "sha256:a842b894909198a71b151248ff3dbc6e17c05d1ae5e7d7d8fb4cebd10aeecfb3",
+            "eikona-install-manifest.json": "sha256:586b724e935f82fd95fb9f10822a6ed543b7b8916391c60a81f4d96a5b7235c5",
+            "eikona-installer_0.6.6_Darwin_arm64.tar.gz": "sha256:7945ce45e1848ab771dda601b49e8fa0f51e4b5892eb759552b2b6d9c57b3c03",
+            "eikona-installer_0.6.6_Darwin_arm64.tar.gz.spdx.json": "sha256:9955238d25659e0ab399fb38545c2d767b5fe7b4e45a93bf4dfa594549c7d761",
+            "eikona-installer_0.6.6_Darwin_x86_64.tar.gz": "sha256:fb06175518f99cf553502957d4eeac2b8e751aa1101171bf65f9ec5d3602363c",
+            "eikona-installer_0.6.6_Darwin_x86_64.tar.gz.spdx.json": "sha256:1f6f98f2c52d58cec923d0ddd00e480b422fe2f4c5eec73894bc303fcda25994",
+            "eikona-installer_0.6.6_Linux_arm64.tar.gz": "sha256:81093ea1669399049eb16e0eafb0532d8d95d1e348d484e136a0822418ca1157",
+            "eikona-installer_0.6.6_Linux_arm64.tar.gz.spdx.json": "sha256:539342da5ed4e9f9f8173f7e677a02c9021f79c60e8af61718fbcfaf576a7f14",
+            "eikona-installer_0.6.6_Linux_x86_64.tar.gz": "sha256:09eadc8a918f44d606e5784b03a333a4712670216e37b4fb3a8a436c81feb86c",
+            "eikona-installer_0.6.6_Linux_x86_64.tar.gz.spdx.json": "sha256:56c0e32ec1a3571edfaad087e10b6f9fdf77f928b1c9e0d593206305cb3ba09b",
+            "eikona-installer_0.6.6_Windows_arm64.zip": "sha256:3858cc319e6b6606837624ed942628ae9232d16674644fb8c7a7438ae0cfa237",
+            "eikona-installer_0.6.6_Windows_arm64.zip.spdx.json": "sha256:fe02cd389ff700e9417b299ae0bbffbcd5c4f947e939c589d4e4d158da124193",
+            "eikona-installer_0.6.6_Windows_x86_64.zip": "sha256:fb0f1bc3ed0e84277d66cbd21394d08644f98ad124e8bdd6f987be34aac23e53",
+            "eikona-installer_0.6.6_Windows_x86_64.zip.spdx.json": "sha256:87f522c408849918c166f97183b298e4faca8a99ce52ad22203e83dd80d27cff",
+            "eikona-skills_0.6.6.json": "sha256:d809fd66cc4c43e52174cdcc16e8a4cb818ddbf2d13697df454dcea1dac1ce37",
+            "eikona-skills_0.6.6.tar.gz": "sha256:4bdfe2cc3c9230df62da41c6b22ff05aa60e25ba6b5c25e0cf69b59d8190a9c1",
             "eikona_0.6.6_Darwin_arm64.tar.gz": "sha256:6a9bef6d30ee30e188998d297b89eb2c0f474bd9e6769c86687d95542845fdd1",
+            "eikona_0.6.6_Darwin_arm64.tar.gz.spdx.json": "sha256:108797973cf156c8c0a196f3a9155442feca3e3b569e90f737128c5ec7d4f0af",
             "eikona_0.6.6_Darwin_x86_64.tar.gz": "sha256:27e4ca6ee8de3e5b9e6c21c7049fb3dd62ffdca56b27cfc150dc120345acaeb5",
+            "eikona_0.6.6_Darwin_x86_64.tar.gz.spdx.json": "sha256:4a28254f7dc5418377673af61808d9e5d02788ccd2dfda9aa456a7a86ffa4261",
+            "eikona_0.6.6_linux_amd64.apk": "sha256:b8b8eaa745947780edd27efbe1c3088583237038f730ac1231e39c07f5459ca4",
+            "eikona_0.6.6_linux_amd64.deb": "sha256:0107f5e1b56b2733c2f0e6f7f90f8e9a84c0f452c755b5b8ddccc5f1e2bb9da2",
+            "eikona_0.6.6_linux_amd64.rpm": "sha256:905c182c481adfd9777b60948f6ced61b4f812b86f6e54382ee8b97e55aa49b3",
+            "eikona_0.6.6_linux_arm64.apk": "sha256:e34b6e4ae9d45a9af3d31a4b39bcd0476c05692e08b88cb70f18278f19b2669c",
+            "eikona_0.6.6_linux_arm64.deb": "sha256:495cbc624d17662b5f683256128635b6f6afa2a081583aa691d4aa8d6792fbb9",
+            "eikona_0.6.6_linux_arm64.rpm": "sha256:8a66be1428f582f4f0f6f186d19599b3f3981d39fd8ce54e5b2c9b9c9e9bb613",
             "eikona_0.6.6_Linux_arm64.tar.gz": "sha256:b8b9e9469c5e4862ed94dffcc985b1b3c27e9fc7906e95dd130eda0cf9a3fd05",
+            "eikona_0.6.6_Linux_arm64.tar.gz.spdx.json": "sha256:0ef54111bc7256f49686a1a984b62b0dc1af2d85dd1400c7f36ea650e504f51c",
             "eikona_0.6.6_Linux_x86_64.tar.gz": "sha256:b067022fd09f5a0721a69607951e75071dbafc7e9d3c2c2e2021f3159cd6f3d8",
+            "eikona_0.6.6_Linux_x86_64.tar.gz.spdx.json": "sha256:13d08eb7c1f4a96c52134140d5cbc830f7d4167d949e58fe6ce7c5c14fe43dae",
+            "eikona_0.6.6_source.tar.gz": "sha256:ee3549d6ac4e20cf50b6e56ba52e812fe30ccef93338de311cec2c72cf6a1e81",
             "eikona_0.6.6_Windows_arm64.zip": "sha256:ea44fb2c399a953a2bd4cfc8d637954bb8e4ca144ea4f17338d775cf09eaebcf",
-            "eikona_0.6.6_Windows_x86_64.zip": "sha256:66708db6f79e2104c5a2f62259981f72b31bd13f8274814b15867989eaedc63b"
+            "eikona_0.6.6_Windows_arm64.zip.spdx.json": "sha256:761c750d3dc5b11ab1c6e2e61caf2ff96dba705bcb5da73902dbd548bd19085b",
+            "eikona_0.6.6_Windows_x86_64.zip": "sha256:66708db6f79e2104c5a2f62259981f72b31bd13f8274814b15867989eaedc63b",
+            "eikona_0.6.6_Windows_x86_64.zip.spdx.json": "sha256:284d5562bb5c984be00a2e30f5ef77ac7d326b6210bd06777ae4854e64f76cf9"
           }
         },
         {
@@ -320,12 +470,42 @@
             "eikona_0.6.5_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:379b453626a568f6aa87092521494b0b4f57d2343e02fada11f8657e810e61b5",
+            "eikona-command-catalog_0.6.5.json": "sha256:a842b894909198a71b151248ff3dbc6e17c05d1ae5e7d7d8fb4cebd10aeecfb3",
+            "eikona-install-manifest.json": "sha256:6cf0be3d4fdd8399af95605f9172101c6f5606c6a111602e444e6b37246a0f29",
+            "eikona-installer_0.6.5_Darwin_arm64.tar.gz": "sha256:401f0c2e4b95bf289cc67c67f7848b47e94a46e5cc9ea8c3a7483ec30eca6d0d",
+            "eikona-installer_0.6.5_Darwin_arm64.tar.gz.spdx.json": "sha256:745df43c5a6a7ee0ebd76fc7336777e29193f376466fb2a5f5d080bb24e9c3ee",
+            "eikona-installer_0.6.5_Darwin_x86_64.tar.gz": "sha256:17d953f3673730e437eabaf4819ec39e97c1378891898ee947ba8329962b0fac",
+            "eikona-installer_0.6.5_Darwin_x86_64.tar.gz.spdx.json": "sha256:b27d95969c7aa016620236457d255ea2c2ddb2183487233218d187a14d3c1c90",
+            "eikona-installer_0.6.5_Linux_arm64.tar.gz": "sha256:e5a09dbd07b06c3082f82fb0f89a867ceb4fe0a5dc82fd59e02feea5e03d8eee",
+            "eikona-installer_0.6.5_Linux_arm64.tar.gz.spdx.json": "sha256:a127d7e3ea14db4e069ea5594ce6c37625866f2e3790ccd3724bb44f80d2ed4f",
+            "eikona-installer_0.6.5_Linux_x86_64.tar.gz": "sha256:3dbd41922fb5ec9ee4344ff42cf7d5682cfabd2e1fe71a754b1bf67b5ea38215",
+            "eikona-installer_0.6.5_Linux_x86_64.tar.gz.spdx.json": "sha256:eaf8cedbd5be6fa0cf811b2c1f756b05f13d6f9c92bd2bd4736ea4846aeaeaf6",
+            "eikona-installer_0.6.5_Windows_arm64.zip": "sha256:a59245a421c8a6fa850d073cf47537b3d6a29ee704cb7f3050bcda05fb7d4bac",
+            "eikona-installer_0.6.5_Windows_arm64.zip.spdx.json": "sha256:ad5b2ccee1d54d83a026009004bd4cb3e1a8f5b50ba3590b26977e56d40a4336",
+            "eikona-installer_0.6.5_Windows_x86_64.zip": "sha256:13f40f880fc0aab2703a2702d05fde1c45c6f94e39d82f83683aa35dc6a73d12",
+            "eikona-installer_0.6.5_Windows_x86_64.zip.spdx.json": "sha256:b845fc3cb73bc85d0ae36d9dbeb4770a16c33e67af4874c093f1871f6e1a382c",
+            "eikona-skills_0.6.5.json": "sha256:0348b9b3e6888c5ac33f747191142268691fbc00d53df86bc1aacd75d0ac22ef",
+            "eikona-skills_0.6.5.tar.gz": "sha256:c7fe92f16e31041b6e032f7bb544f0159b1defd45992a82ef18041b5487abee8",
             "eikona_0.6.5_Darwin_arm64.tar.gz": "sha256:1efa62c9e0947911b6ae58d18232e951dfe0995638822b51719201a56107c3db",
+            "eikona_0.6.5_Darwin_arm64.tar.gz.spdx.json": "sha256:b242913bcdb3612ff4f869b78ba1b59fe304f0654ed15a8ff0abe98ed31fc3a1",
             "eikona_0.6.5_Darwin_x86_64.tar.gz": "sha256:dab1f7203c4a39370522bdb919cb569e74e0dd2830afdd32aa8582373f99954c",
+            "eikona_0.6.5_Darwin_x86_64.tar.gz.spdx.json": "sha256:53f9e1932c6d1627b28f47c29d5c8b2003a9776ac55fc9a849b960182a49f8ac",
+            "eikona_0.6.5_linux_amd64.apk": "sha256:ef97debe107a523549eeb31756cf366d07bc40417b282c058584d5d183e5d474",
+            "eikona_0.6.5_linux_amd64.deb": "sha256:7f07c75a4dbe1ddf7e7eb047c96d0f1ed5e61447962c52fe8ff124ae89abd7d0",
+            "eikona_0.6.5_linux_amd64.rpm": "sha256:c3f297b15cc759fb9f8f5c6f75624021973efdb870396b9f17b4633a27bf2a49",
+            "eikona_0.6.5_linux_arm64.apk": "sha256:c5d7460c9dbeaafa5034bd8b7bf5e042bd84dbcb45a48fd70a7b4ece57c54b70",
+            "eikona_0.6.5_linux_arm64.deb": "sha256:50b679047ab5f33e40149eb3cb46287389f0e57b34187cb292d3da7baa08c20f",
+            "eikona_0.6.5_linux_arm64.rpm": "sha256:4863b6b7ccc7c6b405c59795e32b4c9204a6ea965299a325c9e11d34e4beb970",
             "eikona_0.6.5_Linux_arm64.tar.gz": "sha256:bd43811aee467145b022bcd34a0e95a11bd3cc7a333b354b123eb643e00a7518",
+            "eikona_0.6.5_Linux_arm64.tar.gz.spdx.json": "sha256:2c3d0c6107526fe0ef6148c0e44c9fd94869cea3aa5ad5da46b63e065605ebc8",
             "eikona_0.6.5_Linux_x86_64.tar.gz": "sha256:ed9c6e169f3db0a71f97948a46511f60de3ce9ea7d3fd0992c89ce5148b9b138",
+            "eikona_0.6.5_Linux_x86_64.tar.gz.spdx.json": "sha256:bb320a934b08c2674e358382b41a96bb267c87f520cd4f2f7ae22b20c75c8d96",
+            "eikona_0.6.5_source.tar.gz": "sha256:d05082062c4244e3d1a861d431ce99d68caffc15cc1d85254cfad1b228ab4a8f",
             "eikona_0.6.5_Windows_arm64.zip": "sha256:0078df49db17da19487c4cd31d207abfab0a3aa6171b8d2949dcb3064223a674",
-            "eikona_0.6.5_Windows_x86_64.zip": "sha256:ed89139888229f6a91d6c01b08714cae121282f68a0b586ac916115f4ce275c9"
+            "eikona_0.6.5_Windows_arm64.zip.spdx.json": "sha256:d5c591465ce9eb8340747c030077603d291db77c3cabf3fe48d28e06beecdf9a",
+            "eikona_0.6.5_Windows_x86_64.zip": "sha256:ed89139888229f6a91d6c01b08714cae121282f68a0b586ac916115f4ce275c9",
+            "eikona_0.6.5_Windows_x86_64.zip.spdx.json": "sha256:41f7ee7b2aa2396c442166e0051b327bc6c2865c7fa3a9fad8f77ee12fc7ef71"
           }
         },
         {
@@ -372,12 +552,41 @@
             "eikona_0.6.4_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:27310b25683ccfca8bd7747b181dfff1513add799763ef98da3e8fba4fa222be",
+            "eikona-install-manifest.json": "sha256:2c973f2311f2544cbb2a6ec850d883d3b4aa418ab278e99705696151362d009a",
+            "eikona-installer_0.6.4_Darwin_arm64.tar.gz": "sha256:474e27635d167c7b5590afdf2a9a150cfe261d1c1171e47af2fbbb505c7fb16e",
+            "eikona-installer_0.6.4_Darwin_arm64.tar.gz.spdx.json": "sha256:24fc57a0bcca745969664319b027e45a493b3232e740a14a485b63fb6f924611",
+            "eikona-installer_0.6.4_Darwin_x86_64.tar.gz": "sha256:5ac73ca3273af987f7d4632631b29963438d9213b266933d976b54a7e1bd6ef4",
+            "eikona-installer_0.6.4_Darwin_x86_64.tar.gz.spdx.json": "sha256:62f14f4c28613725ff87feb1c55c879b289ddf85b972e372de14389c4db73ed4",
+            "eikona-installer_0.6.4_Linux_arm64.tar.gz": "sha256:ad5486ccdc22e43ab4be879b353fc69fee52d3b7f92840298c524dce5ba7fabf",
+            "eikona-installer_0.6.4_Linux_arm64.tar.gz.spdx.json": "sha256:3198a4add3bc5690693156c535a70cec80c7975e651eb82253bf1b75cd9e96da",
+            "eikona-installer_0.6.4_Linux_x86_64.tar.gz": "sha256:411047c4b93d2fa509ad837aaf646b436fec921a1374d54ba5e04f3a0b4b5319",
+            "eikona-installer_0.6.4_Linux_x86_64.tar.gz.spdx.json": "sha256:7c577add6ea0556751cb8d4f40db24594547755dc2fe067a18709aeea3c0b7be",
+            "eikona-installer_0.6.4_Windows_arm64.zip": "sha256:4f4770188e775f83d4c14957577c22fd86097f4de980d2e5381d97c6e8617676",
+            "eikona-installer_0.6.4_Windows_arm64.zip.spdx.json": "sha256:e282b7bfcf5ba860376832cb8689a9f40e21f37c63fd2571d69c4d1cdcd4bafb",
+            "eikona-installer_0.6.4_Windows_x86_64.zip": "sha256:af3fae2a90a1c90f44126cccee6b51366a0d37039b91ee2abcadd6d1bf7147b5",
+            "eikona-installer_0.6.4_Windows_x86_64.zip.spdx.json": "sha256:111e89bbb6e40b45263e240244e4d06f2b84b10e2ff5efc0c2a181797a53e670",
+            "eikona-skills_0.6.4.json": "sha256:cfb4797927e5928e2348fcab45af64ef81f0f7013052dd861b7bb442aa51f4ab",
+            "eikona-skills_0.6.4.tar.gz": "sha256:341d85f87353652dcf1ec3e6ba72d6ac04099004e09bf7799e9bfb0c585ef080",
             "eikona_0.6.4_Darwin_arm64.tar.gz": "sha256:75296ce71b8fbc88254683e84a961d7c07cfb4898886b8c7bf9d82c365f43f4f",
+            "eikona_0.6.4_Darwin_arm64.tar.gz.spdx.json": "sha256:3bc6e12cb436e70aece63055de982120ca855de5b4d96eaa8c65e5a7851f9273",
             "eikona_0.6.4_Darwin_x86_64.tar.gz": "sha256:d8922f2901d1804f72978452d445a4809974bf2872c8cfee284c559c1e95e8f3",
+            "eikona_0.6.4_Darwin_x86_64.tar.gz.spdx.json": "sha256:d6281a097d7cd435ada6023a5930bcba4c44b120e326d1f9aa11d63416471d50",
+            "eikona_0.6.4_linux_amd64.apk": "sha256:eb0b30f72e13cdb9b5433188e45ea6bb473c7915d267f4df6630ecca38bb3499",
+            "eikona_0.6.4_linux_amd64.deb": "sha256:a6835c9d7eb2a8adce4faeaeee22154d275f7c2e4232cb85bb7580bef947874b",
+            "eikona_0.6.4_linux_amd64.rpm": "sha256:485c3bb915613f9f508a5143ed625232329abb62650c0788ba9a14ece65c850a",
+            "eikona_0.6.4_linux_arm64.apk": "sha256:569bd1b0cfa91202cfb4ec577c0da098e417c585591f97589aabdee9764441a0",
+            "eikona_0.6.4_linux_arm64.deb": "sha256:b9fadb8469a4799cc35307ec520456b2335d21c8b3531ebd1a37fbfc81e4ce50",
+            "eikona_0.6.4_linux_arm64.rpm": "sha256:750c398e57df7d77ad3609442016dc9a574af6034cacf8685dca83e472447c02",
             "eikona_0.6.4_Linux_arm64.tar.gz": "sha256:eb5767945430bafae203aa60680c3a77e07aa9e133a044776adb05f2839e27e0",
+            "eikona_0.6.4_Linux_arm64.tar.gz.spdx.json": "sha256:ee7757e72ab8e20eeb4e240294d2c3feca253929ba309193f89f3dc540bd675a",
             "eikona_0.6.4_Linux_x86_64.tar.gz": "sha256:16154ab90d28bd28a1d6e8f2e13a78ba9601ad3a1b1e8b41e64d84515a0266b6",
+            "eikona_0.6.4_Linux_x86_64.tar.gz.spdx.json": "sha256:d0108c63b0884589d8dd83b34c5c01c294f049ca3560aaef5609ce38b96c1025",
+            "eikona_0.6.4_source.tar.gz": "sha256:0698e5d46c19e4a193f7f8df173ec932c7c74bea10e96b61bf930fe8a168a017",
             "eikona_0.6.4_Windows_arm64.zip": "sha256:a1bf9f17fd32e809bd847cdc462295f76b7e38748e9ebbefb74083c5eb26438a",
-            "eikona_0.6.4_Windows_x86_64.zip": "sha256:184924e65f7a934f3c170d7c4438f5fe89ef7497f1f3056402ac22a3ebf20de3"
+            "eikona_0.6.4_Windows_arm64.zip.spdx.json": "sha256:53bf77b47763487b15cf9a393ab4cce7ceae02bee15d617d84ea0aaac762f689",
+            "eikona_0.6.4_Windows_x86_64.zip": "sha256:184924e65f7a934f3c170d7c4438f5fe89ef7497f1f3056402ac22a3ebf20de3",
+            "eikona_0.6.4_Windows_x86_64.zip.spdx.json": "sha256:1f7ad9e43a72b8f2e5bdfe183b89567981123f78cd1af792cc0819a3c0b104f6"
           }
         },
         {
@@ -424,12 +633,41 @@
             "eikona_0.6.3_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:7b5cbf87488fe51169e12855c2bcd24c58e599eaaaa2de83e54a3e2ab960d70c",
+            "eikona-install-manifest.json": "sha256:30ec6ffdb99394b890b87a04922b26656629ace001460b1d1b1bda6b8863828b",
+            "eikona-installer_0.6.3_Darwin_arm64.tar.gz": "sha256:352392b38312c36f1fd552bb7d8f2073164dd848e67ddbf9fd842760d7832f7e",
+            "eikona-installer_0.6.3_Darwin_arm64.tar.gz.spdx.json": "sha256:e8e1ce5e604b16829a12e994d48218387ffb7bc31f2343f3aa294761b87e0b1b",
+            "eikona-installer_0.6.3_Darwin_x86_64.tar.gz": "sha256:de00a772b31b7d25bfcd7c1e5ad5cda725388cbb2918c03f658adb4936982e19",
+            "eikona-installer_0.6.3_Darwin_x86_64.tar.gz.spdx.json": "sha256:1a780b555d9ef6ed1cbcdc487c91c8d7b1222f20027042ef78fd38e27150ab99",
+            "eikona-installer_0.6.3_Linux_arm64.tar.gz": "sha256:6bc0bdb6c241768d731dbd87624c1b2f7a8f43fd6f68824f4318b5537eb844d8",
+            "eikona-installer_0.6.3_Linux_arm64.tar.gz.spdx.json": "sha256:8a59e4a93b4bc26d69171cc15088980257316ef59362aa99e704d192517bfc87",
+            "eikona-installer_0.6.3_Linux_x86_64.tar.gz": "sha256:9369af2851d889ef9571816420edba05f32d36a17b55a0bf85c2719d50d53cfa",
+            "eikona-installer_0.6.3_Linux_x86_64.tar.gz.spdx.json": "sha256:c6f238060b2c40efa5a72c7f6f6a6d6ad3176ce3c0e80ac95b497a9122d7c723",
+            "eikona-installer_0.6.3_Windows_arm64.zip": "sha256:d59fd16904996596688572cb2d9fe41f7a7c01a5fa010ffcc39ebda56b2f116d",
+            "eikona-installer_0.6.3_Windows_arm64.zip.spdx.json": "sha256:29748f60d02386ccb46a187243d798cf41ecc886d37c7fb978d2c6967921b66d",
+            "eikona-installer_0.6.3_Windows_x86_64.zip": "sha256:d73b3fde659faf7335c3811f061d99278f1e597a32912a7d0a1aa833220d95c6",
+            "eikona-installer_0.6.3_Windows_x86_64.zip.spdx.json": "sha256:f5382a20235ab246c7c70e563aa4aa3f88d49f17875f36d49a05e34ecf77accd",
+            "eikona-skills_0.6.3.json": "sha256:55954f4c1e9de30e1768726c1867d890cb0704e19f036a8ba57443f0cf899a79",
+            "eikona-skills_0.6.3.tar.gz": "sha256:7e3a806f2dd20965ef20a6a6938dc5f6dac1eaf86f6b406052f4601df2d0b8bb",
             "eikona_0.6.3_Darwin_arm64.tar.gz": "sha256:37fbca8dce4f5e0bd5345779445497549243e249ae0e89f6747999c05a1fb259",
+            "eikona_0.6.3_Darwin_arm64.tar.gz.spdx.json": "sha256:6f73305ee11367708a65217175c2877b7a292e148fe2fc5b357b9bd0ef0fee05",
             "eikona_0.6.3_Darwin_x86_64.tar.gz": "sha256:d8f3e799522be4ce1702222bcbe6a5b9d114db92796dfd9f883b28799e98f68c",
+            "eikona_0.6.3_Darwin_x86_64.tar.gz.spdx.json": "sha256:43bdb47f7083ecf09beeb4791f435911382e43a769407ed61a47146da27949b5",
+            "eikona_0.6.3_linux_amd64.apk": "sha256:5c278db9bda8682525bf86f19dca7bcc54784adacbaf7590f14cea98423b90f0",
+            "eikona_0.6.3_linux_amd64.deb": "sha256:d937a2e707f77df5ca1b8f809d375c7ed7a05320d4e2db2fe9a117bd7568ee01",
+            "eikona_0.6.3_linux_amd64.rpm": "sha256:14c830d12ffe15044167ebd7e339b9fac7aa1bc13b8d4dac662a62858e630f94",
+            "eikona_0.6.3_linux_arm64.apk": "sha256:e8073f00acbc4295f36106f6ae58f9c33154b9ad7aa7825df06af42e88e9439e",
+            "eikona_0.6.3_linux_arm64.deb": "sha256:c45407b771cdf36cef72f15dd485d0913b2c966fd290428227bc49c1644b56e2",
+            "eikona_0.6.3_linux_arm64.rpm": "sha256:3c1f82b62c93f9766f8826ea482b62c6de7e8666d2c9ff4bebc37385062e02ef",
             "eikona_0.6.3_Linux_arm64.tar.gz": "sha256:2967ef6126f8e3086e798dac07b4464f5b55c89484fbac1d325e81dfa91697e7",
+            "eikona_0.6.3_Linux_arm64.tar.gz.spdx.json": "sha256:241104627b6f873803f91cc5932722f72ceb5ba695025467af00658144e9884a",
             "eikona_0.6.3_Linux_x86_64.tar.gz": "sha256:f07a9b86b96b7e6443dd86999519440846f831f6573f7378334d879d8f348c39",
+            "eikona_0.6.3_Linux_x86_64.tar.gz.spdx.json": "sha256:beec748360c718ae7da9992ea08fe5b8c9df8d8d837891c0b134a8fef0e28bbb",
+            "eikona_0.6.3_source.tar.gz": "sha256:bb6164b6df42b336dc432bbf99f5600e000419dd7a2a433ee8b6b2b2752bf4f0",
             "eikona_0.6.3_Windows_arm64.zip": "sha256:6967d4381c25b7bc2e863409bad55336f45ae84fab2a68e38118082d79fdda5d",
-            "eikona_0.6.3_Windows_x86_64.zip": "sha256:5d14d0c23526fc50bd4227432cbdfcb99405834856b01eee18cedc65bf705915"
+            "eikona_0.6.3_Windows_arm64.zip.spdx.json": "sha256:d7bf8bfc505866403150066f0bb4af5bf432bfacb888b6a5f1cdb35831617615",
+            "eikona_0.6.3_Windows_x86_64.zip": "sha256:5d14d0c23526fc50bd4227432cbdfcb99405834856b01eee18cedc65bf705915",
+            "eikona_0.6.3_Windows_x86_64.zip.spdx.json": "sha256:b5e3df0393be6dd6b0fd473a5f802d79af7e2ad16f1f43295b2761d7d9c1f7ac"
           }
         },
         {
@@ -476,12 +714,41 @@
             "eikona_0.6.2_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:88015c9b6a6cd66f39012edf207b56912ea1964f0faf908df8117b506524b406",
+            "eikona-install-manifest.json": "sha256:d0a6a847695a3bfd29894abd3afe75c939c7daa374bc46f2838dbead211a696d",
+            "eikona-installer_0.6.2_Darwin_arm64.tar.gz": "sha256:efe32549285935ff1878632091a739a98e2cba5b53d1fe1d88f016a1f75191e7",
+            "eikona-installer_0.6.2_Darwin_arm64.tar.gz.spdx.json": "sha256:8d425ddcdff1e65cdb030923c8b65035474ff2c4c668c28873c1fc232bd30711",
+            "eikona-installer_0.6.2_Darwin_x86_64.tar.gz": "sha256:1e4bb1ab524c517a7cef5e1a2ba3951ebfe91aa87a547ccf596e435b0134a2c3",
+            "eikona-installer_0.6.2_Darwin_x86_64.tar.gz.spdx.json": "sha256:0d09d1952fc4950e3f8f2f7747ff5ee1321d06a29b39300f8a9bb5790a98edb8",
+            "eikona-installer_0.6.2_Linux_arm64.tar.gz": "sha256:20b223bb5e491d2b89966f44889048a20956b25f30d99d3334abe79762263057",
+            "eikona-installer_0.6.2_Linux_arm64.tar.gz.spdx.json": "sha256:674dac28dc435f4ac04879821aa272f01f37af47f2a40562b498c657582a4e23",
+            "eikona-installer_0.6.2_Linux_x86_64.tar.gz": "sha256:e16a2cfaa18ec76f9f6ec49ae91ad106e7f3da8c67002a8ad5c432c7d2635dfd",
+            "eikona-installer_0.6.2_Linux_x86_64.tar.gz.spdx.json": "sha256:d59802f08e161f03f5871eae2222a643d2ca77bae9c4d2694b943b0a5b2d2d7b",
+            "eikona-installer_0.6.2_Windows_arm64.zip": "sha256:b0bf0db186b1461142e3c482ff496513ba2e6c2220c5254b5e3763015ac47c29",
+            "eikona-installer_0.6.2_Windows_arm64.zip.spdx.json": "sha256:ac1efccbc757be883eefc23ffc2d96389b56d5a779b9741288319de3aad3aba2",
+            "eikona-installer_0.6.2_Windows_x86_64.zip": "sha256:7971ccc5e9fd301ca82c267ac764e8eb03db85efb64598ecc2fdb6c64d2528ff",
+            "eikona-installer_0.6.2_Windows_x86_64.zip.spdx.json": "sha256:95ad61d5ff997a8edf93f98c0cb281c86ab344ddd76e9c17a8e496eccf0fd3de",
+            "eikona-skills_0.6.2.json": "sha256:dce83525c2c6c92d6eb8ac95c43eed60d662fa134a81544a95151356937d6a96",
+            "eikona-skills_0.6.2.tar.gz": "sha256:33da2f0273bfefc30c312e6749f16dadc23239d8aff39dc1f1fc769df1a00139",
             "eikona_0.6.2_Darwin_arm64.tar.gz": "sha256:4d4b2d51d0d4b1d7863d55065debca7a65f65ee0cc4fe861a6c675a47bac1f03",
+            "eikona_0.6.2_Darwin_arm64.tar.gz.spdx.json": "sha256:9b0bd0faac6386c4dc449be553abe237027aa311382a28739a2784bc8458d5f4",
             "eikona_0.6.2_Darwin_x86_64.tar.gz": "sha256:0cb517b68e0365a5c46bdbf8d00dadcfb050dbca5819336c8cde9ef5f73cf883",
+            "eikona_0.6.2_Darwin_x86_64.tar.gz.spdx.json": "sha256:19139c80927536d641a23df6dc8d1e682361705b147db43e8f8c9586cfa26c92",
+            "eikona_0.6.2_linux_amd64.apk": "sha256:fbbda0b515130211fb78c8fada2b8b25403ce7a71d36de2fa39e48120d5b15e1",
+            "eikona_0.6.2_linux_amd64.deb": "sha256:cf6870787dc65d65b0f3cfd5dde2f803d8a315f5e0571b6200b184c4def94e21",
+            "eikona_0.6.2_linux_amd64.rpm": "sha256:817e4fbf9fd1d9b69aff123a11f60822126f0c137106788199e9c95fcc345dd5",
+            "eikona_0.6.2_linux_arm64.apk": "sha256:bf596f87dcd77b425209ecbe1e4ce9ccbfdfbfa1da8acf810a464ab424eff87f",
+            "eikona_0.6.2_linux_arm64.deb": "sha256:81f7d54483f9aec2c6e2999e4482a08c67d388dfdfe4ec66130a1602c46054d5",
+            "eikona_0.6.2_linux_arm64.rpm": "sha256:77ffe7346fab04d7ccfa15f31de909f56e949e9b6edfcb2fa7947f9f5f55f9b4",
             "eikona_0.6.2_Linux_arm64.tar.gz": "sha256:392f6fcd2cc02aa6040c5181dda1d7be3ae54cd6c138e236900c90c701602c8b",
+            "eikona_0.6.2_Linux_arm64.tar.gz.spdx.json": "sha256:f77198d5244d01d05d011e7cd124929b75efcfaad62949b0375ce61fa4de5295",
             "eikona_0.6.2_Linux_x86_64.tar.gz": "sha256:fdbd887fd5b9b151735ad0ee8441e6a59d19c0e4d965f090c3627c014944b867",
+            "eikona_0.6.2_Linux_x86_64.tar.gz.spdx.json": "sha256:fd5799d3601abfa27077cb712fd2ebec6ecb3f3137158076caba75df6572eb8e",
+            "eikona_0.6.2_source.tar.gz": "sha256:497c694323431d30ae1a3b3c66788942d14d2dea60955f2d0843deac50a0c1d1",
             "eikona_0.6.2_Windows_arm64.zip": "sha256:9a0335d2d6ca1ce74b77b34b58fe6a9f3437e53692960cdb6ac621a0986c9cd5",
-            "eikona_0.6.2_Windows_x86_64.zip": "sha256:53f9e9aed5fa5ed24f4f70825f78d84d26128f57711479de947dfdab532607d2"
+            "eikona_0.6.2_Windows_arm64.zip.spdx.json": "sha256:853cd1c44d07a33a97044da74316e86d5a211c1c8e3641320af017ada1d7fc89",
+            "eikona_0.6.2_Windows_x86_64.zip": "sha256:53f9e9aed5fa5ed24f4f70825f78d84d26128f57711479de947dfdab532607d2",
+            "eikona_0.6.2_Windows_x86_64.zip.spdx.json": "sha256:cbd753ab7a4d458ff0b0370b42e810facb4e2d25fd4cb0fe3c37225c5844473b"
           }
         },
         {
@@ -528,12 +795,41 @@
             "eikona_0.6.1_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:964e03c1b03ea37fbfdc22ea58cc940ae6ac8b60a4df964e142e836f8ac1d781",
+            "eikona-install-manifest.json": "sha256:dc38aa7493ce9688c40df10109e5af46ed4677f253bf25eefc5510128bb581da",
+            "eikona-installer_0.6.1_Darwin_arm64.tar.gz": "sha256:ff765891bae0b15af666d60c2159dc7974465a4c42583ea133c23c88d9053d27",
+            "eikona-installer_0.6.1_Darwin_arm64.tar.gz.spdx.json": "sha256:918975a14610adec5529ae130499aeec7f61acf954e8d7d65e148413362bf363",
+            "eikona-installer_0.6.1_Darwin_x86_64.tar.gz": "sha256:01374d91c5fdba250d226ca99958915d436687a6811eaf8bdee3b6098eb8ee0a",
+            "eikona-installer_0.6.1_Darwin_x86_64.tar.gz.spdx.json": "sha256:769d977a2f82b4df59cf8c36eb17ac91165735c22c011f7dd7c8d97cd5703da8",
+            "eikona-installer_0.6.1_Linux_arm64.tar.gz": "sha256:dbdc099a1bab4a65e568ed4db40205062c4f58716196346f6e419860ca9fac1a",
+            "eikona-installer_0.6.1_Linux_arm64.tar.gz.spdx.json": "sha256:1ad56667f545d9508793d99fe40c88b400f2c2f2351fbb17ae8d936d17dd0391",
+            "eikona-installer_0.6.1_Linux_x86_64.tar.gz": "sha256:c9fdae7929672ace11d4e04c7ae64ecef098c6798b0c3f9a3a790ac1ebb30fee",
+            "eikona-installer_0.6.1_Linux_x86_64.tar.gz.spdx.json": "sha256:6938e17f6b4a58a01fba942b34cbd5c8bbdb6eca1954440b0915d64df4a7c9be",
+            "eikona-installer_0.6.1_Windows_arm64.zip": "sha256:7b415c6e1b7a3ac479f69771d2de181a24936c0358b99183ce3eee9b45c68e1b",
+            "eikona-installer_0.6.1_Windows_arm64.zip.spdx.json": "sha256:3b0aa9d4cfd02a509b5374a4cf3e808efb1740937dee0d47d50cce9ac634216d",
+            "eikona-installer_0.6.1_Windows_x86_64.zip": "sha256:08af21e06c824245ebc7b461598ebe3152afdbe72718ae9c32821a39f860351c",
+            "eikona-installer_0.6.1_Windows_x86_64.zip.spdx.json": "sha256:f02329c042c24f7dc21adf243e7df29f159e9bc8d8e8755b2fb21c72e53bb1f5",
+            "eikona-skills_0.6.1.json": "sha256:1f15051eaaa0ac83cc4079483616a31aa44a4f2fb53b37de955fa3bf981e73cb",
+            "eikona-skills_0.6.1.tar.gz": "sha256:4cb80ef43fd14274d9071212f2d68addf9858484c2765af9534b7ce27ccf3b5d",
             "eikona_0.6.1_Darwin_arm64.tar.gz": "sha256:b3ddf37bc670161a6c527854202aebf9151b8c1f709a6d956b07c903e1859898",
+            "eikona_0.6.1_Darwin_arm64.tar.gz.spdx.json": "sha256:c8014f776a378cccde9e6b59c75248ed6085b1d0130d7df4fc2d952a7de6b48d",
             "eikona_0.6.1_Darwin_x86_64.tar.gz": "sha256:28d7e53e4d23d34581a3bb50bf657364e628a9c14d802ffb2b84279545eefdd5",
+            "eikona_0.6.1_Darwin_x86_64.tar.gz.spdx.json": "sha256:7aac95552e565099738d1f3e8955685ac102562f709cd57510ea5826ac83cc46",
+            "eikona_0.6.1_linux_amd64.apk": "sha256:48e8501d38ab7c1e294b6013eab10565bf6541d76ec54fc68a06f64a5a465696",
+            "eikona_0.6.1_linux_amd64.deb": "sha256:cf20fa743fc2be8205c35febf567cbfae620cb6bd0d03cd78949129d255f45d6",
+            "eikona_0.6.1_linux_amd64.rpm": "sha256:a4a622335073b77d10f06b6faec4f6f2fc03fbeaf99b573d4d12d60f22045733",
+            "eikona_0.6.1_linux_arm64.apk": "sha256:7d2dd9921d9f40912c5f9f320cdc9d321a7aee6df8d4957cd86fce59d1b5625c",
+            "eikona_0.6.1_linux_arm64.deb": "sha256:6764b09627454ce10ef92c6364cf4caf1af354a80fc49b8b17fef03daa1c1b6b",
+            "eikona_0.6.1_linux_arm64.rpm": "sha256:42954aef426cfc657ec66df329e409bd6a6aef3d665767fee3e557330eb47809",
             "eikona_0.6.1_Linux_arm64.tar.gz": "sha256:7a66bd25e254cc6933fcac6d154861d0ae800ac58af597d9550195cdcd97c51c",
+            "eikona_0.6.1_Linux_arm64.tar.gz.spdx.json": "sha256:48b478ca3f048b2fddedc92efa4dce6c6788d48b7d8ec5a9777c179147ebc425",
             "eikona_0.6.1_Linux_x86_64.tar.gz": "sha256:abdeb3c0abfe92e7f3356efe44226d4a77fde26288ee56d60993ae9bbfff5636",
+            "eikona_0.6.1_Linux_x86_64.tar.gz.spdx.json": "sha256:35e59b4fba3f3db891cf89e2323ebfd7659ca2aa1ebed8ae4eea18598e685bc5",
+            "eikona_0.6.1_source.tar.gz": "sha256:8bee586f1cbd3954882580a5fad0d605a279f9a1658430479f3b260db9d396d3",
             "eikona_0.6.1_Windows_arm64.zip": "sha256:c7c15a0a5d4940c60f1e67d6224a8d0eaa0f393e9e41012150cccd6c884ca21f",
-            "eikona_0.6.1_Windows_x86_64.zip": "sha256:0172aa566f0f7e7c907eba395af714ac22fddd35b1e2f45b6b156d5d0f533042"
+            "eikona_0.6.1_Windows_arm64.zip.spdx.json": "sha256:3f6eca89eb4db22294ddce7d29ee3f34ba1fc3dc71e6967769771a48954d9848",
+            "eikona_0.6.1_Windows_x86_64.zip": "sha256:0172aa566f0f7e7c907eba395af714ac22fddd35b1e2f45b6b156d5d0f533042",
+            "eikona_0.6.1_Windows_x86_64.zip.spdx.json": "sha256:9523c2b90c2baa7106a53cee5e6d4742246f94fa8c454c5fde28b6f9a24ef3f1"
           }
         },
         {
@@ -580,12 +876,41 @@
             "eikona_0.6.0_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:3c659e131b09ce37bdba60140451bc4e15666326b0d050d14791ada50e717a84",
+            "eikona-install-manifest.json": "sha256:23cc21deb0d170b4c0ff4d52f7d4db0798d9b7dc75b78f394c8fa409cd6f3c27",
+            "eikona-installer_0.6.0_Darwin_arm64.tar.gz": "sha256:a2598a96a073a810ee2c848039d945b5911c861bf5ed3fc1b24fb6c0b649f348",
+            "eikona-installer_0.6.0_Darwin_arm64.tar.gz.spdx.json": "sha256:e51bbfc983671bf2c3d3eeea03980f75b0efd83d50cd25fbbe38033a98b1b04c",
+            "eikona-installer_0.6.0_Darwin_x86_64.tar.gz": "sha256:ae5a8fbf6252ed33460bf8699208664751697bf051b76fc86653611788ef3a8e",
+            "eikona-installer_0.6.0_Darwin_x86_64.tar.gz.spdx.json": "sha256:884ee5003da33b9984719c7f5c03d9bc76e2cd05858528e4b08bab7eea148a6c",
+            "eikona-installer_0.6.0_Linux_arm64.tar.gz": "sha256:21c019130543b58d878fc28cc6f8ce7d1eda6afadb499616ac5ae45c9b8695de",
+            "eikona-installer_0.6.0_Linux_arm64.tar.gz.spdx.json": "sha256:40dba2ea4047402f89f32ae13d5848b3c867afa57a057f19d1d62a07c51e2a3a",
+            "eikona-installer_0.6.0_Linux_x86_64.tar.gz": "sha256:8dfa28cc747efe39ca2edda29d4941c556f3c0af8a0398b98b5fd5e72205bbf8",
+            "eikona-installer_0.6.0_Linux_x86_64.tar.gz.spdx.json": "sha256:b4ff746f90afd69d40728fbf141a38897b9ca36e53ed286bab1260fd9cf648ae",
+            "eikona-installer_0.6.0_Windows_arm64.zip": "sha256:5ca97f41717e47e385b40cd01995cd50d5f219b598e90bc1c9ad264cbdd1dbe7",
+            "eikona-installer_0.6.0_Windows_arm64.zip.spdx.json": "sha256:d2fd548d44e9212f25bf9c899e689cfa6c5386a18b889d8a2958b56e67a7b6be",
+            "eikona-installer_0.6.0_Windows_x86_64.zip": "sha256:d1bd886a47f0f549b892da5cdd374532df7e6ba4f2c57f736cfe2689cfa95985",
+            "eikona-installer_0.6.0_Windows_x86_64.zip.spdx.json": "sha256:38b748ffd65ff887ea8bcb0726adfe55b724eea3c8338765724be988a820081a",
+            "eikona-skills_0.6.0.json": "sha256:0cbddf19e4dd01fe5ee621c62ee80d0768f724b8c610812efc2dac5a203fd6e6",
+            "eikona-skills_0.6.0.tar.gz": "sha256:350f46905fbfd094bb169870944d8930b3da438bfa9656ec72171d1141ba4429",
             "eikona_0.6.0_Darwin_arm64.tar.gz": "sha256:8bbcc4243d0bdf2a8b0815e7c6584792dc85076e1bb2c5fa735af4bfaf419143",
+            "eikona_0.6.0_Darwin_arm64.tar.gz.spdx.json": "sha256:e4271a1582f35f27cf3cb28afecb154d3bdee93767f912844eece5686563021e",
             "eikona_0.6.0_Darwin_x86_64.tar.gz": "sha256:cf4bc3a4abc1f7096ab6b1339f3df25ecfb8b39c7d1e9ec73fb6a5382194af7b",
+            "eikona_0.6.0_Darwin_x86_64.tar.gz.spdx.json": "sha256:bb3d83c29edd00b79cfb5c7a372722bb00f45c3d1b803ccc113b7af70b904aab",
+            "eikona_0.6.0_linux_amd64.apk": "sha256:70a5440b268c24e3f49e1bb0947448e606bcefc6cb1a5cd36cb82b52b3550f85",
+            "eikona_0.6.0_linux_amd64.deb": "sha256:be21132ff81c48bf6c8d48cf78ee506a869b4a5167f4108f62ab3d24e5da8b0b",
+            "eikona_0.6.0_linux_amd64.rpm": "sha256:46a0f6cc02f6266feae58c377f66b77a2d634a49be988901389c5d152d3891c9",
+            "eikona_0.6.0_linux_arm64.apk": "sha256:4d8aa81bd5ad025b029dd8064e8b0f073f3a0c82f1f3d668d32e8439edb9ec1f",
+            "eikona_0.6.0_linux_arm64.deb": "sha256:77f8e6b413e664b2235b0f3e6134da697779af3f3aba11117a6e30ceef5bb336",
+            "eikona_0.6.0_linux_arm64.rpm": "sha256:d163b1dbc1638d61afe0fee7d7c0e56dc708f76429c2e04a09dfbaf2018b3ba4",
             "eikona_0.6.0_Linux_arm64.tar.gz": "sha256:c37de6f72c30392367833391d0f80473c95d049c11ac0b745c74ef356996d369",
+            "eikona_0.6.0_Linux_arm64.tar.gz.spdx.json": "sha256:bd196e1f5e5162b4b6846b51c2e4c2d52d7e16a441d44826503cae65cbdc4c13",
             "eikona_0.6.0_Linux_x86_64.tar.gz": "sha256:ce02c2721d3930d477f378c6821a38043d9d174a800d3be0e0e32fd1e9f35e24",
+            "eikona_0.6.0_Linux_x86_64.tar.gz.spdx.json": "sha256:7172526fd572abb60401b469b6ddccf233874216d795d6e25b80788a82c73195",
+            "eikona_0.6.0_source.tar.gz": "sha256:e6c2e253e403dee0880b9386a4930a1b63a4208c8911dbe5530982c2a64d1352",
             "eikona_0.6.0_Windows_arm64.zip": "sha256:45294aa578b654e8f7f31c95f7fbbaeb80d22ba30f7e85d70e64d90b2a7b3790",
-            "eikona_0.6.0_Windows_x86_64.zip": "sha256:7819cba8f31a9239e9f3cd1dee332a6e5aa0919ad5d2076567b22f41b0ee91d1"
+            "eikona_0.6.0_Windows_arm64.zip.spdx.json": "sha256:61e3f6d2613bad14d9988edb76f1075f62cd7c805441b39bdbbff31dc738888c",
+            "eikona_0.6.0_Windows_x86_64.zip": "sha256:7819cba8f31a9239e9f3cd1dee332a6e5aa0919ad5d2076567b22f41b0ee91d1",
+            "eikona_0.6.0_Windows_x86_64.zip.spdx.json": "sha256:90c17b007b34e888183e97d4c1cfdaecd604592905b8f2b85187a6c6b8980aaa"
           }
         },
         {
@@ -632,12 +957,41 @@
             "eikona_0.5.3_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:b1657105f38e92beb854fa1c2fa6d67b1d49aff15b7f030e917b6567562b9daa",
+            "eikona-install-manifest.json": "sha256:d2d4af3b8debd9de3823b638d5a1312d6d9b314b9d670198a08c924e978a782f",
+            "eikona-installer_0.5.3_Darwin_arm64.tar.gz": "sha256:af9ee256a55cd73cfa4bf921ef5910f9c1b2849696d56cc8887896379bdf6b26",
+            "eikona-installer_0.5.3_Darwin_arm64.tar.gz.spdx.json": "sha256:c73f8aa984038a7369b373a85a4c67333c5c8c1583dde0e53b61c5456d23a67d",
+            "eikona-installer_0.5.3_Darwin_x86_64.tar.gz": "sha256:1f0652241434e28c65903de9e3c6e99d376d981bc755e164b9a857f3b3705dac",
+            "eikona-installer_0.5.3_Darwin_x86_64.tar.gz.spdx.json": "sha256:95e0e8a7d29f833d83241be28919b213f493ac29a7a0f273313308959c9cafc5",
+            "eikona-installer_0.5.3_Linux_arm64.tar.gz": "sha256:9fdc776d5a31072169fc2754dfbf81ad05fac3412375408668391e3f91bd541a",
+            "eikona-installer_0.5.3_Linux_arm64.tar.gz.spdx.json": "sha256:b6f547270dd92c118abcac2f2f17476505e0b5e318d80c9cf6bff1a6f45cbfd4",
+            "eikona-installer_0.5.3_Linux_x86_64.tar.gz": "sha256:42470fa828f5f2b55f76733ef086334ea76afdb12ecdd5437a86734d407d7cdb",
+            "eikona-installer_0.5.3_Linux_x86_64.tar.gz.spdx.json": "sha256:9fd4861a09acc91f5d3d755cf0aac9983055a02e5e854763c7f59ad34818f52e",
+            "eikona-installer_0.5.3_Windows_arm64.zip": "sha256:d2b9ab0f21d3f327ae5a01660c9980165e491bdd8a139acd35bc7a0e903434bf",
+            "eikona-installer_0.5.3_Windows_arm64.zip.spdx.json": "sha256:029b9c0c7d164c884cda5462799ab8fd7a83ed1bc4a8c58a06ae38db53330f35",
+            "eikona-installer_0.5.3_Windows_x86_64.zip": "sha256:0043d0c30d3534f105ef661a7bdf964aa7c587c0e690343e21df66e11ab34cb7",
+            "eikona-installer_0.5.3_Windows_x86_64.zip.spdx.json": "sha256:e7d6cd70d01ba610750cb3c87ab67c2c18bd7ceab93252b42bea606a4288de0b",
+            "eikona-skills_0.5.3.json": "sha256:95688332946084d8675b8dcb1a1a1f99dd4e7ffe54372508ed87816fcec1c902",
+            "eikona-skills_0.5.3.tar.gz": "sha256:e3ba7a083b8870188d9498eea1c7036648cfd13ac4fd83e971ba795d5ee8ead3",
             "eikona_0.5.3_Darwin_arm64.tar.gz": "sha256:882837a485a92ab12a08f8ffc59a6a3c2363992602129ac9110c4a612b332c04",
+            "eikona_0.5.3_Darwin_arm64.tar.gz.spdx.json": "sha256:9c20cecd194fc76adafd89c0c39dd5045baa83964fdce80db670cd9ff6e78432",
             "eikona_0.5.3_Darwin_x86_64.tar.gz": "sha256:5deadc10f6f3c7d51edc54fdab61cae87c9bbdfd84d8ffe50037f411a8732aed",
+            "eikona_0.5.3_Darwin_x86_64.tar.gz.spdx.json": "sha256:f8a7eb5ebbc89027c6ac2da74d9af9e00baf8e4d311078bb3e1ccd6419c7006c",
+            "eikona_0.5.3_linux_amd64.apk": "sha256:39a447b225a5162bfa0aa452808f63a5b8298325e3d6e83d304e3e72e3c19453",
+            "eikona_0.5.3_linux_amd64.deb": "sha256:f010834796ed99d968c4a277362d763433cfb115c055030691687520c9c246b4",
+            "eikona_0.5.3_linux_amd64.rpm": "sha256:daafd1b5b476c4e177612e89deb5422c6ac09b5d26d8f4fa87a296bd72a5f099",
+            "eikona_0.5.3_linux_arm64.apk": "sha256:9f9f65b281c1c744776942d9baca18beec879b069d4100dd333f7b0bd9198f07",
+            "eikona_0.5.3_linux_arm64.deb": "sha256:e4db9ab72be3090254dbf8b2d5b3dca24d16ebbc58b79a552c2d819b715b2736",
+            "eikona_0.5.3_linux_arm64.rpm": "sha256:e1fc665e347d89f533ce247e0b52b3a46027bdc006692a80420225ea69292ed7",
             "eikona_0.5.3_Linux_arm64.tar.gz": "sha256:309a8175f5411bf6f28dcda2e3443cd7cc5220cefcdcf8577008d1e71332530f",
+            "eikona_0.5.3_Linux_arm64.tar.gz.spdx.json": "sha256:2d2152fcb29011409adf3621c92305a9cf7f15bd0ea99cbd7a0ab29b68e8527e",
             "eikona_0.5.3_Linux_x86_64.tar.gz": "sha256:3fdc36d7d5551e0ce9999cd044a83e9c845d13775078de2af4199ef3b27e360c",
+            "eikona_0.5.3_Linux_x86_64.tar.gz.spdx.json": "sha256:f06d1e7f1b55b36fb34edc1f779a73724b4b77793fb32d3b4b929f753491082d",
+            "eikona_0.5.3_source.tar.gz": "sha256:7721b7fa9af99d48f6fe8700a404614e639f144db6824bc258ff1390f3e15370",
             "eikona_0.5.3_Windows_arm64.zip": "sha256:cbe6cba9c97153cdeabadffe526821fe2b75a17cba9b8d25e4f7c939cf98cc9e",
-            "eikona_0.5.3_Windows_x86_64.zip": "sha256:532f2bd8ce60ae37dfd5a59d5bd21e17631af176753b494e07ed6b54b4cf7a13"
+            "eikona_0.5.3_Windows_arm64.zip.spdx.json": "sha256:321697fd34bf9cff1f10d87006f4068aaabd4cea2cd44f0be595e92fc8b84c1c",
+            "eikona_0.5.3_Windows_x86_64.zip": "sha256:532f2bd8ce60ae37dfd5a59d5bd21e17631af176753b494e07ed6b54b4cf7a13",
+            "eikona_0.5.3_Windows_x86_64.zip.spdx.json": "sha256:cf65d3ef284eb8084ea8b094826769a00308f7dca80062afe2c29bfc7e8aaa16"
           }
         },
         {
@@ -684,12 +1038,41 @@
             "eikona_0.5.2_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:7dfd32b90391aba2ee2033d9faf1c88679bde1aa773e598c95341b399f9c0308",
+            "eikona-install-manifest.json": "sha256:668e16dd71fedc8c5b2ca25a8f138c2f12af208aa3648294f2e55bd9ebb00819",
+            "eikona-installer_0.5.2_Darwin_arm64.tar.gz": "sha256:50dcfb78156f111a3b2e7871d76ed8d9ab8cc98b897732c944dce479c0221e3e",
+            "eikona-installer_0.5.2_Darwin_arm64.tar.gz.spdx.json": "sha256:2640ef2e774c4d26ea386d155067e56b9478aa3a0d21c43fad2fa31ebe33539d",
+            "eikona-installer_0.5.2_Darwin_x86_64.tar.gz": "sha256:59b2968f8926467b4506ac1f8b707687c1d2fd6a88f2d9ec32786ee0cc039bf6",
+            "eikona-installer_0.5.2_Darwin_x86_64.tar.gz.spdx.json": "sha256:0c3102358d5d201591c7183b6b5ff19ec92e1bd916bae9b6887eaa70eac5fb50",
+            "eikona-installer_0.5.2_Linux_arm64.tar.gz": "sha256:0441ff9e41511b31453dbb7626ee9a7091bc7dfb49a8d9e04a7ce6273c48b421",
+            "eikona-installer_0.5.2_Linux_arm64.tar.gz.spdx.json": "sha256:ec32a44b26f823b278ae37876ed456a1ca483a565a1b6383d345481300114d30",
+            "eikona-installer_0.5.2_Linux_x86_64.tar.gz": "sha256:f12c1d4efbe07c698beb5495bd941bcfe72cdfa0979447d620231add525be6b0",
+            "eikona-installer_0.5.2_Linux_x86_64.tar.gz.spdx.json": "sha256:17cca63ae20e82b6144e5a2346531871bd2244c66d14e039daaf9c6531531750",
+            "eikona-installer_0.5.2_Windows_arm64.zip": "sha256:e49ac9827d193f414231624bd92642c942df9e3005299432fec23afd2faa6b51",
+            "eikona-installer_0.5.2_Windows_arm64.zip.spdx.json": "sha256:8bb294fc05222edf9f6cb33ab711e20c93dc15219698f786d9b028f0eaf71420",
+            "eikona-installer_0.5.2_Windows_x86_64.zip": "sha256:08434105a30f372509005a63eb6ec167e3f21a5748c3faa4f650bb3f8b763af0",
+            "eikona-installer_0.5.2_Windows_x86_64.zip.spdx.json": "sha256:83b8444b920a4a67bf8baeaef9c5d0f64bff19d129468e46136b79e114edc1af",
+            "eikona-skills_0.5.2.json": "sha256:6a5f88036daf7a1409b04155def18acc904fab24c1c55093f5896dc6bf596f20",
+            "eikona-skills_0.5.2.tar.gz": "sha256:f8180c8e04c7a43cebf3e835d1a8eece1047258a974d15ba050ee8ae9fc0a083",
             "eikona_0.5.2_Darwin_arm64.tar.gz": "sha256:1289a86fc8137e55edd1fed337634e7c563efcfde9636d24b02f9237bcb69df7",
+            "eikona_0.5.2_Darwin_arm64.tar.gz.spdx.json": "sha256:e47b9825e1fca106f92cf3974f14eaf28df9531438726c6a39a59bbb8ea1ca49",
             "eikona_0.5.2_Darwin_x86_64.tar.gz": "sha256:5a4e5b42d26ecf685338f6a485ed32cc830e3ca9d8ef830c833b75839fdda05e",
+            "eikona_0.5.2_Darwin_x86_64.tar.gz.spdx.json": "sha256:afc305614c8e93caf5f2c1aac9793085b92c664810cf36ff99d9c22476619651",
+            "eikona_0.5.2_linux_amd64.apk": "sha256:9de67d5ac6712634fe635eaa4fdc27a6ba501dcf6cdcb450cfab5d29270ecfd7",
+            "eikona_0.5.2_linux_amd64.deb": "sha256:5eef9547131423f6854da0f01598d72b28b137fd8f820145faf3cac1eb382f68",
+            "eikona_0.5.2_linux_amd64.rpm": "sha256:97e5c97e49b3eaa09f7eca3e97f942ffd5659c91d322dd791fff21712ff6869f",
+            "eikona_0.5.2_linux_arm64.apk": "sha256:766eab611294805e513147111d01053c9f085885c09b15281cdc9da35d259b4f",
+            "eikona_0.5.2_linux_arm64.deb": "sha256:99a065639dcf3ffd29a3d0af16ee3283d5f61c5eec0d28422427b509545c052b",
+            "eikona_0.5.2_linux_arm64.rpm": "sha256:1bf1d29f8a5a52f7329199575ff978603d2f436577d41b133dcded99c34d9a5f",
             "eikona_0.5.2_Linux_arm64.tar.gz": "sha256:3345c8682bb9414a1819498cbe0ee15a141043ede5a8a09ce295a2aa19b60e93",
+            "eikona_0.5.2_Linux_arm64.tar.gz.spdx.json": "sha256:d89670ac25da6326cbc51e24e16638a0b623286f26c5198dfd1ae7e2f175fe00",
             "eikona_0.5.2_Linux_x86_64.tar.gz": "sha256:6a8e64c68c373669fb4a0b8b0ad00ea43508a78b3870fff8315213b276550635",
+            "eikona_0.5.2_Linux_x86_64.tar.gz.spdx.json": "sha256:c58ad0b2cc83d93e6a9ec935082f81b7688f97b1fc680e2e81b5fea65778d640",
+            "eikona_0.5.2_source.tar.gz": "sha256:b152d0539bcad4147b571092edbcf96be273e2e44ef5c3d9fc39acca3a6bff0b",
             "eikona_0.5.2_Windows_arm64.zip": "sha256:80cb154b5ac92ef0546e4ddd3acba9dc1e886b22c8c2dd8b81c99eae398774bf",
-            "eikona_0.5.2_Windows_x86_64.zip": "sha256:6fcec8bf37c08cec9c5daf5ff6d10a17e1482c778f57ec9579a337b2f3d455c4"
+            "eikona_0.5.2_Windows_arm64.zip.spdx.json": "sha256:72afe57abd51a7f0cb3550594f96762079d2d35215101538389e12685d9d5ebc",
+            "eikona_0.5.2_Windows_x86_64.zip": "sha256:6fcec8bf37c08cec9c5daf5ff6d10a17e1482c778f57ec9579a337b2f3d455c4",
+            "eikona_0.5.2_Windows_x86_64.zip.spdx.json": "sha256:e35ba6ff334655dbfcc8af061dad67017227841c6b2196fa9a93dadc2f19512d"
           }
         },
         {
@@ -721,12 +1104,26 @@
             "eikona_0.4.0_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:bd6e6fd892cbc82e5139052b9057508245f36e9cf2fa30b9c0a1ddc3e1b16552",
             "eikona_0.4.0_Darwin_arm64.tar.gz": "sha256:78ee398789406da8029d37250bd675cbc554be9ce2e905171726b781074a658b",
+            "eikona_0.4.0_Darwin_arm64.tar.gz.spdx.json": "sha256:cb6550b6fa1e2f17476f718e215bd25b6f288fa8501af022bf28f147b1945a64",
             "eikona_0.4.0_Darwin_x86_64.tar.gz": "sha256:89850475018b2b908e94e51b525df51dcd0b42c6a1a2834a95c586c81147606c",
+            "eikona_0.4.0_Darwin_x86_64.tar.gz.spdx.json": "sha256:d138c0a3b6091070f85e18c7b0915fa9121f94715fa547f4326ca2aa2ae7e663",
+            "eikona_0.4.0_linux_amd64.apk": "sha256:539b0adf62748e8cd84a2fd572c6daf6b4e28bd07ecc8d9b18ca445494598584",
+            "eikona_0.4.0_linux_amd64.deb": "sha256:b1dd17045789e863c38751b1011694c25d788bbc325a264c8c4ca4578f857298",
+            "eikona_0.4.0_linux_amd64.rpm": "sha256:c0e4364a2a2c09221ed073be657fe6432479860bd3d5a2690483c91f10d204ef",
+            "eikona_0.4.0_linux_arm64.apk": "sha256:f95af21809fab4bbbd64a33aa1421567e5b46e055c5a513b8e93d9a0e19babfe",
+            "eikona_0.4.0_linux_arm64.deb": "sha256:0add312410b62df30fbf1205d0cbbf30d8d10afcbb6b388849ae852c06020531",
+            "eikona_0.4.0_linux_arm64.rpm": "sha256:74e16f43ba29299739ce48b00329442e74fc8df103cc76dc6ee74287a1e2bf08",
             "eikona_0.4.0_Linux_arm64.tar.gz": "sha256:d1d99484ce83fad2a98940ac57521ff3248026f3023063b2f3d6e0ea0d7879a6",
+            "eikona_0.4.0_Linux_arm64.tar.gz.spdx.json": "sha256:a52b7dfc2b19096ed19ad200a18cf2a4d6dfb1baa84d42671111191188653668",
             "eikona_0.4.0_Linux_x86_64.tar.gz": "sha256:1eacc873974ac1dcb030596bdca8b31e151a11b30060bec2f8ab6823a654b8d8",
+            "eikona_0.4.0_Linux_x86_64.tar.gz.spdx.json": "sha256:2fe5fe1f0c9d988eec133f048e9eb3bb29c52cc5f7afdac4a00e24be222e22de",
+            "eikona_0.4.0_source.tar.gz": "sha256:342635e818a752e97924a63ed3eccf98ce1acfd17951e5fde070a1c0f583195a",
             "eikona_0.4.0_Windows_arm64.zip": "sha256:dffa1cc7108efddf9fd9a7c2762621d43de10e18ee7c7211fd0e614ecd1a98dc",
-            "eikona_0.4.0_Windows_x86_64.zip": "sha256:3a258b4556a22f707dac847991d547591d1ab3c7050552b6b848fbe242ddfe44"
+            "eikona_0.4.0_Windows_arm64.zip.spdx.json": "sha256:963f0bc343f6662e1e82c76c4430c3e502a63a81dfa2f8a7fe5f8ed77f2869f5",
+            "eikona_0.4.0_Windows_x86_64.zip": "sha256:3a258b4556a22f707dac847991d547591d1ab3c7050552b6b848fbe242ddfe44",
+            "eikona_0.4.0_Windows_x86_64.zip.spdx.json": "sha256:79ac1d8e6d2554a966aefe993fa433060dd76105ff2917199a2aff9b0fa519ce"
           }
         },
         {
@@ -758,12 +1155,26 @@
             "eikona_0.3.1_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:0e0146be1a69429c07cdc9e55829b07c11dab024b668858df2af569c954777a5",
             "eikona_0.3.1_Darwin_arm64.tar.gz": "sha256:fdbb397326b1bd64f4eb43e58acc79c2690a179530476c90fe3ced6fcd307dfe",
+            "eikona_0.3.1_Darwin_arm64.tar.gz.spdx.json": "sha256:0d15f3d7e5c53009583997b2759eb90632b4036ebd76600b89e7cf0b5004b4cb",
             "eikona_0.3.1_Darwin_x86_64.tar.gz": "sha256:2e1b7ceefc80d47677564bbd0320fa85c7f7e341a21ff353a2a0ccf8087e8d0d",
+            "eikona_0.3.1_Darwin_x86_64.tar.gz.spdx.json": "sha256:a31988226980c660450a7c6c9d6bf8c3a66a5dce58517045cd94ec42561e9e37",
+            "eikona_0.3.1_linux_amd64.apk": "sha256:f07c177cea54d3f7948fe832977899c081625d723a472f53795c458ea07c6456",
+            "eikona_0.3.1_linux_amd64.deb": "sha256:8a42ae8debb67e7b1e87b886d205f3bd1a71301b313b02ee66672890732cb61b",
+            "eikona_0.3.1_linux_amd64.rpm": "sha256:19829f496b8e5e03e64f09e0069898ef4274884a57d2f7ef66c1cfeeef22f06a",
+            "eikona_0.3.1_linux_arm64.apk": "sha256:241347e7904be315d95603948b1b671506e352b5d8faf1853eabad598ba66832",
+            "eikona_0.3.1_linux_arm64.deb": "sha256:0e0ee29b28c43010b9a8b4eab19968c1ecda56273e287e0106b9705fed7d73a7",
+            "eikona_0.3.1_linux_arm64.rpm": "sha256:2fd63de9dc1944e0467704e6529ecd857306c8855e5bf479caefac6d2fb6ec7b",
             "eikona_0.3.1_Linux_arm64.tar.gz": "sha256:6310de54373883cebf1186bfa5c4bca8f107a40c664b262bd36f1f00559ec239",
+            "eikona_0.3.1_Linux_arm64.tar.gz.spdx.json": "sha256:bd8b29435bf7bd4bb4e790ac44759e70d37d830718c05bc0db1e7c437f17d1a1",
             "eikona_0.3.1_Linux_x86_64.tar.gz": "sha256:4c02724baeb80308ed14d9a2595d10504134b5737ac97a38b51db074e6ee320b",
+            "eikona_0.3.1_Linux_x86_64.tar.gz.spdx.json": "sha256:93c86a2cfff1d4916c227c21d2cea6da5b30f1b3c6df1897ba31a9afcd3fccf2",
+            "eikona_0.3.1_source.tar.gz": "sha256:b2d0202f9add3fbaccdc453a41ce3602227703f77fe1a0c3f932af121e0da847",
             "eikona_0.3.1_Windows_arm64.zip": "sha256:5fc4664173806437ca9a3e0897d081c586507eae1aa9fc1256ca6e152ec1caf6",
-            "eikona_0.3.1_Windows_x86_64.zip": "sha256:5b668b422efd69763dbe178eaa5b9ed6d6635ff54d6b6ea428c5bd37248c4a1e"
+            "eikona_0.3.1_Windows_arm64.zip.spdx.json": "sha256:fe06c8e4e9fd8b75dce1239ef93f91dbb2b8be3fa6a1b80d102507c7dc7d360a",
+            "eikona_0.3.1_Windows_x86_64.zip": "sha256:5b668b422efd69763dbe178eaa5b9ed6d6635ff54d6b6ea428c5bd37248c4a1e",
+            "eikona_0.3.1_Windows_x86_64.zip.spdx.json": "sha256:0e1a34c69ea9ce8244d41717af5ed6ac029d723165f278695535cb1ddc6ce67f"
           }
         },
         {
@@ -795,12 +1206,26 @@
             "eikona_0.2.4_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:1d44bc6b44a0fa8896f9534b0963fc9a4b96f7f6411cdef68eb23687673b5933",
             "eikona_0.2.4_Darwin_arm64.tar.gz": "sha256:65eabbf341ac5e0bcda8876f936cedf29dc8912a7f406bb4e6097bda2ba074d4",
+            "eikona_0.2.4_Darwin_arm64.tar.gz.spdx.json": "sha256:9648855a8f1d0d9201bdaf8ce4bc81e3276f2da763c0f984f35e40186a365887",
             "eikona_0.2.4_Darwin_x86_64.tar.gz": "sha256:19c5e4281683ee374cb5ecc86c8d1e71ced0edf94ea9f446b904e885ef614836",
+            "eikona_0.2.4_Darwin_x86_64.tar.gz.spdx.json": "sha256:51124f5afb4f83bb06e0ba867083e8b16e4c20fb0ad6d42cd8fca53dc5162fc2",
+            "eikona_0.2.4_linux_amd64.apk": "sha256:89a887ef02a77f141600498e6ba8195d17ea7fa1c075272cff0c6d4b6a7c5661",
+            "eikona_0.2.4_linux_amd64.deb": "sha256:191818dd72e8463bf8837f463da5d5d475fc86b0405e1fc222174fb84bee2708",
+            "eikona_0.2.4_linux_amd64.rpm": "sha256:e43d5b0c977de3fd7bea8340b759de2238e6ef7a6fce85629ac7b260b65d962b",
+            "eikona_0.2.4_linux_arm64.apk": "sha256:9192c70783b5df76bfa3da4c723f7c826fa27fb1a86851e91d95da0642475403",
+            "eikona_0.2.4_linux_arm64.deb": "sha256:742503e81dbc4f8db4c04985ada662365152603ac2f02ae18ea3dc87b103b5ef",
+            "eikona_0.2.4_linux_arm64.rpm": "sha256:5ef5c0cbe4867250fbbd9cb13db9171db3359ed889573db9ae81b56224843057",
             "eikona_0.2.4_Linux_arm64.tar.gz": "sha256:192f06bad631a6e11d494bac13e64d2f3091f2c9012f4d731133c9a01432866d",
+            "eikona_0.2.4_Linux_arm64.tar.gz.spdx.json": "sha256:9dc3926401f00fbedeb6802eadba4f3fb61f14aa741abaf4fa3c224f4d09d09f",
             "eikona_0.2.4_Linux_x86_64.tar.gz": "sha256:1284169f1b568ea7d8b1b16f187ce6eec2bf5fafc82466dc3826b1c26f29a8e7",
+            "eikona_0.2.4_Linux_x86_64.tar.gz.spdx.json": "sha256:f8f0a85d5d6646e47f811d01128a0f39d7c96022421df3fc0d7e4da269d66ed4",
+            "eikona_0.2.4_source.tar.gz": "sha256:7b412e6227d8562375aa845fc11258d9f7c060ad1b8a833f5bc0f52e69c2f84b",
             "eikona_0.2.4_Windows_arm64.zip": "sha256:b133582dded1c719b7672cdc8b8c9b90bb5be7fbcc4becdd5953316681fd4b78",
-            "eikona_0.2.4_Windows_x86_64.zip": "sha256:9d869c990a027f5db52338c5e721e00b6ca74f243560a5488189e34bbedbe634"
+            "eikona_0.2.4_Windows_arm64.zip.spdx.json": "sha256:dc6a0a49c3e4de8ab81a6acd01a455bba328b4cd816c452e71f48f4c062db4f6",
+            "eikona_0.2.4_Windows_x86_64.zip": "sha256:9d869c990a027f5db52338c5e721e00b6ca74f243560a5488189e34bbedbe634",
+            "eikona_0.2.4_Windows_x86_64.zip.spdx.json": "sha256:ca14acfa93da1e93996f4788a79cb8cd6815672a6adb404293d97485e892f2a6"
           }
         },
         {
@@ -832,12 +1257,26 @@
             "eikona_0.2.2_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:a8ffd96ece56d2288df1dde654538b6a5722389aa61e6f974e534da9e097669b",
             "eikona_0.2.2_Darwin_arm64.tar.gz": "sha256:0aa522c70574eac03b9cc84a02909d62fe0000799bb5ff5d68efdedbaf13ff0e",
+            "eikona_0.2.2_Darwin_arm64.tar.gz.spdx.json": "sha256:c5fbbfa9a8e82b264f4ec7a0cbc4be2ba385e99fe848670c47e95d688441966f",
             "eikona_0.2.2_Darwin_x86_64.tar.gz": "sha256:54fe11e03650ac3ca2d6bd8c17edb826f60af27a0497cdc3932f9dd454742845",
+            "eikona_0.2.2_Darwin_x86_64.tar.gz.spdx.json": "sha256:cea345330935818e1a838cded47c96af3898da8c62d58aa734f350c40a0876cf",
+            "eikona_0.2.2_linux_amd64.apk": "sha256:108434bcb728cdb3b73e82636b8054a6c372fc0d0b2f7b55f5a689b38c2c631d",
+            "eikona_0.2.2_linux_amd64.deb": "sha256:bed8f261b797a5ebdbabd8c3a6df67cf06e84e1bbdc0dbd958d4047414657415",
+            "eikona_0.2.2_linux_amd64.rpm": "sha256:9055190fe0b5bdaa8c2347dba02f3694ee760118f49746dde2de9463748dfe48",
+            "eikona_0.2.2_linux_arm64.apk": "sha256:7f644a50b129ac5df1ce353d5509c472100ee8f3cf10396df0a04cf2a8aad435",
+            "eikona_0.2.2_linux_arm64.deb": "sha256:118e8f307afe3cea5756ea0aa9c3e6991434c92f06f2a043635f5f8cd585ff7e",
+            "eikona_0.2.2_linux_arm64.rpm": "sha256:2389945599e4923b0d5525eb9d2ca2a33f84a186c5ec6db01bba5ea2e74d5e44",
             "eikona_0.2.2_Linux_arm64.tar.gz": "sha256:2d3f79f50faf95053e30773089d78d7e8c0d12bc9a220931b3e9802fda6cbe1e",
+            "eikona_0.2.2_Linux_arm64.tar.gz.spdx.json": "sha256:9e33e720a1812bca3ec8da3e0dca141661bd31690a9decadc6affd90ddbfa2b2",
             "eikona_0.2.2_Linux_x86_64.tar.gz": "sha256:8423b267130cb3aaa7b481c58ed019df80c587c6532fd139c5e19d1882e2cf57",
+            "eikona_0.2.2_Linux_x86_64.tar.gz.spdx.json": "sha256:8da67ad3c4217eb8b914b410ada45c615408a24e67fb8e563e5bcbcd4e247fba",
+            "eikona_0.2.2_source.tar.gz": "sha256:d820381e7a3ab241b1b27b06024f65bf9b61d9ab506cc7d3b36037df4fee584c",
             "eikona_0.2.2_Windows_arm64.zip": "sha256:a25c30ea6e06ac478886339b9b31404bd9787f724ea4225fcccd9d3a8fcb2241",
-            "eikona_0.2.2_Windows_x86_64.zip": "sha256:5c274531686640a3a4fcf8ec3028fba603027974341ce2cc1dac7c85ac7f4b32"
+            "eikona_0.2.2_Windows_arm64.zip.spdx.json": "sha256:534b126f4f03c2e4fb3ab1f11be55f4a1de60b4f72286af066f06209bcd57998",
+            "eikona_0.2.2_Windows_x86_64.zip": "sha256:5c274531686640a3a4fcf8ec3028fba603027974341ce2cc1dac7c85ac7f4b32",
+            "eikona_0.2.2_Windows_x86_64.zip.spdx.json": "sha256:461697151214948f890074a625992e60aefbf09ba16d28dd03305fb42fba6157"
           }
         },
         {
@@ -869,12 +1308,26 @@
             "eikona_0.2.0_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:8ad1fa965e82142f599f0185ec615dc9df3959cb3e2b86a36e76c2c53c939920",
             "eikona_0.2.0_Darwin_arm64.tar.gz": "sha256:c42e3ed240cf1bc39251ee33acaa826198d1777ec9e0eb028c5852d3e0601952",
+            "eikona_0.2.0_Darwin_arm64.tar.gz.spdx.json": "sha256:c52be3bd5dbdc0d9f7772070e477281911f961acb3d2776613dc8666dbc41442",
             "eikona_0.2.0_Darwin_x86_64.tar.gz": "sha256:621bbf47ee4ced76048f4ba64adf25b0e29359c3375fc3eac891158f3486aea6",
+            "eikona_0.2.0_Darwin_x86_64.tar.gz.spdx.json": "sha256:d304bddd43cb342b65b8b64713d55d24d75349d9a5c4a8b144a36dddb5023729",
+            "eikona_0.2.0_linux_amd64.apk": "sha256:d569fa86068e5e2850b4ff3312cb9e10d23613e16fa0887fb4e34c6d5f02107f",
+            "eikona_0.2.0_linux_amd64.deb": "sha256:ae8a5ede769706fe85dba22a094a06a5dfed12b5750a1bff78656e0f33324b88",
+            "eikona_0.2.0_linux_amd64.rpm": "sha256:b6e7bb5c40746720cac8be18dab81102ea5b87fb28064b9f28d97b42cbcefa5e",
+            "eikona_0.2.0_linux_arm64.apk": "sha256:164226c7f73859d9d300f0936a469210c44df1bae3b582d927df7092addbacfe",
+            "eikona_0.2.0_linux_arm64.deb": "sha256:f766ad2cf82792e5c7d74d60997fbff2d49fd1486e94da1dc95fdb897c2b959b",
+            "eikona_0.2.0_linux_arm64.rpm": "sha256:73c9ff54ead55f8ae760d6dd08162ea38d46fee8cda1717da131be70ff22484d",
             "eikona_0.2.0_Linux_arm64.tar.gz": "sha256:70ff9496ba3780ec16510ed9b61f606c9cf4a62495bb6441a847660f5c7d90b2",
+            "eikona_0.2.0_Linux_arm64.tar.gz.spdx.json": "sha256:c0415d5fbbe692cf2ce3920fdf0bc5600b1d52678badadb7e05d0c415372e9cb",
             "eikona_0.2.0_Linux_x86_64.tar.gz": "sha256:7e984d7e0122c4ed7c5219f67b632dac884c2d204f5249a64eee6d9fc1beeb22",
+            "eikona_0.2.0_Linux_x86_64.tar.gz.spdx.json": "sha256:f1ec5ac95cb00cd4aeb136b3c48d5d359a080b03fbf4610773a67852ae714c38",
+            "eikona_0.2.0_source.tar.gz": "sha256:87c871a5d48830d5e22485fee32a40829adc073dead97e1067684ec44339b08e",
             "eikona_0.2.0_Windows_arm64.zip": "sha256:fab777c158af8e377be043a96ea659dba841d037cf8460b5bac04b42fe7d1852",
-            "eikona_0.2.0_Windows_x86_64.zip": "sha256:7a8d9afa86af2207ba9eab6d8bca7f5ccc78fd64107a20d9ea8423bf513dcdac"
+            "eikona_0.2.0_Windows_arm64.zip.spdx.json": "sha256:9d1e7241f7edb85f61558fb9af20a1d0590377d749b55696ca2d02b9969d45b8",
+            "eikona_0.2.0_Windows_x86_64.zip": "sha256:7a8d9afa86af2207ba9eab6d8bca7f5ccc78fd64107a20d9ea8423bf513dcdac",
+            "eikona_0.2.0_Windows_x86_64.zip.spdx.json": "sha256:93b08cbcaef129fc68547e4d9d3fa336e2123cd245d09c050f92b776853c138c"
           }
         },
         {
@@ -906,12 +1359,26 @@
             "eikona_0.1.0_Windows_x86_64.zip.spdx.json"
           ],
           "asset_digests": {
+            "checksums.txt": "sha256:cd745aa9b04ded9ea8d555b24da53b9b579e5e5150c063080404553bd4290879",
             "eikona_0.1.0_Darwin_arm64.tar.gz": "sha256:2d6207f092c03033a9dc0ea8555096b3f46f77fe8ed98b4f04148351b0430a03",
+            "eikona_0.1.0_Darwin_arm64.tar.gz.spdx.json": "sha256:746313b4689c9fd0010c3d82ae4f9a0b7903d6ad8f15a13665e4e819976b5f90",
             "eikona_0.1.0_Darwin_x86_64.tar.gz": "sha256:b02e952bac15b92b1f5d45996fbfa7416367443d72cc4e739df10e8c698fb6ff",
+            "eikona_0.1.0_Darwin_x86_64.tar.gz.spdx.json": "sha256:2a83dafb0424868eec21df7426f81aeee33d857a8ed5e50faba74460ae0a8f66",
+            "eikona_0.1.0_linux_amd64.apk": "sha256:4341bbb32e7b2b3af66e72494281d775014dd76181136b472b49453b85474ffa",
+            "eikona_0.1.0_linux_amd64.deb": "sha256:5fe8f7673361c8884fb7cbebcadd90560cbf3de3504c58c4edc96e642e4376a7",
+            "eikona_0.1.0_linux_amd64.rpm": "sha256:7af50b0614e99ead403ffde29c5cf2c93a3fad9e3c5eb3580e9607427e1c4a86",
+            "eikona_0.1.0_linux_arm64.apk": "sha256:eda47da88818c7ebddfef4f727bd47fd9f8ff93f503a99a1e47c9097adaf9174",
+            "eikona_0.1.0_linux_arm64.deb": "sha256:5e5d38ac80228d541c5b509655ffb0cad0c9b65df51f0eadb1890e72c7e8aa78",
+            "eikona_0.1.0_linux_arm64.rpm": "sha256:ae9b355068b8c30554758d1711420ee900ead71e6b5c50b53fb72e2e655a390c",
             "eikona_0.1.0_Linux_arm64.tar.gz": "sha256:acac8f84f2afd22097e6f377ec4418632adc360a62e6c4be8e3f35eb909c4991",
+            "eikona_0.1.0_Linux_arm64.tar.gz.spdx.json": "sha256:54cf22463748af8a8e6ecd29d92d8129ab5016f38e2a156990896eec343fe0c7",
             "eikona_0.1.0_Linux_x86_64.tar.gz": "sha256:75f965e661b0b716163d106cdbb0e1d230dd297db0883b8e6066ab836666fda0",
+            "eikona_0.1.0_Linux_x86_64.tar.gz.spdx.json": "sha256:38891a8cec04c4fe520cec8279a4affb196556f8e97b4bdea9b84f6c04c74ecd",
+            "eikona_0.1.0_source.tar.gz": "sha256:03ac817640c5687eae4f0814d8e0e0ad6770fad411eccb667e6521db4374f0ef",
             "eikona_0.1.0_Windows_arm64.zip": "sha256:77299b6aeb561b19c080a568d471b1a1e728b7bf6443b06b16155173c4d18437",
-            "eikona_0.1.0_Windows_x86_64.zip": "sha256:c22f8609085acd780d8381822f2a9897effa2c127cae0de68b549c9ce811adf9"
+            "eikona_0.1.0_Windows_arm64.zip.spdx.json": "sha256:123d305c963568f8435e25f2936c2ce9e32ffd193fb9ae1ccc84bb82f794b23b",
+            "eikona_0.1.0_Windows_x86_64.zip": "sha256:c22f8609085acd780d8381822f2a9897effa2c127cae0de68b549c9ce811adf9",
+            "eikona_0.1.0_Windows_x86_64.zip.spdx.json": "sha256:58dd238541e4bf483a38dc27053aa00e2f8af62a1e2481e242ec2ab6f031c8b4"
           }
         }
       ]
@@ -950,7 +1417,29 @@
             "pinax_0.2.0_windows_aarch64.zip.spdx.json",
             "pinax_0.2.0_windows_x86_64.zip",
             "pinax_0.2.0_windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:925b62ae9048790158433dfe545ee01b567d3cf921174de48abcf88f9f201dff",
+            "pinax_0.2.0_darwin_aarch64.tar.gz": "sha256:a2bda63ba47ba0bf459e8d41955a82f1b026c581fe2e456980c74dba0d9bc2bf",
+            "pinax_0.2.0_darwin_aarch64.tar.gz.spdx.json": "sha256:0b5395d1c5841c5d0c151546cb55785446e374a769adfee03246d70126c1158d",
+            "pinax_0.2.0_darwin_x86_64.tar.gz": "sha256:8da6f237ef531ed0969f0da1a00ba17d88c91914233fa9def2b8abc743a141f0",
+            "pinax_0.2.0_darwin_x86_64.tar.gz.spdx.json": "sha256:bac3433479849ce4608435975cb52984ad4915b0a543b0bcaf0775d8c2c4a5c3",
+            "pinax_0.2.0_linux_aarch64.tar.gz": "sha256:eb8f8b7204da5d2ccd307b2ee895289a70eaa299b9ebc7211bf8c043d36da2c2",
+            "pinax_0.2.0_linux_aarch64.tar.gz.spdx.json": "sha256:e0feaf08e0d7e3d57b8552a1d770e6cd57f5eee2b6eef3b2e0da8cb7a25e036e",
+            "pinax_0.2.0_linux_amd64.apk": "sha256:971000a8823967c1dd81a33d27439874432b95967be92858390b9a4411424893",
+            "pinax_0.2.0_linux_amd64.deb": "sha256:6e01899411d109e82ede261dc40f1a7c9ede4304176b7a147e9ecbc6b832ce69",
+            "pinax_0.2.0_linux_amd64.rpm": "sha256:37052860863aca6822d79792b783d1155dd9cc0f2f1ac37c4038eecc9db062a1",
+            "pinax_0.2.0_linux_arm64.apk": "sha256:075ef4dea68aca49aaefe0ba9dfef6a58da4e12e3bb9291886aca979843d9b76",
+            "pinax_0.2.0_linux_arm64.deb": "sha256:26c9773a367b4e7de366ecf47a8ca76dca4ca125d105e9f156bad8b23e76a176",
+            "pinax_0.2.0_linux_arm64.rpm": "sha256:4aeb875b9bf76134a03adbbedf01e70ec4aecdd61b69f9995e4c3107d56d5894",
+            "pinax_0.2.0_linux_x86_64.tar.gz": "sha256:3503b86336579afc671e5405e90e0513db7cf1e16df291386710e034d70a006e",
+            "pinax_0.2.0_linux_x86_64.tar.gz.spdx.json": "sha256:9d891af78458bc6b67a45297d1468cc226a792b351e3ed8fbff523800a394e47",
+            "pinax_0.2.0_source.tar.gz": "sha256:1121daff6b02fb3f5a37b5f11ebb447b1c6b53584dcce7102b9232caf0038ddd",
+            "pinax_0.2.0_windows_aarch64.zip": "sha256:9197e914b48d390302ad2be9b341f9a66a436207384f5278f1c4ed0ea275d29d",
+            "pinax_0.2.0_windows_aarch64.zip.spdx.json": "sha256:018bdfb9eb714d0c6ab83081e43a2322c678c34e74b5d7a72106a6304a04f0fa",
+            "pinax_0.2.0_windows_x86_64.zip": "sha256:37e1a9afb62d2a2450bf16a401fa8259179774d3e700d9c31d1c63b6624c61e4",
+            "pinax_0.2.0_windows_x86_64.zip.spdx.json": "sha256:2faf409861301c52ff1eefcdf7cfea67a04a1ed2eb97e4ff015bab600ea2e622"
+          }
         },
         {
           "tag": "pinax/v0.1.8",
@@ -979,7 +1468,29 @@
             "pinax_0.1.8_windows_aarch64.zip.spdx.json",
             "pinax_0.1.8_windows_x86_64.zip",
             "pinax_0.1.8_windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:b9e9f4f1ece9677676944a35b012cf57d4d17c24bac4f011c1e935a297bdb098",
+            "pinax_0.1.8_darwin_aarch64.tar.gz": "sha256:0ab367cfeb77ca178ef38771174c28f6c0c03d53e96e6e7b173ccc196b832e2c",
+            "pinax_0.1.8_darwin_aarch64.tar.gz.spdx.json": "sha256:8dd394445f37b765d80ec5bcdbfcd19664d9b22f9db92934625eebf59d912af7",
+            "pinax_0.1.8_darwin_x86_64.tar.gz": "sha256:ed7d5ee80e4c559b94ebad05fb693e7239f9f285f30046b7311c95a75b7a1973",
+            "pinax_0.1.8_darwin_x86_64.tar.gz.spdx.json": "sha256:3984e7ca4e3051e31b77935edc5cfa8e5824c67b6c49c6adf7ebd0f907c703b0",
+            "pinax_0.1.8_linux_aarch64.tar.gz": "sha256:ef30174a89d47dace95fb8598d4d7ef2a804aef8c0f3942e945a85aea738d704",
+            "pinax_0.1.8_linux_aarch64.tar.gz.spdx.json": "sha256:2d00531bd969f6b0aa5ac0c5efae3a67a64e5a9ed4056515e922ec068947f068",
+            "pinax_0.1.8_linux_amd64.apk": "sha256:f9c646e0a744b66f02f7384f219c34cc517a93cf4e0503a27f3b41188dd68432",
+            "pinax_0.1.8_linux_amd64.deb": "sha256:a18aa9ff44c8c000dad25594d322051610909ddac8aa9cfd91151c1c38e7507f",
+            "pinax_0.1.8_linux_amd64.rpm": "sha256:81e17d35313d0764e0a093397cd4d1cd11a49f7a86c81e5187d2c154067d7126",
+            "pinax_0.1.8_linux_arm64.apk": "sha256:1ec64609f697c10825a273b3a5f589f5dd81d7507bd41caa4c6f0975b396cb61",
+            "pinax_0.1.8_linux_arm64.deb": "sha256:66ae904532f248d7dd91b761e4500126ec2a7bd02df46640274593c4bcc4874d",
+            "pinax_0.1.8_linux_arm64.rpm": "sha256:c0f392f24438e3b885f962e969d6da1e2fef8a7e0ea6b6502ab583e8e8204655",
+            "pinax_0.1.8_linux_x86_64.tar.gz": "sha256:0152eafaa85d5fb5efa11b468aca955a0b3686930bf6d3b11ca5f8e1688ed21d",
+            "pinax_0.1.8_linux_x86_64.tar.gz.spdx.json": "sha256:4e66d09a5c020fd6f2cfff7c2b172241b736be5c14ec35814e03e22ea242ec5a",
+            "pinax_0.1.8_source.tar.gz": "sha256:92c3041c9a03a2831e8eaf1ff88ed44cf585ec6b87f5ccdd1b4a09916ba2a7b5",
+            "pinax_0.1.8_windows_aarch64.zip": "sha256:4b75844a731be31228db36b53595993769d1ff8baa7adcc735639cb73dfb6a6e",
+            "pinax_0.1.8_windows_aarch64.zip.spdx.json": "sha256:e9f71b1f9364dc46bbd740630b8dd5d3a11e40cd209815498f2028a04a8e2468",
+            "pinax_0.1.8_windows_x86_64.zip": "sha256:73b883be1249d99885ee69d1729e15255e1e30c9d35f86a32778f59cf8074461",
+            "pinax_0.1.8_windows_x86_64.zip.spdx.json": "sha256:97a0b32a6580a8eda916107b3cec56688df4d02c18e5d9a310f4746be93d2efa"
+          }
         },
         {
           "tag": "pinax/v0.1.5",
@@ -1008,7 +1519,29 @@
             "pinax_0.1.5_windows_aarch64.zip.spdx.json",
             "pinax_0.1.5_windows_x86_64.zip",
             "pinax_0.1.5_windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:d0eb1c28b81b40f5b7f27d1c6534bdf8ff46f6b1b888a3909aad1f5eadc5c8a5",
+            "pinax_0.1.5_darwin_aarch64.tar.gz": "sha256:e75bafb7e8db18d268963049f9ffda0ff0de2a6f7b91a041696f19398b4c4c55",
+            "pinax_0.1.5_darwin_aarch64.tar.gz.spdx.json": "sha256:246c645a99568634cf48cee7d11136524e0f274fce532711456ff416f5be9635",
+            "pinax_0.1.5_darwin_x86_64.tar.gz": "sha256:568b93df476daef93f7bb971f56e7bdcc65a9ae92b1b6ca9d09ad691bf558e69",
+            "pinax_0.1.5_darwin_x86_64.tar.gz.spdx.json": "sha256:8224e4535fa81a5757882f92114ef5ebe3d3e5f1c3a23fbfe8de0c3e68c3ce99",
+            "pinax_0.1.5_linux_aarch64.tar.gz": "sha256:65db42c47eff22f8c26043ead29c7fbbe7f216890d78ef1a67fd8c30e9e5314e",
+            "pinax_0.1.5_linux_aarch64.tar.gz.spdx.json": "sha256:c1aaec36febaebe9891ec724897eee933435eeb20678a6dd262e7915d38bb4ef",
+            "pinax_0.1.5_linux_amd64.apk": "sha256:df048e3e056ea76193da4cde5697054050ff181be2e55a75c1ed55945c594935",
+            "pinax_0.1.5_linux_amd64.deb": "sha256:ee9b0209472305f80d57ef878be013cfaecdbd6030a9b2aec473d0e84d42005b",
+            "pinax_0.1.5_linux_amd64.rpm": "sha256:e818b76676fdc15772eac5b64b8d2e20d452fcfe11c80c716c65624a04b3b108",
+            "pinax_0.1.5_linux_arm64.apk": "sha256:fc5728024637f5a2ed47a41495b2971cf35a69635bf32a12b33e5a1d591498c8",
+            "pinax_0.1.5_linux_arm64.deb": "sha256:83d6b892ad65b8107c7210671e0cc2ca2386b27b4b47ac02794ca4289e7d13d5",
+            "pinax_0.1.5_linux_arm64.rpm": "sha256:2ddec11f76ce187820a2e1da0190990485172de13b81a4a94159950e9c4b7c01",
+            "pinax_0.1.5_linux_x86_64.tar.gz": "sha256:abb59f6e5199471ea48adf12f058b73fc8b0be1944f0454c2d9877b6eff2aa8a",
+            "pinax_0.1.5_linux_x86_64.tar.gz.spdx.json": "sha256:8ed5eb4a304ff983d95ad0a79cf7c101b698148ccda2032d8995e99748f3e322",
+            "pinax_0.1.5_source.tar.gz": "sha256:751ad1e8d531712db2f5e6553eef19a03484954ece0877d101d0b4443ecb7d0b",
+            "pinax_0.1.5_windows_aarch64.zip": "sha256:6c664207dd08620153a2a06713915a11f052401fa7bf1bc4538a4daf8203ed23",
+            "pinax_0.1.5_windows_aarch64.zip.spdx.json": "sha256:33b94149889634776a75ce14210acbeb51f9c26ca54d026bb584a2fa38f38e20",
+            "pinax_0.1.5_windows_x86_64.zip": "sha256:64c10e1ba15188b308d368c4d9b22b81ef5a1d9e94256866efcb822ad1aed68d",
+            "pinax_0.1.5_windows_x86_64.zip.spdx.json": "sha256:b5cd4e19197953e2ac23bc8de0e4993edb9016252486e1e42cd637c11a616be4"
+          }
         },
         {
           "tag": "pinax/v0.1.4",
@@ -1037,7 +1570,29 @@
             "pinax_0.1.4_windows_aarch64.zip.spdx.json",
             "pinax_0.1.4_windows_x86_64.zip",
             "pinax_0.1.4_windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:97973e8c1c5a9a5c7fa67b34e18fef5f6a1c92e4b41a0ce1aaafb617f736d5e4",
+            "pinax_0.1.4_darwin_aarch64.tar.gz": "sha256:17579ce5fa5621d327f8205cc4577132972f4f793c89d3f181f99bddb7b374f2",
+            "pinax_0.1.4_darwin_aarch64.tar.gz.spdx.json": "sha256:cc147c2bfa56af561c664f2c35e62e551f6a2fd73760a58f488c8dc730964f85",
+            "pinax_0.1.4_darwin_x86_64.tar.gz": "sha256:1646396ce7044b85085f58dd603dd4e0d7ca89889498aa4be9838e1e75d81cad",
+            "pinax_0.1.4_darwin_x86_64.tar.gz.spdx.json": "sha256:85143dc40a29e5a068dd688b71ff6ac35a1f177771ef99f7592c2e719f11c931",
+            "pinax_0.1.4_linux_aarch64.tar.gz": "sha256:a6079a2136924bed1bddb1de3345d218aa1cf2b01382c63c202700fc6b90bc03",
+            "pinax_0.1.4_linux_aarch64.tar.gz.spdx.json": "sha256:e42ef1d61fc6d761bf127eb2e446836c6b7882d5ba53fd1ec757bfd01ec29a2a",
+            "pinax_0.1.4_linux_amd64.apk": "sha256:7bd3b36d9ee05c3b972cef1084cfcf92bde1f38c1aa52f236cec6652dd31749a",
+            "pinax_0.1.4_linux_amd64.deb": "sha256:5ba0ce47f2992037b586355db60008fa415e26910f3ff2a8ff98b2f5ca7c1cc8",
+            "pinax_0.1.4_linux_amd64.rpm": "sha256:fec32bdf2e6f3118a33590d480aa9bb8c3c22b888c92d0d4ad1a15e4c15a2f60",
+            "pinax_0.1.4_linux_arm64.apk": "sha256:0087ba06d7a0a1d80d8c46ab5202bde99b8438c928c06c53a311782025019c38",
+            "pinax_0.1.4_linux_arm64.deb": "sha256:43397b3a3c07377c80d307c9590f2770fd4008729e9618a3d0f73e7774370b68",
+            "pinax_0.1.4_linux_arm64.rpm": "sha256:c0b9be7c4b7cbadd52a228afe09c9967afeaaf72e6875060872918b6a23916c6",
+            "pinax_0.1.4_linux_x86_64.tar.gz": "sha256:7f2ca17caf77327a4df3ab6a594d51cf1a69be4ec095df7ef38f1b69e8301e74",
+            "pinax_0.1.4_linux_x86_64.tar.gz.spdx.json": "sha256:f89509938b3c0d70ac658a0a99e5ca08d9a6b70fc89ee56343b80daa87666e8a",
+            "pinax_0.1.4_source.tar.gz": "sha256:8582998476e5a764d2d5ce04d4170bd192c3d238252a0476c974370d15f09661",
+            "pinax_0.1.4_windows_aarch64.zip": "sha256:884f8a6e5c975c9f2e0d076a5533d5e9ffd1c5e866b8a672c206128c8c8daeb5",
+            "pinax_0.1.4_windows_aarch64.zip.spdx.json": "sha256:7bdb26f973179d490faa00a57fee69f64b26549099f0a3cf2b7b96717b655186",
+            "pinax_0.1.4_windows_x86_64.zip": "sha256:1204042bbea1e753c62d154d06fa944a3dbb810eef3844d0bc263735b8af03e5",
+            "pinax_0.1.4_windows_x86_64.zip.spdx.json": "sha256:cfdeca1d17dc47f9735427100ccd30a5af5c4cb7129d3682268067ea365c007d"
+          }
         },
         {
           "tag": "pinax/v0.1.3",
@@ -1066,7 +1621,29 @@
             "pinax_0.1.3_windows_aarch64.zip.spdx.json",
             "pinax_0.1.3_windows_x86_64.zip",
             "pinax_0.1.3_windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:b78df19516899f73b21932e553a5d9534b2b0c99242ad147179f1f71ae140c62",
+            "pinax_0.1.3_darwin_aarch64.tar.gz": "sha256:5791c0238aeec108b321de91769372a05fd7c44a465199bceb3d34b19d9e6e79",
+            "pinax_0.1.3_darwin_aarch64.tar.gz.spdx.json": "sha256:38f1a31b84a2f783d5f2eca0bbbb6516abe7f75f9af25e5d6f7635b830b32477",
+            "pinax_0.1.3_darwin_x86_64.tar.gz": "sha256:6cc207c9cfc08d1f126c4323a9ba2b721af9771a4ba766e5f98dfe666c347751",
+            "pinax_0.1.3_darwin_x86_64.tar.gz.spdx.json": "sha256:6fea7b6593239d7cef76eb08e37f4e07539845c84f1083b9c5d69f853fadc844",
+            "pinax_0.1.3_linux_aarch64.tar.gz": "sha256:4df05f48e71e5e886867a0c92a3dae818dac40b84147d86b734c03c7deff09b9",
+            "pinax_0.1.3_linux_aarch64.tar.gz.spdx.json": "sha256:a2cfb70c608f10e931a130e5819fa30e3fc1168b3ae4a24d7a036cde6ebf3e75",
+            "pinax_0.1.3_linux_amd64.apk": "sha256:28b48ba9da564822d2182a64187f485e29558c3266272e60f504281b84bc787d",
+            "pinax_0.1.3_linux_amd64.deb": "sha256:c59d189090354f1091d0f9661a9f196ccfdbff034c63f69191bc5410c1c607eb",
+            "pinax_0.1.3_linux_amd64.rpm": "sha256:0830a4b05bfb8d76549c16d68894fdda6dd01d7ecec20540f25d56e8c954f6eb",
+            "pinax_0.1.3_linux_arm64.apk": "sha256:6ec8833e9c169f1b65b0b1555f5aeec9d17278762cd1831382ade38c49e1f285",
+            "pinax_0.1.3_linux_arm64.deb": "sha256:748c242d3acea24837d091803e570cc1af1987ebdb7171e78096ab5d68f2a7a6",
+            "pinax_0.1.3_linux_arm64.rpm": "sha256:33e0335c810bc6a6c1c6fce528d333c4e5e3174c9fc56c764a208c51c37036a6",
+            "pinax_0.1.3_linux_x86_64.tar.gz": "sha256:d3b53df2b8580da3d42444222b19d879878a6f0e650ed9255b32b96627208f9f",
+            "pinax_0.1.3_linux_x86_64.tar.gz.spdx.json": "sha256:74ffec5da1926d59e18d0fc699d0eb109001faa2a82133bc998b2315df642623",
+            "pinax_0.1.3_source.tar.gz": "sha256:bc3179d7ab3bc74cb1abdaee27e9f38a4620f4e08374a46b11d5821e59f936b0",
+            "pinax_0.1.3_windows_aarch64.zip": "sha256:b4193c0067817a17600c49c24ea3c5e37c753ba560ee2af9ee9c682ff8f3c41c",
+            "pinax_0.1.3_windows_aarch64.zip.spdx.json": "sha256:809d4b7adca705c11cc6c68c7eee50cfa29e93e3ef9fc8a04f38e1f1779b6ba2",
+            "pinax_0.1.3_windows_x86_64.zip": "sha256:c71acf76497f0351da980c9b02c05e26e76d65bde4e8cf4597ff9c1d5bf4071b",
+            "pinax_0.1.3_windows_x86_64.zip.spdx.json": "sha256:64e10974f6ebac60cabeea8e598340aab043663967901f06d9c27ccf20d5d581"
+          }
         },
         {
           "tag": "pinax/v0.1.2",
@@ -1095,7 +1672,29 @@
             "pinax_0.1.2_windows_aarch64.zip.spdx.json",
             "pinax_0.1.2_windows_x86_64.zip",
             "pinax_0.1.2_windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:91cffc14f639b9fe2d16612753dc9f4ab4a2d606497ffa7ed3cc81cea97a0f6c",
+            "pinax_0.1.2_darwin_aarch64.tar.gz": "sha256:6199597ee65825cc77d2bcb6dfe7a128e7ca89309de85c808342ac5ea95973c4",
+            "pinax_0.1.2_darwin_aarch64.tar.gz.spdx.json": "sha256:70551ad5c1a8b6e9077c6e3c569af5c7e69ff8db5c37bed10dff7654cb25fbac",
+            "pinax_0.1.2_darwin_x86_64.tar.gz": "sha256:6e3114c387670b1f4ff65fced0cd6869d9ab8f1f327034563fe5b2ca16d4e77d",
+            "pinax_0.1.2_darwin_x86_64.tar.gz.spdx.json": "sha256:e4eb776e519f1a58420c1ab69100c7f75db7c0d8b546483bb1678d8045e6cc52",
+            "pinax_0.1.2_linux_aarch64.tar.gz": "sha256:bddb8148e021998cb8001dda9f0fe18a0f613cba9cb0ac4ce075327db5473f80",
+            "pinax_0.1.2_linux_aarch64.tar.gz.spdx.json": "sha256:f60bfaa41d8222ba3538bd84f7b35a7aea61bde1e5acb5d4fea21a3bdd480e31",
+            "pinax_0.1.2_linux_amd64.apk": "sha256:7e614639167aed3a122cb9c653445d5ce013dbfbfdee83205b287c40ed0bd303",
+            "pinax_0.1.2_linux_amd64.deb": "sha256:3f1349127f2961ab58fdc1fced208fbd1582e76516cd71a0aa9e26fb277563d3",
+            "pinax_0.1.2_linux_amd64.rpm": "sha256:6e043421c2aa6ec1476fc9e1992da995daf0ee170486cc5bc4bf365802dc1a7c",
+            "pinax_0.1.2_linux_arm64.apk": "sha256:a4271778d5695bafefc9f0b4f767c08ec670b9db64a712261408e4f247e243ff",
+            "pinax_0.1.2_linux_arm64.deb": "sha256:c305d9dbc723a99fb5fed10f5f91df847bf6ad3528db1c254badf78490eba86d",
+            "pinax_0.1.2_linux_arm64.rpm": "sha256:7cebdb5247d85088fd97233747981dd2bed1a1903c9605b3027c21018e2a1a7a",
+            "pinax_0.1.2_linux_x86_64.tar.gz": "sha256:046328ba966b7bc1e41c7b53942e1ecbb42d0f3b7f811d086cb85e954615d1db",
+            "pinax_0.1.2_linux_x86_64.tar.gz.spdx.json": "sha256:381c26d8f9e80f3201ce3bdc0c5279e3286b6683f13ab09ec755e7ffae8bba79",
+            "pinax_0.1.2_source.tar.gz": "sha256:750672609bdb22e045df91cd946bd72f7339a67d471cb699158818ee06de40a0",
+            "pinax_0.1.2_windows_aarch64.zip": "sha256:7e036f5e1a706e5600d2a9a9103955c745e1efa903ef46956b83749c026196e3",
+            "pinax_0.1.2_windows_aarch64.zip.spdx.json": "sha256:40f5c7b4dc47902a10c665131e857d733cc37b19e2953a99f4762fcf6d5805eb",
+            "pinax_0.1.2_windows_x86_64.zip": "sha256:65a5c3ddc5b42441ce1b43390e1fffb4871c19c653121ff8365715c8d4eaacd9",
+            "pinax_0.1.2_windows_x86_64.zip.spdx.json": "sha256:cfcf930fc69dadb3ca16c64a426d884ac0aa4caf3c458a3fd86aa00ad347e2fd"
+          }
         },
         {
           "tag": "pinax/v0.1.11",
@@ -1124,7 +1723,29 @@
             "pinax_0.1.11_windows_aarch64.zip.spdx.json",
             "pinax_0.1.11_windows_x86_64.zip",
             "pinax_0.1.11_windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:7af70c819bd60cf1607351fbaf9cbf1bcc425191b56989789d4e015e98e0e3eb",
+            "pinax_0.1.11_darwin_aarch64.tar.gz": "sha256:0810f890ec423998774f9026c2b654eca9a20e2494699ce550a4976c910ace6e",
+            "pinax_0.1.11_darwin_aarch64.tar.gz.spdx.json": "sha256:b0bfe6dc7b72f74460725c4b8ff7f9c613189825d6a1d39c59cadc442aa7aa0b",
+            "pinax_0.1.11_darwin_x86_64.tar.gz": "sha256:5f8de47c388a72defb4a49d19d2536f2544994143a04269145b8419ee9772a56",
+            "pinax_0.1.11_darwin_x86_64.tar.gz.spdx.json": "sha256:1ec1cfe8e9c630e2ae6b34e96afba30e54a7db00c9a9ec24af42524f800eb2c5",
+            "pinax_0.1.11_linux_aarch64.tar.gz": "sha256:c606224c0f239a7804e70d2bce20666ff5df8f9749f7d66ec29e01bfb351a700",
+            "pinax_0.1.11_linux_aarch64.tar.gz.spdx.json": "sha256:b54925cc7652f524c611815b2578668e92b9952d41a1291d778cff401805391c",
+            "pinax_0.1.11_linux_amd64.apk": "sha256:0e3f2bb1c4bc5d0b62bc2cd4c4342e06ff8009d29b9fea664d97c5dc78a28e4d",
+            "pinax_0.1.11_linux_amd64.deb": "sha256:ea463b7e66ed40b85497c78f42531dadb61849c1ca5874ebb48f8ccffeedebda",
+            "pinax_0.1.11_linux_amd64.rpm": "sha256:e24364a2f97c88bdd5627223e3e90f8f811d3cd7e324e53f4b2990bd793c2479",
+            "pinax_0.1.11_linux_arm64.apk": "sha256:f2fd0bef031bed98a108e683cd6da18b2263750206112ac88ebe9fe55256f148",
+            "pinax_0.1.11_linux_arm64.deb": "sha256:686e71ffbae3f5521ae8a314335475b98d154cfd3ef129c6b4bae958db7b295b",
+            "pinax_0.1.11_linux_arm64.rpm": "sha256:44348fc9304cefaadb690568a755f3473ab86b0332b3ebbc605ba1539f1a27de",
+            "pinax_0.1.11_linux_x86_64.tar.gz": "sha256:3ce8a1318fa8db3e28c2de00eed39cd6afea5119f2167389edfb73a06a980683",
+            "pinax_0.1.11_linux_x86_64.tar.gz.spdx.json": "sha256:a76f95badf49bc1fd55c96f7824a258c14339e1d494ba8f770028538add2bb97",
+            "pinax_0.1.11_source.tar.gz": "sha256:3b3fae7b28a0f03de78cd94f30a763078dff873fbe74519ed27533cb0e2aaa81",
+            "pinax_0.1.11_windows_aarch64.zip": "sha256:46fbffda2be2b5dd229ba02dd60f61f6f25a77e511311c5e58a614ee80d140f0",
+            "pinax_0.1.11_windows_aarch64.zip.spdx.json": "sha256:1ea67e1a4fa88548eea549f7a47dc2ca6b43d3052048240dae5220b276a62993",
+            "pinax_0.1.11_windows_x86_64.zip": "sha256:0a3cc8a0cc1467d429e933720f30f0102fbaa5eac71e90a03603e3142f8a280c",
+            "pinax_0.1.11_windows_x86_64.zip.spdx.json": "sha256:d7935f6776d2faf9da1545a38e53f9bf493a6b03207efb521f73c7a6c5678b7f"
+          }
         },
         {
           "tag": "pinax/v0.1.1",
@@ -1153,7 +1774,29 @@
             "pinax_0.1.1_windows_aarch64.zip.spdx.json",
             "pinax_0.1.1_windows_x86_64.zip",
             "pinax_0.1.1_windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:eb4bca1749ddc5d075fd7313f14e452c89a871718e625a08f561272a1e2a97ad",
+            "pinax_0.1.1_darwin_aarch64.tar.gz": "sha256:043cc92929db10dd2325a2c2c55e22e82bd75e3e9cd31d7a5d953ec3721f19e7",
+            "pinax_0.1.1_darwin_aarch64.tar.gz.spdx.json": "sha256:184e0f48bbc2255d4fd6a76dd181047892e6dbd8a2d0356fbfc6dd85c613c185",
+            "pinax_0.1.1_darwin_x86_64.tar.gz": "sha256:9cc940fe58309bdfcd51e5eca4562ff1c0a8492c6bc6ae8f99ef3a7fa5e34a4b",
+            "pinax_0.1.1_darwin_x86_64.tar.gz.spdx.json": "sha256:ebd76ad553223c8bd9b0c4d977ab84ec345f11fbbcb7769ab0ceca894313138f",
+            "pinax_0.1.1_linux_aarch64.tar.gz": "sha256:c078fe3d0f8edbe0f610b803fd49d3859ff8170386da979e7abb7a03b2730a54",
+            "pinax_0.1.1_linux_aarch64.tar.gz.spdx.json": "sha256:7ced5f7985aa9d4ccdf73c9a1a451150b24b98b9f4e403604d445ab07a1c5247",
+            "pinax_0.1.1_linux_amd64.apk": "sha256:94be452483c3a4b596827520d8bf6a3f9570bddc5d78442b602f0a9560118ce8",
+            "pinax_0.1.1_linux_amd64.deb": "sha256:153b8c3480f76a1b11ef9efc29ef099092a127dde336572d0919e30a59ea5f6a",
+            "pinax_0.1.1_linux_amd64.rpm": "sha256:ff288d7f938c2c7ba9e2bef3337476712e0886217a200105af435f44a7035420",
+            "pinax_0.1.1_linux_arm64.apk": "sha256:b2e234142c5fdffcc5ce4ae0661b9c70d1ddc961bf6ea4e7b5736185aeea708e",
+            "pinax_0.1.1_linux_arm64.deb": "sha256:06c69888278448b27cbec3d9e599ba35dd533c1928c1f950bbda89b54147f2c5",
+            "pinax_0.1.1_linux_arm64.rpm": "sha256:a4a999b598cbbc87533df95e8874fb1edcec2574b84fdd1f44942660a0f74773",
+            "pinax_0.1.1_linux_x86_64.tar.gz": "sha256:410b5bc08ef7ee615d546db5b496eb573ec8a82b97c7ea3e4fa277320ed576b0",
+            "pinax_0.1.1_linux_x86_64.tar.gz.spdx.json": "sha256:55a158411b9b3c7950ad01bce1521a5766822c994e08a45ac21b7e8d60e63d6b",
+            "pinax_0.1.1_source.tar.gz": "sha256:4c79a9d68939ee2b0c3daa9acc6540579112def87838ed7a67cbc6e25eed4ee2",
+            "pinax_0.1.1_windows_aarch64.zip": "sha256:57569b270f8f6c9ffacc7f3fd29e1c65f907bf7dcd0df9228a4a7b7a1f4c4484",
+            "pinax_0.1.1_windows_aarch64.zip.spdx.json": "sha256:2ccd30067a01518ec41b4ab994ad185fa53407174b5545ee05c60e8b6ea4461e",
+            "pinax_0.1.1_windows_x86_64.zip": "sha256:4d10913d80ea2fad4006fa71bd7591ff92ac24a0c58ff6d04fc09ace7cfaefb0",
+            "pinax_0.1.1_windows_x86_64.zip.spdx.json": "sha256:db8705cea20db1172e91f75af765dae4f84b9bd8b6b5edfe3644d4abdf9f1a4a"
+          }
         },
         {
           "tag": "pinax/v0.1.0",
@@ -1182,7 +1825,29 @@
             "pinax_0.1.0_windows_aarch64.zip.spdx.json",
             "pinax_0.1.0_windows_x86_64.zip",
             "pinax_0.1.0_windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:e7373103e54dc5d7f60dd27d24d293b1eb32ae6fdaf37d49838a422e9278e3a7",
+            "pinax_0.1.0_darwin_aarch64.tar.gz": "sha256:b6a84f608cb513fd9d0e3931bc8b89d4604932b25a4e480ffb435a9725939a72",
+            "pinax_0.1.0_darwin_aarch64.tar.gz.spdx.json": "sha256:41fbce1b884d6f35e0464560b1e56a7497b3a9d32cf29143cb8bdb0e80c49125",
+            "pinax_0.1.0_darwin_x86_64.tar.gz": "sha256:a1bc2d5f47c81129e3fba85d04c9dd48358e4416f4a51fef9c026d24ac606ebc",
+            "pinax_0.1.0_darwin_x86_64.tar.gz.spdx.json": "sha256:c205f1e05af99194ae9dbbf519bb1edb7f54add8e9d7faf16b14c313107d1f08",
+            "pinax_0.1.0_linux_aarch64.tar.gz": "sha256:8cd835d01ac08d2bb8b4a1b4abdd7a26194c21c9a7e8c4244291ab5b1c7cea91",
+            "pinax_0.1.0_linux_aarch64.tar.gz.spdx.json": "sha256:0d06d31286db212b128f7a73fb5f1baedbfcfa76dc63684d516070e944b2d62b",
+            "pinax_0.1.0_linux_amd64.apk": "sha256:2aee12bbce5584b8df3a7b4184850c7bc94faf4ec14269d389027b73d0c29e7e",
+            "pinax_0.1.0_linux_amd64.deb": "sha256:7e325e7366276fce47b5cca8a5c1b66fd6166c5cb0b613c610236849c1db34f5",
+            "pinax_0.1.0_linux_amd64.rpm": "sha256:2bff2b05b7e96a1b8b3f4b9d06bb14d7d9ca803cbb393604c7056bbbc06fdc30",
+            "pinax_0.1.0_linux_arm64.apk": "sha256:80806bb3120e5e1ae25eaecc44d585ae3e35bbe8c1789bfccc2a5d8e1e17facd",
+            "pinax_0.1.0_linux_arm64.deb": "sha256:d99fcd1955b4da3895529a9122fa66b7116d6b6ad77771bd7f9944786dbf1fa0",
+            "pinax_0.1.0_linux_arm64.rpm": "sha256:31f1645871fa8998c4abb326c54e26fec307d07ad2a62d6a3c5eb01c159dec42",
+            "pinax_0.1.0_linux_x86_64.tar.gz": "sha256:542d759cd6764aad9a676cea723ae61304263b9c0fb3fc6be350be9ab79616bd",
+            "pinax_0.1.0_linux_x86_64.tar.gz.spdx.json": "sha256:03f4ddde02d34ea3e8889eed777854116bc4356977d176c9e89914aa03957235",
+            "pinax_0.1.0_source.tar.gz": "sha256:9da24f2479d6a131182c586c03cf5962c0f5ff4d988c105ee5a9fdd70ba897ff",
+            "pinax_0.1.0_windows_aarch64.zip": "sha256:a75c471466d47242c17c5476d310e9546d8a0d6360b446644d28ee21cf2ffc64",
+            "pinax_0.1.0_windows_aarch64.zip.spdx.json": "sha256:53accf3712449f9a11e29283d3421e3139be3fc738765211790b278236f2e59b",
+            "pinax_0.1.0_windows_x86_64.zip": "sha256:b37472fb1b70e4e0f0f7dfe5662e7ff50ffaf6282e8494ffe48375e3f4c9668a",
+            "pinax_0.1.0_windows_x86_64.zip.spdx.json": "sha256:d79a518ab4dfdadd04a54e0ad6e5729a4fc369898ec9536ea1aa3360ef625482"
+          }
         }
       ]
     },
@@ -1221,7 +1886,30 @@
             "checksums.txt",
             "config.yaml",
             "metadata.json"
-          ]
+          ],
+          "asset_digests": {
+            "artifacts.json": "sha256:c24ff6dccf7b4d07610adf7bffe4eb20d7c644952fffa904659a911da7a89edd",
+            "auctra_0.3.0_darwin_amd64.tar.gz": "sha256:6cfb884f20e5c18c0bff79a4f495d13932ccbcb22b2091c32a18c2c8c98367ab",
+            "auctra_0.3.0_darwin_amd64.tar.gz.sbom.json": "sha256:632a5e24b9bd506f81827c9aa4e13c8faa3a3e659f14cd48bf19a6ccce812f1f",
+            "auctra_0.3.0_darwin_arm64.tar.gz": "sha256:c4e577f50688579ea017f94a2b30f38f2fa545d3cfb3a1c800ecdb69c813ecca",
+            "auctra_0.3.0_darwin_arm64.tar.gz.sbom.json": "sha256:e17bd900b9f7826cd0b74815b3503e15deb885c233c3d57670d2308ecd03ad50",
+            "auctra_0.3.0_linux_amd64.deb": "sha256:2bf719211c3b823c458c30c06fb3c4766cfb2edd8183df79f546d88bdc8a52cb",
+            "auctra_0.3.0_linux_amd64.rpm": "sha256:5d173aee2efde7daa5f5ea5905460e391cde82acd153b74a918ccf03a0911150",
+            "auctra_0.3.0_linux_amd64.tar.gz": "sha256:2d9ad19abff7905ab7b5aa08d9a57cb606a113594bd543e1e243bcf6a47ab669",
+            "auctra_0.3.0_linux_amd64.tar.gz.sbom.json": "sha256:fbca506d91f1a261a2d666055f3d6554718727f3574642882473512ddbf99ab1",
+            "auctra_0.3.0_linux_arm64.deb": "sha256:c6469ff39712cd813abbbb63829bd375aba9118ac15183b86243a6ed682e341c",
+            "auctra_0.3.0_linux_arm64.rpm": "sha256:4479cf4d10425052292d40fa0ff22a0bb168cf30728d16eb549962dd739695ed",
+            "auctra_0.3.0_linux_arm64.tar.gz": "sha256:b07815b343f088a7372c2e3d0e36202f0529bb499bf0f0b66bde49479a890dec",
+            "auctra_0.3.0_linux_arm64.tar.gz.sbom.json": "sha256:69a3e5b303c89b7a0800a622e7fdb3cccada3ec07871eea6ee7ffa58f149eff1",
+            "auctra_0.3.0_windows_amd64.zip": "sha256:c5f430a9e65071a8700a31b094811c93a109520e5e5594b0a8443cbd5d23f17d",
+            "auctra_0.3.0_windows_amd64.zip.sbom.json": "sha256:5a53c3d168e520e949300e912fbb1e7876b5be01b70f33e8e382af58befd9963",
+            "auctra_0.3.0_windows_arm64.zip": "sha256:181e04c85006b00696c78767fb4a30d7a7eed265f5233132ee1e3a439d9f37d0",
+            "auctra_0.3.0_windows_arm64.zip.sbom.json": "sha256:72638bf34079e70c8e78a2814b7442f4c0d36b99a19a9b09fabc61adba2fbcc4",
+            "CHANGELOG.md": "sha256:2e8b354160cb80a6eb0838dc1391ee63c7dcfe34a22380757cdcef8b8bbda19c",
+            "checksums.txt": "sha256:9b0cf94e1da994b81d9e28384985872f7cd133cccfcfb551ffe9aec2e8d9040b",
+            "config.yaml": "sha256:9b87a99d8faedcce69244bd8715488c922b83fa68cd8caf8666976c5d1199906",
+            "metadata.json": "sha256:3f1a833ecbed51361a49e6df91e0e2d522f71079ac4d4c00718ece1107389387"
+          }
         },
         {
           "tag": "auctra/v0.2.0",
@@ -1247,7 +1935,26 @@
             "auctra_0.2.0_windows_arm64.zip",
             "auctra_0.2.0_windows_arm64.zip.sbom.json",
             "checksums.txt"
-          ]
+          ],
+          "asset_digests": {
+            "auctra_0.2.0_darwin_amd64.tar.gz": "sha256:699f4130915b81144efde3cb56b94fe18229da96a98cfe3bf8373da4c260e760",
+            "auctra_0.2.0_darwin_amd64.tar.gz.sbom.json": "sha256:4e105d33383059cf0334f5c0c19ceff04750f1b1788ef0f44b9bb718c6be2a3e",
+            "auctra_0.2.0_darwin_arm64.tar.gz": "sha256:2d55700f762b5b5740bd1c04e9dc881d66e7eb293dc68472e911d3c1f5aee1a8",
+            "auctra_0.2.0_darwin_arm64.tar.gz.sbom.json": "sha256:8b9d74da6d1e3969b0065f01a5c47df8dd55c498b9f75b997e82652c630b9990",
+            "auctra_0.2.0_linux_amd64.deb": "sha256:a3900aa16b654221d150d2b438c3eb91cad9408d80ff6222befbe56ae39bdc9a",
+            "auctra_0.2.0_linux_amd64.rpm": "sha256:70fea6b378c601d6777928a037fef4ea53af6f85ae59a7af76f87db4b1e93258",
+            "auctra_0.2.0_linux_amd64.tar.gz": "sha256:184e15d72b2e112aa1f96d2fb850a6cbcb7a117c687f4cb46bb8407284582d8c",
+            "auctra_0.2.0_linux_amd64.tar.gz.sbom.json": "sha256:783bed93f3d788778b2ca4e44ce31516839aca84683c25b02230cba2de83474e",
+            "auctra_0.2.0_linux_arm64.deb": "sha256:2219be4937639d7da3e5413090de83b02c25281c6c3c98edcded1129bb48d625",
+            "auctra_0.2.0_linux_arm64.rpm": "sha256:28c0d3099fb89af92bf049de82c900d90e480906cf2a467186662c3d9698ee65",
+            "auctra_0.2.0_linux_arm64.tar.gz": "sha256:6725d5eaaae454de8f33db3999a246c20e944135928654345f979845be5738f0",
+            "auctra_0.2.0_linux_arm64.tar.gz.sbom.json": "sha256:d64b02df4f044e8451df8849555b20d10ffdea639155e5480265ac218a07d012",
+            "auctra_0.2.0_windows_amd64.zip": "sha256:2548e3fbe90ae627c4f52c48ba551d7ca106d2df566f131a5cb3be4a86817ab3",
+            "auctra_0.2.0_windows_amd64.zip.sbom.json": "sha256:11318adcd7f022b73adebb2d8357776c3faf4319685afeddbbcf9ca85f9ba48e",
+            "auctra_0.2.0_windows_arm64.zip": "sha256:b31ce60dba7c0856b50703af8e035e29a40784f0ae1b0e55f06d611c824ed1f2",
+            "auctra_0.2.0_windows_arm64.zip.sbom.json": "sha256:e047acba9e3f470ad57711818b22c305f3f225aef4509fa4001752ce6e69cdf4",
+            "checksums.txt": "sha256:e135e39877c4d698106196c21b0e1533d8cf0ddab92a31d880ad2432d621f2d7"
+          }
         },
         {
           "tag": "auctra/v0.1.5",
@@ -1277,7 +1984,30 @@
             "checksums.txt",
             "config.yaml",
             "metadata.json"
-          ]
+          ],
+          "asset_digests": {
+            "artifacts.json": "sha256:863edf46381ec7c464e769700d5452fc1d1ba6d1cb4e453f0f75332ce2266505",
+            "auctra_0.1.5_darwin_amd64.tar.gz": "sha256:bad932bdfd24bf4f8b2fc976d1e9410f63b2bb02396e4159cca0603241d2ebac",
+            "auctra_0.1.5_darwin_amd64.tar.gz.sbom.json": "sha256:5f41ec5f9eacafcffe470d3f53369cc93e4afed2123c8d9043ca32d20d8cf6b9",
+            "auctra_0.1.5_darwin_arm64.tar.gz": "sha256:01e60f7370d55e039d3df56c098b83384ed35e2e741b8273a938b7c1c61bfef7",
+            "auctra_0.1.5_darwin_arm64.tar.gz.sbom.json": "sha256:3b4261c020edca88664e965edfe9d7473fdad88369404e3ff62ca121d31234da",
+            "auctra_0.1.5_linux_amd64.deb": "sha256:ce602cd7fe4fcc74bcc78022507fd3ba709d7b4d778e447a751a9563207b6abf",
+            "auctra_0.1.5_linux_amd64.rpm": "sha256:93f088f8c08589c0cb59ab9cc12f1144223cb25494382783377f6fadc3593dd0",
+            "auctra_0.1.5_linux_amd64.tar.gz": "sha256:b74980e006ad3275dc847a6c8778b712717453b977d2e0553feef6078f09840f",
+            "auctra_0.1.5_linux_amd64.tar.gz.sbom.json": "sha256:7b45bbf5704170bb4280bd2a947eaef98c5203dc592c75744ca8c2713a9482d1",
+            "auctra_0.1.5_linux_arm64.deb": "sha256:9fed590e289dfde26f11b2dd118a8540b312b10cfdbd958b0883fa27589bef59",
+            "auctra_0.1.5_linux_arm64.rpm": "sha256:a5ef19d57506d71e40e0d44a28b8ab9f635e2d65163fc5564e8a561c31621188",
+            "auctra_0.1.5_linux_arm64.tar.gz": "sha256:aa1fbc48e34faa7fac3e404ee454a843b6fb51a604092d6dcb404fbd2905458e",
+            "auctra_0.1.5_linux_arm64.tar.gz.sbom.json": "sha256:6eb68f401df472b047bf5a78a912d64205afe54b5882e58898fffe0dbbc975ef",
+            "auctra_0.1.5_windows_amd64.zip": "sha256:71b127c058574de676d104fe6c2e41fd653d1efb491c911aa12473240513ca43",
+            "auctra_0.1.5_windows_amd64.zip.sbom.json": "sha256:866a4e9fd7adc8838b76ee4a8df1366b66e69beb32ba1789828ed394995bedab",
+            "auctra_0.1.5_windows_arm64.zip": "sha256:3b600c29eec330c62563e0e44cc93f157082952d59bab986c5223df615beb37c",
+            "auctra_0.1.5_windows_arm64.zip.sbom.json": "sha256:d801a4a33384d7a1068d96bc08e3ccfb2b1198e20b116f6f080cbedd9b601fa7",
+            "CHANGELOG.md": "sha256:2edc1e5834bf80362bb4add7ccea257e011b8fb553f0115f49676fbe85759131",
+            "checksums.txt": "sha256:59f381a242aeacebfb9174288265270afe39e396743ae0f93e7ec35cd9bd59ae",
+            "config.yaml": "sha256:9b87a99d8faedcce69244bd8715488c922b83fa68cd8caf8666976c5d1199906",
+            "metadata.json": "sha256:fdb7f7943df8b1d960e041a22d9f7a75139652a1508734a204b786d46735e30d"
+          }
         },
         {
           "tag": "auctra/v0.1.1",
@@ -1307,7 +2037,30 @@
             "checksums.txt",
             "config.yaml",
             "metadata.json"
-          ]
+          ],
+          "asset_digests": {
+            "artifacts.json": "sha256:76d643698a665997e7c5eb709ece4dcea5cc7dc197259cbb340009c95cea9860",
+            "auctra_0.1.1_darwin_amd64.tar.gz": "sha256:f9b216a22aeeb4c012c6a97c09bea3968ae5ce15cd82511c66ff1457e77a8544",
+            "auctra_0.1.1_darwin_amd64.tar.gz.sbom.json": "sha256:99e00229cb0229d47901efe658132d64097934bb956975e455dbff57fabfc525",
+            "auctra_0.1.1_darwin_arm64.tar.gz": "sha256:bbd8c01b74d38ed825351cbbeff3d979315a032355854d0b14dc9358dde7b975",
+            "auctra_0.1.1_darwin_arm64.tar.gz.sbom.json": "sha256:4f425db1be823d5d8cd9b5458e1dc9ea209d88710a9f41ac25dbcde9e6b7e35a",
+            "auctra_0.1.1_linux_amd64.deb": "sha256:99e0339fc12300b2ab546da1fd3632a04ecfb7101aafc006940c1de69fa836bd",
+            "auctra_0.1.1_linux_amd64.rpm": "sha256:9bfbf8c26b57c192ef196dcd1f765759c5bd37def4261080d312072362acfb8e",
+            "auctra_0.1.1_linux_amd64.tar.gz": "sha256:1b88e1d28f88cd82378096dbeadd56579684083d4be29f109eebd491e384aaba",
+            "auctra_0.1.1_linux_amd64.tar.gz.sbom.json": "sha256:2c67e34559a754dcfba663c561948d9c0b5c21a0d65f60844b29d1bec507c652",
+            "auctra_0.1.1_linux_arm64.deb": "sha256:2a4c53294beb4600081907330c195632fc74e12d5880d9a47d8f21e2dbc59af9",
+            "auctra_0.1.1_linux_arm64.rpm": "sha256:45478a25fb976f5d1997be4d088c775e96d1deb610bd202002736175b7c7ac26",
+            "auctra_0.1.1_linux_arm64.tar.gz": "sha256:2663a7a9423834ca96eae8d9de6a4989bc33dd0fe809ae63179cfc5f28942e46",
+            "auctra_0.1.1_linux_arm64.tar.gz.sbom.json": "sha256:fa0c0124cafbf718dfff62a68ec1bb05cb9b45e82261718360d9a8e6e423011a",
+            "auctra_0.1.1_windows_amd64.zip": "sha256:df0b8d3d183476ec793dfa3b548db65f3d7e522d6eccd62a03ce2898cbed014f",
+            "auctra_0.1.1_windows_amd64.zip.sbom.json": "sha256:62f746a04a5ce9a78600791931864da332a174aaf1e7ee135862b4e69d97593b",
+            "auctra_0.1.1_windows_arm64.zip": "sha256:94a36d5239bcab6338c29abe449b505e981e44cb8a0bf851aac6709e28f69841",
+            "auctra_0.1.1_windows_arm64.zip.sbom.json": "sha256:ae60ba9cee11bd266833aae5429a3641cc586e1fd149360af5ae8f9da6a1a608",
+            "CHANGELOG.md": "sha256:d44893050c32f55d47286b9493e10a04caf058d3a9f5662abaa9e2b51a54181f",
+            "checksums.txt": "sha256:34459c55b9a3500120cba207fec5c2dc5b2e99d71a038d5876ae020799e6b43a",
+            "config.yaml": "sha256:9b87a99d8faedcce69244bd8715488c922b83fa68cd8caf8666976c5d1199906",
+            "metadata.json": "sha256:c6d9478d8b5bb5fb6bd61f45ff5e941484e8c517b854aed63f377a3be1c0889a"
+          }
         },
         {
           "tag": "auctra/v0.1.0",
@@ -1337,7 +2090,30 @@
             "checksums.txt",
             "config.yaml",
             "metadata.json"
-          ]
+          ],
+          "asset_digests": {
+            "artifacts.json": "sha256:09791df9e1966db2dbbc7aabe17fd2ec5b13fa254ccf937d369f92212697b93a",
+            "auctra_0.1.0_darwin_amd64.tar.gz": "sha256:60c02520a102f8e140740784e0ae7e6f5c282a17b81d7d29159df10996b1873c",
+            "auctra_0.1.0_darwin_amd64.tar.gz.sbom.json": "sha256:70d418f715415c59e3aceb38027cde84ee02f780b8f4fe0ddb62ee5d6f5bc061",
+            "auctra_0.1.0_darwin_arm64.tar.gz": "sha256:2a205994a41fb6cc06f9ca35fd670b4beb1bc27478cd041d2ae0043fd72d62cc",
+            "auctra_0.1.0_darwin_arm64.tar.gz.sbom.json": "sha256:26ccee6371de55bfbfb1bb731d098e6f3fc86bbd46115fd9c17f4735a91d5139",
+            "auctra_0.1.0_linux_amd64.deb": "sha256:fa7d0e04c5e3b85da65a1cc03b0c82bbf3bdc21e9aa6c79e26b6c3b9dc902543",
+            "auctra_0.1.0_linux_amd64.rpm": "sha256:c079a22173b307db92b4913acee4b16d2f5ba469affc70747a70f213a53345f3",
+            "auctra_0.1.0_linux_amd64.tar.gz": "sha256:3293f2db29baa9ca44ecc4548a921bbdc88f1a9f66ab96435a2121cddb255e04",
+            "auctra_0.1.0_linux_amd64.tar.gz.sbom.json": "sha256:821fd4fe477cff456d5adc05bebf1d947809bd4dbe151a79256ac12b3d076b14",
+            "auctra_0.1.0_linux_arm64.deb": "sha256:ffa0ccb99bbeaae71ffc7c05e4348aa7b7f3669af8da52376ce3bea7d5aed1fb",
+            "auctra_0.1.0_linux_arm64.rpm": "sha256:893bbacfcab2dbee60ed2ad113e20246597fc3618584231ee72f23648b6338cb",
+            "auctra_0.1.0_linux_arm64.tar.gz": "sha256:caca773501f622614d0d82d925ec61e9ef25837d3be996ce3fb32fa7c19f00bf",
+            "auctra_0.1.0_linux_arm64.tar.gz.sbom.json": "sha256:23badc8053a51224d133849250e9842bbdd4d0cc69f1af9a02b5ff1fa8c09edc",
+            "auctra_0.1.0_windows_amd64.zip": "sha256:f5f281eefcd0c259a1efe37af49cf0e8cbb481a7ac3350593d35a40cb260769f",
+            "auctra_0.1.0_windows_amd64.zip.sbom.json": "sha256:4f27ff6969305f2e0536fb27aa5950142951a013386baf574dc637dcfc9c7a33",
+            "auctra_0.1.0_windows_arm64.zip": "sha256:e59c86c5b8ec7638975a0cba31d07e198067b0b498d7f02e5082331b5f776c8b",
+            "auctra_0.1.0_windows_arm64.zip.sbom.json": "sha256:e85c09b171f16e0da47287942fc11e19d4a16f5b43dd538adb7df1121aa83030",
+            "CHANGELOG.md": "sha256:e175051b68f1b5ad4eb89d92395e39d2b19354eddf26846fc353bee81be7e43e",
+            "checksums.txt": "sha256:ab37e632b335d39bdd55e11e820ee15cc82a5f90113afbdf42ae2b402cfa03fa",
+            "config.yaml": "sha256:9b87a99d8faedcce69244bd8715488c922b83fa68cd8caf8666976c5d1199906",
+            "metadata.json": "sha256:4fd4106ed116f29202407faeff2d5970efefb1a6255b7de037ec751aa35e38c5"
+          }
         }
       ]
     },
@@ -1358,7 +2134,12 @@
             "checksums.txt",
             "scaena.spdx.json",
             "scaena_linux_amd64.tar.gz"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:9f01589a2c10f43cadfc789afa68f2460d8a7c5dcc851c4b92ca7d207c927aeb",
+            "scaena.spdx.json": "sha256:fd784d9d8cf25e0c27d306aa4069bdaca1065dd4858a67ee55c0180269b9d0aa",
+            "scaena_linux_amd64.tar.gz": "sha256:db5ff3f54c168614adaac2152b704263093428cacb81d03cf0a0bdc6c074072a"
+          }
         },
         {
           "tag": "scaena/v0.1.2",
@@ -1370,7 +2151,12 @@
             "checksums.txt",
             "scaena.spdx.json",
             "scaena_linux_amd64.tar.gz"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:3c07598a8c000c00575e756a829a24c0d044042b88216e8c98490581bed5a980",
+            "scaena.spdx.json": "sha256:ebd5313126278f852ebce74cdf7b5125107c79f839f8081e4d24d2947a3ad7f4",
+            "scaena_linux_amd64.tar.gz": "sha256:60bc2f88d99511954672969a789f6f8cb85ee740fb50da7b88614e66f597ba12"
+          }
         }
       ]
     },
@@ -1395,7 +2181,16 @@
             "gitea-mcp_Linux_x86_64.tar.gz",
             "gitea-mcp_Windows_arm64.zip",
             "gitea-mcp_Windows_x86_64.zip"
-          ]
+          ],
+          "asset_digests": {
+            "gitea-mcp_2.3.3_checksums.txt": "sha256:fe060a723d8ab9eb9139a20cc191ea8069f3a4e4bd8f2387144d55c50201721e",
+            "gitea-mcp_Darwin_arm64.tar.gz": "sha256:2f2b4fe6ead506c11c5dac0c2e02699a4318e27e0fff330568b67f58d3a5362d",
+            "gitea-mcp_Darwin_x86_64.tar.gz": "sha256:abea59586e6b7396716de3dabbbf4ceac526f1a8d04db3af8d8a7cb40cd410af",
+            "gitea-mcp_Linux_arm64.tar.gz": "sha256:74421359857a897db2ce38e24d99c2e170cc34834740d3c31f7fd2abbbc0ef60",
+            "gitea-mcp_Linux_x86_64.tar.gz": "sha256:aa7bccd6e9a9a6ba8e80afd285fff873d19ab0e1242e6c0a300a4a56178afc20",
+            "gitea-mcp_Windows_arm64.zip": "sha256:899e06cdfa6a77b06eb33de79ce87b0ceac236642d6af5728c4b0082797da8fa",
+            "gitea-mcp_Windows_x86_64.zip": "sha256:282d85bfde1b4cd3d46fb87c532421306f553c3eacd2bcc233575d3e1e326135"
+          }
         },
         {
           "tag": "gitea-mcp/v2.3.2",
@@ -1411,7 +2206,16 @@
             "gitea-mcp_Linux_x86_64.tar.gz",
             "gitea-mcp_Windows_arm64.zip",
             "gitea-mcp_Windows_x86_64.zip"
-          ]
+          ],
+          "asset_digests": {
+            "gitea-mcp_2.3.2_checksums.txt": "sha256:51776a3fb61d00e179d42a7f618c8b8e7be0de3c053b2f8bbfaee4d58b9d479b",
+            "gitea-mcp_Darwin_arm64.tar.gz": "sha256:da0ba8efc3cadbd6972fd050a6f37fbc0d5e4640b984ead73f57e4284b7dd3e8",
+            "gitea-mcp_Darwin_x86_64.tar.gz": "sha256:0aa3d3809a4ed5b0f82ef2235e742e8a71ca9a63274b72022de1e11c5c7d1b95",
+            "gitea-mcp_Linux_arm64.tar.gz": "sha256:8db5930e2d69b9bb5bd9ea37799452d3a97e677d88d39c48c3a167fac733a89b",
+            "gitea-mcp_Linux_x86_64.tar.gz": "sha256:ab8d459b7017851b475c064775e5ad48c734f945e21c220c485093da69ceb2d0",
+            "gitea-mcp_Windows_arm64.zip": "sha256:7507f7139938d5418546b45e86f1e40e0d8c03cb2ff42e8c35d2c60b2a2d3a17",
+            "gitea-mcp_Windows_x86_64.zip": "sha256:6fef658d7ec3952cdc30443a99b05cd2504f0da849818338bdc7dc7ea1c570b7"
+          }
         }
       ]
     },
@@ -1449,7 +2253,29 @@
             "sonora_0.2.0_Windows_arm64.zip.spdx.json",
             "sonora_0.2.0_Windows_x86_64.zip",
             "sonora_0.2.0_Windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:4362d24199201272a284cf4788a3e3cb42af1d829d1c2c5358d0b98804d7ef25",
+            "sonora_0.2.0_Darwin_arm64.tar.gz": "sha256:6c1404486b1d4d14a42af1db9180c03a25986aa319a0bf99d93e70e6296b7036",
+            "sonora_0.2.0_Darwin_arm64.tar.gz.spdx.json": "sha256:3b306b413c2fda28b9e827a6731834168806cf1e1bb90e1505e29afa539d08ce",
+            "sonora_0.2.0_Darwin_x86_64.tar.gz": "sha256:8abf00873a306b48d51397b4a85cef725d621bc47b4bc27c1855eb5e09914a8c",
+            "sonora_0.2.0_Darwin_x86_64.tar.gz.spdx.json": "sha256:a84be4a9cdef89190699c449b64943f3b0b7db519dc68d4b7877e99be280ae81",
+            "sonora_0.2.0_linux_amd64.apk": "sha256:913a46e7e410304ee795aa9c9fdbc19f7f524e1eb1ed0ef2b0e66e79b4a65638",
+            "sonora_0.2.0_linux_amd64.deb": "sha256:1c8eb58dcd460e6a010e149da304ecac2bed24bfb1b85ca42e9519f46ba9e423",
+            "sonora_0.2.0_linux_amd64.rpm": "sha256:326fcaaa43554a6a10accb33685ca13c8373386c56070d50ddb3a1b28976305c",
+            "sonora_0.2.0_linux_arm64.apk": "sha256:0079a2b4564da0805290f83d34c051068d26706a6aca792ba95831ef8e02b3a1",
+            "sonora_0.2.0_linux_arm64.deb": "sha256:0da02980ef536ce6d526a1c8eb1343f9253d785aedd3958ccb285c4caf706f3d",
+            "sonora_0.2.0_linux_arm64.rpm": "sha256:f21348f7caa99fe8aaaf138e5dc04f74a8e25782bcaecd7db6ebfb4c5a3033f6",
+            "sonora_0.2.0_Linux_arm64.tar.gz": "sha256:c7daf21415e6818be9ff67e93f71581e727cca7074b7fa9214ef3ba6d3e64e2e",
+            "sonora_0.2.0_Linux_arm64.tar.gz.spdx.json": "sha256:82e661c054997894443a311b18cd50ca04c18ef6a161eb8e3680b379d58f1609",
+            "sonora_0.2.0_Linux_x86_64.tar.gz": "sha256:8ab2c307e561327a1a04b089edefe1cdaffb23db252000b26ef264ad06a64db4",
+            "sonora_0.2.0_Linux_x86_64.tar.gz.spdx.json": "sha256:fb346e36e54055ea0e2d07052fe6181233fff9b2b874dafa7d1747534c55ef08",
+            "sonora_0.2.0_source.tar.gz": "sha256:22bd684c015ce7d5c7c87d46dd9f48ccd33736d16543fbbe01261eda651d01e4",
+            "sonora_0.2.0_Windows_arm64.zip": "sha256:627a57914f20809b3c33c79ae5c6135d8164834281f469827f1739f731ddd1d4",
+            "sonora_0.2.0_Windows_arm64.zip.spdx.json": "sha256:0b37c4d2360824b0d001af17a83b31179edfef7e13c08249a1d83a59d5451fb8",
+            "sonora_0.2.0_Windows_x86_64.zip": "sha256:f2e2466edb39dc61ed47a666f14957ac62a062fe5851a11922a8174ccf07bc1f",
+            "sonora_0.2.0_Windows_x86_64.zip.spdx.json": "sha256:0f4e06accfdaf005b4ce34fd72e2e74e06ef5fb3972b5174f684113bb971fa49"
+          }
         },
         {
           "tag": "sonora/v0.1.0",
@@ -1478,7 +2304,29 @@
             "sonora_0.1.0_Windows_arm64.zip.spdx.json",
             "sonora_0.1.0_Windows_x86_64.zip",
             "sonora_0.1.0_Windows_x86_64.zip.spdx.json"
-          ]
+          ],
+          "asset_digests": {
+            "checksums.txt": "sha256:e00bbedc6501132d1c3615119200e2e68eb4b3af16a831dfc2fd055b59265ed4",
+            "sonora_0.1.0_Darwin_arm64.tar.gz": "sha256:e817a703e18d905ca6aa4f95b97bf3f10e352fda8cb1cbed4a2dad2b4336e94c",
+            "sonora_0.1.0_Darwin_arm64.tar.gz.spdx.json": "sha256:e1d8555413e9f175729255b76a1b2e5bc8f66d59796a2cf2eed1d2ec9436769d",
+            "sonora_0.1.0_Darwin_x86_64.tar.gz": "sha256:1767289e754435c54b2e1840b6acbbb7c79ea610305d8d491ff0444ecff843c7",
+            "sonora_0.1.0_Darwin_x86_64.tar.gz.spdx.json": "sha256:8dbd37646a17f67c234ff34b9f60609c772cb63c0f83c4260702144714d2a55d",
+            "sonora_0.1.0_linux_amd64.apk": "sha256:8900bc258a8ea8026f1c26fb50b17e7094a5d01fa49ca4ec712a0f45b3fcbfc1",
+            "sonora_0.1.0_linux_amd64.deb": "sha256:3902b9341bbc76a292aaa2d62bd3c716ca291c487e2272dff78b1fc374de46c8",
+            "sonora_0.1.0_linux_amd64.rpm": "sha256:9cf0d854e20f62403e6ef25862fdbdb3f2763e1094096e145ef281e3b4ec7b5d",
+            "sonora_0.1.0_linux_arm64.apk": "sha256:0d7a324740be40a8d0dddab0380508ed5cc1a75167bd6ad1c825b3d378d2286e",
+            "sonora_0.1.0_linux_arm64.deb": "sha256:fb23bd9b0790e5684f9898eea674ff792cbe5c39ad1d87b7f233557e67bd3b5e",
+            "sonora_0.1.0_linux_arm64.rpm": "sha256:260057bc80698c4737c4a9ddfe28539c622922d472479ae88fc0c0fbc05bac01",
+            "sonora_0.1.0_Linux_arm64.tar.gz": "sha256:4682343083d5bff7cef32b26960fb93bdae77b16c2acb5ed18b645b9d8d34738",
+            "sonora_0.1.0_Linux_arm64.tar.gz.spdx.json": "sha256:000b268f9e92ccbf6d8b4d21f2f2df88c576cb3dcd8df946c3a8f30956ddb83e",
+            "sonora_0.1.0_Linux_x86_64.tar.gz": "sha256:50fb49d272bf80d6a72ee9c96726329e78d2e39afab29e006c55333a1f6e3c9d",
+            "sonora_0.1.0_Linux_x86_64.tar.gz.spdx.json": "sha256:6df6e9091073d222e556919dd036353d935e459b856e85fc99e04ff9ff4cfde9",
+            "sonora_0.1.0_source.tar.gz": "sha256:dccd105ecf348daf5835239ab318ba10904478b710db1a396915bc11591e8b60",
+            "sonora_0.1.0_Windows_arm64.zip": "sha256:0e961ba223308ec6c3268fac17710fdc7da7a63d402ece72500993fd16f96506",
+            "sonora_0.1.0_Windows_arm64.zip.spdx.json": "sha256:1db57b2f696471890cd8f3affd91b0d6e200f1a59cd5e8d41ae2031800d67d7a",
+            "sonora_0.1.0_Windows_x86_64.zip": "sha256:489720b01e3f50ed14b142164914f592aa894c846f84800ce28a852759b57680",
+            "sonora_0.1.0_Windows_x86_64.zip.spdx.json": "sha256:4f2166444194b266d195f06a6900d8b8c4b43cbb6d5dcdcf4d3920306b01bcf0"
+          }
         }
       ]
     },
@@ -1510,6 +2358,21 @@
             "anatomia_0.3.0_Linux_x86_64.tar.gz.spdx.json",
             "checksums.txt"
           ],
+          "asset_digests": {
+            "anatomia-server_0.3.0_Linux_arm64.tar.gz": "sha256:6a7cf4f2ef50a544f4e1165fa15c5b91555d07b00e10a09d67ca2347dffd43be",
+            "anatomia-server_0.3.0_Linux_arm64.tar.gz.spdx.json": "sha256:064053b59b8fd46bb30da45780d4a4be3344c79584207c743e58923d648c7875",
+            "anatomia-server_0.3.0_Linux_x86_64.tar.gz": "sha256:ba490838e2d379da40edad9584ff17f10cde451880914b3f2ae1a40f947a3a61",
+            "anatomia-server_0.3.0_Linux_x86_64.tar.gz.spdx.json": "sha256:76521348ddcf054d049d9520e9fb988e873aded12930e4710d7c330a79dc4cf6",
+            "anatomia_0.3.0_Darwin_arm64.tar.gz": "sha256:0553f252d04e3ad2af1c677e0eb8d5d591e25840f8061e8ceac321baedaa549d",
+            "anatomia_0.3.0_Darwin_arm64.tar.gz.spdx.json": "sha256:093670709ce8506db8afeb22705866baac8d1d519478d276dacb3653e102bb34",
+            "anatomia_0.3.0_Darwin_x86_64.tar.gz": "sha256:406abef0dbec91fdf0734e5858f28eec90a7fd60bfdf04a9f221c024012f4041",
+            "anatomia_0.3.0_Darwin_x86_64.tar.gz.spdx.json": "sha256:87cf48b822274c5f61d0b618ba99739848bc17d83ee8431ec782164d56599dfc",
+            "anatomia_0.3.0_Linux_arm64.tar.gz": "sha256:2af1f3c72dcc40233d969246023aace3be9d1d5056306e5c3eab3f98e39ecbd0",
+            "anatomia_0.3.0_Linux_arm64.tar.gz.spdx.json": "sha256:f42ae107d36b86e011f5724c9cfc455b610c45807b50b6749e67dbf33b8309f8",
+            "anatomia_0.3.0_Linux_x86_64.tar.gz": "sha256:e2ba699e9f2155a76de06d1f684ee1740033cb7492795d4ebbe5f6b0a7bb49b5",
+            "anatomia_0.3.0_Linux_x86_64.tar.gz.spdx.json": "sha256:85afa3e30f37c756beb451f27598e1ec74e3d14e7063860ce431b7083e8a96ad",
+            "checksums.txt": "sha256:45376c42e0b97e00263f90e14516052342f1b81848742c0c84abdea33edefa1e"
+          },
           "receipt": "receipts/anatomia/v0.3.0.json",
           "receipt_sha256": "sha256:3b9b75c396c49e58e99c067f499853c19506ab6aa404653f47d4169cea1ede14",
           "verification": {

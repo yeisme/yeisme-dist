@@ -107,14 +107,19 @@ statuses and reasons, never tokens, headers or raw provider payloads.
 
 `catalog.json` keeps `schema_version: 1`; the anonymous installer and the
 existing fields are unchanged. During every regeneration (`write_catalog`,
-including `--catalog-only`) the releases of products with receipts are joined
-with the local `receipts/` directory — **never** with GitHub API data — so the
-additive fields survive regeneration:
+including `--catalog-only`), receipt evidence is joined from the local
+`receipts/` directory rather than inferred from GitHub API data. Release asset
+digests come from the public dist Release API. The additive fields are:
 
 - per release (optional): `receipt` (path relative to repo root),
   `receipt_sha256` (digest of the receipt file bytes), and a `verification`
   object `{status, channel, upstream_tag, source_revision, handoff_sha256,
   distribution_revision}`;
+- per release (optional): `asset_digests`, a mapping from release asset name to
+  the GitHub release API's `sha256:<hex>` digest. The package-manifest generator
+  uses this field to emit checksum-pinned Homebrew casks. A missing or malformed
+  digest makes that product ineligible for generated package metadata; it does
+  not weaken checksum verification or change `latest`;
 - per product (optional): `verified_latest` — newest non-prerelease tag with a
   successful receipt, or `null`.
 
@@ -140,3 +145,36 @@ owner; until then clients may at most run no-write `check` projections.
 - The existing manual `install.sh` stays supported. If an update path ever
   replaces it, it remains supported for at least two minor releases, tracked
   in a separate change.
+
+## 7. Planned Scaena v0.4 multi-package projection
+
+Scaena remains one catalog product and one canonical `scaena/vX.Y.Z` release history. The planned v0.4 projection adds three bounded aliases without changing catalog schema 1:
+
+| Requested package | Catalog product | Archive prefix | Installed binary |
+| --- | --- | --- | --- |
+| `scaena` | `scaena` | `scaena_` | `scaena` |
+| `scaena-api` | `scaena` | `scaena-api_` | `scaena-api` |
+| `scaena-production-worker` | `scaena` | `scaena-production-worker_` | `scaena-production-worker` |
+
+Stable package manifests are eligible only after exact-byte mirror, immutable success receipt, complete `asset_digests`, three roles × six platform/architecture archives, checksums, per-archive SBOMs, command catalog, handoff metadata and the approved binary distribution notice. Missing evidence for one role blocks all three package aliases at that version.
+
+The generator owns three Homebrew Casks and three Scoop manifests as one atomic output group. RC manifests exist only in a temporary Tap/Bucket. Packages install only their matching binary and never register or start services. Until public fetch/install/version/help/uninstall smoke succeeds, documentation must keep Scaena Homebrew/Scoop marked planned.
+
+Implementation and evidence are tracked in `openspec/changes/scaena-v0-4-package-channels-v1/`; the cross-repository acceptance contract remains in the parent workspace root OpenSpec.
+
+## 8. Product Agent Skills asset declaration
+
+An upstream release may include `<product>-install-manifest.json`. Releases
+without one keep the historical mirror contract. Once present, the manifest's
+Skills bundle, bundle metadata, catalog, and install manifest form an atomic
+declared set: every name must be path-safe, every file must exist, every file
+must be covered by the release checksum file, and all declared SHA-256 values
+must match the downloaded bytes.
+
+The shared `yeisme.product_install_manifest.v1` contract declares the three
+Skills assets directly. The Eikona `eikona.install_manifest.v1` compatibility
+reader keeps the declared bundle and includes version-matched metadata/catalog
+when that release carries them. Dist copies the files byte-for-byte and never
+opens the tarball. After publishing, it downloads the public files and verifies
+the same digests. Failure removes the unverified mirror and leaves the previous
+stable catalog target unchanged.
