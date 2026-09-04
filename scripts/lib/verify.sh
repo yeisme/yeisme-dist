@@ -30,8 +30,12 @@ dist_root() {
 }
 
 denied() {
-  local low
+  local low product="${2:-}"
   low="$(basename "$1" | tr '[:upper:]' '[:lower:]')"
+  if [[ "$product" == "credentialctl" ]] &&
+      [[ "$low" =~ ^credentialctl_[0-9]+\.[0-9]+\.[0-9]+_(darwin|linux)_(aarch64|x86_64)\.tar\.gz(\.spdx\.json)?$|^credentialctl_[0-9]+\.[0-9]+\.[0-9]+_windows_x86_64\.zip(\.spdx\.json)?$ ]]; then
+    return 1
+  fi
   case "$low" in
     *token*|*secret*|*credential*|*.pem|*.key|*.env|*.p12|*id_rsa*|*.kdbx) return 0 ;;
     *) return 1 ;;
@@ -124,7 +128,7 @@ verify_release_evidence() { # <product> <src> <strip> <policy_file> <release_jso
   for f in "$dir"/*; do
     [[ -e "$f" ]] || continue
     bn="$(basename "$f")"
-    if denied "$bn"; then
+    if denied "$bn" "$product"; then
       emit_fail denied_asset_name "{\"asset\":\"$bn\"}"; return 1
     fi
     grep -qxF "$bn" <<<"$known" || unexpected+=" $bn"

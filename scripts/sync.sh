@@ -337,7 +337,7 @@ while IFS='|' read -r name src strip; do
       "$WORK/$name.json" > "$WORK/assets.txt"
     bad=""
     while IFS= read -r a; do
-      if denied "$a"; then bad="$bad $a"; fi
+      if denied "$a" "$name"; then bad="$bad $a"; fi
     done < "$WORK/assets.txt"
     if [[ -n "$bad" ]]; then
       echo "    ERROR $dist_tag: denied asset name(s):$bad" >&2

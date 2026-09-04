@@ -24,16 +24,17 @@ Numbers below come from `catalog.json` (regenerated on every sync).
 | sonora | sonora/v0.2.0 | 2 | `yeisme/sonora` |
 | anatomia | anatomia/v0.3.0 | 1 | `yeisme/anatomia` |
 | mcp-gateway | - | 0 | `yeisme/mcp-gateway` |
+| credentialctl | - | 0 | `yeisme/credentialctl` |
 <!-- catalog-products:end -->
 
 Releases are tagged `<product>/vX.Y.Z`. More products are appended to
-`products.txt` as they ship binary releases (sonora, anatomia, ordo,
-inferrum, credentialctl, quaestor, mediahub, mcp-gateway, aigora, cohors, …).
+`products.txt` as they ship binary releases (ordo, inferrum, quaestor,
+mediahub, aigora, cohors, …).
 
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- sonora
+curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- credentialctl
 # or a pinned version / custom destination:
 curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- sonora v0.1.0 --to /usr/local/bin
 ```
@@ -48,22 +49,21 @@ curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh 
 
 ### Homebrew (public tap)
 
-Eikona can be installed without access to its private product repository. The
-tap manifest and archives both come from this public repository:
+Generated tap manifests and archives both come from this public repository:
 
 ```bash
 brew tap yeisme/dist https://github.com/yeisme/yeisme-dist
-brew install --cask yeisme/dist/eikona
-eikona --version
-eikona setup
-eikona setup --yes
+brew install --cask yeisme/dist/credentialctl
+credentialctl --version
+npx --yes skills add https://github.com/yeisme/yeisme-agent-my-skills \
+  --skill credentialctl-usage --yes
 ```
 
 Update with:
 
 ```bash
 brew update
-brew upgrade --cask yeisme/dist/eikona
+brew upgrade --cask yeisme/dist/credentialctl
 ```
 
 If an older installation still uses `yeisme/tap/eikona`, migrate it to the
