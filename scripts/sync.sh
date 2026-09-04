@@ -79,11 +79,11 @@ write_catalog() {
         prerelease: .prerelease,
         asset_count: (.assets | length),
         assets: [.assets[].name]
-      } + (if ($p == "eikona/" or $p == "credentialctl/") then {
+      } + {
         asset_digests: (
           .assets
           | map(select(
-              (.name | test("^eikona_[0-9]+\\.[0-9]+\\.[0-9]+_(Darwin|Linux)_(arm64|x86_64)\\.tar\\.gz$|^eikona_[0-9]+\\.[0-9]+\\.[0-9]+_Windows_(arm64|x86_64)\\.zip$|^credentialctl_[0-9]+\\.[0-9]+\\.[0-9]+_(darwin|linux)_(aarch64|x86_64)\\.tar\\.gz$|^credentialctl_[0-9]+\\.[0-9]+\\.[0-9]+_windows_x86_64\\.zip$"))
+              (.name | test("\\.(tar\\.gz|tgz|zip)$"))
               and ((.digest // "") | startswith("sha256:"))
             ) | {
               key: .name,
@@ -91,7 +91,7 @@ write_catalog() {
             })
           | from_entries
         )
-      } else {} end)]
+      }]
     ' "$WORK/dist-all.ndjson")"
     # Additive receipt fields come from the local receipts/ directory so they
     # survive every regeneration; catalog schema_version stays 1.

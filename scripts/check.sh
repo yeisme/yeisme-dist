@@ -33,11 +33,42 @@ fi
 if [[ -f catalog.json ]]; then
   package_tmp="$(mktemp -d)"
   if scripts/generate-package-manifests.sh --output-root "$package_tmp" \
-      && cmp -s Casks/eikona.rb "$package_tmp/Casks/eikona.rb" \
-      && cmp -s bucket/eikona.json "$package_tmp/bucket/eikona.json"; then
+      && diff -ru Casks "$package_tmp/Casks" >/dev/null \
+      && diff -ru bucket "$package_tmp/bucket" >/dev/null; then
     echo "ok  public package manifests are generated from catalog.json"
   else
     echo "FAIL public package manifests are stale or cannot be generated" >&2
+    fail=1
+  fi
+
+  for product in eikona pinax auctra scaena gitea-mcp sonora anatomia credentialctl; do
+    if [[ -f "Casks/$product.rb" ]] \
+        && ruby -c "Casks/$product.rb" >/dev/null \
+        && grep -q "github.com/yeisme/yeisme-dist/releases/download/$product/" "Casks/$product.rb"; then
+      echo "ok  Homebrew cask $product"
+    else
+      echo "FAIL Homebrew cask $product" >&2
+      fail=1
+    fi
+  done
+
+  for product in eikona pinax auctra gitea-mcp sonora credentialctl; do
+    if jq -e '
+        (.version | test("^[0-9]+\\.[0-9]+\\.[0-9]+$")) and
+        (.architecture | type == "object") and
+        ((.architecture | length) > 0)
+      ' "bucket/$product.json" >/dev/null \
+        && grep -q "github.com/yeisme/yeisme-dist/releases/download/$product/" "bucket/$product.json"; then
+      echo "ok  Scoop manifest $product"
+    else
+      echo "FAIL Scoop manifest $product" >&2
+      fail=1
+    fi
+  done
+  if [[ ! -e bucket/scaena.json && ! -e bucket/anatomia.json ]]; then
+    echo "ok  Scoop excludes products without Windows archives"
+  else
+    echo "FAIL Scoop manifest generated without a Windows archive" >&2
     fail=1
   fi
   rm -rf "$package_tmp"
@@ -147,18 +178,20 @@ jq '
       version: "v0.3.0",
       published_at: "2026-09-04T00:00:00Z",
       prerelease: false,
-      asset_count: 4,
+      asset_count: 5,
       assets: [
         "credentialctl_0.3.0_darwin_aarch64.tar.gz",
         "credentialctl_0.3.0_darwin_x86_64.tar.gz",
         "credentialctl_0.3.0_linux_aarch64.tar.gz",
-        "credentialctl_0.3.0_linux_x86_64.tar.gz"
+        "credentialctl_0.3.0_linux_x86_64.tar.gz",
+        "credentialctl_0.3.0_windows_x86_64.zip"
       ],
       asset_digests: {
         "credentialctl_0.3.0_darwin_aarch64.tar.gz": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         "credentialctl_0.3.0_darwin_x86_64.tar.gz": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
         "credentialctl_0.3.0_linux_aarch64.tar.gz": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-        "credentialctl_0.3.0_linux_x86_64.tar.gz": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        "credentialctl_0.3.0_linux_x86_64.tar.gz": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "credentialctl_0.3.0_windows_x86_64.zip": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
       }
     }]
   }])
@@ -168,10 +201,12 @@ if scripts/generate-package-manifests.sh --catalog "$credentialctl_catalog" --ou
     && grep -q 'github.com/yeisme/yeisme-dist/releases/download/credentialctl/v#{version}/' \
       "$credentialctl_output/Casks/credentialctl.rb" \
     && grep -q 'skills add https://github.com/yeisme/yeisme-agent-my-skills' \
-      "$credentialctl_output/Casks/credentialctl.rb"; then
-  echo "ok  credentialctl Homebrew cask fixture and Skill hint"
+      "$credentialctl_output/Casks/credentialctl.rb" \
+    && jq -e '.architecture["64bit"].hash and (.notes | any(contains("credentialctl-usage")))' \
+      "$credentialctl_output/bucket/credentialctl.json" >/dev/null; then
+  echo "ok  credentialctl Homebrew/Scoop fixtures and Skill hint"
 else
-  echo "FAIL credentialctl Homebrew cask fixture" >&2
+  echo "FAIL credentialctl Homebrew/Scoop fixture" >&2
   fail=1
 fi
 rm -f "$credentialctl_catalog"

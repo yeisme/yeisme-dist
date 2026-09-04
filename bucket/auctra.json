@@ -1,0 +1,17 @@
+{
+  "version": "0.3.0",
+  "description": "Local-first writing and story development CLI.",
+  "homepage": "https://github.com/yeisme/yeisme-dist",
+  "license": "Proprietary",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/auctra/v0.3.0/auctra_0.3.0_windows_amd64.zip",
+      "hash": "c5f430a9e65071a8700a31b094811c93a109520e5e5594b0a8443cbd5d23f17d"
+    },
+    "arm64": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/auctra/v0.3.0/auctra_0.3.0_windows_arm64.zip",
+      "hash": "181e04c85006b00696c78767fb4a30d7a7eed265f5233132ee1e3a439d9f37d0"
+    }
+  },
+  "bin": "auctra.exe"
+}

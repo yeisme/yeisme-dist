@@ -14,6 +14,7 @@ cask "eikona" do
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
+
   on_linux do
     on_arm do
       sha256 "c48e9ffe14f489deba55c9eacff44a2727cdf5f7f49abd24f47acb9ba66202a2"
@@ -32,7 +33,7 @@ cask "eikona" do
   homepage "https://github.com/yeisme/yeisme-dist"
 
   livecheck do
-    skip "Generated from the verified yeisme-dist catalog."
+    skip "Generated from the yeisme-dist catalog."
   end
 
   binary "eikona"

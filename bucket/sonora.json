@@ -1,0 +1,17 @@
+{
+  "version": "0.2.2",
+  "description": "Local-first voice, subtitle, and audio workflow CLI.",
+  "homepage": "https://github.com/yeisme/yeisme-dist",
+  "license": "Proprietary",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/sonora/v0.2.2/sonora_0.2.2_Windows_x86_64.zip",
+      "hash": "5b8d94ee3d2ca96b77062133abab6188716e1cd7287bfc24bc485c586f383ce3"
+    },
+    "arm64": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/sonora/v0.2.2/sonora_0.2.2_Windows_arm64.zip",
+      "hash": "6b14394949d37bb2d0f7b1cd1ade958d8aa370d907d54e3071e70130b33ebb69"
+    }
+  },
+  "bin": "sonora.exe"
+}
