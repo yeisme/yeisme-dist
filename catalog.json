@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T11:18:10Z",
+  "generated_at": "2026-09-04T12:11:34Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -1579,6 +1579,14 @@
     {
       "name": "mcp-gateway",
       "source_repo": "yeisme/mcp-gateway",
+      "latest": null,
+      "verified_latest": null,
+      "release_count": 0,
+      "releases": []
+    },
+    {
+      "name": "credentialctl",
+      "source_repo": "yeisme/credentialctl",
       "latest": null,
       "verified_latest": null,
       "release_count": 0,
