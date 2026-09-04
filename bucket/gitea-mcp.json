@@ -1,0 +1,17 @@
+{
+  "version": "2.3.3",
+  "description": "Gitea MCP server for repository automation.",
+  "homepage": "https://github.com/yeisme/yeisme-dist",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/gitea-mcp/v2.3.3/gitea-mcp_Windows_x86_64.zip",
+      "hash": "282d85bfde1b4cd3d46fb87c532421306f553c3eacd2bcc233575d3e1e326135"
+    },
+    "arm64": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/gitea-mcp/v2.3.3/gitea-mcp_Windows_arm64.zip",
+      "hash": "899e06cdfa6a77b06eb33de79ce87b0ceac236642d6af5728c4b0082797da8fa"
+    }
+  },
+  "bin": "gitea-mcp.exe"
+}

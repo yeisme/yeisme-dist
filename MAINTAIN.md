@@ -10,8 +10,8 @@ private product code here. Do not rebuild binaries.
 | `products.txt` | Manifest: `name\|source_repo\|strip_tag_prefix` |
 | `catalog.json` | Public index (generated; do not hand-edit) |
 | `install.sh` | Anonymous OS/arch installer |
-| `Casks/eikona.rb` | Generated public Homebrew cask; downloads only from this repository |
-| `bucket/eikona.json` | Generated public Scoop manifest; downloads only from this repository |
+| `Casks/*.rb` | Generated public Homebrew casks; download only from this repository |
+| `bucket/*.json` | Generated public Scoop manifests for products with Windows ZIP archives |
 | `policy/<product>.json` | Optional verify policy (`yeisme.dist_verify_policy.v1`); products without one keep the legacy mirror path |
 | `receipts/<product>/<version>.json` | Immutable distribution receipts (`yeisme.dist_receipt.v1`), append-only |
 | `schemas/` | Informative JSON Schemas for external consumers |
@@ -35,7 +35,7 @@ scripts/sync.sh --product scaena --dry-run
 scripts/sync.sh --product eikona          # needs GH_TOKEN that can read yeisme/eikona
 bash install.sh --list
 bash install.sh gitea-mcp --to /tmp/yeisme-bin
-scripts/generate-package-manifests.sh       # Eikona fails closed unless all setup assets exist
+scripts/generate-package-manifests.sh       # all products use catalog digests; Eikona also checks setup assets
 ```
 
 GitHub Actions:
@@ -58,16 +58,17 @@ EOF
 4. Confirm `catalog.json` and the README product table list the new latest tag.
 5. Anonymous-install it once: `bash install.sh <name>`.
 
-For Eikona, additionally confirm the release contains all six CLI archives,
+For every package-manager product, confirm the catalog contains SHA-256 digests
+for each selected archive. For Eikona, additionally confirm the release contains all six CLI archives,
 `checksums.txt`, `eikona-install-manifest.json`, the version-matched Skills
 bundle and metadata, and the version-matched command catalog. The generated
 Homebrew caveat, Scoop notes, and Bash installer must all point users to
 `eikona setup` before any provider operation.
 
 Products with a working tag→GoReleaser pipeline may be listed before the first
-asset exists (`sonora`, `anatomia`, `mcp-gateway`): sync skips zero-asset
-releases. Do not list products with no publish pipeline (inferrum/aigora tags
-with 0 assets, ordo experimental artifact, credentialctl/quaestor/mediahub/cohors).
+asset exists (`mcp-gateway`): sync skips zero-asset releases. Do not list
+products with no publish pipeline (inferrum/aigora tags with 0 assets, ordo
+experimental artifact, quaestor/mediahub/cohors).
 
 ## Rotate DIST_SYNC_TOKEN
 

@@ -33,10 +33,18 @@ mediahub, aigora, cohors, …).
 
 ## Install
 
+### Linux / macOS quick install
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- credentialctl
-# or a pinned version / custom destination:
-curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- sonora v0.1.0 --to /usr/local/bin
+credentialctl --version
+```
+
+Replace `credentialctl` with any product in the table below. Pin a version or
+choose an install directory when needed:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- sonora v0.2.2 --to /usr/local/bin
 ```
 
 The installer picks the archive for your OS/arch, verifies it against the
@@ -47,7 +55,7 @@ to `PATH`. List mirrored products without installing:
 curl -fsSL https://raw.githubusercontent.com/yeisme/yeisme-dist/main/install.sh | bash -s -- --list
 ```
 
-### Homebrew (public tap)
+### Homebrew
 
 Generated tap manifests and archives both come from this public repository:
 
@@ -55,6 +63,23 @@ Generated tap manifests and archives both come from this public repository:
 brew tap yeisme/dist https://github.com/yeisme/yeisme-dist
 brew install --cask yeisme/dist/credentialctl
 credentialctl --version
+```
+
+The same tap installs the other published CLIs:
+
+```bash
+brew install --cask yeisme/dist/eikona
+brew install --cask yeisme/dist/pinax
+brew install --cask yeisme/dist/auctra
+brew install --cask yeisme/dist/scaena
+brew install --cask yeisme/dist/gitea-mcp
+brew install --cask yeisme/dist/sonora
+brew install --cask yeisme/dist/anatomia
+```
+
+Install the credentialctl Agent Skill when using credential sync:
+
+```bash
 npx --yes skills add https://github.com/yeisme/yeisme-agent-my-skills \
   --skill credentialctl-usage --yes
 ```
@@ -76,22 +101,50 @@ brew tap yeisme/dist https://github.com/yeisme/yeisme-dist
 brew install --cask yeisme/dist/eikona
 ```
 
-### Scoop (public bucket)
+### Scoop
 
 ```powershell
 scoop bucket add yeisme-dist https://github.com/yeisme/yeisme-dist
+scoop install credentialctl
+credentialctl --version
+```
+
+Windows archives are also available for:
+
+```powershell
 scoop install eikona
-eikona --version
+scoop install pinax
+scoop install auctra
+scoop install gitea-mcp
+scoop install sonora
+```
+
+Scaena and Anatomia do not currently publish Windows ZIP archives, so Scoop
+manifests are intentionally not generated for them.
+
+### Package-manager availability
+
+| Product | Installer | Homebrew | Scoop |
+| --- | --- | --- | --- |
+| Eikona | Linux/macOS | macOS/Linux | Windows x64/arm64 |
+| Pinax | Linux/macOS | macOS/Linux | Windows x64/arm64 |
+| Auctra | Linux/macOS | macOS/Linux | Windows x64/arm64 |
+| Scaena | Linux x64 | Linux x64 | Not available |
+| gitea-mcp | Linux/macOS | macOS/Linux | Windows x64/arm64 |
+| Sonora | Linux/macOS | macOS/Linux | Windows x64/arm64 |
+| Anatomia | Linux/macOS | macOS/Linux | Not available |
+| credentialctl | Linux/macOS | macOS/Linux | Windows x64 |
+
+After installing Eikona, preview and apply its local setup separately:
+
+```bash
 eikona setup
 eikona setup --yes
 ```
 
 `eikona setup` uses only the installed binary, local user state, and the public
-`yeisme-dist` release that exactly matches the running CLI. The default command
-is a preview; `--yes` creates only missing user configuration and installs
-Agent Skills without replacing the package-manager-owned CLI. It does not clone
-or require access to the private product repository, collect credentials, probe
-a provider, or perform a paid generation.
+release matching the running CLI. It does not clone the private product source,
+collect credentials, probe a provider, or perform a paid generation.
 
 Persistent local credentials and redacted environment discovery remain explicit:
 
@@ -136,11 +189,11 @@ e.g. `https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.6.4/eiko
   catalog-only. It authenticates with the `DIST_SYNC_TOKEN` secret
   (fine-grained PAT: read contents on the upstream repos, write
   contents on this repo) and commits an updated `catalog.json`.
-- `scripts/generate-package-manifests.sh` derives `Casks/eikona.rb` and
-  `bucket/eikona.json` from the latest fully mirrored Eikona release and its
-  GitHub-provided SHA-256 digests. It requires the six CLI archives,
-  `checksums.txt`, install manifest, version-matched Skills bundle/metadata,
-  and command catalog; missing assets, archive digests, or version drift fail closed.
+- `scripts/generate-package-manifests.sh` derives Homebrew Casks and Scoop
+  manifests from each latest mirrored release and its GitHub-provided SHA-256
+  digests. Eikona additionally requires its six CLI archives, checksums,
+  install manifest, version-matched Skills bundle/metadata, and command catalog;
+  missing assets, archive digests, or version drift fail closed.
 - `.github/workflows/ci.yml` runs `scripts/check.sh` and anonymous
   `install.sh` smokes for `gitea-mcp` and `sonora` on every push/PR.
 - To add a product: append `name|yeisme/<repo>|<tag-prefix-to-strip>` to

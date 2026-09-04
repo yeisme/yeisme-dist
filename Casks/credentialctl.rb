@@ -14,6 +14,7 @@ cask "credentialctl" do
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
+
   on_linux do
     on_arm do
       sha256 "f871e10f7fcb35c75e19287c8d86b47ad0652f29a77bf458ae388626f184fdb5"
@@ -32,7 +33,7 @@ cask "credentialctl" do
   homepage "https://github.com/yeisme/yeisme-dist"
 
   livecheck do
-    skip "Generated from the verified yeisme-dist catalog."
+    skip "Generated from the yeisme-dist catalog."
   end
 
   binary "credentialctl"
