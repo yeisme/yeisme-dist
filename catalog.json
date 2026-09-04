@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T12:45:14Z",
+  "generated_at": "2026-09-04T12:48:47Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -1588,7 +1588,7 @@
       "name": "credentialctl",
       "source_repo": "yeisme/credentialctl",
       "latest": "credentialctl/v0.3.0",
-      "verified_latest": null,
+      "verified_latest": "credentialctl/v0.3.0",
       "release_count": 1,
       "releases": [
         {
@@ -1619,6 +1619,16 @@
             "credentialctl_0.3.0_linux_aarch64.tar.gz": "sha256:f871e10f7fcb35c75e19287c8d86b47ad0652f29a77bf458ae388626f184fdb5",
             "credentialctl_0.3.0_linux_x86_64.tar.gz": "sha256:ee856a76a33a31ad36d5829448e8115972bf92196a9709c72ed8678e890e0feb",
             "credentialctl_0.3.0_windows_x86_64.zip": "sha256:d261e228acdac9145212b2af70d2f3ef28e5fd2188a8e7c305283f9c2bc2b2b9"
+          },
+          "receipt": "receipts/credentialctl/v0.3.0.json",
+          "receipt_sha256": "sha256:3d5a0ee9dedeed8fd32c899c073f0c4fb37eea8e46414b370b935dd1485c0001",
+          "verification": {
+            "status": "verified",
+            "channel": "stable",
+            "upstream_tag": "v0.3.0",
+            "source_revision": "ea171a271093d0f370e14f510f9e7d9c7f717ba9",
+            "handoff_sha256": null,
+            "distribution_revision": 1
           }
         }
       ]
