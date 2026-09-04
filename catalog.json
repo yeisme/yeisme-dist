@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T12:11:34Z",
+  "generated_at": "2026-09-04T12:45:14Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -1587,10 +1587,41 @@
     {
       "name": "credentialctl",
       "source_repo": "yeisme/credentialctl",
-      "latest": null,
+      "latest": "credentialctl/v0.3.0",
       "verified_latest": null,
-      "release_count": 0,
-      "releases": []
+      "release_count": 1,
+      "releases": [
+        {
+          "tag": "credentialctl/v0.3.0",
+          "version": "v0.3.0",
+          "published_at": "2026-09-04T12:37:49Z",
+          "prerelease": false,
+          "asset_count": 14,
+          "assets": [
+            "CHANGELOG.md",
+            "checksums.txt",
+            "config.yaml",
+            "credentialctl_0.3.0_darwin_aarch64.tar.gz",
+            "credentialctl_0.3.0_darwin_aarch64.tar.gz.spdx.json",
+            "credentialctl_0.3.0_darwin_x86_64.tar.gz",
+            "credentialctl_0.3.0_darwin_x86_64.tar.gz.spdx.json",
+            "credentialctl_0.3.0_linux_aarch64.tar.gz",
+            "credentialctl_0.3.0_linux_aarch64.tar.gz.spdx.json",
+            "credentialctl_0.3.0_linux_x86_64.tar.gz",
+            "credentialctl_0.3.0_linux_x86_64.tar.gz.spdx.json",
+            "credentialctl_0.3.0_windows_x86_64.zip",
+            "credentialctl_0.3.0_windows_x86_64.zip.spdx.json",
+            "release-manifest.json"
+          ],
+          "asset_digests": {
+            "credentialctl_0.3.0_darwin_aarch64.tar.gz": "sha256:353c660ef4a8bab4a029a451b29ed79d97973a212fd6f226d04f9ddc4ae1dd76",
+            "credentialctl_0.3.0_darwin_x86_64.tar.gz": "sha256:14a40f8a4b7e3cd4d8706afd6b1835ab4a0be4f03400cc63441e961fe8571f9d",
+            "credentialctl_0.3.0_linux_aarch64.tar.gz": "sha256:f871e10f7fcb35c75e19287c8d86b47ad0652f29a77bf458ae388626f184fdb5",
+            "credentialctl_0.3.0_linux_x86_64.tar.gz": "sha256:ee856a76a33a31ad36d5829448e8115972bf92196a9709c72ed8678e890e0feb",
+            "credentialctl_0.3.0_windows_x86_64.zip": "sha256:d261e228acdac9145212b2af70d2f3ef28e5fd2188a8e7c305283f9c2bc2b2b9"
+          }
+        }
+      ]
     }
   ]
 }
