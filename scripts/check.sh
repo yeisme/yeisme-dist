@@ -109,6 +109,14 @@ else
   echo "FAIL credentialctl verify policy" >&2
   fail=1
 fi
+credentialctl_tag_pattern="$(jq -r '.eligible_tag_pattern' policy/credentialctl.json)"
+if jq -ne --arg pattern "$credentialctl_tag_pattern" '"v0.3.0" | test($pattern)' >/dev/null \
+    && ! jq -ne --arg pattern "$credentialctl_tag_pattern" '"v0.2.0" | test($pattern)' >/dev/null; then
+  echo "ok  credentialctl policy starts at the v0.3 supply-chain contract"
+else
+  echo "FAIL credentialctl policy version boundary" >&2
+  fail=1
+fi
 
 source scripts/lib/verify.sh
 if denied credentialctl_0.3.0_darwin_aarch64.tar.gz credentialctl \

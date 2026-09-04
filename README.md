@@ -24,7 +24,7 @@ Numbers below come from `catalog.json` (regenerated on every sync).
 | sonora | sonora/v0.2.0 | 2 | `yeisme/sonora` |
 | anatomia | anatomia/v0.3.0 | 1 | `yeisme/anatomia` |
 | mcp-gateway | - | 0 | `yeisme/mcp-gateway` |
-| credentialctl | - | 0 | `yeisme/credentialctl` |
+| credentialctl | credentialctl/v0.3.0 | 1 | `yeisme/credentialctl` |
 <!-- catalog-products:end -->
 
 Releases are tagged `<product>/vX.Y.Z`. More products are appended to
