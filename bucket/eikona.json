@@ -1,16 +1,16 @@
 {
-  "version": "0.7.5",
+  "version": "0.7.7",
   "description": "Agent-first visual asset runtime and image-generation CLI.",
   "homepage": "https://github.com/yeisme/yeisme-dist",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.7.5/eikona_0.7.5_Windows_x86_64.zip",
-      "hash": "1c8fe3e55f6e7491998f96fc0fe7af90e6a24e5cd4b557dc19304f49898cf309"
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.7.7/eikona_0.7.7_Windows_x86_64.zip",
+      "hash": "c1a4bcba86ec2fb79cbfdb76d270b6866df6cbd9a0cda84868b38b97807ede82"
     },
     "arm64": {
-      "url": "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.7.5/eikona_0.7.5_Windows_arm64.zip",
-      "hash": "419adb56b905119e9f344073787d207490fd0e2a78db8c55134ad9f0242a78e4"
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.7.7/eikona_0.7.7_Windows_arm64.zip",
+      "hash": "8b4fffe3a3af66709e8c0ea363fe6e2478d673f2b3af5bb1f11c49205721d433"
     }
   },
   "bin": "eikona.exe",
