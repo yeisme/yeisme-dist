@@ -1,0 +1,94 @@
+{
+  "schema_version": "yeisme.dist_receipt.v1",
+  "product": "template-registry",
+  "channel": "stable",
+  "status": "success",
+  "upstream_tag": "v0.1.0",
+  "upstream_release_ref": "https://github.com/yeisme/backend-server-template-registry/releases/tag/v0.1.0",
+  "dist_tag": "template-registry/v0.1.0",
+  "source_revision": "13b9cfff304cbb254d4a1238d644a29d26c04cfb",
+  "handoff": {
+    "schema_version": "yeisme.product_release_handoff.v1",
+    "sha256": null
+  },
+  "policy": {
+    "file": "policy/template-registry.json",
+    "sha256": "sha256:3a79b4cbb0590264e0366168af6038e56bab3d0163f2dbb00388db911fb8b1d0"
+  },
+  "verified": {
+    "checksums": {
+      "name": "checksums.txt",
+      "sha256": "sha256:64328870a852a4c28375d31cf495fbd45ac082144c1db47f4592db87c1333487"
+    },
+    "asset_matrix": {
+      "expected": 6,
+      "matched": 6
+    },
+    "upstream_assets": [
+      {
+        "name": "template-registry_0.1.0_linux_amd64.tar.gz",
+        "sha256": "sha256:ed04a7e5a0a13ec757200d55b89be44ee9f18a738be015f208fde91d6ebaf60d"
+      },
+      {
+        "name": "template-registry_0.1.0_linux_arm64.tar.gz",
+        "sha256": "sha256:1d9fc0415f95e686199be83709feecaad640ede2a280ca7ad54011ae03ca68c2"
+      },
+      {
+        "name": "template-registry_0.1.0_darwin_amd64.tar.gz",
+        "sha256": "sha256:aaf21fcf135998c8722d4db366d81e1b143a7797282dd33ffcac5df0fbff9a65"
+      },
+      {
+        "name": "template-registry_0.1.0_darwin_arm64.tar.gz",
+        "sha256": "sha256:56450b94bfc05d543dcb706a762d62e220b8a9a659181ded9dfb42dcfea9edea"
+      },
+      {
+        "name": "template-registry_0.1.0_windows_amd64.zip",
+        "sha256": "sha256:1ff3cb6737ee0b1a6d135d44089a765e27412e362e6984b17080dba64d27f394"
+      },
+      {
+        "name": "template-registry_0.1.0_windows_arm64.zip",
+        "sha256": "sha256:d593585f183ffb9818c72bc82ed84867eb1d1a13dfa30049a13b4929232bd08a"
+      }
+    ],
+    "provenance": {
+      "sbom_assets": [
+        "template-registry_0.1.0_linux_amd64.tar.gz.spdx.json",
+        "template-registry_0.1.0_linux_arm64.tar.gz.spdx.json",
+        "template-registry_0.1.0_darwin_amd64.tar.gz.spdx.json",
+        "template-registry_0.1.0_darwin_arm64.tar.gz.spdx.json",
+        "template-registry_0.1.0_windows_amd64.zip.spdx.json",
+        "template-registry_0.1.0_windows_arm64.zip.spdx.json"
+      ],
+      "attestation_subject": "github-attestation:sha256:64328870a852a4c28375d31cf495fbd45ac082144c1db47f4592db87c1333487"
+    }
+  },
+  "mirrored_assets": [
+    {
+      "name": "template-registry_0.1.0_linux_amd64.tar.gz",
+      "sha256": "sha256:ed04a7e5a0a13ec757200d55b89be44ee9f18a738be015f208fde91d6ebaf60d"
+    },
+    {
+      "name": "template-registry_0.1.0_linux_arm64.tar.gz",
+      "sha256": "sha256:1d9fc0415f95e686199be83709feecaad640ede2a280ca7ad54011ae03ca68c2"
+    },
+    {
+      "name": "template-registry_0.1.0_darwin_amd64.tar.gz",
+      "sha256": "sha256:aaf21fcf135998c8722d4db366d81e1b143a7797282dd33ffcac5df0fbff9a65"
+    },
+    {
+      "name": "template-registry_0.1.0_darwin_arm64.tar.gz",
+      "sha256": "sha256:56450b94bfc05d543dcb706a762d62e220b8a9a659181ded9dfb42dcfea9edea"
+    },
+    {
+      "name": "template-registry_0.1.0_windows_amd64.zip",
+      "sha256": "sha256:1ff3cb6737ee0b1a6d135d44089a765e27412e362e6984b17080dba64d27f394"
+    },
+    {
+      "name": "template-registry_0.1.0_windows_arm64.zip",
+      "sha256": "sha256:d593585f183ffb9818c72bc82ed84867eb1d1a13dfa30049a13b4929232bd08a"
+    }
+  ],
+  "distribution_revision": 1,
+  "fingerprint_sha256": "sha256:765ff152835d8113e3f4cd3aafee79a46ecf365ebac1b516815b84e4cf4a8199",
+  "produced_at": "2026-09-05T18:01:17Z"
+}

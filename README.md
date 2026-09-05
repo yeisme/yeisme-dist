@@ -25,7 +25,7 @@ Numbers below come from `catalog.json` (regenerated on every sync).
 | anatomia | anatomia/v0.3.0 | 1 | `yeisme/anatomia` |
 | mcp-gateway | - | 0 | `yeisme/mcp-gateway` |
 | credentialctl | credentialctl/v0.3.0 | 1 | `yeisme/credentialctl` |
-| template-registry | - | 0 | `yeisme/backend-server-template-registry` |
+| template-registry | template-registry/v0.1.0 | 1 | `yeisme/backend-server-template-registry` |
 <!-- catalog-products:end -->
 
 Releases are tagged `<product>/vX.Y.Z`. More products are appended to

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-05T17:21:31Z",
+  "generated_at": "2026-09-05T18:01:17Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -2022,10 +2022,56 @@
     {
       "name": "template-registry",
       "source_repo": "yeisme/backend-server-template-registry",
-      "latest": null,
-      "verified_latest": null,
-      "release_count": 0,
-      "releases": []
+      "latest": "template-registry/v0.1.0",
+      "verified_latest": "template-registry/v0.1.0",
+      "release_count": 1,
+      "releases": [
+        {
+          "tag": "template-registry/v0.1.0",
+          "version": "v0.1.0",
+          "published_at": "2026-09-05T18:01:15Z",
+          "prerelease": false,
+          "asset_count": 17,
+          "assets": [
+            "checksums.txt",
+            "template-registry-agent-skills-catalog.json",
+            "template-registry-agent-skills-manifest.json",
+            "template-registry-agent-skills.tar.gz",
+            "template-registry-install-manifest.json",
+            "template-registry_0.1.0_darwin_amd64.tar.gz",
+            "template-registry_0.1.0_darwin_amd64.tar.gz.spdx.json",
+            "template-registry_0.1.0_darwin_arm64.tar.gz",
+            "template-registry_0.1.0_darwin_arm64.tar.gz.spdx.json",
+            "template-registry_0.1.0_linux_amd64.tar.gz",
+            "template-registry_0.1.0_linux_amd64.tar.gz.spdx.json",
+            "template-registry_0.1.0_linux_arm64.tar.gz",
+            "template-registry_0.1.0_linux_arm64.tar.gz.spdx.json",
+            "template-registry_0.1.0_windows_amd64.zip",
+            "template-registry_0.1.0_windows_amd64.zip.spdx.json",
+            "template-registry_0.1.0_windows_arm64.zip",
+            "template-registry_0.1.0_windows_arm64.zip.spdx.json"
+          ],
+          "asset_digests": {
+            "template-registry-agent-skills.tar.gz": "sha256:b982c7df074b1060de331d7415fcfa0ec94d3812cb8ecb75b034e51eb7db3957",
+            "template-registry_0.1.0_darwin_amd64.tar.gz": "sha256:aaf21fcf135998c8722d4db366d81e1b143a7797282dd33ffcac5df0fbff9a65",
+            "template-registry_0.1.0_darwin_arm64.tar.gz": "sha256:56450b94bfc05d543dcb706a762d62e220b8a9a659181ded9dfb42dcfea9edea",
+            "template-registry_0.1.0_linux_amd64.tar.gz": "sha256:ed04a7e5a0a13ec757200d55b89be44ee9f18a738be015f208fde91d6ebaf60d",
+            "template-registry_0.1.0_linux_arm64.tar.gz": "sha256:1d9fc0415f95e686199be83709feecaad640ede2a280ca7ad54011ae03ca68c2",
+            "template-registry_0.1.0_windows_amd64.zip": "sha256:1ff3cb6737ee0b1a6d135d44089a765e27412e362e6984b17080dba64d27f394",
+            "template-registry_0.1.0_windows_arm64.zip": "sha256:d593585f183ffb9818c72bc82ed84867eb1d1a13dfa30049a13b4929232bd08a"
+          },
+          "receipt": "receipts/template-registry/v0.1.0.json",
+          "receipt_sha256": "sha256:ab7235671e5b5732f425bfdc8e0ea2a4c45dc0ff27b7c607d2ebac1ab96a14a7",
+          "verification": {
+            "status": "verified",
+            "channel": "stable",
+            "upstream_tag": "v0.1.0",
+            "source_revision": "13b9cfff304cbb254d4a1238d644a29d26c04cfb",
+            "handoff_sha256": null,
+            "distribution_revision": 1
+          }
+        }
+      ]
     }
   ]
 }
