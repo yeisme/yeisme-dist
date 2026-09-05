@@ -1,0 +1,39 @@
+{
+  "allowed_extra_assets": [
+    "{expected_archive}.spdx.json"
+  ],
+  "channel": "stable",
+  "checksums": {
+    "algorithm": "sha256",
+    "must_cover": "expected_assets",
+    "required": true
+  },
+  "eligible_tag_pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$",
+  "exclude_prerelease": true,
+  "expected_assets": [
+    "template-registry_{version}_linux_amd64.tar.gz",
+    "template-registry_{version}_linux_arm64.tar.gz",
+    "template-registry_{version}_darwin_amd64.tar.gz",
+    "template-registry_{version}_darwin_arm64.tar.gz",
+    "template-registry_{version}_windows_amd64.zip",
+    "template-registry_{version}_windows_arm64.zip"
+  ],
+  "product": "template-registry",
+  "provenance": {
+    "attestation": {
+      "enforcement": "record-only",
+      "expected": "github-attestation"
+    },
+    "sbom_required_per_archive": true
+  },
+  "required_assets": [
+    "checksums.txt",
+    "template-registry-install-manifest.json",
+    "template-registry-agent-skills-manifest.json",
+    "template-registry-agent-skills-catalog.json",
+    "template-registry-agent-skills.tar.gz"
+  ],
+  "schema_version": "yeisme.dist_verify_policy.v1",
+  "source_repo": "yeisme/backend-server-template-registry",
+  "source_revision_required": true
+}
