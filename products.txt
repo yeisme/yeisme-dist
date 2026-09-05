@@ -18,3 +18,4 @@ mcp-gateway|yeisme/mcp-gateway|
 # Not yet: ordo (experimental linux-x64 artifact only), inferrum/aigora
 # (tags with 0 assets and no current goreleaser publish), credentialctl,
 # quaestor, mediahub, cohors.
+template-registry|yeisme/backend-server-template-registry|
