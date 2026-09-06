@@ -5,34 +5,35 @@ cask "gitea-mcp" do
   on_macos do
     on_arm do
       sha256 "2f2b4fe6ead506c11c5dac0c2e02699a4318e27e0fff330568b67f58d3a5362d"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/gitea-mcp/v2.3.3/gitea-mcp_Darwin_arm64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/gitea-mcp/v#{version}/gitea-mcp_Darwin_arm64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
     on_intel do
       sha256 "abea59586e6b7396716de3dabbbf4ceac526f1a8d04db3af8d8a7cb40cd410af"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/gitea-mcp/v2.3.3/gitea-mcp_Darwin_x86_64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/gitea-mcp/v#{version}/gitea-mcp_Darwin_x86_64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
+
   on_linux do
     on_arm do
       sha256 "74421359857a897db2ce38e24d99c2e170cc34834740d3c31f7fd2abbbc0ef60"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/gitea-mcp/v2.3.3/gitea-mcp_Linux_arm64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/gitea-mcp/v#{version}/gitea-mcp_Linux_arm64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
     on_intel do
       sha256 "aa7bccd6e9a9a6ba8e80afd285fff873d19ab0e1242e6c0a300a4a56178afc20"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/gitea-mcp/v2.3.3/gitea-mcp_Linux_x86_64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/gitea-mcp/v#{version}/gitea-mcp_Linux_x86_64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
 
   name "gitea-mcp"
-  desc "Model Context Protocol server for Gitea"
+  desc "Gitea MCP server for repository automation"
   homepage "https://github.com/yeisme/yeisme-dist"
 
   livecheck do
-    skip "Generated from the verified yeisme-dist catalog."
+    skip "Generated from the yeisme-dist catalog."
   end
 
   binary "gitea-mcp"

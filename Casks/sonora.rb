@@ -5,24 +5,25 @@ cask "sonora" do
   on_macos do
     on_arm do
       sha256 "81dfa2759e7d9c1dafbe51ca7225536a4dc997480fa30ba21e54e5dfeff659d7"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/sonora/v0.2.2/sonora_0.2.2_Darwin_arm64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/sonora/v#{version}/sonora_#{version}_Darwin_arm64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
     on_intel do
       sha256 "ca3b6f9ecbfd1ac444cb6439e2b46897cc6669e69c1e175154a706dd09a3bbc9"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/sonora/v0.2.2/sonora_0.2.2_Darwin_x86_64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/sonora/v#{version}/sonora_#{version}_Darwin_x86_64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
+
   on_linux do
     on_arm do
       sha256 "c9abf6a32bf09d63d4dea37bf5164655cc01c27640df47575a77516240be58cf"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/sonora/v0.2.2/sonora_0.2.2_Linux_arm64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/sonora/v#{version}/sonora_#{version}_Linux_arm64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
     on_intel do
       sha256 "45ec63b8f14dbc80747df4f6c2c61b0a42cbea76b4d3996d85c9a4866b83e363"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/sonora/v0.2.2/sonora_0.2.2_Linux_x86_64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/sonora/v#{version}/sonora_#{version}_Linux_x86_64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
@@ -32,7 +33,7 @@ cask "sonora" do
   homepage "https://github.com/yeisme/yeisme-dist"
 
   livecheck do
-    skip "Generated from the verified yeisme-dist catalog."
+    skip "Generated from the yeisme-dist catalog."
   end
 
   binary "sonora"

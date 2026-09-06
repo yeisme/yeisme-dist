@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Generate public Homebrew casks from the mirrored yeisme-dist catalog.
-# Eikona also keeps its public Scoop manifest. This script never reads private
-# product repositories and never downloads release assets.
+# Generate public Homebrew and Scoop manifests from the already-mirrored
+# yeisme-dist catalog. This script never reads private product repositories.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -19,256 +18,210 @@ done
 command -v jq >/dev/null || { echo 'jq required' >&2; exit 2; }
 [[ -f "$CATALOG" ]] || { echo "catalog not found: $CATALOG" >&2; exit 2; }
 
-products=(
-  eikona pinax auctra scaena gitea-mcp sonora anatomia
-  mcp-gateway credentialctl inferrum quaestor
-)
+mkdir -p "$OUTPUT_ROOT/Casks" "$OUTPUT_ROOT/bucket"
 
-description_for() {
-  case "$1" in
-    eikona) echo 'Agent-first visual asset runtime and image-generation CLI' ;;
-    pinax) echo 'Agent-safe local-first knowledge control plane' ;;
-    auctra) echo 'Local-first unified text creation agent CLI' ;;
-    scaena) echo 'Short-drama production CLI and backend' ;;
-    gitea-mcp) echo 'Model Context Protocol server for Gitea' ;;
-    sonora) echo 'Local-first voice, subtitle, and audio workflow CLI' ;;
-    anatomia) echo 'Video evidence analysis CLI and local MCP client' ;;
-    mcp-gateway) echo 'Local MCP gateway, registry, and policy CLI' ;;
-    credentialctl) echo 'Local shared credential and project-secret CLI' ;;
-    inferrum) echo 'Local vector and retrieval-augmented generation CLI' ;;
-    quaestor) echo 'Deep-research and quantitative validation CLI' ;;
-    *) return 1 ;;
-  esac
-}
-
-binaries_for() {
-  case "$1" in
-    anatomia) printf '%s\n' anatomia anatomia-video-mcp ;;
-    *) printf '%s\n' "$1" ;;
-  esac
-}
-
-release_for() {
-  local product="$1" tag
-  tag="$(jq -r --arg product "$product" '
-    .products[]? | select(.name == $product) | .latest // empty
+load_release() {
+  product="$1"
+  tag="$(jq -er --arg product "$product" '
+    .products[] | select(.name == $product) | .latest | select(type == "string")
   ' "$CATALOG")"
-  [[ -n "$tag" ]] || return 1
-  jq -ce --arg product "$product" --arg tag "$tag" '
-    .products[] | select(.name == $product) | .releases[] | select(.tag == $tag)
-  ' "$CATALOG"
-}
+  version="${tag#"$product"/v}"
+  if [[ "$tag" != "$product/v$version" || ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "unsupported $product latest tag: $tag" >&2
+    exit 1
+  fi
 
-asset_for() {
-  local release_json="$1" product="$2" os_name="$3" arch="$4"
-  jq -r --arg product "${product,,}_" --arg os_name "${os_name,,}" --arg arch "$arch" '
-    [(.assets // [])[]
-      | select((ascii_downcase | startswith($product)))
-      | select((ascii_downcase | endswith(".tar.gz")))
-      | select((ascii_downcase | contains($os_name)))
-      | select(
-          if $arch == "arm64" then
-            ((ascii_downcase | contains("arm64")) or (ascii_downcase | contains("aarch64")))
-          else
-            ((ascii_downcase | contains("amd64")) or (ascii_downcase | contains("x86_64")))
-          end
-        )]
-    | first // empty
-  ' <<<"$release_json"
+  release_json="$(jq -ce --arg product "$product" --arg tag "$tag" '
+    .products[] | select(.name == $product) | .releases[] | select(.tag == $tag)
+  ' "$CATALOG")"
+  release_version="$(jq -er '.version | select(type == "string")' <<<"$release_json")"
+  if [[ "$release_version" != "v$version" ]]; then
+    echo "$product release version $release_version does not match latest tag $tag" >&2
+    exit 1
+  fi
 }
 
 digest_for() {
-  local release_json="$1" asset="$2" digest
-  digest="$(jq -er --arg asset "$asset" '
-    .asset_digests[$asset] | select(type == "string")
-  ' <<<"$release_json")"
-  [[ "$digest" =~ ^sha256:[0-9a-f]{64}$ ]] || {
-    echo "missing SHA-256 digest for $asset" >&2
+  local name="$1" digest
+  digest="$(jq -er --arg name "$name" '.asset_digests[$name] | select(type == "string")' <<<"$release_json")"
+  if [[ ! "$digest" =~ ^sha256:[0-9a-f]{64}$ ]]; then
+    echo "missing SHA-256 digest for $name" >&2
     return 1
-  }
+  fi
   printf '%s\n' "${digest#sha256:}"
 }
 
-emit_arch() {
-  local release_json="$1" tag="$2" product="$3" os_name="$4" arch="$5"
-  local asset sha stanza
-  asset="$(asset_for "$release_json" "$product" "$os_name" "$arch")"
-  [[ -n "$asset" ]] || return 1
-  if ! sha="$(digest_for "$release_json" "$asset")"; then
-    # Status 2 distinguishes an available platform with missing or malformed
-    # integrity metadata from a platform that the release does not provide.
-    return 2
-  fi
-  [[ "$arch" == arm64 ]] && stanza=on_arm || stanza=on_intel
-  printf '    %s do\n' "$stanza"
-  printf '      sha256 "%s"\n' "$sha"
-  printf '      url "https://github.com/yeisme/yeisme-dist/releases/download/%s/%s",\n' "$tag" "$asset"
-  printf '          verified: "github.com/yeisme/yeisme-dist/"\n'
-  printf '    end\n'
+require_assets() {
+  local required_asset
+  for required_asset in "$@"; do
+    [[ -z "$required_asset" ]] && continue
+    if ! jq -e --arg name "$required_asset" '(.assets // []) | index($name) != null' <<<"$release_json" >/dev/null; then
+      echo "$product release $tag is missing required asset $required_asset" >&2
+      exit 1
+    fi
+  done
 }
 
-emit_os() {
-  local release_json="$1" tag="$2" product="$3" os_name="$4" block="$5"
-  local arm intel arm_status intel_status
-  if arm="$(emit_arch "$release_json" "$tag" "$product" "$os_name" arm64)"; then
-    arm_status=0
-  else
-    arm_status=$?
-    arm=""
-  fi
-  if intel="$(emit_arch "$release_json" "$tag" "$product" "$os_name" amd64)"; then
-    intel_status=0
-  else
-    intel_status=$?
-    intel=""
-  fi
-  (( arm_status < 2 && intel_status < 2 )) || return 2
-  [[ -n "$arm" || -n "$intel" ]] || return 1
-  printf '  %s do\n' "$block"
-  [[ -n "$arm" ]] && printf '%s\n' "$arm"
-  [[ -n "$intel" ]] && printf '%s\n' "$intel"
+write_platform_block() {
+  local platform="$1" arm_asset="$2" intel_asset="$3" asset cask_asset sha
+  [[ -z "$arm_asset" && -z "$intel_asset" ]] && return
+  printf '  on_%s do\n' "$platform"
+  for asset in "$arm_asset" "$intel_asset"; do
+    [[ -z "$asset" ]] && continue
+    sha="$(digest_for "$asset")"
+    if [[ "$asset" == "$arm_asset" ]]; then
+      printf '    on_arm do\n'
+    else
+      printf '    on_intel do\n'
+    fi
+    printf '      sha256 "%s"\n' "$sha"
+    cask_asset="${asset//$version/'#{version}'}"
+    printf '      url "https://github.com/yeisme/yeisme-dist/releases/download/%s/v#{version}/%s",\n' "$product" "$cask_asset"
+    printf '          verified: "github.com/yeisme/yeisme-dist/"\n'
+    printf '    end\n'
+  done
   printf '  end\n'
 }
 
-render_cask() {
-  local product="$1" release_json="$2" tag version description tmp macos linux
-  tag="$(jq -er '.tag' <<<"$release_json")"
-  version="$(jq -er '.version | select(test("^v[0-9]+\\.[0-9]+\\.[0-9]+$"))' <<<"$release_json")"
-  version="${version#v}"
-  [[ "$tag" == "$product/v$version" ]] || {
-    echo "$product release tag/version mismatch: $tag" >&2
-    return 1
-  }
-  description="$(description_for "$product")"
-  local macos_status linux_status
-  if macos="$(emit_os "$release_json" "$tag" "$product" darwin on_macos)"; then
-    macos_status=0
-  else
-    macos_status=$?
-    macos=""
-  fi
-  if linux="$(emit_os "$release_json" "$tag" "$product" linux on_linux)"; then
-    linux_status=0
-  else
-    linux_status=$?
-    linux=""
-  fi
-  (( macos_status < 2 && linux_status < 2 )) || {
-    echo "$product release $tag has an archive without a valid SHA-256 digest" >&2
-    return 1
-  }
-  [[ -n "$macos" || -n "$linux" ]] || {
-    echo "$product release $tag has no Homebrew-compatible archive" >&2
-    return 1
-  }
-
-  tmp="$(mktemp)"
+write_cask() {
+  local description="$1" binary="$2" darwin_amd64="$3" darwin_arm64="$4"
+  local linux_amd64="$5" linux_arm64="$6" caveat="$7" cask_tmp
+  require_assets "$darwin_amd64" "$darwin_arm64" "$linux_amd64" "$linux_arm64"
+  cask_tmp="$(mktemp)"
   {
-    echo '# This file is generated by scripts/generate-package-manifests.sh. DO NOT EDIT.'
+    printf '# This file is generated by scripts/generate-package-manifests.sh. DO NOT EDIT.\n'
     printf 'cask "%s" do\n' "$product"
     printf '  version "%s"\n\n' "$version"
-    [[ -n "$macos" ]] && printf '%s\n' "$macos"
-    [[ -n "$linux" ]] && printf '%s\n' "$linux"
-    echo
-    printf '  name "%s"\n' "$product"
+    write_platform_block macos "$darwin_arm64" "$darwin_amd64"
+    [[ -n "$darwin_amd64$darwin_arm64" ]] && printf '\n'
+    write_platform_block linux "$linux_arm64" "$linux_amd64"
+    printf '\n  name "%s"\n' "$product"
     printf '  desc "%s"\n' "$description"
-    echo '  homepage "https://github.com/yeisme/yeisme-dist"'
-    echo
-    echo '  livecheck do'
-    echo '    skip "Generated from the verified yeisme-dist catalog."'
-    echo '  end'
-    echo
-    while IFS= read -r binary; do
-      printf '  binary "%s"\n' "$binary"
-    done < <(binaries_for "$product")
-    if [[ "$product" == eikona ]]; then
-      cat <<'EOF'
-
-  caveats <<~EOS
-    Preview local configuration and exact-version Agent Skills setup:
-      eikona setup
-    Apply the reviewed local setup:
-      eikona setup --yes
-  EOS
-EOF
+    printf '  homepage "https://github.com/yeisme/yeisme-dist"\n\n'
+    printf '  livecheck do\n'
+    printf '    skip "Generated from the yeisme-dist catalog."\n'
+    printf '  end\n\n'
+    printf '  binary "%s"\n' "$binary"
+    if [[ -n "$caveat" ]]; then
+      printf '\n  caveats <<~EOS\n%s\n  EOS\n' "$caveat"
     fi
-    echo
-    echo '  # No zap stanza required'
-    echo 'end'
-  } > "$tmp"
-  mv "$tmp" "$OUTPUT_ROOT/Casks/$product.rb"
+    printf '\n  # No zap stanza required\nend\n'
+  } > "$cask_tmp"
+  mv "$cask_tmp" "$OUTPUT_ROOT/Casks/$product.rb"
   echo "generated $OUTPUT_ROOT/Casks/$product.rb"
 }
 
-render_eikona_bucket() {
-  local release_json="$1" tag version windows_amd64 windows_arm64 amd64_sha arm64_sha tmp
-  tag="$(jq -er '.tag' <<<"$release_json")"
-  version="${tag#eikona/v}"
-  windows_amd64="eikona_${version}_Windows_x86_64.zip"
-  windows_arm64="eikona_${version}_Windows_arm64.zip"
-  amd64_sha="$(digest_for "$release_json" "$windows_amd64")"
-  arm64_sha="$(digest_for "$release_json" "$windows_arm64")"
-  tmp="$(mktemp)"
+write_scoop() {
+  local description="$1" license="$2" binary="$3" windows_amd64="$4"
+  local windows_arm64="$5" note="$6" amd64_sha="" arm64_sha="" bucket_tmp
+  [[ -z "$windows_amd64" && -z "$windows_arm64" ]] && return
+  require_assets "$windows_amd64" "$windows_arm64"
+  [[ -n "$windows_amd64" ]] && amd64_sha="$(digest_for "$windows_amd64")"
+  [[ -n "$windows_arm64" ]] && arm64_sha="$(digest_for "$windows_arm64")"
+  bucket_tmp="$(mktemp)"
   jq -n \
     --arg version "$version" \
+    --arg description "$description." \
+    --arg homepage "https://github.com/yeisme/yeisme-dist" \
+    --arg license "$license" \
     --arg base "https://github.com/yeisme/yeisme-dist/releases/download/$tag" \
     --arg amd64_asset "$windows_amd64" \
     --arg amd64_sha "$amd64_sha" \
     --arg arm64_asset "$windows_arm64" \
-    --arg arm64_sha "$arm64_sha" '
+    --arg arm64_sha "$arm64_sha" \
+    --arg binary "$binary.exe" \
+    --arg note "$note" '
     {
       version: $version,
-      description: "Agent-first visual asset runtime and image-generation CLI.",
-      homepage: "https://github.com/yeisme/yeisme-dist",
-      license: "MIT",
-      architecture: {
-        "64bit": {url: ($base + "/" + $amd64_asset), hash: $amd64_sha},
-        arm64: {url: ($base + "/" + $arm64_asset), hash: $arm64_sha}
-      },
-      bin: "eikona.exe",
-      notes: [
-        "Preview local configuration and exact-version Agent Skills setup: eikona setup",
-        "Apply the reviewed local setup: eikona setup --yes"
-      ]
-    }
-  ' > "$tmp"
-  mv "$tmp" "$OUTPUT_ROOT/bucket/eikona.json"
-  echo "generated $OUTPUT_ROOT/bucket/eikona.json"
+      description: $description,
+      homepage: $homepage,
+      license: $license,
+      architecture: (
+        {}
+        + (if $amd64_asset == "" then {} else {
+            "64bit": {url: ($base + "/" + $amd64_asset), hash: $amd64_sha}
+          } end)
+        + (if $arm64_asset == "" then {} else {
+            arm64: {url: ($base + "/" + $arm64_asset), hash: $arm64_sha}
+          } end)
+      ),
+      bin: $binary
+    } + (if $note == "" then {} else {notes: ($note | split("\n") | map(select(length > 0)))} end)
+  ' > "$bucket_tmp"
+  mv "$bucket_tmp" "$OUTPUT_ROOT/bucket/$product.json"
+  echo "generated $OUTPUT_ROOT/bucket/$product.json"
 }
 
-validate_eikona_release() {
-  local release_json="$1" version required
-  version="$(jq -er '.version | ltrimstr("v")' <<<"$release_json")"
-  local required_assets=(
-    checksums.txt
-    eikona-install-manifest.json
-    "eikona-command-catalog_${version}.json"
-    "eikona-skills_${version}.json"
-    "eikona-skills_${version}.tar.gz"
-    "eikona_${version}_Darwin_arm64.tar.gz"
-    "eikona_${version}_Darwin_x86_64.tar.gz"
-    "eikona_${version}_Linux_arm64.tar.gz"
-    "eikona_${version}_Linux_x86_64.tar.gz"
-    "eikona_${version}_Windows_arm64.zip"
-    "eikona_${version}_Windows_x86_64.zip"
-  )
-  for required in "${required_assets[@]}"; do
-    jq -e --arg required "$required" '(.assets // []) | index($required) != null' \
-      <<<"$release_json" >/dev/null || {
-        echo "eikona release is missing required asset $required" >&2
-        return 1
-      }
-    case "$required" in
-      *.tar.gz|*.zip) digest_for "$release_json" "$required" >/dev/null || return 1 ;;
-    esac
-  done
+generate_product() {
+  local requested_product="$1" description="$2" license="$3" binary="$4"
+  local darwin_amd64="$5" darwin_arm64="$6" linux_amd64="$7" linux_arm64="$8"
+  local windows_amd64="$9" windows_arm64="${10}" caveat="${11}" note="${12}"
+  load_release "$requested_product"
+  darwin_amd64="${darwin_amd64//@VERSION@/$version}"
+  darwin_arm64="${darwin_arm64//@VERSION@/$version}"
+  linux_amd64="${linux_amd64//@VERSION@/$version}"
+  linux_arm64="${linux_arm64//@VERSION@/$version}"
+  windows_amd64="${windows_amd64//@VERSION@/$version}"
+  windows_arm64="${windows_arm64//@VERSION@/$version}"
+  write_cask "$description" "$binary" "$darwin_amd64" "$darwin_arm64" "$linux_amd64" "$linux_arm64" "$caveat"
+  write_scoop "$description" "$license" "$binary" "$windows_amd64" "$windows_arm64" "$note"
 }
 
-mkdir -p "$OUTPUT_ROOT/Casks" "$OUTPUT_ROOT/bucket"
-for product in "${products[@]}"; do
-  if release_json="$(release_for "$product")"; then
-    [[ "$product" != eikona ]] || validate_eikona_release "$release_json"
-    render_cask "$product" "$release_json"
-    [[ "$product" == eikona ]] && render_eikona_bucket "$release_json"
-  fi
-done
+load_release eikona
+require_assets \
+  checksums.txt \
+  eikona-install-manifest.json \
+  "eikona-command-catalog_${version}.json" \
+  "eikona-skills_${version}.json" \
+  "eikona-skills_${version}.tar.gz"
+write_cask \
+  "Agent-first visual asset runtime and image-generation CLI" eikona \
+  "eikona_${version}_Darwin_x86_64.tar.gz" "eikona_${version}_Darwin_arm64.tar.gz" \
+  "eikona_${version}_Linux_x86_64.tar.gz" "eikona_${version}_Linux_arm64.tar.gz" \
+  $'    Preview local configuration and exact-version Agent Skills setup:\n      eikona setup\n    Apply the reviewed local setup:\n      eikona setup --yes'
+write_scoop \
+  "Agent-first visual asset runtime and image-generation CLI" MIT eikona \
+  "eikona_${version}_Windows_x86_64.zip" "eikona_${version}_Windows_arm64.zip" \
+  $'Preview local configuration and exact-version Agent Skills setup: eikona setup\nApply the reviewed local setup: eikona setup --yes'
+
+generate_product pinax \
+  "Local-first Markdown knowledge workspace CLI" MIT pinax \
+  "pinax_@VERSION@_darwin_x86_64.tar.gz" "pinax_@VERSION@_darwin_aarch64.tar.gz" \
+  "pinax_@VERSION@_linux_x86_64.tar.gz" "pinax_@VERSION@_linux_aarch64.tar.gz" \
+  "pinax_@VERSION@_windows_x86_64.zip" "pinax_@VERSION@_windows_aarch64.zip" "" ""
+
+generate_product auctra \
+  "Local-first writing and story development CLI" Proprietary auctra \
+  "auctra_@VERSION@_darwin_amd64.tar.gz" "auctra_@VERSION@_darwin_arm64.tar.gz" \
+  "auctra_@VERSION@_linux_amd64.tar.gz" "auctra_@VERSION@_linux_arm64.tar.gz" \
+  "auctra_@VERSION@_windows_amd64.zip" "auctra_@VERSION@_windows_arm64.zip" "" ""
+
+generate_product scaena \
+  "CLI and agent runtime for AI drama production workflows" Proprietary scaena \
+  "" "" "scaena_linux_amd64.tar.gz" "" "" "" "" ""
+
+generate_product gitea-mcp \
+  "Gitea MCP server for repository automation" MIT gitea-mcp \
+  "gitea-mcp_Darwin_x86_64.tar.gz" "gitea-mcp_Darwin_arm64.tar.gz" \
+  "gitea-mcp_Linux_x86_64.tar.gz" "gitea-mcp_Linux_arm64.tar.gz" \
+  "gitea-mcp_Windows_x86_64.zip" "gitea-mcp_Windows_arm64.zip" "" ""
+
+generate_product sonora \
+  "Local-first voice, subtitle, and audio workflow CLI" Proprietary sonora \
+  "sonora_@VERSION@_Darwin_x86_64.tar.gz" "sonora_@VERSION@_Darwin_arm64.tar.gz" \
+  "sonora_@VERSION@_Linux_x86_64.tar.gz" "sonora_@VERSION@_Linux_arm64.tar.gz" \
+  "sonora_@VERSION@_Windows_x86_64.zip" "sonora_@VERSION@_Windows_arm64.zip" "" ""
+
+generate_product anatomia \
+  "Authorized video analysis and evidence workflow CLI" Proprietary anatomia \
+  "anatomia_@VERSION@_Darwin_x86_64.tar.gz" "anatomia_@VERSION@_Darwin_arm64.tar.gz" \
+  "anatomia_@VERSION@_Linux_x86_64.tar.gz" "anatomia_@VERSION@_Linux_arm64.tar.gz" \
+  "" "" "" ""
+
+generate_product credentialctl \
+  "Local shared credential and project-secret CLI" Proprietary credentialctl \
+  "credentialctl_@VERSION@_darwin_x86_64.tar.gz" "credentialctl_@VERSION@_darwin_aarch64.tar.gz" \
+  "credentialctl_@VERSION@_linux_x86_64.tar.gz" "credentialctl_@VERSION@_linux_aarch64.tar.gz" \
+  "credentialctl_@VERSION@_windows_x86_64.zip" "" \
+  $'    Install or update the credentialctl Agent Skill:\n      npx --yes skills add https://github.com/yeisme/yeisme-agent-my-skills --skill credentialctl-usage --yes' \
+  "Install the Agent Skill with: npx --yes skills add https://github.com/yeisme/yeisme-agent-my-skills --skill credentialctl-usage --yes"

@@ -5,34 +5,35 @@ cask "pinax" do
   on_macos do
     on_arm do
       sha256 "a2bda63ba47ba0bf459e8d41955a82f1b026c581fe2e456980c74dba0d9bc2bf"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v0.2.0/pinax_0.2.0_darwin_aarch64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v#{version}/pinax_#{version}_darwin_aarch64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
     on_intel do
       sha256 "8da6f237ef531ed0969f0da1a00ba17d88c91914233fa9def2b8abc743a141f0"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v0.2.0/pinax_0.2.0_darwin_x86_64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v#{version}/pinax_#{version}_darwin_x86_64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
+
   on_linux do
     on_arm do
       sha256 "eb8f8b7204da5d2ccd307b2ee895289a70eaa299b9ebc7211bf8c043d36da2c2"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v0.2.0/pinax_0.2.0_linux_aarch64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v#{version}/pinax_#{version}_linux_aarch64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
     on_intel do
       sha256 "3503b86336579afc671e5405e90e0513db7cf1e16df291386710e034d70a006e"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v0.2.0/pinax_0.2.0_linux_x86_64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v#{version}/pinax_#{version}_linux_x86_64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
 
   name "pinax"
-  desc "Agent-safe local-first knowledge control plane"
+  desc "Local-first Markdown knowledge workspace CLI"
   homepage "https://github.com/yeisme/yeisme-dist"
 
   livecheck do
-    skip "Generated from the verified yeisme-dist catalog."
+    skip "Generated from the yeisme-dist catalog."
   end
 
   binary "pinax"

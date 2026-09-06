@@ -5,34 +5,35 @@ cask "auctra" do
   on_macos do
     on_arm do
       sha256 "c4e577f50688579ea017f94a2b30f38f2fa545d3cfb3a1c800ecdb69c813ecca"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/auctra/v0.3.0/auctra_0.3.0_darwin_arm64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/auctra/v#{version}/auctra_#{version}_darwin_arm64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
     on_intel do
       sha256 "6cfb884f20e5c18c0bff79a4f495d13932ccbcb22b2091c32a18c2c8c98367ab"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/auctra/v0.3.0/auctra_0.3.0_darwin_amd64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/auctra/v#{version}/auctra_#{version}_darwin_amd64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
+
   on_linux do
     on_arm do
       sha256 "b07815b343f088a7372c2e3d0e36202f0529bb499bf0f0b66bde49479a890dec"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/auctra/v0.3.0/auctra_0.3.0_linux_arm64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/auctra/v#{version}/auctra_#{version}_linux_arm64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
     on_intel do
       sha256 "2d9ad19abff7905ab7b5aa08d9a57cb606a113594bd543e1e243bcf6a47ab669"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/auctra/v0.3.0/auctra_0.3.0_linux_amd64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/auctra/v#{version}/auctra_#{version}_linux_amd64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
 
   name "auctra"
-  desc "Local-first unified text creation agent CLI"
+  desc "Local-first writing and story development CLI"
   homepage "https://github.com/yeisme/yeisme-dist"
 
   livecheck do
-    skip "Generated from the verified yeisme-dist catalog."
+    skip "Generated from the yeisme-dist catalog."
   end
 
   binary "auctra"

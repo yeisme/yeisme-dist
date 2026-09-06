@@ -5,24 +5,25 @@ cask "eikona" do
   on_macos do
     on_arm do
       sha256 "4b6e8c6e79db8c3ffef6a6cbf9da957d603c43a46abfa28c6448855559c2dfec"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.7.7/eikona_0.7.7_Darwin_arm64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v#{version}/eikona_#{version}_Darwin_arm64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
     on_intel do
       sha256 "7449e07775f7b1c7efea88ef5887a7300bf4b48c6f88ee0d3d5b5db5f6522a7e"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.7.7/eikona_0.7.7_Darwin_x86_64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v#{version}/eikona_#{version}_Darwin_x86_64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
+
   on_linux do
     on_arm do
       sha256 "a64b7e08d31e2b30dcdfc13deb035d8d1c4353ab0b8bbc934924d99d36f36de6"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.7.7/eikona_0.7.7_Linux_arm64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v#{version}/eikona_#{version}_Linux_arm64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
     on_intel do
       sha256 "1fd4e548ea5ad3dce79540fcb65ca12902d841b282ec484b3810028e67095a99"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v0.7.7/eikona_0.7.7_Linux_x86_64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/eikona/v#{version}/eikona_#{version}_Linux_x86_64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
@@ -32,7 +33,7 @@ cask "eikona" do
   homepage "https://github.com/yeisme/yeisme-dist"
 
   livecheck do
-    skip "Generated from the verified yeisme-dist catalog."
+    skip "Generated from the yeisme-dist catalog."
   end
 
   binary "eikona"

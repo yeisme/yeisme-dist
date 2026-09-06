@@ -2,9 +2,10 @@
 
 This document defines the additive, verifiable contracts used when `yeisme-dist`
 mirrors a product release whose source repository publishes a
-`yeisme.product_release_handoff.v1` correlation record. Today only `anatomia`
-opts in via `policy/anatomia.json`; every product without a policy file keeps
-the legacy mirror path unchanged.
+`yeisme.product_release_handoff.v1` correlation record. Anatomia opts in via
+`policy/anatomia.json`; credentialctl uses the same verify-before-mutate path
+through `policy/credentialctl.json`. Products without a policy file keep the
+legacy mirror path unchanged.
 
 Owners: the **producer** (source repo, e.g. Anatomia) owns release evidence and
 handoff creation. **`yeisme-dist`** owns the public mirror, catalog, receipts
@@ -52,10 +53,11 @@ One JSON file per opted-in product at `policy/<product>.json`:
 | `provenance.attestation` | GitHub artifact attestation is recorded (`record-only`); offline enforcement is a future, separately reviewed policy |
 | `handoff.correlation_fields` | hint fields compared against verified facts |
 
-The `anatomia` matrix (client Darwin/Linux amd64+arm64, server Linux amd64+arm64)
-mirrors `.goreleaser.yaml` in the producer repository. Changing the matrix
-requires a producer release-process change first; a stale matrix fails closed
-here.
+The `anatomia` matrix covers client Darwin/Linux amd64+arm64 and server Linux
+amd64+arm64. The `credentialctl` matrix covers Darwin/Linux amd64+arm64 and
+Windows amd64. Both mirror their producer GoReleaser configuration. Changing a
+matrix requires a producer release-process change first; a stale matrix fails
+closed here.
 
 ## 3. Distribution receipt — `yeisme.dist_receipt.v1`
 

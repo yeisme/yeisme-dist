@@ -16,7 +16,7 @@ DEST="${HOME}/.yeisme/bin"
 product=""
 version=""
 
-KNOWN_FALLBACK=(eikona pinax auctra scaena gitea-mcp sonora anatomia mcp-gateway)
+KNOWN_FALLBACK=(eikona pinax auctra scaena gitea-mcp sonora anatomia mcp-gateway credentialctl)
 
 auth=()
 [[ -n "${GH_TOKEN:-}" ]] && auth=(-H "Authorization: Bearer $GH_TOKEN")

@@ -5,17 +5,17 @@ cask "scaena" do
   on_linux do
     on_intel do
       sha256 "db5ff3f54c168614adaac2152b704263093428cacb81d03cf0a0bdc6c074072a"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/scaena/v0.2.1/scaena_linux_amd64.tar.gz",
+      url "https://github.com/yeisme/yeisme-dist/releases/download/scaena/v#{version}/scaena_linux_amd64.tar.gz",
           verified: "github.com/yeisme/yeisme-dist/"
     end
   end
 
   name "scaena"
-  desc "Short-drama production CLI and backend"
+  desc "CLI and agent runtime for AI drama production workflows"
   homepage "https://github.com/yeisme/yeisme-dist"
 
   livecheck do
-    skip "Generated from the verified yeisme-dist catalog."
+    skip "Generated from the yeisme-dist catalog."
   end
 
   binary "scaena"

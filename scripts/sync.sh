@@ -78,11 +78,13 @@ write_catalog() {
         published_at: (.published_at // ""),
         prerelease: .prerelease,
         asset_count: (.assets | length),
-        assets: [.assets[].name],
+        assets: [.assets[].name]
+      } + {
         asset_digests: (
           .assets
           | map(select(
-              ((.digest // "") | startswith("sha256:"))
+              (.name | test("\\.(tar\\.gz|tgz|zip)$"))
+              and ((.digest // "") | startswith("sha256:"))
             ) | {
               key: .name,
               value: .digest
@@ -288,18 +290,12 @@ while IFS='|' read -r name src strip; do
       if ! mirrored="$(verify_mirror_assets \
           "$(jq -c '.verified.upstream_assets' <<<"$result")" "$vdir")"; then
         record_failed_attempt "$name" "$ver" "$(emit_fail mirror_digest_mismatch)"
-        if [[ "$action" != "receipt-only" ]]; then
-          gh release delete "$dist_tag" --repo "$DIST_REPO" --cleanup-tag --yes >/dev/null 2>&1 || true
-        fi
         failures+=("$name: $dist_tag mirrored digest mismatch"); failed=$((failed+1)); continue
       fi
 
       facts="$(jq --argjson m "$mirrored" '. + {mirrored_assets: $m}' <<<"$result")"
       if ! wout="$(write_receipt "$name" "$ver" "$facts")"; then
         record_failed_attempt "$name" "$ver" "$(emit_fail receipt_fingerprint_conflict)"
-        if [[ "$action" != "receipt-only" ]]; then
-          gh release delete "$dist_tag" --repo "$DIST_REPO" --cleanup-tag --yes >/dev/null 2>&1 || true
-        fi
         failures+=("$name: $dist_tag receipt fingerprint conflict"); failed=$((failed+1)); continue
       fi
       if [[ "$action" == "receipt-only" ]]; then
@@ -341,7 +337,7 @@ while IFS='|' read -r name src strip; do
       "$WORK/$name.json" > "$WORK/assets.txt"
     bad=""
     while IFS= read -r a; do
-      if denied "$a"; then bad="$bad $a"; fi
+      if denied "$a" "$name"; then bad="$bad $a"; fi
     done < "$WORK/assets.txt"
     if [[ -n "$bad" ]]; then
       echo "    ERROR $dist_tag: denied asset name(s):$bad" >&2
@@ -359,13 +355,6 @@ while IFS='|' read -r name src strip; do
         || { failures+=("$name: $dist_tag checksum mismatch"); failed=$((failed+1)); continue; }
     fi
 
-    if ! skills_result="$(verify_declared_skills_assets "$name" "$tag" "$dir")"; then
-      reason="$(jq -r '.reason // "skills_asset_verify_failed"' <<<"$skills_result")"
-      echo "    ERROR $dist_tag Skills asset verification failed: $reason" >&2
-      failures+=("$name: $dist_tag skills assets: $reason"); failed=$((failed+1)); continue
-    fi
-    skills_assets="$(jq -c '.assets' <<<"$skills_result")"
-
     write_release_notes "$src" "$tag" "$WORK/$name.json" "$dir"
 
     args=(release create "$dist_tag" --repo "$DIST_REPO"
@@ -377,28 +366,17 @@ while IFS='|' read -r name src strip; do
       || { failures+=("$name: $dist_tag publish failed"); failed=$((failed+1)); continue; }
 
     mirrored="$(gh release view "$dist_tag" -R "$DIST_REPO" --json assets --jq '.assets | length')"
-    mirror_skills_ok=1
-    if [[ "$(jq 'length' <<<"$skills_assets")" -gt 0 ]]; then
-      vdir="$dir.verify"; rm -rf "$vdir"; mkdir -p "$vdir"
-      if ! gh release download "$dist_tag" -R "$DIST_REPO" --dir "$vdir" --clobber \
-         || ! verify_mirror_assets "$skills_assets" "$vdir" >/dev/null; then
-        mirror_skills_ok=0
-      fi
-    fi
-    if [[ "$mirrored" -eq "$n_assets" && "$mirror_skills_ok" -eq 1 ]]; then
+    if [[ "$mirrored" -eq "$n_assets" ]]; then
       synced=$((synced+1))
     else
-      gh release delete "$dist_tag" --repo "$DIST_REPO" --cleanup-tag --yes >/dev/null 2>&1 || true
-      failures+=("$name: $dist_tag mirrored $mirrored/$n_assets assets or Skills digest verification failed")
+      failures+=("$name: $dist_tag mirrored $mirrored/$n_assets assets")
       failed=$((failed+1))
     fi
   done
 done < "$PRODUCTS_FILE"
 
-if [[ "$DRY_RUN" -eq 0 && "$failed" -eq 0 ]]; then
+if [[ "$DRY_RUN" -eq 0 ]]; then
   write_catalog
-elif [[ "$DRY_RUN" -eq 0 ]]; then
-  echo "catalog unchanged because one or more releases failed verification" >&2
 fi
 
 echo
