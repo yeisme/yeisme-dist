@@ -488,6 +488,54 @@ catalog_join_receipts() { # <name> <releases_json>
   printf '%s' "$out"
 }
 
+# Versions whose generated package manifests were rolled back after a channel
+# defect (scaena-v0-4-package-channels-v1 §6.4). Presence of
+# receipts/<product>/failures/<version>-manifest-rollback.json makes the
+# version ineligible for catalog latest/verified_latest on every regeneration.
+rolled_back_versions() { # <product>
+  local fdir f
+  fdir="$(dist_root)/receipts/$1/failures"
+  [[ -d "$fdir" ]] || return 0
+  while IFS= read -r f; do
+    basename "$f" | sed 's/-manifest-rollback\.json$//'
+  done < <(find "$fdir" -maxdepth 1 -name '*-manifest-rollback.json' -type f 2>/dev/null | sort)
+  return 0
+}
+
+_rolled_back_json() { # <product> [extra_excluded_json_array]
+  ( rolled_back_versions "$1"
+    jq -r '.[] // empty' <<<"${2:-[]}" 2>/dev/null || true
+  ) | jq -Rsc 'split("\n") | map(select(length > 0))'
+}
+
+# Newest catalog tag for `latest`. strict_stable=1 (verify-policy products)
+# never falls back to a prerelease; the legacy fallback keeps the historical
+# behavior for products without a policy. Versions with a manifest-rollback
+# failure record (plus the optional extra exclusion list) are never selected.
+catalog_pick_latest() { # <product> <releases_json> <strict_stable> [extra_excluded_json_array]
+  local product="$1" releases="$2" strict="${3:-0}"
+  local rb; rb="$(_rolled_back_json "$product" "${4:-[]}")"
+  jq -r --argjson rb "$rb" --argjson strict "$strict" '
+    def ok: ((.version // "") as $v | ($rb | index($v)) == null);
+    (map(select(.prerelease == false and ok)) | .[0].tag)
+    // (if $strict == 1 then empty else (map(select(ok)) | .[0].tag) end)
+    // empty
+  ' <<<"$releases"
+}
+
+# Newest non-prerelease tag with a verified receipt, skipping rolled-back
+# versions (and the optional extra exclusion list).
+catalog_pick_verified_latest() { # <product> <releases_json> [extra_excluded_json_array]
+  local product="$1" releases="$2"
+  local rb; rb="$(_rolled_back_json "$product" "${3:-[]}")"
+  jq -r --argjson rb "$rb" '
+    def ok: ((.version // "") as $v | ($rb | index($v)) == null);
+    (map(select(.prerelease == false and ok and .verification.status == "verified"))
+      | .[0].tag)
+    // empty
+  ' <<<"$releases"
+}
+
 # A hint only applies to the product it names; hints for other products (and
 # unparseable hints) are ignored — upstream verification is the authority.
 hint_for_product() { # <product>; prints hint JSON when it applies

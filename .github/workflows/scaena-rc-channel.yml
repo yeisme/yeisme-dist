@@ -1,0 +1,90 @@
+name: Scaena RC channel
+
+# RC temporary Tap/Bucket lifecycle (scaena-v0-4-package-channels-v1 §4.1).
+# Renders the six Scaena manifests for one upstream prerelease into a
+# temporary channel, validates the structure, and always destroys the channel
+# before the job ends. Read-only: an RC never advances the stable catalog,
+# success receipts, or public manifests, so this workflow never pushes.
+#
+# Full asset fetch/install smoke against exact RC assets (task 6.2) extends
+# the "Validate temporary channel" step in a separately reviewed change.
+
+on:
+  workflow_dispatch:
+    inputs:
+      rc_tag:
+        description: "Upstream prerelease tag, e.g. scaena/v0.4.0-rc.1"
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scaena-rc-channel
+  cancel-in-progress: false
+
+jobs:
+  rc-channel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch upstream RC release metadata
+        env:
+          GH_TOKEN: ${{ secrets.DIST_SYNC_TOKEN }}
+          RC_TAG: ${{ inputs.rc_tag }}
+        run: |
+          product="${RC_TAG%%/*}"
+          if [[ "$product" != "scaena" ]]; then
+            echo "::error::the RC channel is scaena-only, got: $RC_TAG"
+            exit 1
+          fi
+          src="$(awk -F'|' -v p="$product" '$1==p {gsub(/[[:space:]]/,"",$2); print $2}' products.txt)"
+          if [[ -z "$src" ]]; then
+            echo "::error::scaena not found in products.txt"
+            exit 1
+          fi
+          gh api "repos/$src/releases/tags/$RC_TAG" > "$RUNNER_TEMP/rc-release.json"
+          jq -e '.prerelease == true and .draft != true' "$RUNNER_TEMP/rc-release.json" >/dev/null || {
+            echo "::error::$RC_TAG is not a published prerelease"
+            exit 1
+          }
+
+      - name: Render temporary Tap/Bucket
+        id: rc
+        env:
+          RC_TAG: ${{ inputs.rc_tag }}
+        run: |
+          scripts/rc-channel.sh create --tag "$RC_TAG" \
+            --release "$RUNNER_TEMP/rc-release.json" --root "$RUNNER_TEMP"
+
+      - name: Validate temporary channel
+        env:
+          RC_ROOT: ${{ steps.rc.outputs.root }}
+          RC_TAG: ${{ inputs.rc_tag }}
+        run: |
+          version="${RC_TAG#scaena/v}"
+          for pkg in scaena scaena-api scaena-production-worker; do
+            cask="$RC_ROOT/Tap/Casks/$pkg.rb"
+            scoop="$RC_ROOT/Bucket/bucket/$pkg.json"
+            ruby -c "$cask" >/dev/null || { echo "::error::invalid cask $pkg"; exit 1; }
+            grep -qF "version \"$version\"" "$cask" || { echo "::error::wrong version in $pkg cask"; exit 1; }
+            grep -qF "binary \"$pkg\"" "$cask" || { echo "::error::missing binary stanza in $pkg cask"; exit 1; }
+            jq -e --arg version "$version" --arg bin "$pkg.exe" \
+              '.version == $version and .bin == $bin
+               and (.architecture | has("64bit") and has("arm64"))
+               and ([.architecture[] .hash] | all(test("^[0-9a-f]{64}$")))' \
+              "$scoop" >/dev/null || { echo "::error::invalid scoop manifest $pkg"; exit 1; }
+          done
+          echo "temporary channel structurally valid (six manifests, digests pinned)"
+
+      - name: Destroy temporary channel
+        if: always()
+        env:
+          RC_ROOT: ${{ steps.rc.outputs.root }}
+        run: |
+          if [[ -n "$RC_ROOT" && -d "$RC_ROOT" ]]; then
+            scripts/rc-channel.sh destroy --root "$RC_ROOT"
+          else
+            echo "no temporary channel to destroy"
+          fi

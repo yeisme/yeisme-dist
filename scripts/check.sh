@@ -18,12 +18,17 @@ check() {
 check bash -n scripts/sync.sh
 check bash -n scripts/check.sh
 check bash -n scripts/lib/verify.sh
+check bash -n scripts/lib/catalog.sh
 check bash -n scripts/test-offline.sh
 check bash -n scripts/generate-package-manifests.sh
 check bash -n scripts/test-scaena-packages.sh
+check bash -n scripts/rc-channel.sh
+check bash -n scripts/rollback-manifests.sh
+check bash -n scripts/test-scaena-channels-lifecycle.sh
 check bash -n install.sh
 check scripts/test-offline.sh
 check scripts/test-scaena-packages.sh
+check scripts/test-scaena-channels-lifecycle.sh
 
 if ! grep -qE '^eikona\|yeisme/eikona\|' products.txt; then
   echo "FAIL products.txt missing eikona row" >&2

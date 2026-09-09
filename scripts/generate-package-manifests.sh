@@ -6,31 +6,42 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CATALOG="$ROOT/catalog.json"
 OUTPUT_ROOT="$ROOT"
+RC_TAG=""
+RC_RELEASE=""
+RC_ROOT=""
+RC_URL_BASE=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --catalog) CATALOG="$2"; shift 2 ;;
     --output-root) OUTPUT_ROOT="$2"; shift 2 ;;
+    --rc-tag) RC_TAG="$2"; shift 2 ;;
+    --rc-release) RC_RELEASE="$2"; shift 2 ;;
+    --rc-root) RC_ROOT="$2"; shift 2 ;;
+    --rc-url-base) RC_URL_BASE="$2"; shift 2 ;;
     *) printf 'unknown flag: %s\n' "$1" >&2; exit 2 ;;
   esac
 done
 
 command -v jq >/dev/null || { echo 'jq required' >&2; exit 2; }
-[[ -f "$CATALOG" ]] || { echo "catalog not found: $CATALOG" >&2; exit 2; }
 
 # Shared static Scaena package descriptors: install.sh embeds the same table;
 # scripts/test-offline.sh keeps the two from drifting.
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/scaena-packages.sh"
 
-mkdir -p "$OUTPUT_ROOT/Casks" "$OUTPUT_ROOT/bucket"
 # Cask/bucket output dirs default to the output root; the Scaena three-package
 # group redirects them to a staging directory and swaps files in atomically.
+# The RC mode below overrides both before any stable generation runs.
 CASK_DIR="$OUTPUT_ROOT/Casks"
 BUCKET_DIR="$OUTPUT_ROOT/bucket"
 # URL_TAG_PRODUCT is the catalog product owning the Release tag used in
 # download URLs; package aliases render under their own cask name but
 # download from the catalog product's release tag.
 URL_TAG_PRODUCT=""
+# Public release download base for manifest URLs. The RC temporary channel
+# may redirect it (e.g. to a job-local proxy); stable generation always uses
+# the public mirror.
+DIST_URL_BASE="https://github.com/yeisme/yeisme-dist/releases/download"
 
 load_release() {
   product="$1"
@@ -49,6 +60,15 @@ load_release() {
   release_version="$(jq -er '.version | select(type == "string")' <<<"$release_json")"
   if [[ "$release_version" != "v$version" ]]; then
     echo "$product release version $release_version does not match latest tag $tag" >&2
+    exit 1
+  fi
+  # RC isolation (scaena-v0-4-package-channels-v1 §4.1): verify-policy
+  # products never render stable manifests from a prerelease latest. The
+  # catalog prefers stable tags, so reaching here with prerelease=true means
+  # every stable release is absent or rolled back — fail closed.
+  if [[ -f "$ROOT/policy/$product.json" ]] \
+     && [[ "$(jq -r '.prerelease // false' <<<"$release_json")" == "true" ]]; then
+    echo "$product latest $tag is a prerelease: stable manifests render stable releases only" >&2
     exit 1
   fi
 }
@@ -89,7 +109,7 @@ write_platform_block() {
     printf '      sha256 "%s"\n' "$sha"
     cask_asset="${asset//$version/'#{version}'}"
     url_owner="$product"; [[ -n "$URL_TAG_PRODUCT" ]] && url_owner="$URL_TAG_PRODUCT"
-    printf '      url "https://github.com/yeisme/yeisme-dist/releases/download/%s/v#{version}/%s",\n' "$url_owner" "$cask_asset"
+    printf '      url "%s/%s/v#{version}/%s",\n' "$DIST_URL_BASE" "$url_owner" "$cask_asset"
     printf '          verified: "github.com/yeisme/yeisme-dist/"\n'
     printf '    end\n'
   done
@@ -137,7 +157,7 @@ write_scoop() {
     --arg description "$description." \
     --arg homepage "https://github.com/yeisme/yeisme-dist" \
     --arg license "$license" \
-    --arg base "https://github.com/yeisme/yeisme-dist/releases/download/$tag" \
+    --arg base "$DIST_URL_BASE/$tag" \
     --arg amd64_asset "$windows_amd64" \
     --arg amd64_sha "$amd64_sha" \
     --arg arm64_asset "$windows_arm64" \
@@ -180,6 +200,129 @@ generate_product() {
   write_scoop "$description" "$license" "$binary" "$windows_amd64" "$windows_arm64" "$note"
 }
 
+# --- Scaena three-package channel (scaena-v0-4-package-channels-v1) ---------
+
+scaena_matrix_complete() {
+  local name
+  while IFS= read -r name; do
+    jq -e --arg n "$name" '(.assets // []) | index($n) != null' \
+      <<<"$release_json" >/dev/null || return 1
+  done < <(scaena_package_defaults | while read -r pkg; do
+    prefix="$(scaena_package_prefix "$pkg")"
+    for pair in "linux amd64" "linux arm64" "darwin amd64" "darwin arm64" "windows amd64" "windows arm64"; do
+      read -r os arch <<<"$pair"
+      echo "${prefix}${os}_${arch}.$([[ "$os" == windows ]] && echo zip || echo tar.gz)"
+    done
+  done)
+  return 0
+}
+
+# A v0.4+ latest release with an incomplete matrix is a contract violation:
+# fail closed instead of falling back (the fallback would overwrite the last
+# stable six-manifest group with a single-CLI Cask). Pre-v0.4 releases keep
+# the legacy single Cask path.
+scaena_legacy_ok() {
+  [[ "$(printf '%s\n0.4.0\n' "$version" | sort -V | head -n1)" != "0.4.0" ]]
+}
+
+scaena_description() {
+  case "$1" in
+    scaena) echo "CLI and agent runtime for AI drama production workflows" ;;
+    scaena-api) echo "Production API control plane for AI drama production" ;;
+    scaena-production-worker) echo "Durable production worker for AI drama generation" ;;
+  esac
+}
+
+# Render the three Casks + three Scoop manifests of the Scaena package group
+# into the current CASK_DIR/BUCKET_DIR. Returns 0 when the full matrix group
+# was rendered, 1 when the release does not carry the complete v0.4 matrix.
+scaena_render_matrix() {
+  local scaena_pkg prefix
+  scaena_matrix_complete || return 1
+  for scaena_pkg in $(scaena_package_defaults); do
+    product="$scaena_pkg"   # cask/bucket name and installed binary
+    prefix="$(scaena_package_prefix "$scaena_pkg")"
+    require_assets \
+      "${prefix}darwin_amd64.tar.gz" "${prefix}darwin_arm64.tar.gz" \
+      "${prefix}linux_amd64.tar.gz" "${prefix}linux_arm64.tar.gz" \
+      "${prefix}windows_amd64.zip" "${prefix}windows_arm64.zip"
+    write_cask "$(scaena_description "$scaena_pkg")" "$scaena_pkg" \
+      "${prefix}darwin_amd64.tar.gz" "${prefix}darwin_arm64.tar.gz" \
+      "${prefix}linux_amd64.tar.gz" "${prefix}linux_arm64.tar.gz" ""
+    write_scoop "$(scaena_description "$scaena_pkg")" Proprietary "$scaena_pkg" \
+      "${prefix}windows_amd64.zip" "${prefix}windows_arm64.zip" ""
+  done
+  return 0
+}
+
+# --- RC temporary Tap/Bucket mode (§4.1) ------------------------------------
+# Render the Scaena package group for a single upstream prerelease into a
+# throwaway Tap/Bucket layout for RC smoke evidence. Never writes the stable
+# Casks/, bucket/, catalog or receipts surfaces; the caller
+# (scripts/rc-channel.sh, CI with an if:always() destroy step) destroys the
+# channel when the job ends. URLs default to the public mirror shape; the RC
+# release itself is never mirrored, so an acceptance job that needs to fetch
+# the exact assets redirects the base with --rc-url-base or downloads them
+# directly upstream.
+if [[ -n "$RC_TAG" || -n "$RC_RELEASE" || -n "$RC_ROOT" ]]; then
+  [[ -n "$RC_TAG" && -n "$RC_RELEASE" && -n "$RC_ROOT" ]] || {
+    echo "--rc-tag, --rc-release and --rc-root are required together" >&2
+    exit 2
+  }
+  [[ "$RC_TAG" =~ ^scaena/v[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.]+)?$ ]] || {
+    echo "rc channel is scaena-only and needs a prerelease tag like scaena/v0.4.0-rc.1" >&2
+    exit 2
+  }
+  [[ -f "$RC_RELEASE" ]] || { echo "rc release file not found: $RC_RELEASE" >&2; exit 2; }
+  product="scaena"
+  tag="$RC_TAG"
+  version="${tag#scaena/v}"
+  [[ "$(jq -r '.tag_name // ""' "$RC_RELEASE")" == "$tag" ]] || {
+    echo "rc release tag_name does not match --rc-tag $tag" >&2
+    exit 1
+  }
+  [[ "$(jq -r '.draft // false' "$RC_RELEASE")" == "false" ]] || {
+    echo "rc channel renders published releases only (draft releases are excluded)" >&2
+    exit 1
+  }
+  [[ "$(jq -r '.prerelease // false' "$RC_RELEASE")" == "true" ]] || {
+    echo "rc channel renders prereleases only; stable tags use the normal generation path" >&2
+    exit 1
+  }
+  release_json="$(jq -ce --arg tag "$tag" '
+    {tag: $tag,
+     version: ($tag | sub("^scaena/"; "")),
+     published_at: (.published_at // ""),
+     prerelease: true,
+     asset_count: (.assets | length),
+     assets: [.assets[].name],
+     asset_digests: ([.assets[]
+                      | select(((.digest // "") | startswith("sha256:")))
+                      | {key: .name, value: .digest}]
+                    | from_entries)}
+  ' "$RC_RELEASE")"
+  CASK_DIR="$RC_ROOT/Tap/Casks"
+  BUCKET_DIR="$RC_ROOT/Bucket/bucket"
+  mkdir -p "$CASK_DIR" "$BUCKET_DIR"
+  URL_TAG_PRODUCT="scaena"
+  [[ -n "$RC_URL_BASE" ]] && DIST_URL_BASE="$RC_URL_BASE"
+  scaena_render_matrix || {
+    echo "rc release $tag does not carry the complete v0.4 18-archive matrix" >&2
+    exit 1
+  }
+  for f in scaena scaena-api scaena-production-worker; do
+    [[ -s "$CASK_DIR/$f.rb" ]] || { echo "rc channel incomplete: Tap/Casks/$f.rb" >&2; exit 1; }
+    [[ -s "$BUCKET_DIR/$f.json" ]] || { echo "rc channel incomplete: Bucket/bucket/$f.json" >&2; exit 1; }
+  done
+  echo "rc channel rendered at $RC_ROOT (temporary; destroy with scripts/rc-channel.sh destroy)"
+  exit 0
+fi
+
+# Stable generation path: everything below reads the catalog and writes the
+# public manifests.
+[[ -f "$CATALOG" ]] || { echo "catalog not found: $CATALOG" >&2; exit 2; }
+mkdir -p "$OUTPUT_ROOT/Casks" "$OUTPUT_ROOT/bucket"
+
 load_release eikona
 require_assets \
   checksums.txt \
@@ -213,55 +356,17 @@ generate_product auctra \
 # stable Release carries the full v0.4 18-archive matrix, render all three
 # Casks and all three Scoop manifests into a staging directory and swap them
 # in atomically: any missing role/platform/digest keeps the previous stable
-# group untouched. Pre-v0.4 releases keep the legacy single CLI Cask.
+# group untouched. Pre-v0.4 releases keep the legacy single CLI Cask and the
+# generator removes any stale v0.4 group files so every regeneration leaves
+# a consistent channel surface (rollback convergence, §6.4).
 load_release scaena
-scaena_matrix_complete() {
-  local name
-  while IFS= read -r name; do
-    jq -e --arg n "$name" '(.assets // []) | index($n) != null' \
-      <<<"$release_json" >/dev/null || return 1
-  done < <(scaena_package_defaults | while read -r pkg; do
-    prefix="$(scaena_package_prefix "$pkg")"
-    for pair in "linux amd64" "linux arm64" "darwin amd64" "darwin arm64" "windows amd64" "windows arm64"; do
-      read -r os arch <<<"$pair"
-      echo "${prefix}${os}_${arch}.$([[ "$os" == windows ]] && echo zip || echo tar.gz)"
-    done
-  done)
-  return 0
-}
-# A v0.4+ latest release with an incomplete matrix is a contract violation:
-# fail closed instead of falling back (the fallback would overwrite the last
-# stable six-manifest group with a single-CLI Cask). Pre-v0.4 releases keep
-# the legacy single Cask path.
-scaena_legacy_ok() {
-  [[ "$(printf '%s\n0.4.0\n' "$version" | sort -V | head -n1)" != "0.4.0" ]]
-}
 if scaena_matrix_complete; then
   scaena_stage="$(mktemp -d)"
   mkdir -p "$scaena_stage/Casks" "$scaena_stage/bucket"
   CASK_DIR="$scaena_stage/Casks"
   BUCKET_DIR="$scaena_stage/bucket"
   URL_TAG_PRODUCT="scaena"
-  scaena_description() {
-    case "$1" in
-      scaena) echo "CLI and agent runtime for AI drama production workflows" ;;
-      scaena-api) echo "Production API control plane for AI drama production" ;;
-      scaena-production-worker) echo "Durable production worker for AI drama generation" ;;
-    esac
-  }
-  for scaena_pkg in $(scaena_package_defaults); do
-    product="$scaena_pkg"   # cask/bucket name and installed binary
-    prefix="$(scaena_package_prefix "$scaena_pkg")"
-    require_assets \
-      "${prefix}darwin_amd64.tar.gz" "${prefix}darwin_arm64.tar.gz" \
-      "${prefix}linux_amd64.tar.gz" "${prefix}linux_arm64.tar.gz" \
-      "${prefix}windows_amd64.zip" "${prefix}windows_arm64.zip"
-    write_cask "$(scaena_description "$scaena_pkg")" "$scaena_pkg" \
-      "${prefix}darwin_amd64.tar.gz" "${prefix}darwin_arm64.tar.gz" \
-      "${prefix}linux_amd64.tar.gz" "${prefix}linux_arm64.tar.gz" ""
-    write_scoop "$(scaena_description "$scaena_pkg")" Proprietary "$scaena_pkg" \
-      "${prefix}windows_amd64.zip" "${prefix}windows_arm64.zip" ""
-  done
+  scaena_render_matrix
   # Atomic group swap: every staged manifest must exist before any file
   # replaces its committed twin; a missing committed twin (first v0.4
   # promotion) is fine — there is no previous stable group to preserve.
@@ -285,6 +390,15 @@ elif scaena_legacy_ok; then
   generate_product scaena \
     "CLI and agent runtime for AI drama production workflows" Proprietary scaena \
     "" "" "scaena_linux_amd64.tar.gz" "" "" "" "" ""
+  # Rollback convergence: the eligible latest fell back below v0.4, so the
+  # three-package group files no longer belong to the channel. Removing them
+  # keeps the generated surface consistent on every regeneration; the
+  # mirrored releases and receipts are never touched.
+  rm -f "$OUTPUT_ROOT/Casks/scaena-api.rb" \
+        "$OUTPUT_ROOT/Casks/scaena-production-worker.rb" \
+        "$OUTPUT_ROOT/bucket/scaena.json" \
+        "$OUTPUT_ROOT/bucket/scaena-api.json" \
+        "$OUTPUT_ROOT/bucket/scaena-production-worker.json"
 fi
 
 generate_product gitea-mcp \

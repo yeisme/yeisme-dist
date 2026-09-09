@@ -19,7 +19,7 @@
 
 ## 4. RC、CI 与公共 smoke
 
-- [ ] 4.1 增加 RC temporary Tap/Bucket 路径；prerelease 不推进 stable catalog、success receipt 或公共 manifests，job 结束后销毁临时渠道。
+- [x] 4.1 增加 RC temporary Tap/Bucket 路径；prerelease 不推进 stable catalog、success receipt 或公共 manifests，job 结束后销毁临时渠道。
 - [x] 4.2 PR/offline CI 使用 synthetic assets 覆盖三个 package 的 fetch/install/version/help/uninstall 与 negative promotion cases，不需要 credential。
 - [ ] 4.3 stable sync 后在 macOS/Linux amd64/arm64 验证三个 Casks，在 Windows amd64/arm64 验证三个 Scoop manifests；缺少 runner 或失败时不 promotion。
 - [ ] 4.4 验证 public URL、asset SHA-256、installed binary 和卸载结果，并输出脱敏 handoff evidence 给根级 change。
@@ -35,4 +35,4 @@
 - [x] 6.1 运行 `openspec validate scaena-v0-4-package-channels-v1 --strict --no-interactive`、`scripts/check.sh`、`scripts/test-offline.sh` 和 generated manifest checks。
 - [ ] 6.2 用 Scaena RC exact assets 完成临时渠道验收；确认 stable generated files byte-identical 未变。
 - [ ] 6.3 stable `scaena/v0.4.0` 后验证 immutable receipt、catalog asset digests、六份 manifests 和 public smoke，再向根级 handoff 提交证据索引。
-- [ ] 6.4 演练 manifest rollback：恢复上一 stable，保留 failure evidence，不改写 receipt/mirrored bytes，不复用上游 tag。
+- [x] 6.4 演练 manifest rollback：恢复上一 stable，保留 failure evidence，不改写 receipt/mirrored bytes，不复用上游 tag。

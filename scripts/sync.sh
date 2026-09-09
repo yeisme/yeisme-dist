@@ -54,6 +54,7 @@ trap 'rm -rf "$WORK"' EXIT
 # verify-before-mutate path; all others keep the legacy mirror flow below.
 # On repository_dispatch the workflow sets DIST_HINT_JSON (data-only hint).
 source "$ROOT/scripts/lib/verify.sh"
+source "$ROOT/scripts/lib/catalog.sh"
 
 # Stream every JSON object from every GitHub API page into stdout.
 # gh --paginate applies --jq per page; '.[]' emits one value per release.
@@ -96,15 +97,14 @@ write_catalog() {
     # Additive receipt fields come from the local receipts/ directory so they
     # survive every regeneration; catalog schema_version stays 1.
     releases="$(catalog_join_receipts "$name" "$releases")"
-    latest="$(jq -r '
-      (map(select(.prerelease == false)) | .[0].tag)
-      // .[0].tag
-      // empty
-    ' <<<"$releases")"
-    verified_latest="$(jq -r '
-      (map(select(.prerelease == false and .verification.status == "verified")) | .[0].tag)
-      // empty
-    ' <<<"$releases")"
+    # latest selection: verify-policy products never fall back to a prerelease
+    # (a prerelease must not advance the stable catalog — RC isolation), and
+    # versions with a manifest-rollback failure record stay demoted on every
+    # regeneration so a rollback survives the next sync/CI run.
+    strict_stable=0
+    verify_policy_has "$name" && strict_stable=1
+    latest="$(catalog_pick_latest "$name" "$releases" "$strict_stable")"
+    verified_latest="$(catalog_pick_verified_latest "$name" "$releases")"
     products_json="$(jq --arg name "$name" --arg src "$src" --arg latest "$latest" \
         --arg vlatest "$verified_latest" --argjson releases "$releases" '
       . + [{
@@ -126,32 +126,6 @@ write_catalog() {
   echo "wrote $ROOT/catalog.json"
   write_readme_products
   "$ROOT/scripts/generate-package-manifests.sh"
-}
-
-write_readme_products() {
-  local table tmp
-  [[ -f "$ROOT/README.md" ]] || return 0
-  table="$(jq -r '
-    ["| Product | Latest | Releases | Upstream repo |",
-     "|---|---|---|---|"]
-    + [.products[] | "| \(.name) | \(.latest // "-") | \(.release_count) | `\(.source_repo)` |"]
-    | .[]
-  ' "$ROOT/catalog.json")"
-  tmp="$(mktemp)"
-  awk -v table="$table" '
-    BEGIN { n = split(table, rows, "\n") }
-    $0 == "<!-- catalog-products:start -->" {
-      print
-      for (i = 1; i <= n; i++) print rows[i]
-      skip = 1
-      next
-    }
-    $0 == "<!-- catalog-products:end -->" { skip = 0 }
-    skip { next }
-    { print }
-  ' "$ROOT/README.md" > "$tmp"
-  mv "$tmp" "$ROOT/README.md"
-  echo "updated $ROOT/README.md product table"
 }
 
 if [[ "$CATALOG_ONLY" -eq 1 ]]; then

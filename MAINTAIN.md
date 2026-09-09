@@ -20,9 +20,14 @@ private product code here. Do not rebuild binaries.
 | `scripts/lib/verify.sh` | Upstream fetch-and-verify + receipt library (sourced by `sync.sh`) |
 | `scripts/check.sh` | No-credential CI gate |
 | `scripts/test-offline.sh` | No-credential offline fixture tests for the verify/receipt path |
+| `scripts/test-scaena-packages.sh` | No-credential offline tests for the Scaena three-package channel |
+| `scripts/test-scaena-channels-lifecycle.sh` | No-credential offline tests for the Scaena RC temporary channel and manifest rollback drill |
 | `scripts/generate-package-manifests.sh` | Generate public Homebrew/Scoop manifests from `catalog.json` |
+| `scripts/rc-channel.sh` | Scaena RC temporary Tap/Bucket create/destroy lifecycle (never touches stable surfaces) |
+| `scripts/rollback-manifests.sh` | Scaena manifest group rollback: append failure record, demote catalog, regenerate |
 | `.github/workflows/sync.yml` | Every 6 hours, manual dispatch, and `repository_dispatch` `product-release` |
 | `.github/workflows/ci.yml` | `check.sh` + anonymous `install.sh gitea-mcp` |
+| `.github/workflows/scaena-rc-channel.yml` | Manual Scaena RC temporary channel validation (read-only; channel always destroyed) |
 
 ## Commands
 
@@ -36,6 +41,12 @@ scripts/sync.sh --product eikona          # needs GH_TOKEN that can read yeisme/
 bash install.sh --list
 bash install.sh gitea-mcp --to /tmp/yeisme-bin
 scripts/generate-package-manifests.sh       # all products use catalog digests; Eikona also checks setup assets
+# Scaena RC temporary channel (prerelease smoke evidence; never promotes):
+scripts/rc-channel.sh create --tag scaena/v0.4.0-rc.1 --release <upstream-release.json> --root "$RUNNER_TEMP"
+scripts/rc-channel.sh destroy --root <channel-root>     # run with if: always()
+# Scaena manifest group rollback (drill or real incident):
+scripts/rollback-manifests.sh --product scaena --version vX.Y.Z --reason "defect summary" --dry-run
+scripts/rollback-manifests.sh --product scaena --version vX.Y.Z --reason "defect summary"
 ```
 
 GitHub Actions:
