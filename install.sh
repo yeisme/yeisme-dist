@@ -12,11 +12,33 @@ set -euo pipefail
 
 DIST_REPO="${DIST_REPO:-yeisme/yeisme-dist}"
 DIST_CATALOG_URL="${DIST_CATALOG_URL:-https://raw.githubusercontent.com/${DIST_REPO}/main/catalog.json}"
+# Offline fixture tests override the GitHub API base with a local server.
+DIST_API_BASE="${DIST_API_BASE:-https://api.github.com}"
 DEST="${HOME}/.yeisme/bin"
 product=""
 version=""
 
 KNOWN_FALLBACK=(eikona pinax auctra scaena gitea-mcp sonora anatomia mcp-gateway credentialctl)
+
+# Static Scaena package aliases (scaena-v0-4-package-channels-v1): one catalog
+# product "scaena", three public package names mapping to archive prefixes of
+# the same Release. install.sh is curl-piped standalone, so the table is
+# embedded here; scripts/lib/scaena-packages.sh and the offline fixture tests
+# keep it from drifting against the manifest generator.
+scaena_package_product() {
+  case "$1" in
+    scaena|scaena-api|scaena-production-worker) echo scaena ;;
+    *) return 1 ;;
+  esac
+}
+scaena_package_prefix() {
+  case "$1" in
+    scaena) echo "scaena_" ;;
+    scaena-api) echo "scaena-api_" ;;
+    scaena-production-worker) echo "scaena-production-worker_" ;;
+    *) return 1 ;;
+  esac
+}
 
 auth=()
 [[ -n "${GH_TOKEN:-}" ]] && auth=(-H "Authorization: Bearer $GH_TOKEN")
@@ -82,9 +104,17 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 [[ -n "$product" ]] || { usage >&2; exit 2; }
+
+# Resolve Scaena package aliases before any catalog/tag handling: the catalog
+# product stays "scaena"; the requested package name drives archive prefix
+# and installed binary. Everything else is untouched.
+package="$product"
+if alias_product="$(scaena_package_product "$product")"; then
+  product="$alias_product"
+fi
 if [[ -n "$version" ]]; then
   case "$version" in
-    "$product"/*) ;;
+    "$package"/*|"$product"/*) ;;
     v*) version="$product/$version" ;;
     *) version="$product/v$version" ;;
   esac
@@ -104,6 +134,9 @@ case "$arch" in
   arm64|aarch64) arch_re='(arm64|aarch64)' ;;
   *) die "unsupported arch '$arch'" ;;
 esac
+# Scaena v0.4 archive names use goreleaser goos/goarch tokens.
+os_token="linux"; [[ "$os" == "Darwin" ]] && os_token="darwin"
+arch_token="amd64"; [[ "$arch" == "arm64" || "$arch" == "aarch64" ]] && arch_token="arm64"
 
 catalog_has_product() {
   local catalog="$1"
@@ -131,7 +164,7 @@ latest_from_catalog() {
 latest_from_api() {
   local page=1 json tag
   while [[ "$page" -le 20 ]]; do
-    json="$(curl_json "https://api.github.com/repos/$DIST_REPO/releases?per_page=100&page=$page" 2>/dev/null || true)"
+    json="$(curl_json "$DIST_API_BASE/repos/$DIST_REPO/releases?per_page=100&page=$page" 2>/dev/null || true)"
     [[ -n "$json" ]] || return 1
     if command -v jq >/dev/null 2>&1; then
       if [[ "$(jq -r 'length' <<<"$json" 2>/dev/null || echo 0)" -eq 0 ]]; then
@@ -169,7 +202,7 @@ if [[ -z "$rel_tag" ]]; then
   [[ -n "$rel_tag" && "$rel_tag" != "null" ]] || die "no release found for '$product' in $DIST_REPO"
 fi
 
-rel_json="$(curl_json "https://api.github.com/repos/$DIST_REPO/releases/tags/$rel_tag")" \
+rel_json="$(curl_json "$DIST_API_BASE/repos/$DIST_REPO/releases/tags/$rel_tag")" \
   || die "release $rel_tag not found"
 
 if command -v jq >/dev/null 2>&1; then
@@ -196,6 +229,22 @@ if [[ -z "$asset_url" ]]; then
     | grep -E "[-_]${os_re}[-_]${arch_re}\.(tar\.gz|tgz|zip)$" \
     | grep -vE '\.(spdx|sbom)\.json$' \
     | head -n1 || true)"
+fi
+# Scaena packages anchor on the exact "<prefix><goos>_<goarch>" asset name so
+# "scaena_" can never match "scaena-api_" or "scaena-production-worker_"
+# archives living in the same Release.
+if package_prefix="$(scaena_package_prefix "$package")"; then
+  asset_url=""
+  for exact_name in \
+    "${package_prefix}${os_token}_${arch_token}.tar.gz" \
+    "${package_prefix}${os_token}_${arch_token}.zip"; do
+    # Anchor on the full basename with -E: grep -F would treat "$" as a
+    # literal character and never match, and an unanchored match could pick
+    # up "<archive>.sbom.json" sidecar assets from the same Release.
+    if asset_url="$(printf '%s\n' "$urls" | grep -E "/${exact_name//./\\.}$" | head -n1)"; then
+      [[ -n "$asset_url" ]] && break
+    fi
+  done
 fi
 [[ -n "$asset_url" ]] || die "no $os/$arch archive in $rel_tag"
 
@@ -233,9 +282,9 @@ case "$asset_url" in
   *) tar -xzf "$TMP/$(basename "$asset_url")" -C "$TMP/extract" || die "extract failed" ;;
 esac
 
-bin="$(find "$TMP/extract" -type f -name "$product" | head -n1 || true)"
+bin="$(find "$TMP/extract" -type f -name "$package" | head -n1 || true)"
 if [[ -z "$bin" ]]; then
-  bin="$(find "$TMP/extract" -type f -name "${product}.exe" | head -n1 || true)"
+  bin="$(find "$TMP/extract" -type f -name "${package}.exe" | head -n1 || true)"
 fi
 if [[ -z "$bin" ]]; then
   bin="$(find "$TMP/extract" -type f -executable | grep -vE '\.(txt|md|json|yml|yaml)$' | head -n1 || true)"
@@ -246,13 +295,13 @@ fi
 [[ -n "$bin" && -f "$bin" ]] || die "no binary found inside the archive"
 
 mkdir -p "$DEST"
-install -m 0755 "$bin" "$DEST/$product" || die "install to $DEST failed"
-echo "install: $product $rel_tag -> $DEST/$product"
+install -m 0755 "$bin" "$DEST/$package" || die "install to $DEST failed"
+echo "install: $package $rel_tag -> $DEST/$package"
 if [[ ":$PATH:" != *":$DEST:"* ]]; then
   echo "install: add $DEST to PATH, for example:"
   echo "  export PATH=\"$DEST:\$PATH\""
 fi
-"$DEST/$product" --version 2>/dev/null || echo "install: done (run '$DEST/$product --version' yourself)"
+"$DEST/$package" --version 2>/dev/null || echo "install: done (run '$DEST/$package --version' yourself)"
 if [[ "$product" == "eikona" ]]; then
   echo "install: next (preview): $DEST/eikona setup"
   echo "install: next (apply):   $DEST/eikona setup --yes"

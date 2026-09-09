@@ -222,14 +222,16 @@ verify_release_evidence() { # <product> <src> <strip> <policy_file> <release_jso
   local -a expected=() required=() allowed=()
   local pat e
   mapfile -t expected < <(jq -r --arg v "$ver_num" '.expected_assets[]? | sub("\\{version\\}"; $v)' "$policy")
-  mapfile -t required < <(jq -r '.required_assets[]?' "$policy")
+  # required_assets and allowed_extra_assets expand {version} the same way
+  # (e.g. versioned command catalogs and handoff fixtures); default-empty.
+  mapfile -t required < <(jq -r --arg v "$ver_num" '.required_assets[]? | sub("\\{version\\}"; $v)' "$policy")
   while IFS= read -r pat; do
     if [[ "$pat" == *'{expected_archive}'* ]]; then
       for e in "${expected[@]}"; do allowed+=("${pat/\{expected_archive\}/$e}"); done
     else
       allowed+=("$pat")
     fi
-  done < <(jq -r '.allowed_extra_assets[]?' "$policy")
+  done < <(jq -r --arg v "$ver_num" '.allowed_extra_assets[]? | sub("\\{version\\}"; $v)' "$policy")
   if [[ "${#expected[@]}" -eq 0 ]]; then
     emit_fail policy_invalid "{\"policy\":\"empty expected_assets\"}"; return 1
   fi
@@ -272,18 +274,22 @@ verify_release_evidence() { # <product> <src> <strip> <policy_file> <release_jso
 
   # Record per-asset upstream digests and required SBOMs.
   local assets_json="[" sbom_json="[" first=1 d
-  local sbom_required
+  local sbom_required sbom_suffix
   sbom_required="$(jq -r '.provenance.sbom_required_per_archive // false' "$policy")"
+  # Per-archive SBOM asset suffix: ".spdx.json" by default; products whose
+  # release pipeline publishes "<archive>.sbom.json" set
+  # provenance.sbom_asset_suffix explicitly (scaena v0.4).
+  sbom_suffix="$(jq -r '.provenance.sbom_asset_suffix // ".spdx.json"' "$policy")"
   for f in "${expected[@]}"; do
-    if [[ "$sbom_required" == "true" && ! -e "$dir/$f.spdx.json" ]]; then
+    if [[ "$sbom_required" == "true" && ! -e "$dir/$f$sbom_suffix" ]]; then
       emit_fail sbom_missing "{\"archive\":\"$f\"}"; return 1
     fi
     d="$(sha256sum "$dir/$f" | cut -d' ' -f1)"
     [[ $first -eq 1 ]] || assets_json+=","
     assets_json+="{\"name\":\"$f\",\"sha256\":\"sha256:$d\"}"
-    if [[ -e "$dir/$f.spdx.json" ]]; then
+    if [[ -e "$dir/$f$sbom_suffix" ]]; then
       [[ "$sbom_json" == "[" ]] || sbom_json+=","
-      sbom_json+="\"$f.spdx.json\""
+      sbom_json+="\"$f$sbom_suffix\""
     fi
     first=0
   done

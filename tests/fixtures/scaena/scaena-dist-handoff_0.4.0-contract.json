@@ -1,0 +1,206 @@
+{
+  "archives": [
+    {
+      "format": "tar.gz",
+      "goarch": "amd64",
+      "goos": "linux",
+      "name": "scaena_linux_amd64.tar.gz",
+      "package": "scaena",
+      "sha256": "259abca1f6d1597ea90edd2ff21792608df49a97dc2c09c7896fb83e6d32ee2f"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "arm64",
+      "goos": "linux",
+      "name": "scaena_linux_arm64.tar.gz",
+      "package": "scaena",
+      "sha256": "ce3cc712e08b24000b5b3e0d7fb3aa9921c96c4098d859e8d82c2b574dbb1735"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "amd64",
+      "goos": "darwin",
+      "name": "scaena_darwin_amd64.tar.gz",
+      "package": "scaena",
+      "sha256": "1d43e4cc6498b308c8ce26bbc03a19b8d3663469b06d0d0224b28d1722cd4731"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "arm64",
+      "goos": "darwin",
+      "name": "scaena_darwin_arm64.tar.gz",
+      "package": "scaena",
+      "sha256": "3c5dda51a06431a5479f3aa1f6e25894a3386f1190ea2d959ff66c33222906a1"
+    },
+    {
+      "format": "zip",
+      "goarch": "amd64",
+      "goos": "windows",
+      "name": "scaena_windows_amd64.zip",
+      "package": "scaena",
+      "sha256": "09278f2d904ba626f976e0ad2465f802620613fdfd6063c63ad0cee542d60301"
+    },
+    {
+      "format": "zip",
+      "goarch": "arm64",
+      "goos": "windows",
+      "name": "scaena_windows_arm64.zip",
+      "package": "scaena",
+      "sha256": "839d277ac95a62944022a4f7317153648906b7519a5f7dc3123521f2a2a6ba69"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "amd64",
+      "goos": "linux",
+      "name": "scaena-api_linux_amd64.tar.gz",
+      "package": "scaena-api",
+      "sha256": "1939ef578065a17da20aada6a873c7822fe8c82f0f7e5b8aa2455e6015ad1338"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "arm64",
+      "goos": "linux",
+      "name": "scaena-api_linux_arm64.tar.gz",
+      "package": "scaena-api",
+      "sha256": "7db1484c52a5dc6e15f6c201fffc5a0763164ec3156f8054432e99e8dd3e9517"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "amd64",
+      "goos": "darwin",
+      "name": "scaena-api_darwin_amd64.tar.gz",
+      "package": "scaena-api",
+      "sha256": "226a1a8891fe472ddf38c0370a31b7f56709d20cf14e9e223d0415966ae0e61d"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "arm64",
+      "goos": "darwin",
+      "name": "scaena-api_darwin_arm64.tar.gz",
+      "package": "scaena-api",
+      "sha256": "e6418fa59a80a68299ed455399a388ac436bb0092ac0490cb04654f72bbbe57e"
+    },
+    {
+      "format": "zip",
+      "goarch": "amd64",
+      "goos": "windows",
+      "name": "scaena-api_windows_amd64.zip",
+      "package": "scaena-api",
+      "sha256": "a2a757d1fab4eea9d0dfb0155acb2e96fbe8cdbf2dfdcc8e260b041f74b69d41"
+    },
+    {
+      "format": "zip",
+      "goarch": "arm64",
+      "goos": "windows",
+      "name": "scaena-api_windows_arm64.zip",
+      "package": "scaena-api",
+      "sha256": "972f0f78e62035b5cee35eafb474e860993be1d215c06309f1ed7eceaba6a668"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "amd64",
+      "goos": "linux",
+      "name": "scaena-production-worker_linux_amd64.tar.gz",
+      "package": "scaena-production-worker",
+      "sha256": "2223b1b8f3cc31a13f6a8526179be15342c4ebee2616d021bf35a7bca1c722b8"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "arm64",
+      "goos": "linux",
+      "name": "scaena-production-worker_linux_arm64.tar.gz",
+      "package": "scaena-production-worker",
+      "sha256": "8b83b31651895bd4a814bcee6174c607704a6ee7466a3aff39e510f1bafa1c4a"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "amd64",
+      "goos": "darwin",
+      "name": "scaena-production-worker_darwin_amd64.tar.gz",
+      "package": "scaena-production-worker",
+      "sha256": "1748cc15c5521a1a52dc1d15b714f960c6f4bd3eff801aa0a4adeb24babcc55f"
+    },
+    {
+      "format": "tar.gz",
+      "goarch": "arm64",
+      "goos": "darwin",
+      "name": "scaena-production-worker_darwin_arm64.tar.gz",
+      "package": "scaena-production-worker",
+      "sha256": "ce283825cf2ffdbb72475b477303700150fc2f90ce601aeac5cfed1e898bb412"
+    },
+    {
+      "format": "zip",
+      "goarch": "amd64",
+      "goos": "windows",
+      "name": "scaena-production-worker_windows_amd64.zip",
+      "package": "scaena-production-worker",
+      "sha256": "cd1d9aa6915ce9dd48edbae0d519b18d088832d78d74edcf6c3bdbff54efbd17"
+    },
+    {
+      "format": "zip",
+      "goarch": "arm64",
+      "goos": "windows",
+      "name": "scaena-production-worker_windows_arm64.zip",
+      "package": "scaena-production-worker",
+      "sha256": "665e16de0e42d22597f434f4c4bb4d1d1ed8a2d6c9b83c511049341f26fe4ecd"
+    }
+  ],
+  "channel": "stable",
+  "packages": [
+    {
+      "archives": [
+        "scaena_linux_amd64.tar.gz",
+        "scaena_linux_arm64.tar.gz",
+        "scaena_darwin_amd64.tar.gz",
+        "scaena_darwin_arm64.tar.gz",
+        "scaena_windows_amd64.zip",
+        "scaena_windows_arm64.zip"
+      ],
+      "default": true,
+      "name": "scaena"
+    },
+    {
+      "archives": [
+        "scaena-api_linux_amd64.tar.gz",
+        "scaena-api_linux_arm64.tar.gz",
+        "scaena-api_darwin_amd64.tar.gz",
+        "scaena-api_darwin_arm64.tar.gz",
+        "scaena-api_windows_amd64.zip",
+        "scaena-api_windows_arm64.zip"
+      ],
+      "default": false,
+      "name": "scaena-api"
+    },
+    {
+      "archives": [
+        "scaena-production-worker_linux_amd64.tar.gz",
+        "scaena-production-worker_linux_arm64.tar.gz",
+        "scaena-production-worker_darwin_amd64.tar.gz",
+        "scaena-production-worker_darwin_arm64.tar.gz",
+        "scaena-production-worker_windows_amd64.zip",
+        "scaena-production-worker_windows_arm64.zip"
+      ],
+      "default": false,
+      "name": "scaena-production-worker"
+    }
+  ],
+  "product": "scaena",
+  "schema": "yeisme.scaena.dist-handoff.v1",
+  "semantics": {
+    "notice": "BINARY-DISTRIBUTION-NOTICE.txt ships identical bytes in every archive",
+    "prerelease": "rc tags publish prerelease archives only and never update stable public manifests",
+    "stable": "stable tags update public manifests (Casks/bucket) only after mirror digest confirmation"
+  },
+  "tag": "scaena/v0.4.0",
+  "top_level_assets": [
+    {
+      "name": "scaena-command-catalog_0.4.0.json",
+      "sha256": "24b631fc3bfb9c15bf676982c8ab29c2e09542d7b4ff7bb4d44d461047cb8603"
+    },
+    {
+      "name": "checksums.txt",
+      "sha256": "bb4f460172246e45322475ba33f1516906bdf791250b0c3dc94b60ca24101c4d"
+    }
+  ],
+  "version": "0.4.0"
+}

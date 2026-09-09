@@ -18,7 +18,19 @@ done
 command -v jq >/dev/null || { echo 'jq required' >&2; exit 2; }
 [[ -f "$CATALOG" ]] || { echo "catalog not found: $CATALOG" >&2; exit 2; }
 
+# Shared static Scaena package descriptors: install.sh embeds the same table;
+# scripts/test-offline.sh keeps the two from drifting.
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/scaena-packages.sh"
+
 mkdir -p "$OUTPUT_ROOT/Casks" "$OUTPUT_ROOT/bucket"
+# Cask/bucket output dirs default to the output root; the Scaena three-package
+# group redirects them to a staging directory and swaps files in atomically.
+CASK_DIR="$OUTPUT_ROOT/Casks"
+BUCKET_DIR="$OUTPUT_ROOT/bucket"
+# URL_TAG_PRODUCT is the catalog product owning the Release tag used in
+# download URLs; package aliases render under their own cask name but
+# download from the catalog product's release tag.
+URL_TAG_PRODUCT=""
 
 load_release() {
   product="$1"
@@ -76,7 +88,8 @@ write_platform_block() {
     fi
     printf '      sha256 "%s"\n' "$sha"
     cask_asset="${asset//$version/'#{version}'}"
-    printf '      url "https://github.com/yeisme/yeisme-dist/releases/download/%s/v#{version}/%s",\n' "$product" "$cask_asset"
+    url_owner="$product"; [[ -n "$URL_TAG_PRODUCT" ]] && url_owner="$URL_TAG_PRODUCT"
+    printf '      url "https://github.com/yeisme/yeisme-dist/releases/download/%s/v#{version}/%s",\n' "$url_owner" "$cask_asset"
     printf '          verified: "github.com/yeisme/yeisme-dist/"\n'
     printf '    end\n'
   done
@@ -107,8 +120,8 @@ write_cask() {
     fi
     printf '\n  # No zap stanza required\nend\n'
   } > "$cask_tmp"
-  mv "$cask_tmp" "$OUTPUT_ROOT/Casks/$product.rb"
-  echo "generated $OUTPUT_ROOT/Casks/$product.rb"
+  mv "$cask_tmp" "$CASK_DIR/$product.rb"
+  echo "generated $CASK_DIR/$product.rb"
 }
 
 write_scoop() {
@@ -148,8 +161,8 @@ write_scoop() {
       bin: $binary
     } + (if $note == "" then {} else {notes: ($note | split("\n") | map(select(length > 0)))} end)
   ' > "$bucket_tmp"
-  mv "$bucket_tmp" "$OUTPUT_ROOT/bucket/$product.json"
-  echo "generated $OUTPUT_ROOT/bucket/$product.json"
+  mv "$bucket_tmp" "$BUCKET_DIR/$product.json"
+  echo "generated $BUCKET_DIR/$product.json"
 }
 
 generate_product() {
@@ -196,9 +209,83 @@ generate_product auctra \
   "auctra_@VERSION@_linux_amd64.tar.gz" "auctra_@VERSION@_linux_arm64.tar.gz" \
   "auctra_@VERSION@_windows_amd64.zip" "auctra_@VERSION@_windows_arm64.zip" "" ""
 
-generate_product scaena \
-  "CLI and agent runtime for AI drama production workflows" Proprietary scaena \
-  "" "" "scaena_linux_amd64.tar.gz" "" "" "" "" ""
+# Scaena is one catalog product with three public packages. When the latest
+# stable Release carries the full v0.4 18-archive matrix, render all three
+# Casks and all three Scoop manifests into a staging directory and swap them
+# in atomically: any missing role/platform/digest keeps the previous stable
+# group untouched. Pre-v0.4 releases keep the legacy single CLI Cask.
+load_release scaena
+scaena_matrix_complete() {
+  local name
+  while IFS= read -r name; do
+    jq -e --arg n "$name" '(.assets // []) | index($n) != null' \
+      <<<"$release_json" >/dev/null || return 1
+  done < <(scaena_package_defaults | while read -r pkg; do
+    prefix="$(scaena_package_prefix "$pkg")"
+    for pair in "linux amd64" "linux arm64" "darwin amd64" "darwin arm64" "windows amd64" "windows arm64"; do
+      read -r os arch <<<"$pair"
+      echo "${prefix}${os}_${arch}.$([[ "$os" == windows ]] && echo zip || echo tar.gz)"
+    done
+  done)
+  return 0
+}
+# A v0.4+ latest release with an incomplete matrix is a contract violation:
+# fail closed instead of falling back (the fallback would overwrite the last
+# stable six-manifest group with a single-CLI Cask). Pre-v0.4 releases keep
+# the legacy single Cask path.
+scaena_legacy_ok() {
+  [[ "$(printf '%s\n0.4.0\n' "$version" | sort -V | head -n1)" != "0.4.0" ]]
+}
+if scaena_matrix_complete; then
+  scaena_stage="$(mktemp -d)"
+  mkdir -p "$scaena_stage/Casks" "$scaena_stage/bucket"
+  CASK_DIR="$scaena_stage/Casks"
+  BUCKET_DIR="$scaena_stage/bucket"
+  URL_TAG_PRODUCT="scaena"
+  scaena_description() {
+    case "$1" in
+      scaena) echo "CLI and agent runtime for AI drama production workflows" ;;
+      scaena-api) echo "Production API control plane for AI drama production" ;;
+      scaena-production-worker) echo "Durable production worker for AI drama generation" ;;
+    esac
+  }
+  for scaena_pkg in $(scaena_package_defaults); do
+    product="$scaena_pkg"   # cask/bucket name and installed binary
+    prefix="$(scaena_package_prefix "$scaena_pkg")"
+    require_assets \
+      "${prefix}darwin_amd64.tar.gz" "${prefix}darwin_arm64.tar.gz" \
+      "${prefix}linux_amd64.tar.gz" "${prefix}linux_arm64.tar.gz" \
+      "${prefix}windows_amd64.zip" "${prefix}windows_arm64.zip"
+    write_cask "$(scaena_description "$scaena_pkg")" "$scaena_pkg" \
+      "${prefix}darwin_amd64.tar.gz" "${prefix}darwin_arm64.tar.gz" \
+      "${prefix}linux_amd64.tar.gz" "${prefix}linux_arm64.tar.gz" ""
+    write_scoop "$(scaena_description "$scaena_pkg")" Proprietary "$scaena_pkg" \
+      "${prefix}windows_amd64.zip" "${prefix}windows_arm64.zip" ""
+  done
+  # Atomic group swap: every staged manifest must exist before any file
+  # replaces its committed twin; a missing committed twin (first v0.4
+  # promotion) is fine — there is no previous stable group to preserve.
+  scaena_group=(Casks/scaena.rb Casks/scaena-api.rb Casks/scaena-production-worker.rb \
+                bucket/scaena.json bucket/scaena-api.json bucket/scaena-production-worker.json)
+  for f in "${scaena_group[@]}"; do
+    [[ -s "$scaena_stage/$f" ]] || {
+      echo "scaena manifest group incomplete: $f" >&2
+      exit 1
+    }
+  done
+  mkdir -p "$OUTPUT_ROOT/Casks" "$OUTPUT_ROOT/bucket"
+  for f in "${scaena_group[@]}"; do
+    mv "$scaena_stage/$f" "$OUTPUT_ROOT/$f"
+  done
+  rm -rf "$scaena_stage"
+  CASK_DIR="$OUTPUT_ROOT/Casks"
+  BUCKET_DIR="$OUTPUT_ROOT/bucket"
+  URL_TAG_PRODUCT=""
+elif scaena_legacy_ok; then
+  generate_product scaena \
+    "CLI and agent runtime for AI drama production workflows" Proprietary scaena \
+    "" "" "scaena_linux_amd64.tar.gz" "" "" "" "" ""
+fi
 
 generate_product gitea-mcp \
   "Gitea MCP server for repository automation" MIT gitea-mcp \

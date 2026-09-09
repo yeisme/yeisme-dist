@@ -1,0 +1,60 @@
+{
+  "schema_version": "yeisme.dist_verify_policy.v1",
+  "product": "scaena",
+  "source_repo": "yeisme/scaena-agent",
+  "channel": "stable",
+  "eligible_tag_pattern": "^scaena/v(0\\.([4-9]|[1-9][0-9]+)\\.[0-9]+|[1-9][0-9]*\\.[0-9]+\\.[0-9]+)$",
+  "exclude_prerelease": true,
+  "expected_assets": [
+    "scaena_linux_amd64.tar.gz",
+    "scaena_linux_arm64.tar.gz",
+    "scaena_darwin_amd64.tar.gz",
+    "scaena_darwin_arm64.tar.gz",
+    "scaena_windows_amd64.zip",
+    "scaena_windows_arm64.zip",
+    "scaena-api_linux_amd64.tar.gz",
+    "scaena-api_linux_arm64.tar.gz",
+    "scaena-api_darwin_amd64.tar.gz",
+    "scaena-api_darwin_arm64.tar.gz",
+    "scaena-api_windows_amd64.zip",
+    "scaena-api_windows_arm64.zip",
+    "scaena-production-worker_linux_amd64.tar.gz",
+    "scaena-production-worker_linux_arm64.tar.gz",
+    "scaena-production-worker_darwin_amd64.tar.gz",
+    "scaena-production-worker_darwin_arm64.tar.gz",
+    "scaena-production-worker_windows_amd64.zip",
+    "scaena-production-worker_windows_arm64.zip"
+  ],
+  "required_assets": [
+    "checksums.txt",
+    "scaena-command-catalog_{version}.json",
+    "scaena-dist-handoff_{version}.json"
+  ],
+  "allowed_extra_assets": [
+    "{expected_archive}.sbom.json",
+    "scaena.spdx.json"
+  ],
+  "source_revision_required": true,
+  "checksums": {
+    "required": true,
+    "algorithm": "sha256",
+    "must_cover": "expected_assets"
+  },
+  "provenance": {
+    "sbom_required_per_archive": true,
+    "sbom_asset_suffix": ".sbom.json",
+    "attestation": {
+      "expected": "github-attestation",
+      "enforcement": "record-only"
+    }
+  },
+  "handoff": {
+    "expected_schema_version": "yeisme.scaena.dist-handoff.v1",
+    "correlation_fields": [
+      "channel",
+      "release_tag",
+      "source_revision",
+      "handoff_sha256"
+    ]
+  }
+}

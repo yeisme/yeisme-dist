@@ -370,10 +370,161 @@ t_eikona_skills_assets() {
          and ([.assets[].name] | index("eikona-command-catalog_0.7.4.json") != null)' <<<"$result" >/dev/null
 }
 
+# --- Scaena v0.4 three-package channel tests (scaena-v0-4-package-channels) ---
+
+FIXTURE_V04="$REAL_ROOT/tests/fixtures/scaena/scaena-dist-handoff_0.4.0-contract.json"
+POLICY_SCAENA="$REAL_ROOT/policy/scaena.json"
+
+SCAENA_REF_SHA=4444444444444444444444444444444444444444
+
+scaena_gen_assets() { # <dir> [mod]  mod: missing:<name> | corrupt:<name> | bad-sbom:<name> | drop-sbom:<name> | no-handoff
+  local dir="$1" mod="${2:-}" name pkg os arch ext
+  rm -rf "$dir"; mkdir -p "$dir"
+  for pkg in scaena scaena-api scaena-production-worker; do
+    for os_arch_ext in "linux amd64 tar.gz" "linux arm64 tar.gz" \
+                       "darwin amd64 tar.gz" "darwin arm64 tar.gz" \
+                       "windows amd64 zip" "windows arm64 zip"; do
+      read -r os arch ext <<<"$os_arch_ext"
+      name="${pkg}_${os}_${arch}.${ext}"
+      printf 'scaena v0.4.0 fixture archive %s\n' "$name" > "$dir/$name"
+      printf '{"spdxVersion":"SPDX-2.3","name":"%s"}\n' "$name" > "$dir/$name.sbom.json"
+    done
+  done
+  cp "$FIXTURE_V04" "$dir/scaena-dist-handoff_0.4.0.json"
+  printf '{"commands":[]}\n' > "$dir/scaena-command-catalog_0.4.0.json"
+  printf '{"spdxVersion":"SPDX-2.3","name":"scaena"}\n' > "$dir/scaena.spdx.json"
+  # checksums.txt covers all 37 owner-contract entries (18 archives + 18 SBOMs
+  # + command catalog) plus the handoff asset, mirroring the real release.
+  scaena_checksums() {
+    (cd "$dir" && sha256sum scaena-*.json *.sbom.json $(ls | grep -E '\.(tar\.gz|zip)$' | sort) > checksums.txt)
+  }
+  scaena_checksums
+  case "$mod" in
+    missing:*)  rm -f "$dir/${mod#missing:}" "$dir/${mod#missing:}.sbom.json" ;;
+    corrupt:*)  printf 'corrupted bytes\n' >> "$dir/${mod#corrupt:}" ;;
+    bad-sbom:*) printf 'tampered sbom\n' >> "$dir/${mod#bad-sbom:}.sbom.json" ;;
+    # release pipeline forgot one SBOM entirely: checksums stay self-consistent
+    # over the present files, so only the provenance gate catches it.
+    drop-sbom:*) rm -f "$dir/${mod#drop-sbom:}.sbom.json"; scaena_checksums ;;
+    no-handoff) rm -f "$dir/scaena-dist-handoff_0.4.0.json" ;;
+  esac
+}
+
+scaena_gen_release() { # <file> <prerelease:0|1>
+  jq -n --arg pre "$2" \
+    '{tag_name:"scaena/v0.4.0", draft:false, prerelease:($pre == "1"),
+      html_url:"https://github.com/yeisme/scaena-agent/releases/tag/scaena/v0.4.0",
+      target_commitish:"main", assets:[]}' > "$1"
+}
+
+scaena_verify() { # <release_json> <assets_dir>
+  verify_release_evidence scaena yeisme/scaena-agent "scaena/" \
+    "$POLICY_SCAENA" "$1" "$2" ""
+}
+
+# 15. Policy is deterministically generated from the frozen fixture.
+t_scaena_policy_deterministic() {
+  local tmp
+  tmp="$(mktemp)"
+  "$REAL_ROOT/scripts/generate-scaena-policy.sh" --output "$tmp" >/dev/null \
+    && diff -q "$tmp" "$POLICY_SCAENA" >/dev/null
+  rm -f "$tmp"
+}
+
+# 16. Full 18-archive matrix verifies end-to-end with .sbom.json provenance
+#     and {version}-interpolated required assets (catalog + handoff).
+t_scaena_happy() {
+  scaena_gen_assets "$SBX/s40"
+  scaena_gen_release "$SBX/rel40.json" 0
+  local result
+  result="$(scaena_verify "$SBX/rel40.json" "$SBX/s40")" || return 1
+  jq -e --arg rev "$SCAENA_REF_SHA" \
+    '.status != "failed" and .source_revision == $rev and
+     .channel == "stable" and .dist_tag == "scaena/v0.4.0" and
+     (.verified.asset_matrix == {expected:18, matched:18}) and
+     (.verified.upstream_assets | length == 18) and
+     (.verified.provenance.sbom_assets | length == 18) and
+     ([.verified.provenance.sbom_assets[] | select(endswith(".sbom.json"))] | length == 18)' \
+    <<<"$result" >/dev/null
+}
+
+# 17. Missing worker ARM archive fails closed on the asset matrix.
+t_scaena_missing_worker_arm() {
+  scaena_gen_assets "$SBX/s40m" "missing:scaena-production-worker_linux_arm64.tar.gz"
+  scaena_gen_release "$SBX/rel40m.json" 0
+  local result
+  result="$(scaena_verify "$SBX/rel40m.json" "$SBX/s40m")" && return 1
+  expect_reason "$result" asset_matrix_missing
+}
+
+# 18. Corrupted archive and tampered SBOM both fail checksum verification.
+t_scaena_checksum_and_sbom() {
+  scaena_gen_assets "$SBX/s40c" "corrupt:scaena_linux_amd64.tar.gz"
+  scaena_gen_release "$SBX/rel40c.json" 0
+  local result
+  result="$(scaena_verify "$SBX/rel40c.json" "$SBX/s40c")" && return 1
+  expect_reason "$result" checksum_mismatch || return 1
+  scaena_gen_assets "$SBX/s40s" "bad-sbom:scaena-api_darwin_arm64.tar.gz"
+  scaena_gen_release "$SBX/rel40s.json" 0
+  result="$(scaena_verify "$SBX/rel40s.json" "$SBX/s40s")" && return 1
+  expect_reason "$result" checksum_mismatch
+}
+
+# 19. A per-archive SBOM missing from the release (checksums re-covered over
+#     the present files) fails the provenance gate with the product-specific
+#     .sbom.json suffix; restoring the SBOM and re-covering checksums recovers.
+t_scaena_sbom_missing() {
+  scaena_gen_assets "$SBX/s40b" "drop-sbom:scaena-api_windows_arm64.zip"
+  scaena_gen_release "$SBX/rel40b.json" 0
+  local result
+  result="$(scaena_verify "$SBX/rel40b.json" "$SBX/s40b")" && return 1
+  expect_reason "$result" sbom_missing || return 1
+  printf '{"spdxVersion":"SPDX-2.3","name":"scaena-api_windows_arm64.zip"}\n' \
+    > "$SBX/s40b/scaena-api_windows_arm64.zip.sbom.json"
+  (cd "$SBX/s40b" && sha256sum scaena-*.json *.sbom.json $(ls | grep -E '\.(tar\.gz|zip)$' | sort) > checksums.txt)
+  result="$(scaena_verify "$SBX/rel40b.json" "$SBX/s40b")" || return 1
+  jq -e '.status != "failed"' <<<"$result" >/dev/null
+}
+
+# 20. Missing owner handoff asset blocks verification.
+t_scaena_handoff_missing() {
+  scaena_gen_assets "$SBX/s40h" no-handoff
+  scaena_gen_release "$SBX/rel40h.json" 0
+  local result
+  result="$(scaena_verify "$SBX/rel40h.json" "$SBX/s40h")" && return 1
+  expect_reason "$result" asset_matrix_missing
+}
+
+# 21. RC prerelease tags never pass the stable policy.
+t_scaena_prerelease_excluded() {
+  scaena_gen_assets "$SBX/s40rc"
+  scaena_gen_release "$SBX/rel40rc.json" 1
+  local result
+  result="$(scaena_verify "$SBX/rel40rc.json" "$SBX/s40rc")" && return 1
+  expect_reason "$result" prerelease
+}
+
+# 22. Mirrored bytes must match the verified upstream digests exactly.
+t_scaena_mirror_digest_mismatch() {
+  scaena_gen_assets "$SBX/s40"
+  scaena_gen_release "$SBX/rel40.json" 0
+  local result
+  result="$(scaena_verify "$SBX/rel40.json" "$SBX/s40")" || return 1
+  cp -r "$SBX/s40" "$SBX/s40mirror"
+  printf 'drift\n' >> "$SBX/s40mirror/scaena-production-worker_linux_arm64.tar.gz"
+  verify_mirror_assets "$(jq -c '.verified.upstream_assets' <<<"$result")" \
+    "$SBX/s40mirror" >/dev/null 2>&1 && return 1
+  verify_mirror_assets "$(jq -c '.verified.upstream_assets' <<<"$result")" \
+    "$SBX/s40" >/dev/null
+}
+
 tests=(t_happy t_idempotent t_corrupt_retains_last_verified t_missing_matrix
        t_no_checksums t_snapshot_excluded t_hint_mismatch t_fingerprint_conflict
        t_denied_asset t_catalog_join t_mirror_verify t_fail_closed
-       t_scaena_skills_assets t_eikona_skills_assets)
+       t_scaena_skills_assets t_eikona_skills_assets
+       t_scaena_policy_deterministic t_scaena_happy t_scaena_missing_worker_arm
+       t_scaena_checksum_and_sbom t_scaena_sbom_missing t_scaena_handoff_missing
+       t_scaena_prerelease_excluded t_scaena_mirror_digest_mismatch)
 for t in "${tests[@]}"; do
   if "$t"; then ok "$t"; else bad "$t"; fi
 done
