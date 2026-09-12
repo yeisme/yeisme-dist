@@ -1,0 +1,85 @@
+{
+  "schema_version": "yeisme.dist_receipt.v1",
+  "product": "credentialctl",
+  "channel": "stable",
+  "status": "success",
+  "upstream_tag": "v0.4.0",
+  "upstream_release_ref": "https://github.com/yeisme/credentialctl/releases/tag/v0.4.0",
+  "dist_tag": "credentialctl/v0.4.0",
+  "source_revision": "e73e4174ead91575149ad34cfa690082ae11d54a",
+  "handoff": {
+    "schema_version": "yeisme.product_release_handoff.v1",
+    "sha256": null
+  },
+  "policy": {
+    "file": "policy/credentialctl.json",
+    "sha256": "sha256:ab98317fcb615050d0ad3ce1110fd9ceddd0d001813ba02b1fc05ddc60192a63"
+  },
+  "verified": {
+    "checksums": {
+      "name": "checksums.txt",
+      "sha256": "sha256:22f0b079bd8c2a94a5674af2f679e263937cf341f910ffa4abc0166910045fcf"
+    },
+    "asset_matrix": {
+      "expected": 5,
+      "matched": 5
+    },
+    "upstream_assets": [
+      {
+        "name": "credentialctl_0.4.0_darwin_aarch64.tar.gz",
+        "sha256": "sha256:fc542481b500fa6cee48e689be02e39b33c9358d8c758381b1852dfc9e433548"
+      },
+      {
+        "name": "credentialctl_0.4.0_darwin_x86_64.tar.gz",
+        "sha256": "sha256:6f407c9dc5c126ddfe5419a48ff727ace1e83c730cc7f78fc97ae391ca752172"
+      },
+      {
+        "name": "credentialctl_0.4.0_linux_aarch64.tar.gz",
+        "sha256": "sha256:b8b56b8e82e99ad1c1c329e1963620a5b504f0eedbebd30a98abd6da48d8a314"
+      },
+      {
+        "name": "credentialctl_0.4.0_linux_x86_64.tar.gz",
+        "sha256": "sha256:acf044de5cf427f697139816b184e5666e4ec8561810bc63b9655318490d150d"
+      },
+      {
+        "name": "credentialctl_0.4.0_windows_x86_64.zip",
+        "sha256": "sha256:7333b17b4062f29a1bdf8ba60ae2a29a62247f2f563e9f0579f8368ad72c0a44"
+      }
+    ],
+    "provenance": {
+      "sbom_assets": [
+        "credentialctl_0.4.0_darwin_aarch64.tar.gz.spdx.json",
+        "credentialctl_0.4.0_darwin_x86_64.tar.gz.spdx.json",
+        "credentialctl_0.4.0_linux_aarch64.tar.gz.spdx.json",
+        "credentialctl_0.4.0_linux_x86_64.tar.gz.spdx.json",
+        "credentialctl_0.4.0_windows_x86_64.zip.spdx.json"
+      ],
+      "attestation_subject": "github-attestation:sha256:22f0b079bd8c2a94a5674af2f679e263937cf341f910ffa4abc0166910045fcf"
+    }
+  },
+  "mirrored_assets": [
+    {
+      "name": "credentialctl_0.4.0_darwin_aarch64.tar.gz",
+      "sha256": "sha256:fc542481b500fa6cee48e689be02e39b33c9358d8c758381b1852dfc9e433548"
+    },
+    {
+      "name": "credentialctl_0.4.0_darwin_x86_64.tar.gz",
+      "sha256": "sha256:6f407c9dc5c126ddfe5419a48ff727ace1e83c730cc7f78fc97ae391ca752172"
+    },
+    {
+      "name": "credentialctl_0.4.0_linux_aarch64.tar.gz",
+      "sha256": "sha256:b8b56b8e82e99ad1c1c329e1963620a5b504f0eedbebd30a98abd6da48d8a314"
+    },
+    {
+      "name": "credentialctl_0.4.0_linux_x86_64.tar.gz",
+      "sha256": "sha256:acf044de5cf427f697139816b184e5666e4ec8561810bc63b9655318490d150d"
+    },
+    {
+      "name": "credentialctl_0.4.0_windows_x86_64.zip",
+      "sha256": "sha256:7333b17b4062f29a1bdf8ba60ae2a29a62247f2f563e9f0579f8368ad72c0a44"
+    }
+  ],
+  "distribution_revision": 2,
+  "fingerprint_sha256": "sha256:41272b96ca93eccfb4602dec9f02ca8b5ed955375c99140fbbac778f88ddc7ff",
+  "produced_at": "2026-09-12T15:32:11Z"
+}

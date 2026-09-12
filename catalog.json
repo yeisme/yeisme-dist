@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-12T10:47:03Z",
+  "generated_at": "2026-09-12T15:32:13Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -1973,10 +1973,50 @@
     {
       "name": "credentialctl",
       "source_repo": "yeisme/credentialctl",
-      "latest": "credentialctl/v0.3.0",
-      "verified_latest": "credentialctl/v0.3.0",
-      "release_count": 1,
+      "latest": "credentialctl/v0.4.0",
+      "verified_latest": "credentialctl/v0.4.0",
+      "release_count": 2,
       "releases": [
+        {
+          "tag": "credentialctl/v0.4.0",
+          "version": "v0.4.0",
+          "published_at": "2026-09-12T15:32:09Z",
+          "prerelease": false,
+          "asset_count": 14,
+          "assets": [
+            "CHANGELOG.md",
+            "checksums.txt",
+            "config.yaml",
+            "credentialctl_0.4.0_darwin_aarch64.tar.gz",
+            "credentialctl_0.4.0_darwin_aarch64.tar.gz.spdx.json",
+            "credentialctl_0.4.0_darwin_x86_64.tar.gz",
+            "credentialctl_0.4.0_darwin_x86_64.tar.gz.spdx.json",
+            "credentialctl_0.4.0_linux_aarch64.tar.gz",
+            "credentialctl_0.4.0_linux_aarch64.tar.gz.spdx.json",
+            "credentialctl_0.4.0_linux_x86_64.tar.gz",
+            "credentialctl_0.4.0_linux_x86_64.tar.gz.spdx.json",
+            "credentialctl_0.4.0_windows_x86_64.zip",
+            "credentialctl_0.4.0_windows_x86_64.zip.spdx.json",
+            "release-manifest.json"
+          ],
+          "asset_digests": {
+            "credentialctl_0.4.0_darwin_aarch64.tar.gz": "sha256:fc542481b500fa6cee48e689be02e39b33c9358d8c758381b1852dfc9e433548",
+            "credentialctl_0.4.0_darwin_x86_64.tar.gz": "sha256:6f407c9dc5c126ddfe5419a48ff727ace1e83c730cc7f78fc97ae391ca752172",
+            "credentialctl_0.4.0_linux_aarch64.tar.gz": "sha256:b8b56b8e82e99ad1c1c329e1963620a5b504f0eedbebd30a98abd6da48d8a314",
+            "credentialctl_0.4.0_linux_x86_64.tar.gz": "sha256:acf044de5cf427f697139816b184e5666e4ec8561810bc63b9655318490d150d",
+            "credentialctl_0.4.0_windows_x86_64.zip": "sha256:7333b17b4062f29a1bdf8ba60ae2a29a62247f2f563e9f0579f8368ad72c0a44"
+          },
+          "receipt": "receipts/credentialctl/v0.4.0.json",
+          "receipt_sha256": "sha256:ad5d0142d3d8c2de942c92f8f9550517fae0e7dac2298cd8a40a38974158b00c",
+          "verification": {
+            "status": "verified",
+            "channel": "stable",
+            "upstream_tag": "v0.4.0",
+            "source_revision": "e73e4174ead91575149ad34cfa690082ae11d54a",
+            "handoff_sha256": null,
+            "distribution_revision": 2
+          }
+        },
         {
           "tag": "credentialctl/v0.3.0",
           "version": "v0.3.0",

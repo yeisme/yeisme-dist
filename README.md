@@ -24,7 +24,7 @@ Numbers below come from `catalog.json` (regenerated on every sync).
 | sonora | sonora/v0.2.2 | 3 | `yeisme/sonora` |
 | anatomia | anatomia/v0.3.0 | 1 | `yeisme/anatomia` |
 | mcp-gateway | - | 0 | `yeisme/mcp-gateway` |
-| credentialctl | credentialctl/v0.3.0 | 1 | `yeisme/credentialctl` |
+| credentialctl | credentialctl/v0.4.0 | 2 | `yeisme/credentialctl` |
 | template-registry | template-registry/v0.1.0 | 1 | `yeisme/backend-server-template-registry` |
 <!-- catalog-products:end -->
 
