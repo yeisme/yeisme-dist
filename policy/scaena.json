@@ -1,7 +1,7 @@
 {
   "schema_version": "yeisme.dist_verify_policy.v1",
   "product": "scaena",
-  "source_repo": "yeisme/scaena-agent",
+  "source_repo": "yeisme/scaena",
   "channel": "stable",
   "eligible_tag_pattern": "^scaena/v(0\\.([4-9]|[1-9][0-9]+)\\.[0-9]+|[1-9][0-9]*\\.[0-9]+\\.[0-9]+)$",
   "exclude_prerelease": true,

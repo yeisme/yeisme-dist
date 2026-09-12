@@ -413,12 +413,12 @@ scaena_gen_assets() { # <dir> [mod]  mod: missing:<name> | corrupt:<name> | bad-
 scaena_gen_release() { # <file> <prerelease:0|1>
   jq -n --arg pre "$2" \
     '{tag_name:"scaena/v0.4.0", draft:false, prerelease:($pre == "1"),
-      html_url:"https://github.com/yeisme/scaena-agent/releases/tag/scaena/v0.4.0",
+      html_url:"https://github.com/yeisme/scaena/releases/tag/scaena/v0.4.0",
       target_commitish:"main", assets:[]}' > "$1"
 }
 
 scaena_verify() { # <release_json> <assets_dir>
-  verify_release_evidence scaena yeisme/scaena-agent "scaena/" \
+  verify_release_evidence scaena yeisme/scaena "scaena/" \
     "$POLICY_SCAENA" "$1" "$2" ""
 }
 

@@ -1696,7 +1696,7 @@
     },
     {
       "name": "scaena",
-      "source_repo": "yeisme/scaena-agent",
+      "source_repo": "yeisme/scaena",
       "latest": "scaena/v0.2.1",
       "verified_latest": null,
       "release_count": 2,

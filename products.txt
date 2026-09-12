@@ -9,7 +9,7 @@
 eikona|yeisme/eikona|
 pinax|yeisme/pinax|
 auctra|yeisme/auctra|
-scaena|yeisme/scaena-agent|scaena/
+scaena|yeisme/scaena|scaena/
 gitea-mcp|yeisme/gitea-mcp|
 # Ready pipelines (goreleaser + tag workflow). Sync skips until assets exist.
 sonora|yeisme/sonora|
