@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-18T07:55:14Z",
+  "generated_at": "2026-09-18T08:09:30Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -15,10 +15,9 @@
           "version": "v0.8.1",
           "published_at": "2026-09-18T07:55:13Z",
           "prerelease": false,
-          "asset_count": 36,
+          "asset_count": 35,
           "assets": [
             "checksums.txt",
-            "eikona-command-catalog_0.8.1-next.json",
             "eikona-command-catalog_0.8.1.json",
             "eikona-install-manifest.json",
             "eikona-installer_0.8.1_Darwin_arm64.tar.gz",
