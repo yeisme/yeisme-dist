@@ -5,8 +5,7 @@ cask "scaena" do
   on_linux do
     on_intel do
       sha256 "db5ff3f54c168614adaac2152b704263093428cacb81d03cf0a0bdc6c074072a"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/scaena/v#{version}/scaena_linux_amd64.tar.gz",
-          verified: "github.com/yeisme/yeisme-dist/"
+      url "https://github.com/yeisme/yeisme-dist/releases/download/scaena/v#{version}/scaena_linux_amd64.tar.gz"
     end
   end
 

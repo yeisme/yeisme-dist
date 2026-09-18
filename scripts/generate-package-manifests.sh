@@ -109,8 +109,7 @@ write_platform_block() {
     printf '      sha256 "%s"\n' "$sha"
     cask_asset="${asset//$version/'#{version}'}"
     url_owner="$product"; [[ -n "$URL_TAG_PRODUCT" ]] && url_owner="$URL_TAG_PRODUCT"
-    printf '      url "%s/%s/v#{version}/%s",\n' "$DIST_URL_BASE" "$url_owner" "$cask_asset"
-    printf '          verified: "github.com/yeisme/yeisme-dist/"\n'
+    printf '      url "%s/%s/v#{version}/%s"\n' "$DIST_URL_BASE" "$url_owner" "$cask_asset"
     printf '    end\n'
   done
   printf '  end\n'

@@ -24,5 +24,7 @@ prefer the maintainer notes over guessing.
   monorepo root.
 - Use `private-release` for distribution channels, verify policies, and
   token-authenticated install flows.
-- Use `ai-native-cli-output-contract` mindset for `install.sh` and catalog
+- Use `ai-native-cli-output-contract` for `install.sh` and catalog
   output changes: stable, machine-parseable, no secrets.
+- Catalog/schema field changes: `yeisme-evolutionary-change-policy`.
+- Map: [subproject skill profiles](../../docs/skills/subproject-skill-profiles.md).

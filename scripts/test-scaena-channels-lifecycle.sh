@@ -199,7 +199,7 @@ t_rc_generator_isolation_and_url_base() {
     --rc-tag scaena/v0.4.0-rc.1 --rc-release "$SBX/rc-release2.json" --rc-root "$rcroot" \
     --rc-url-base "file://$SBX/proxy" --output-root "$outroot" >/dev/null 2>&1 || return 1
   [[ ! -e "$outroot/Casks" && ! -e "$outroot/bucket" ]] || return 1
-  grep -qF "url \"file://$SBX/proxy/scaena/v#{version}/scaena-api_darwin_amd64.tar.gz\"," \
+  grep -qF "url \"file://$SBX/proxy/scaena/v#{version}/scaena-api_darwin_amd64.tar.gz\"" \
     "$rcroot/Tap/Casks/scaena-api.rb" || return 1
   grep -qF "file://$SBX/proxy/scaena/v0.4.0-rc.1/scaena-api_windows_amd64.zip" \
     "$rcroot/Bucket/bucket/scaena-api.json" || return 1

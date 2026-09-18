@@ -5,26 +5,22 @@ cask "credentialctl" do
   on_macos do
     on_arm do
       sha256 "fc542481b500fa6cee48e689be02e39b33c9358d8c758381b1852dfc9e433548"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/credentialctl/v#{version}/credentialctl_#{version}_darwin_aarch64.tar.gz",
-          verified: "github.com/yeisme/yeisme-dist/"
+      url "https://github.com/yeisme/yeisme-dist/releases/download/credentialctl/v#{version}/credentialctl_#{version}_darwin_aarch64.tar.gz"
     end
     on_intel do
       sha256 "6f407c9dc5c126ddfe5419a48ff727ace1e83c730cc7f78fc97ae391ca752172"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/credentialctl/v#{version}/credentialctl_#{version}_darwin_x86_64.tar.gz",
-          verified: "github.com/yeisme/yeisme-dist/"
+      url "https://github.com/yeisme/yeisme-dist/releases/download/credentialctl/v#{version}/credentialctl_#{version}_darwin_x86_64.tar.gz"
     end
   end
 
   on_linux do
     on_arm do
       sha256 "b8b56b8e82e99ad1c1c329e1963620a5b504f0eedbebd30a98abd6da48d8a314"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/credentialctl/v#{version}/credentialctl_#{version}_linux_aarch64.tar.gz",
-          verified: "github.com/yeisme/yeisme-dist/"
+      url "https://github.com/yeisme/yeisme-dist/releases/download/credentialctl/v#{version}/credentialctl_#{version}_linux_aarch64.tar.gz"
     end
     on_intel do
       sha256 "acf044de5cf427f697139816b184e5666e4ec8561810bc63b9655318490d150d"
-      url "https://github.com/yeisme/yeisme-dist/releases/download/credentialctl/v#{version}/credentialctl_#{version}_linux_x86_64.tar.gz",
-          verified: "github.com/yeisme/yeisme-dist/"
+      url "https://github.com/yeisme/yeisme-dist/releases/download/credentialctl/v#{version}/credentialctl_#{version}_linux_x86_64.tar.gz"
     end
   end
 
