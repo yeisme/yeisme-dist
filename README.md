@@ -29,7 +29,7 @@ Numbers below come from `catalog.json` (regenerated on every sync).
 <!-- catalog-products:end -->
 
 Releases are tagged `<product>/vX.Y.Z`. More products are appended to
-`products.txt` as they ship binary releases (ordo, inferrum, quaestor,
+`products.txt` as they ship binary releases (ordo, quaestor,
 mediahub, aigora, cohors, …).
 
 ## Install

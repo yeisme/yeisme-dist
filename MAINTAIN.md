@@ -78,7 +78,7 @@ Homebrew caveat, Scoop notes, and Bash installer must all point users to
 
 Products with a working tag→GoReleaser pipeline may be listed before the first
 asset exists (`mcp-gateway`): sync skips zero-asset releases. Do not list
-products with no publish pipeline (inferrum/aigora tags with 0 assets, ordo
+products with no publish pipeline (aigora tags with 0 assets, ordo
 experimental artifact, quaestor/mediahub/cohors).
 
 ## Rotate DIST_SYNC_TOKEN
