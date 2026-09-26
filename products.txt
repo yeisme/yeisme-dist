@@ -16,7 +16,7 @@ sonora|yeisme/sonora|
 anatomia|yeisme/anatomia|
 mcp-gateway|yeisme/mcp-gateway|
 credentialctl|yeisme/credentialctl|
-# Not yet: ordo (experimental linux-x64 artifact only), aigora
+# Not yet: aigora
 # (tags with 0 assets and no current goreleaser publish), quaestor, mediahub,
 # cohors.
 template-registry|yeisme/backend-server-template-registry|
