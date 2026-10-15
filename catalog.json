@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-15T11:29:11Z",
+  "generated_at": "2026-10-15T16:52:21Z",
   "dist_repo": "yeisme/yeisme-dist",
   "products": [
     {
@@ -1210,10 +1210,48 @@
     {
       "name": "pinax",
       "source_repo": "yeisme/pinax",
-      "latest": "pinax/v0.2.0",
+      "latest": "pinax/v0.3.0",
       "verified_latest": null,
-      "release_count": 9,
+      "release_count": 10,
       "releases": [
+        {
+          "tag": "pinax/v0.3.0",
+          "version": "v0.3.0",
+          "published_at": "2026-10-15T16:52:20Z",
+          "prerelease": false,
+          "asset_count": 20,
+          "assets": [
+            "checksums.txt",
+            "pinax_0.3.0_darwin_aarch64.tar.gz",
+            "pinax_0.3.0_darwin_aarch64.tar.gz.spdx.json",
+            "pinax_0.3.0_darwin_x86_64.tar.gz",
+            "pinax_0.3.0_darwin_x86_64.tar.gz.spdx.json",
+            "pinax_0.3.0_linux_aarch64.tar.gz",
+            "pinax_0.3.0_linux_aarch64.tar.gz.spdx.json",
+            "pinax_0.3.0_linux_amd64.apk",
+            "pinax_0.3.0_linux_amd64.deb",
+            "pinax_0.3.0_linux_amd64.rpm",
+            "pinax_0.3.0_linux_arm64.apk",
+            "pinax_0.3.0_linux_arm64.deb",
+            "pinax_0.3.0_linux_arm64.rpm",
+            "pinax_0.3.0_linux_x86_64.tar.gz",
+            "pinax_0.3.0_linux_x86_64.tar.gz.spdx.json",
+            "pinax_0.3.0_source.tar.gz",
+            "pinax_0.3.0_windows_aarch64.zip",
+            "pinax_0.3.0_windows_aarch64.zip.spdx.json",
+            "pinax_0.3.0_windows_x86_64.zip",
+            "pinax_0.3.0_windows_x86_64.zip.spdx.json"
+          ],
+          "asset_digests": {
+            "pinax_0.3.0_darwin_aarch64.tar.gz": "sha256:7897720893ab7fb23676e90bf39b71b22a9a5d870155550df02d698d869130d9",
+            "pinax_0.3.0_darwin_x86_64.tar.gz": "sha256:26c79b8ca9135b8f73a832eedae39f17bc1fa972949dd2d59f5f6f5b6a70810b",
+            "pinax_0.3.0_linux_aarch64.tar.gz": "sha256:6c3e1e53532f90dca8963a98fba04aa4ebdd064a8069f866f1568548bee0d582",
+            "pinax_0.3.0_linux_x86_64.tar.gz": "sha256:120e81e4d493da7c205c9526ad119a24331d5c2e5004e80cbb739b50e37d7a47",
+            "pinax_0.3.0_source.tar.gz": "sha256:9304706dd71fbcc4c10242a0d22883ede23051316aa528c4780414ffbfe9c4b3",
+            "pinax_0.3.0_windows_aarch64.zip": "sha256:802703ae9ce1369a50388afcaafb6ce7260971f78ffbc3ce94f7cca958fb0acf",
+            "pinax_0.3.0_windows_x86_64.zip": "sha256:be341390dce39c54cba85aadffe5d8d9475b5c2423eaae51805de6d0748c166e"
+          }
+        },
         {
           "tag": "pinax/v0.2.0",
           "version": "v0.2.0",

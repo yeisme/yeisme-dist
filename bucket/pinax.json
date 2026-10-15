@@ -1,16 +1,16 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Local-first Markdown knowledge workspace CLI.",
   "homepage": "https://github.com/yeisme/yeisme-dist",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v0.2.0/pinax_0.2.0_windows_x86_64.zip",
-      "hash": "37e1a9afb62d2a2450bf16a401fa8259179774d3e700d9c31d1c63b6624c61e4"
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v0.3.0/pinax_0.3.0_windows_x86_64.zip",
+      "hash": "be341390dce39c54cba85aadffe5d8d9475b5c2423eaae51805de6d0748c166e"
     },
     "arm64": {
-      "url": "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v0.2.0/pinax_0.2.0_windows_aarch64.zip",
-      "hash": "9197e914b48d390302ad2be9b341f9a66a436207384f5278f1c4ed0ea275d29d"
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/pinax/v0.3.0/pinax_0.3.0_windows_aarch64.zip",
+      "hash": "802703ae9ce1369a50388afcaafb6ce7260971f78ffbc3ce94f7cca958fb0acf"
     }
   },
   "bin": "pinax.exe"
