@@ -1,0 +1,217 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "fc792538f83ab06de7af4513cbb328dd45a3ab71",
+  "generatedAt": "2026-09-26T08:18:40.815Z",
+  "files": {
+    "Casks/anatomia.rb": {
+      "filePath": "Casks/anatomia.rb",
+      "contentHash": "6ed29e92c8bdc811b44953892ce04d1ad656f618eab28a1066a37fe6e1a703f5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "Casks/auctra.rb": {
+      "filePath": "Casks/auctra.rb",
+      "contentHash": "68a76dd51450c8bdafa57579f02b572052e84ae7c03578ece5458871385f3ff8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "Casks/credentialctl.rb": {
+      "filePath": "Casks/credentialctl.rb",
+      "contentHash": "7262a20ee03fe5e7b4a35be47c600cc1e29f692adf8a2eb3e5da0f3bd9a4417b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "Casks/eikona.rb": {
+      "filePath": "Casks/eikona.rb",
+      "contentHash": "2ec66591916922923a594af1f03aba2d5ad18de1e6c906e06aeb5d3d1586b14c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "Casks/gitea-mcp.rb": {
+      "filePath": "Casks/gitea-mcp.rb",
+      "contentHash": "1ff489e33dfca24d5097e4236ed2795739c0e6c1e59cb2c8c6c61d07313d52ca",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "Casks/pinax.rb": {
+      "filePath": "Casks/pinax.rb",
+      "contentHash": "778a38cc697b802680829f66e1deb14ce8804ff18ac852a77eb0239ddb408c61",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "Casks/scaena.rb": {
+      "filePath": "Casks/scaena.rb",
+      "contentHash": "f982c8a89af42dec81f45eb8234455e24fb81bb345f1d3a99c295b3ae6e4c86d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "Casks/sonora.rb": {
+      "filePath": "Casks/sonora.rb",
+      "contentHash": "ac40b403679d7888eedcabfc9c7fe214e41318c1fd756b857fe46e148695f5a2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "install.sh": {
+      "filePath": "install.sh",
+      "contentHash": "e8063885fce7156c49311f07ed0af25fbc1f32e3d8839fbd87f435a49fe91017",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 309,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/check.sh": {
+      "filePath": "scripts/check.sh",
+      "contentHash": "6d63ed478ecc9c35222f9ce57e649cda5b3e7e814bcf01b4cf26072321684c81",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 359,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/generate-package-manifests.sh": {
+      "filePath": "scripts/generate-package-manifests.sh",
+      "contentHash": "efd379510a16535aa239ea65e60daabe4ff9e160417aff1f8a019b12026019c2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 428,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/generate-scaena-policy.sh": {
+      "filePath": "scripts/generate-scaena-policy.sh",
+      "contentHash": "93d91e2bcdec09182b516f038bd1684dc3ecff10c86e5e1011a5a23fa0a9d559",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 105,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/lib/catalog.sh": {
+      "filePath": "scripts/lib/catalog.sh",
+      "contentHash": "4188df7462265363499c5c552f5c3087b1cb44dda6b5927ded38a208b5eb6f7f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/lib/scaena-packages.sh": {
+      "filePath": "scripts/lib/scaena-packages.sh",
+      "contentHash": "c2deccee80886018a2f465855f741469965d5700ead7d637452003a9151e416a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 42,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/lib/verify.sh": {
+      "filePath": "scripts/lib/verify.sh",
+      "contentHash": "97ab8308ea58a7b0721ed43467e9d1e8278833278e7bfb5a14b044cf8d262d00",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 548,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/rc-channel.sh": {
+      "filePath": "scripts/rc-channel.sh",
+      "contentHash": "e50907ed57831ac753e61cfccc7b68239db17c32efae12a12562130fb6ed4f1a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 96,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/rollback-manifests.sh": {
+      "filePath": "scripts/rollback-manifests.sh",
+      "contentHash": "95aac1d826c10a2bc0743208b76807245943e44e39ebe57988b16a6105117ea3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 159,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/sync.sh": {
+      "filePath": "scripts/sync.sh",
+      "contentHash": "214dc6097c09792aecf04165e7aac18e66a7e692fda5a6d09a65aee4fc7ab7cd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 362,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/test-offline.sh": {
+      "filePath": "scripts/test-offline.sh",
+      "contentHash": "d5fecb75aa137bffb5208eb2d1c84367a91e025029a452378a1624d28708409d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 538,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/test-scaena-channels-lifecycle.sh": {
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "contentHash": "b45a3396259305c170dae6bf35e635510d717105c83dfac1be9bcd3e317ceb99",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 389,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/test-scaena-packages.sh": {
+      "filePath": "scripts/test-scaena-packages.sh",
+      "contentHash": "0ce1a051020920471a77963a0ef8dec77fe8ae249d7187d27ede42f5e9f9eee9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 419,
+      "hasStructuralAnalysis": false
+    }
+  }
+}

@@ -1,0 +1,442 @@
+{
+  "scriptCompleted": true,
+  "contentDigest": "2cda3015f716720f37078001b6871153938f3f99f58ae3525fef5d5c186b687d",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "language": "yaml",
+      "sizeLines": 47,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/scaena-rc-channel.yml",
+      "language": "yaml",
+      "sizeLines": 90,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/sync.yml",
+      "language": "yaml",
+      "sizeLines": 97,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "AGENTS.md",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "Casks/anatomia.rb",
+      "language": "ruby",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Casks/auctra.rb",
+      "language": "ruby",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Casks/credentialctl.rb",
+      "language": "ruby",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Casks/eikona.rb",
+      "language": "ruby",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Casks/gitea-mcp.rb",
+      "language": "ruby",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Casks/pinax.rb",
+      "language": "ruby",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Casks/scaena.rb",
+      "language": "ruby",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Casks/sonora.rb",
+      "language": "ruby",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "MAINTAIN.md",
+      "language": "markdown",
+      "sizeLines": 105,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 216,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "bucket/auctra.json",
+      "language": "json",
+      "sizeLines": 17,
+      "fileCategory": "config"
+    },
+    {
+      "path": "bucket/credentialctl.json",
+      "language": "json",
+      "sizeLines": 16,
+      "fileCategory": "config"
+    },
+    {
+      "path": "bucket/eikona.json",
+      "language": "json",
+      "sizeLines": 21,
+      "fileCategory": "config"
+    },
+    {
+      "path": "bucket/gitea-mcp.json",
+      "language": "json",
+      "sizeLines": 17,
+      "fileCategory": "config"
+    },
+    {
+      "path": "bucket/pinax.json",
+      "language": "json",
+      "sizeLines": 17,
+      "fileCategory": "config"
+    },
+    {
+      "path": "bucket/sonora.json",
+      "language": "json",
+      "sizeLines": 17,
+      "fileCategory": "config"
+    },
+    {
+      "path": "catalog.json",
+      "language": "json",
+      "sizeLines": 2176,
+      "fileCategory": "config"
+    },
+    {
+      "path": "docs/README.md",
+      "language": "markdown",
+      "sizeLines": 11,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/delivery/ci-cd.md",
+      "language": "markdown",
+      "sizeLines": 43,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/distribution-contracts.md",
+      "language": "markdown",
+      "sizeLines": 186,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "install.sh",
+      "language": "shell",
+      "sizeLines": 308,
+      "fileCategory": "script"
+    },
+    {
+      "path": "openspec/changes/scaena-v0-4-package-channels-v1/.openspec.yaml",
+      "language": "yaml",
+      "sizeLines": 2,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/changes/scaena-v0-4-package-channels-v1/README.md",
+      "language": "markdown",
+      "sizeLines": 3,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/scaena-v0-4-package-channels-v1/design.md",
+      "language": "markdown",
+      "sizeLines": 131,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/scaena-v0-4-package-channels-v1/proposal.md",
+      "language": "markdown",
+      "sizeLines": 29,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/scaena-v0-4-package-channels-v1/specs/scaena-package-channels/spec.md",
+      "language": "markdown",
+      "sizeLines": 111,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/changes/scaena-v0-4-package-channels-v1/tasks.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/config.yaml",
+      "language": "yaml",
+      "sizeLines": 20,
+      "fileCategory": "config"
+    },
+    {
+      "path": "openspec/specs/product-agent-skills-assets/spec.md",
+      "language": "markdown",
+      "sizeLines": 35,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "openspec/specs/template-registry-distribution/spec.md",
+      "language": "markdown",
+      "sizeLines": 19,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "policy/anatomia.json",
+      "language": "json",
+      "sizeLines": 35,
+      "fileCategory": "config"
+    },
+    {
+      "path": "policy/credentialctl.json",
+      "language": "json",
+      "sizeLines": 39,
+      "fileCategory": "config"
+    },
+    {
+      "path": "policy/scaena.json",
+      "language": "json",
+      "sizeLines": 60,
+      "fileCategory": "config"
+    },
+    {
+      "path": "policy/template-registry.json",
+      "language": "json",
+      "sizeLines": 39,
+      "fileCategory": "config"
+    },
+    {
+      "path": "products.txt",
+      "language": "txt",
+      "sizeLines": 22,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "receipts/anatomia/v0.3.0.json",
+      "language": "json",
+      "sizeLines": 94,
+      "fileCategory": "config"
+    },
+    {
+      "path": "receipts/credentialctl/v0.3.0.json",
+      "language": "json",
+      "sizeLines": 85,
+      "fileCategory": "config"
+    },
+    {
+      "path": "receipts/credentialctl/v0.4.0.json",
+      "language": "json",
+      "sizeLines": 85,
+      "fileCategory": "config"
+    },
+    {
+      "path": "receipts/template-registry/v0.1.0.json",
+      "language": "json",
+      "sizeLines": 94,
+      "fileCategory": "config"
+    },
+    {
+      "path": "schemas/dist-receipt-v1.schema.json",
+      "language": "json",
+      "sizeLines": 126,
+      "fileCategory": "config"
+    },
+    {
+      "path": "scripts/check.sh",
+      "language": "shell",
+      "sizeLines": 358,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/generate-package-manifests.sh",
+      "language": "shell",
+      "sizeLines": 427,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/generate-scaena-policy.sh",
+      "language": "shell",
+      "sizeLines": 104,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/lib/catalog.sh",
+      "language": "shell",
+      "sizeLines": 33,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/lib/scaena-packages.sh",
+      "language": "shell",
+      "sizeLines": 41,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/lib/verify.sh",
+      "language": "shell",
+      "sizeLines": 547,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/rc-channel.sh",
+      "language": "shell",
+      "sizeLines": 95,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/rollback-manifests.sh",
+      "language": "shell",
+      "sizeLines": 158,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/sync.sh",
+      "language": "shell",
+      "sizeLines": 361,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/test-offline.sh",
+      "language": "shell",
+      "sizeLines": 537,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/test-scaena-channels-lifecycle.sh",
+      "language": "shell",
+      "sizeLines": 388,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/test-scaena-packages.sh",
+      "language": "shell",
+      "sizeLines": 418,
+      "fileCategory": "script"
+    },
+    {
+      "path": "tests/fixtures/api/tag_obj_yeisme_anatomia_1111111111111111111111111111111111111111.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/api/tag_ref_yeisme_anatomia_v0.2.0.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.0.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.1.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/api/tag_ref_yeisme_scaena_scaena_v0.4.0.json",
+      "language": "json",
+      "sizeLines": 7,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/golden/anatomia-v0.3.0.json",
+      "language": "json",
+      "sizeLines": 94,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/hints/good.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/hints/invalid.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/hints/other-product.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/hints/stale-tag.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/hints/wrong-revision.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/fixtures/scaena/README.md",
+      "language": "markdown",
+      "sizeLines": 36,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "tests/fixtures/scaena/scaena-dist-handoff_0.4.0-contract.json",
+      "language": "json",
+      "sizeLines": 206,
+      "fileCategory": "config"
+    }
+  ],
+  "totalFiles": 69,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "moderate",
+  "failures": [],
+  "stats": {
+    "filesScanned": 69,
+    "byCategory": {
+      "infra": 3,
+      "docs": 15,
+      "code": 8,
+      "config": 30,
+      "script": 13
+    },
+    "byLanguage": {
+      "yaml": 5,
+      "markdown": 14,
+      "ruby": 8,
+      "json": 28,
+      "shell": 13,
+      "txt": 1
+    }
+  }
+}

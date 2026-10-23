@@ -1,0 +1,5101 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "yeisme-dist",
+    "languages": [
+      "json",
+      "markdown",
+      "shell",
+      "ruby",
+      "yaml",
+      "txt"
+    ],
+    "frameworks": [],
+    "description": "yeisme-dist",
+    "analyzedAt": "2026-09-26T08:18:40.387Z",
+    "gitCommitHash": "fc792538f83ab06de7af4513cbb328dd45a3ab71"
+  },
+  "nodes": [
+    {
+      "id": "module:project",
+      "type": "module",
+      "name": "yeisme-dist",
+      "summary": "项目级根模块，连接目录、入口、实现、测试与文档。",
+      "tags": [
+        "project",
+        "module"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "module:.github",
+      "type": "module",
+      "name": ".github",
+      "filePath": ".github",
+      "summary": "目录模块 .github，包含 3 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:.github/workflows",
+      "type": "module",
+      "name": ".github/workflows",
+      "filePath": ".github/workflows",
+      "summary": "目录模块 .github/workflows，包含 3 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:Casks",
+      "type": "module",
+      "name": "Casks",
+      "filePath": "Casks",
+      "summary": "目录模块 Casks，包含 8 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:bucket",
+      "type": "module",
+      "name": "bucket",
+      "filePath": "bucket",
+      "summary": "目录模块 bucket，包含 6 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:docs",
+      "type": "module",
+      "name": "docs",
+      "filePath": "docs",
+      "summary": "目录模块 docs，包含 3 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:openspec",
+      "type": "module",
+      "name": "openspec",
+      "filePath": "openspec",
+      "summary": "目录模块 openspec，包含 9 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:openspec/changes",
+      "type": "module",
+      "name": "openspec/changes",
+      "filePath": "openspec/changes",
+      "summary": "目录模块 openspec/changes，包含 6 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:policy",
+      "type": "module",
+      "name": "policy",
+      "filePath": "policy",
+      "summary": "目录模块 policy，包含 4 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:receipts",
+      "type": "module",
+      "name": "receipts",
+      "filePath": "receipts",
+      "summary": "目录模块 receipts，包含 4 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:schemas",
+      "type": "module",
+      "name": "schemas",
+      "filePath": "schemas",
+      "summary": "目录模块 schemas，包含 1 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:scripts",
+      "type": "module",
+      "name": "scripts",
+      "filePath": "scripts",
+      "summary": "目录模块 scripts，包含 12 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:scripts/lib",
+      "type": "module",
+      "name": "scripts/lib",
+      "filePath": "scripts/lib",
+      "summary": "目录模块 scripts/lib，包含 3 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:tests",
+      "type": "module",
+      "name": "tests",
+      "filePath": "tests",
+      "summary": "目录模块 tests，包含 13 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:tests/fixtures",
+      "type": "module",
+      "name": "tests/fixtures",
+      "filePath": "tests/fixtures",
+      "summary": "目录模块 tests/fixtures，包含 13 个已分析文件。",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.github/workflows/ci.yml",
+      "type": "pipeline",
+      "name": "ci.yml",
+      "filePath": ".github/workflows/ci.yml",
+      "lineRange": [
+        1,
+        47
+      ],
+      "summary": "基础设施定义：.github/workflows/ci.yml（yaml，47 行）。",
+      "tags": [
+        "yaml",
+        "infra"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.github/workflows/scaena-rc-channel.yml",
+      "type": "pipeline",
+      "name": "scaena-rc-channel.yml",
+      "filePath": ".github/workflows/scaena-rc-channel.yml",
+      "lineRange": [
+        1,
+        90
+      ],
+      "summary": "基础设施定义：.github/workflows/scaena-rc-channel.yml（yaml，90 行）。",
+      "tags": [
+        "yaml",
+        "infra"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.github/workflows/sync.yml",
+      "type": "pipeline",
+      "name": "sync.yml",
+      "filePath": ".github/workflows/sync.yml",
+      "lineRange": [
+        1,
+        97
+      ],
+      "summary": "基础设施定义：.github/workflows/sync.yml（yaml，97 行）。",
+      "tags": [
+        "yaml",
+        "infra"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "AGENTS.md",
+      "lineRange": [
+        1,
+        37
+      ],
+      "summary": "文档：AGENTS.md（markdown，37 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:Casks/anatomia.rb",
+      "type": "file",
+      "name": "anatomia.rb",
+      "filePath": "Casks/anatomia.rb",
+      "lineRange": [
+        1,
+        38
+      ],
+      "summary": "实现代码：Casks/anatomia.rb（ruby，38 行）。",
+      "tags": [
+        "ruby",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:Casks/auctra.rb",
+      "type": "file",
+      "name": "auctra.rb",
+      "filePath": "Casks/auctra.rb",
+      "lineRange": [
+        1,
+        38
+      ],
+      "summary": "实现代码：Casks/auctra.rb（ruby，38 行）。",
+      "tags": [
+        "ruby",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:Casks/credentialctl.rb",
+      "type": "file",
+      "name": "credentialctl.rb",
+      "filePath": "Casks/credentialctl.rb",
+      "lineRange": [
+        1,
+        43
+      ],
+      "summary": "实现代码：Casks/credentialctl.rb（ruby，43 行）。",
+      "tags": [
+        "ruby",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:Casks/eikona.rb",
+      "type": "file",
+      "name": "eikona.rb",
+      "filePath": "Casks/eikona.rb",
+      "lineRange": [
+        1,
+        45
+      ],
+      "summary": "实现代码：Casks/eikona.rb（ruby，45 行）。",
+      "tags": [
+        "ruby",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:Casks/gitea-mcp.rb",
+      "type": "file",
+      "name": "gitea-mcp.rb",
+      "filePath": "Casks/gitea-mcp.rb",
+      "lineRange": [
+        1,
+        38
+      ],
+      "summary": "实现代码：Casks/gitea-mcp.rb（ruby，38 行）。",
+      "tags": [
+        "ruby",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:Casks/pinax.rb",
+      "type": "file",
+      "name": "pinax.rb",
+      "filePath": "Casks/pinax.rb",
+      "lineRange": [
+        1,
+        38
+      ],
+      "summary": "实现代码：Casks/pinax.rb（ruby，38 行）。",
+      "tags": [
+        "ruby",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:Casks/scaena.rb",
+      "type": "file",
+      "name": "scaena.rb",
+      "filePath": "Casks/scaena.rb",
+      "lineRange": [
+        1,
+        23
+      ],
+      "summary": "实现代码：Casks/scaena.rb（ruby，23 行）。",
+      "tags": [
+        "ruby",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:Casks/sonora.rb",
+      "type": "file",
+      "name": "sonora.rb",
+      "filePath": "Casks/sonora.rb",
+      "lineRange": [
+        1,
+        38
+      ],
+      "summary": "实现代码：Casks/sonora.rb（ruby，38 行）。",
+      "tags": [
+        "ruby",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:MAINTAIN.md",
+      "type": "document",
+      "name": "MAINTAIN.md",
+      "filePath": "MAINTAIN.md",
+      "lineRange": [
+        1,
+        105
+      ],
+      "summary": "文档：MAINTAIN.md（markdown，105 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "lineRange": [
+        1,
+        216
+      ],
+      "summary": "文档：README.md（markdown，216 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:bucket/auctra.json",
+      "type": "config",
+      "name": "auctra.json",
+      "filePath": "bucket/auctra.json",
+      "lineRange": [
+        1,
+        17
+      ],
+      "summary": "配置：bucket/auctra.json（json，17 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:bucket/credentialctl.json",
+      "type": "config",
+      "name": "credentialctl.json",
+      "filePath": "bucket/credentialctl.json",
+      "lineRange": [
+        1,
+        16
+      ],
+      "summary": "配置：bucket/credentialctl.json（json，16 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:bucket/eikona.json",
+      "type": "config",
+      "name": "eikona.json",
+      "filePath": "bucket/eikona.json",
+      "lineRange": [
+        1,
+        21
+      ],
+      "summary": "配置：bucket/eikona.json（json，21 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:bucket/gitea-mcp.json",
+      "type": "config",
+      "name": "gitea-mcp.json",
+      "filePath": "bucket/gitea-mcp.json",
+      "lineRange": [
+        1,
+        17
+      ],
+      "summary": "配置：bucket/gitea-mcp.json（json，17 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:bucket/pinax.json",
+      "type": "config",
+      "name": "pinax.json",
+      "filePath": "bucket/pinax.json",
+      "lineRange": [
+        1,
+        17
+      ],
+      "summary": "配置：bucket/pinax.json（json，17 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:bucket/sonora.json",
+      "type": "config",
+      "name": "sonora.json",
+      "filePath": "bucket/sonora.json",
+      "lineRange": [
+        1,
+        17
+      ],
+      "summary": "配置：bucket/sonora.json（json，17 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:catalog.json",
+      "type": "config",
+      "name": "catalog.json",
+      "filePath": "catalog.json",
+      "lineRange": [
+        1,
+        2176
+      ],
+      "summary": "配置：catalog.json（json，2176 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:docs/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "docs/README.md",
+      "lineRange": [
+        1,
+        11
+      ],
+      "summary": "文档：docs/README.md（markdown，11 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:docs/delivery/ci-cd.md",
+      "type": "document",
+      "name": "ci-cd.md",
+      "filePath": "docs/delivery/ci-cd.md",
+      "lineRange": [
+        1,
+        43
+      ],
+      "summary": "文档：docs/delivery/ci-cd.md（markdown，43 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:docs/distribution-contracts.md",
+      "type": "document",
+      "name": "distribution-contracts.md",
+      "filePath": "docs/distribution-contracts.md",
+      "lineRange": [
+        1,
+        186
+      ],
+      "summary": "文档：docs/distribution-contracts.md（markdown，186 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:install.sh",
+      "type": "file",
+      "name": "install.sh",
+      "filePath": "install.sh",
+      "lineRange": [
+        1,
+        308
+      ],
+      "summary": "自动化脚本：install.sh（shell，308 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:openspec/changes/scaena-v0-4-package-channels-v1/.openspec.yaml",
+      "type": "config",
+      "name": ".openspec.yaml",
+      "filePath": "openspec/changes/scaena-v0-4-package-channels-v1/.openspec.yaml",
+      "lineRange": [
+        1,
+        2
+      ],
+      "summary": "配置：openspec/changes/scaena-v0-4-package-channels-v1/.openspec.yaml（yaml，2 行）。",
+      "tags": [
+        "yaml",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:openspec/changes/scaena-v0-4-package-channels-v1/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "openspec/changes/scaena-v0-4-package-channels-v1/README.md",
+      "lineRange": [
+        1,
+        3
+      ],
+      "summary": "文档：openspec/changes/scaena-v0-4-package-channels-v1/README.md（markdown，3 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:openspec/changes/scaena-v0-4-package-channels-v1/design.md",
+      "type": "document",
+      "name": "design.md",
+      "filePath": "openspec/changes/scaena-v0-4-package-channels-v1/design.md",
+      "lineRange": [
+        1,
+        131
+      ],
+      "summary": "文档：openspec/changes/scaena-v0-4-package-channels-v1/design.md（markdown，131 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:openspec/changes/scaena-v0-4-package-channels-v1/proposal.md",
+      "type": "document",
+      "name": "proposal.md",
+      "filePath": "openspec/changes/scaena-v0-4-package-channels-v1/proposal.md",
+      "lineRange": [
+        1,
+        29
+      ],
+      "summary": "文档：openspec/changes/scaena-v0-4-package-channels-v1/proposal.md（markdown，29 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:openspec/changes/scaena-v0-4-package-channels-v1/specs/scaena-package-channels/spec.md",
+      "type": "document",
+      "name": "spec.md",
+      "filePath": "openspec/changes/scaena-v0-4-package-channels-v1/specs/scaena-package-channels/spec.md",
+      "lineRange": [
+        1,
+        111
+      ],
+      "summary": "文档：openspec/changes/scaena-v0-4-package-channels-v1/specs/scaena-package-channels/spec.md（markdown，111 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:openspec/changes/scaena-v0-4-package-channels-v1/tasks.md",
+      "type": "document",
+      "name": "tasks.md",
+      "filePath": "openspec/changes/scaena-v0-4-package-channels-v1/tasks.md",
+      "lineRange": [
+        1,
+        38
+      ],
+      "summary": "文档：openspec/changes/scaena-v0-4-package-channels-v1/tasks.md（markdown，38 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:openspec/config.yaml",
+      "type": "config",
+      "name": "config.yaml",
+      "filePath": "openspec/config.yaml",
+      "lineRange": [
+        1,
+        20
+      ],
+      "summary": "配置：openspec/config.yaml（yaml，20 行）。",
+      "tags": [
+        "yaml",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:openspec/specs/product-agent-skills-assets/spec.md",
+      "type": "document",
+      "name": "spec.md",
+      "filePath": "openspec/specs/product-agent-skills-assets/spec.md",
+      "lineRange": [
+        1,
+        35
+      ],
+      "summary": "文档：openspec/specs/product-agent-skills-assets/spec.md（markdown，35 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:openspec/specs/template-registry-distribution/spec.md",
+      "type": "document",
+      "name": "spec.md",
+      "filePath": "openspec/specs/template-registry-distribution/spec.md",
+      "lineRange": [
+        1,
+        19
+      ],
+      "summary": "文档：openspec/specs/template-registry-distribution/spec.md（markdown，19 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:policy/anatomia.json",
+      "type": "config",
+      "name": "anatomia.json",
+      "filePath": "policy/anatomia.json",
+      "lineRange": [
+        1,
+        35
+      ],
+      "summary": "配置：policy/anatomia.json（json，35 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:policy/credentialctl.json",
+      "type": "config",
+      "name": "credentialctl.json",
+      "filePath": "policy/credentialctl.json",
+      "lineRange": [
+        1,
+        39
+      ],
+      "summary": "配置：policy/credentialctl.json（json，39 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:policy/scaena.json",
+      "type": "config",
+      "name": "scaena.json",
+      "filePath": "policy/scaena.json",
+      "lineRange": [
+        1,
+        60
+      ],
+      "summary": "配置：policy/scaena.json（json，60 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:policy/template-registry.json",
+      "type": "config",
+      "name": "template-registry.json",
+      "filePath": "policy/template-registry.json",
+      "lineRange": [
+        1,
+        39
+      ],
+      "summary": "配置：policy/template-registry.json（json，39 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:products.txt",
+      "type": "document",
+      "name": "products.txt",
+      "filePath": "products.txt",
+      "lineRange": [
+        1,
+        22
+      ],
+      "summary": "文档：products.txt（txt，22 行）。",
+      "tags": [
+        "txt",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:receipts/anatomia/v0.3.0.json",
+      "type": "config",
+      "name": "v0.3.0.json",
+      "filePath": "receipts/anatomia/v0.3.0.json",
+      "lineRange": [
+        1,
+        94
+      ],
+      "summary": "配置：receipts/anatomia/v0.3.0.json（json，94 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:receipts/credentialctl/v0.3.0.json",
+      "type": "config",
+      "name": "v0.3.0.json",
+      "filePath": "receipts/credentialctl/v0.3.0.json",
+      "lineRange": [
+        1,
+        85
+      ],
+      "summary": "配置：receipts/credentialctl/v0.3.0.json（json，85 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:receipts/credentialctl/v0.4.0.json",
+      "type": "config",
+      "name": "v0.4.0.json",
+      "filePath": "receipts/credentialctl/v0.4.0.json",
+      "lineRange": [
+        1,
+        85
+      ],
+      "summary": "配置：receipts/credentialctl/v0.4.0.json（json，85 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:receipts/template-registry/v0.1.0.json",
+      "type": "config",
+      "name": "v0.1.0.json",
+      "filePath": "receipts/template-registry/v0.1.0.json",
+      "lineRange": [
+        1,
+        94
+      ],
+      "summary": "配置：receipts/template-registry/v0.1.0.json（json，94 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:schemas/dist-receipt-v1.schema.json",
+      "type": "config",
+      "name": "dist-receipt-v1.schema.json",
+      "filePath": "schemas/dist-receipt-v1.schema.json",
+      "lineRange": [
+        1,
+        126
+      ],
+      "summary": "配置：schemas/dist-receipt-v1.schema.json（json，126 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/check.sh",
+      "type": "file",
+      "name": "check.sh",
+      "filePath": "scripts/check.sh",
+      "lineRange": [
+        1,
+        358
+      ],
+      "summary": "自动化脚本：scripts/check.sh（shell，358 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/generate-package-manifests.sh",
+      "type": "file",
+      "name": "generate-package-manifests.sh",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        1,
+        427
+      ],
+      "summary": "自动化脚本：scripts/generate-package-manifests.sh（shell，427 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/generate-scaena-policy.sh",
+      "type": "file",
+      "name": "generate-scaena-policy.sh",
+      "filePath": "scripts/generate-scaena-policy.sh",
+      "lineRange": [
+        1,
+        104
+      ],
+      "summary": "自动化脚本：scripts/generate-scaena-policy.sh（shell，104 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/lib/catalog.sh",
+      "type": "file",
+      "name": "catalog.sh",
+      "filePath": "scripts/lib/catalog.sh",
+      "lineRange": [
+        1,
+        33
+      ],
+      "summary": "自动化脚本：scripts/lib/catalog.sh（shell，33 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/lib/scaena-packages.sh",
+      "type": "file",
+      "name": "scaena-packages.sh",
+      "filePath": "scripts/lib/scaena-packages.sh",
+      "lineRange": [
+        1,
+        41
+      ],
+      "summary": "自动化脚本：scripts/lib/scaena-packages.sh（shell，41 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/lib/verify.sh",
+      "type": "file",
+      "name": "verify.sh",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        1,
+        547
+      ],
+      "summary": "自动化脚本：scripts/lib/verify.sh（shell，547 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/rc-channel.sh",
+      "type": "file",
+      "name": "rc-channel.sh",
+      "filePath": "scripts/rc-channel.sh",
+      "lineRange": [
+        1,
+        95
+      ],
+      "summary": "自动化脚本：scripts/rc-channel.sh（shell，95 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/rollback-manifests.sh",
+      "type": "file",
+      "name": "rollback-manifests.sh",
+      "filePath": "scripts/rollback-manifests.sh",
+      "lineRange": [
+        1,
+        158
+      ],
+      "summary": "自动化脚本：scripts/rollback-manifests.sh（shell，158 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/sync.sh",
+      "type": "file",
+      "name": "sync.sh",
+      "filePath": "scripts/sync.sh",
+      "lineRange": [
+        1,
+        361
+      ],
+      "summary": "自动化脚本：scripts/sync.sh（shell，361 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/test-offline.sh",
+      "type": "file",
+      "name": "test-offline.sh",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        1,
+        537
+      ],
+      "summary": "自动化脚本：scripts/test-offline.sh（shell，537 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "type": "file",
+      "name": "test-scaena-channels-lifecycle.sh",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        1,
+        388
+      ],
+      "summary": "自动化脚本：scripts/test-scaena-channels-lifecycle.sh（shell，388 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/test-scaena-packages.sh",
+      "type": "file",
+      "name": "test-scaena-packages.sh",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        1,
+        418
+      ],
+      "summary": "自动化脚本：scripts/test-scaena-packages.sh（shell，418 行）。",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/fixtures/api/tag_obj_yeisme_anatomia_1111111111111111111111111111111111111111.json",
+      "type": "config",
+      "name": "tag_obj_yeisme_anatomia_1111111111111111111111111111111111111111.json",
+      "filePath": "tests/fixtures/api/tag_obj_yeisme_anatomia_1111111111111111111111111111111111111111.json",
+      "lineRange": [
+        1,
+        1
+      ],
+      "summary": "配置：tests/fixtures/api/tag_obj_yeisme_anatomia_1111111111111111111111111111111111111111.json（json，1 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.2.0.json",
+      "type": "config",
+      "name": "tag_ref_yeisme_anatomia_v0.2.0.json",
+      "filePath": "tests/fixtures/api/tag_ref_yeisme_anatomia_v0.2.0.json",
+      "lineRange": [
+        1,
+        1
+      ],
+      "summary": "配置：tests/fixtures/api/tag_ref_yeisme_anatomia_v0.2.0.json（json，1 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.0.json",
+      "type": "config",
+      "name": "tag_ref_yeisme_anatomia_v0.3.0.json",
+      "filePath": "tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.0.json",
+      "lineRange": [
+        1,
+        1
+      ],
+      "summary": "配置：tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.0.json（json，1 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.1.json",
+      "type": "config",
+      "name": "tag_ref_yeisme_anatomia_v0.3.1.json",
+      "filePath": "tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.1.json",
+      "lineRange": [
+        1,
+        1
+      ],
+      "summary": "配置：tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.1.json（json，1 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/api/tag_ref_yeisme_scaena_scaena_v0.4.0.json",
+      "type": "config",
+      "name": "tag_ref_yeisme_scaena_scaena_v0.4.0.json",
+      "filePath": "tests/fixtures/api/tag_ref_yeisme_scaena_scaena_v0.4.0.json",
+      "lineRange": [
+        1,
+        7
+      ],
+      "summary": "配置：tests/fixtures/api/tag_ref_yeisme_scaena_scaena_v0.4.0.json（json，7 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/golden/anatomia-v0.3.0.json",
+      "type": "config",
+      "name": "anatomia-v0.3.0.json",
+      "filePath": "tests/fixtures/golden/anatomia-v0.3.0.json",
+      "lineRange": [
+        1,
+        94
+      ],
+      "summary": "配置：tests/fixtures/golden/anatomia-v0.3.0.json（json，94 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/hints/good.json",
+      "type": "config",
+      "name": "good.json",
+      "filePath": "tests/fixtures/hints/good.json",
+      "lineRange": [
+        1,
+        1
+      ],
+      "summary": "配置：tests/fixtures/hints/good.json（json，1 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/hints/invalid.json",
+      "type": "config",
+      "name": "invalid.json",
+      "filePath": "tests/fixtures/hints/invalid.json",
+      "lineRange": [
+        1,
+        1
+      ],
+      "summary": "配置：tests/fixtures/hints/invalid.json（json，0 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/hints/other-product.json",
+      "type": "config",
+      "name": "other-product.json",
+      "filePath": "tests/fixtures/hints/other-product.json",
+      "lineRange": [
+        1,
+        1
+      ],
+      "summary": "配置：tests/fixtures/hints/other-product.json（json，1 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/hints/stale-tag.json",
+      "type": "config",
+      "name": "stale-tag.json",
+      "filePath": "tests/fixtures/hints/stale-tag.json",
+      "lineRange": [
+        1,
+        1
+      ],
+      "summary": "配置：tests/fixtures/hints/stale-tag.json（json，1 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/hints/wrong-revision.json",
+      "type": "config",
+      "name": "wrong-revision.json",
+      "filePath": "tests/fixtures/hints/wrong-revision.json",
+      "lineRange": [
+        1,
+        1
+      ],
+      "summary": "配置：tests/fixtures/hints/wrong-revision.json（json，1 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/scaena/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "tests/fixtures/scaena/README.md",
+      "lineRange": [
+        1,
+        36
+      ],
+      "summary": "文档：tests/fixtures/scaena/README.md（markdown，36 行）。",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fixtures/scaena/scaena-dist-handoff_0.4.0-contract.json",
+      "type": "config",
+      "name": "scaena-dist-handoff_0.4.0-contract.json",
+      "filePath": "tests/fixtures/scaena/scaena-dist-handoff_0.4.0-contract.json",
+      "lineRange": [
+        1,
+        206
+      ],
+      "summary": "配置：tests/fixtures/scaena/scaena-dist-handoff_0.4.0-contract.json（json，206 行）。",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/lib/catalog.sh:9:write_readme_products",
+      "type": "function",
+      "name": "write_readme_products",
+      "filePath": "scripts/lib/catalog.sh",
+      "lineRange": [
+        9,
+        33
+      ],
+      "summary": "write_readme_products 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/scaena-packages.sh:12:scaena_package_product",
+      "type": "function",
+      "name": "scaena_package_product",
+      "filePath": "scripts/lib/scaena-packages.sh",
+      "lineRange": [
+        12,
+        17
+      ],
+      "summary": "scaena_package_product 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/scaena-packages.sh:21:scaena_package_prefix",
+      "type": "function",
+      "name": "scaena_package_prefix",
+      "filePath": "scripts/lib/scaena-packages.sh",
+      "lineRange": [
+        21,
+        28
+      ],
+      "summary": "scaena_package_prefix 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/scaena-packages.sh:31:scaena_package_binary",
+      "type": "function",
+      "name": "scaena_package_binary",
+      "filePath": "scripts/lib/scaena-packages.sh",
+      "lineRange": [
+        31,
+        36
+      ],
+      "summary": "scaena_package_binary 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/scaena-packages.sh:39:scaena_package_defaults",
+      "type": "function",
+      "name": "scaena_package_defaults",
+      "filePath": "scripts/lib/scaena-packages.sh",
+      "lineRange": [
+        39,
+        41
+      ],
+      "summary": "scaena_package_defaults 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/rc-channel.sh:25:usage",
+      "type": "function",
+      "name": "usage",
+      "filePath": "scripts/rc-channel.sh",
+      "lineRange": [
+        25,
+        28
+      ],
+      "summary": "usage 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/rc-channel.sh:46:stable_state_sig",
+      "type": "function",
+      "name": "stable_state_sig",
+      "filePath": "scripts/rc-channel.sh",
+      "lineRange": [
+        46,
+        53
+      ],
+      "summary": "stable_state_sig 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/rollback-manifests.sh:40:usage",
+      "type": "function",
+      "name": "usage",
+      "filePath": "scripts/rollback-manifests.sh",
+      "lineRange": [
+        40,
+        43
+      ],
+      "summary": "usage 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/rollback-manifests.sh:110:receipt_sig",
+      "type": "function",
+      "name": "receipt_sig",
+      "filePath": "scripts/rollback-manifests.sh",
+      "lineRange": [
+        110,
+        114
+      ],
+      "summary": "receipt_sig 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:28:scaena_package_product",
+      "type": "function",
+      "name": "scaena_package_product",
+      "filePath": "install.sh",
+      "lineRange": [
+        28,
+        33
+      ],
+      "summary": "scaena_package_product 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:34:scaena_package_prefix",
+      "type": "function",
+      "name": "scaena_package_prefix",
+      "filePath": "install.sh",
+      "lineRange": [
+        34,
+        41
+      ],
+      "summary": "scaena_package_prefix 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:46:curl_json",
+      "type": "function",
+      "name": "curl_json",
+      "filePath": "install.sh",
+      "lineRange": [
+        46,
+        48
+      ],
+      "summary": "curl_json 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:50:load_catalog",
+      "type": "function",
+      "name": "load_catalog",
+      "filePath": "install.sh",
+      "lineRange": [
+        50,
+        56
+      ],
+      "summary": "load_catalog 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:58:product_list",
+      "type": "function",
+      "name": "product_list",
+      "filePath": "install.sh",
+      "lineRange": [
+        58,
+        64
+      ],
+      "summary": "product_list 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:66:list_products",
+      "type": "function",
+      "name": "list_products",
+      "filePath": "install.sh",
+      "lineRange": [
+        66,
+        78
+      ],
+      "summary": "list_products 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:80:usage",
+      "type": "function",
+      "name": "usage",
+      "filePath": "install.sh",
+      "lineRange": [
+        80,
+        92
+      ],
+      "summary": "usage 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:123:die",
+      "type": "function",
+      "name": "die",
+      "filePath": "install.sh",
+      "lineRange": [
+        123,
+        123
+      ],
+      "summary": "die 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:141:catalog_has_product",
+      "type": "function",
+      "name": "catalog_has_product",
+      "filePath": "install.sh",
+      "lineRange": [
+        141,
+        148
+      ],
+      "summary": "catalog_has_product 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:150:latest_from_catalog",
+      "type": "function",
+      "name": "latest_from_catalog",
+      "filePath": "install.sh",
+      "lineRange": [
+        150,
+        162
+      ],
+      "summary": "latest_from_catalog 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:164:latest_from_api",
+      "type": "function",
+      "name": "latest_from_api",
+      "filePath": "install.sh",
+      "lineRange": [
+        164,
+        187
+      ],
+      "summary": "latest_from_api 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:install.sh:216:pick_archive",
+      "type": "function",
+      "name": "pick_archive",
+      "filePath": "install.sh",
+      "lineRange": [
+        216,
+        224
+      ],
+      "summary": "pick_archive 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/check.sh:9:check",
+      "type": "function",
+      "name": "check",
+      "filePath": "scripts/check.sh",
+      "lineRange": [
+        9,
+        16
+      ],
+      "summary": "check 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/sync.sh:61:list_releases",
+      "type": "function",
+      "name": "list_releases",
+      "filePath": "scripts/sync.sh",
+      "lineRange": [
+        61,
+        64
+      ],
+      "summary": "list_releases 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/sync.sh:66:write_catalog",
+      "type": "function",
+      "name": "write_catalog",
+      "filePath": "scripts/sync.sh",
+      "lineRange": [
+        66,
+        129
+      ],
+      "summary": "write_catalog 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/sync.sh:139:write_release_notes",
+      "type": "function",
+      "name": "write_release_notes",
+      "filePath": "scripts/sync.sh",
+      "lineRange": [
+        139,
+        152
+      ],
+      "summary": "write_release_notes 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:42:ok",
+      "type": "function",
+      "name": "ok",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        42,
+        42
+      ],
+      "summary": "ok 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:43:bad",
+      "type": "function",
+      "name": "bad",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        43,
+        43
+      ],
+      "summary": "bad 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:53:asset_digest",
+      "type": "function",
+      "name": "asset_digest",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        53,
+        53
+      ],
+      "summary": "asset_digest 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:55:scaena_asset_names",
+      "type": "function",
+      "name": "scaena_asset_names",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        55,
+        66
+      ],
+      "summary": "scaena_asset_names 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:69:build_rc_release",
+      "type": "function",
+      "name": "build_rc_release",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        69,
+        88
+      ],
+      "summary": "build_rc_release 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:91:scaena_v04_entry_json",
+      "type": "function",
+      "name": "scaena_v04_entry_json",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        91,
+        103
+      ],
+      "summary": "scaena_v04_entry_json 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:108:promote_catalog",
+      "type": "function",
+      "name": "promote_catalog",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        108,
+        121
+      ],
+      "summary": "promote_catalog 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:123:tree_sig",
+      "type": "function",
+      "name": "tree_sig",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        123,
+        123
+      ],
+      "summary": "tree_sig 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:128:t_rc_channel_lifecycle",
+      "type": "function",
+      "name": "t_rc_channel_lifecycle",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        128,
+        158
+      ],
+      "summary": "t_rc_channel_lifecycle 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:161:t_rc_refuses_non_prereleases",
+      "type": "function",
+      "name": "t_rc_refuses_non_prereleases",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        161,
+        176
+      ],
+      "summary": "t_rc_refuses_non_prereleases 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:179:t_rc_refuses_incomplete_matrix",
+      "type": "function",
+      "name": "t_rc_refuses_incomplete_matrix",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        179,
+        190
+      ],
+      "summary": "t_rc_refuses_incomplete_matrix 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:194:t_rc_generator_isolation_and_url_base",
+      "type": "function",
+      "name": "t_rc_generator_isolation_and_url_base",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        194,
+        207
+      ],
+      "summary": "t_rc_generator_isolation_and_url_base 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:211:t_stable_generator_prerelease_guard",
+      "type": "function",
+      "name": "t_stable_generator_prerelease_guard",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        211,
+        222
+      ],
+      "summary": "t_stable_generator_prerelease_guard 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:225:t_catalog_pick_latest_semantics",
+      "type": "function",
+      "name": "t_catalog_pick_latest_semantics",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        225,
+        251
+      ],
+      "summary": "t_catalog_pick_latest_semantics 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:255:t_rollback_drill",
+      "type": "function",
+      "name": "t_rollback_drill",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        255,
+        331
+      ],
+      "summary": "t_rollback_drill 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:335:t_rollback_requires_previous_stable",
+      "type": "function",
+      "name": "t_rollback_requires_previous_stable",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        335,
+        352
+      ],
+      "summary": "t_rollback_requires_previous_stable 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:355:t_rollback_non_scaena_refused",
+      "type": "function",
+      "name": "t_rollback_non_scaena_refused",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        355,
+        361
+      ],
+      "summary": "t_rollback_non_scaena_refused 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-channels-lifecycle.sh:364:t_rollback_dry_run",
+      "type": "function",
+      "name": "t_rollback_dry_run",
+      "filePath": "scripts/test-scaena-channels-lifecycle.sh",
+      "lineRange": [
+        364,
+        373
+      ],
+      "summary": "t_rollback_dry_run 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:43:ok",
+      "type": "function",
+      "name": "ok",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        43,
+        43
+      ],
+      "summary": "ok 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:44:bad",
+      "type": "function",
+      "name": "bad",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        44,
+        44
+      ],
+      "summary": "bad 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:72:build_archive",
+      "type": "function",
+      "name": "build_archive",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        72,
+        98
+      ],
+      "summary": "build_archive 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:122:build_release",
+      "type": "function",
+      "name": "build_release",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        122,
+        128
+      ],
+      "summary": "build_release 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:134:prepare_catalog",
+      "type": "function",
+      "name": "prepare_catalog",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        134,
+        144
+      ],
+      "summary": "prepare_catalog 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:148:run_install",
+      "type": "function",
+      "name": "run_install",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        148,
+        155
+      ],
+      "summary": "run_install 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:158:assert_root_clean",
+      "type": "function",
+      "name": "assert_root_clean",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        158,
+        167
+      ],
+      "summary": "assert_root_clean 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:172:t_alias_table_no_drift",
+      "type": "function",
+      "name": "t_alias_table_no_drift",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        172,
+        186
+      ],
+      "summary": "t_alias_table_no_drift 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:189:t_install_default_compat",
+      "type": "function",
+      "name": "t_install_default_compat",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        189,
+        195
+      ],
+      "summary": "t_install_default_compat 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:199:t_install_api_alias_prefix",
+      "type": "function",
+      "name": "t_install_api_alias_prefix",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        199,
+        206
+      ],
+      "summary": "t_install_api_alias_prefix 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:209:t_install_worker_alias",
+      "type": "function",
+      "name": "t_install_worker_alias",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        209,
+        215
+      ],
+      "summary": "t_install_worker_alias 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:218:t_install_os_arch_matrix",
+      "type": "function",
+      "name": "t_install_os_arch_matrix",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        218,
+        232
+      ],
+      "summary": "t_install_os_arch_matrix 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:237:t_install_zip_extraction",
+      "type": "function",
+      "name": "t_install_zip_extraction",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        237,
+        260
+      ],
+      "summary": "t_install_zip_extraction 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:263:t_install_unsupported_os",
+      "type": "function",
+      "name": "t_install_unsupported_os",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        263,
+        270
+      ],
+      "summary": "t_install_unsupported_os 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:273:t_install_checksum_mismatch",
+      "type": "function",
+      "name": "t_install_checksum_mismatch",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        273,
+        292
+      ],
+      "summary": "t_install_checksum_mismatch 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:295:t_install_explicit_version",
+      "type": "function",
+      "name": "t_install_explicit_version",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        295,
+        303
+      ],
+      "summary": "t_install_explicit_version 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:306:t_install_uninstall_reinstall",
+      "type": "function",
+      "name": "t_install_uninstall_reinstall",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        306,
+        314
+      ],
+      "summary": "t_install_uninstall_reinstall 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:320:t_manifest_group_generated",
+      "type": "function",
+      "name": "t_manifest_group_generated",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        320,
+        351
+      ],
+      "summary": "t_manifest_group_generated 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:353:group_sig",
+      "type": "function",
+      "name": "group_sig",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        353,
+        358
+      ],
+      "summary": "group_sig 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:363:t_manifest_group_atomic",
+      "type": "function",
+      "name": "t_manifest_group_atomic",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        363,
+        391
+      ],
+      "summary": "t_manifest_group_atomic 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-scaena-packages.sh:394:t_policy_deterministic",
+      "type": "function",
+      "name": "t_policy_deterministic",
+      "filePath": "scripts/test-scaena-packages.sh",
+      "lineRange": [
+        394,
+        403
+      ],
+      "summary": "t_policy_deterministic 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:46:load_release",
+      "type": "function",
+      "name": "load_release",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        46,
+        74
+      ],
+      "summary": "load_release 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:76:digest_for",
+      "type": "function",
+      "name": "digest_for",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        76,
+        84
+      ],
+      "summary": "digest_for 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:86:require_assets",
+      "type": "function",
+      "name": "require_assets",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        86,
+        95
+      ],
+      "summary": "require_assets 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:97:write_platform_block",
+      "type": "function",
+      "name": "write_platform_block",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        97,
+        116
+      ],
+      "summary": "write_platform_block 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:118:write_cask",
+      "type": "function",
+      "name": "write_cask",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        118,
+        144
+      ],
+      "summary": "write_cask 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:146:write_scoop",
+      "type": "function",
+      "name": "write_scoop",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        146,
+        185
+      ],
+      "summary": "write_scoop 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:187:generate_product",
+      "type": "function",
+      "name": "generate_product",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        187,
+        200
+      ],
+      "summary": "generate_product 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:204:scaena_matrix_complete",
+      "type": "function",
+      "name": "scaena_matrix_complete",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        204,
+        217
+      ],
+      "summary": "scaena_matrix_complete 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:223:scaena_legacy_ok",
+      "type": "function",
+      "name": "scaena_legacy_ok",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        223,
+        225
+      ],
+      "summary": "scaena_legacy_ok 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:227:scaena_description",
+      "type": "function",
+      "name": "scaena_description",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        227,
+        233
+      ],
+      "summary": "scaena_description 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-package-manifests.sh:238:scaena_render_matrix",
+      "type": "function",
+      "name": "scaena_render_matrix",
+      "filePath": "scripts/generate-package-manifests.sh",
+      "lineRange": [
+        238,
+        255
+      ],
+      "summary": "scaena_render_matrix 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:34:ok",
+      "type": "function",
+      "name": "ok",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        34,
+        34
+      ],
+      "summary": "ok 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:35:bad",
+      "type": "function",
+      "name": "bad",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        35,
+        35
+      ],
+      "summary": "bad 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:37:reset_receipts",
+      "type": "function",
+      "name": "reset_receipts",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        37,
+        37
+      ],
+      "summary": "reset_receipts 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:39:gen_assets",
+      "type": "function",
+      "name": "gen_assets",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        39,
+        60
+      ],
+      "summary": "gen_assets 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:62:gen_release",
+      "type": "function",
+      "name": "gen_release",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        62,
+        67
+      ],
+      "summary": "gen_release 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:69:verify",
+      "type": "function",
+      "name": "verify",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        69,
+        73
+      ],
+      "summary": "verify 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:75:expect_reason",
+      "type": "function",
+      "name": "expect_reason",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        75,
+        77
+      ],
+      "summary": "expect_reason 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:80:t_happy",
+      "type": "function",
+      "name": "t_happy",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        80,
+        113
+      ],
+      "summary": "t_happy 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:116:t_idempotent",
+      "type": "function",
+      "name": "t_idempotent",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        116,
+        132
+      ],
+      "summary": "t_idempotent 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:136:t_corrupt_retains_last_verified",
+      "type": "function",
+      "name": "t_corrupt_retains_last_verified",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        136,
+        165
+      ],
+      "summary": "t_corrupt_retains_last_verified 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:168:t_missing_matrix",
+      "type": "function",
+      "name": "t_missing_matrix",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        168,
+        175
+      ],
+      "summary": "t_missing_matrix 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:178:t_no_checksums",
+      "type": "function",
+      "name": "t_no_checksums",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        178,
+        185
+      ],
+      "summary": "t_no_checksums 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:188:t_snapshot_excluded",
+      "type": "function",
+      "name": "t_snapshot_excluded",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        188,
+        198
+      ],
+      "summary": "t_snapshot_excluded 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:201:t_hint_mismatch",
+      "type": "function",
+      "name": "t_hint_mismatch",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        201,
+        212
+      ],
+      "summary": "t_hint_mismatch 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:216:t_fingerprint_conflict",
+      "type": "function",
+      "name": "t_fingerprint_conflict",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        216,
+        237
+      ],
+      "summary": "t_fingerprint_conflict 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:240:t_denied_asset",
+      "type": "function",
+      "name": "t_denied_asset",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        240,
+        248
+      ],
+      "summary": "t_denied_asset 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:252:t_catalog_join",
+      "type": "function",
+      "name": "t_catalog_join",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        252,
+        278
+      ],
+      "summary": "t_catalog_join 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:281:t_mirror_verify",
+      "type": "function",
+      "name": "t_mirror_verify",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        281,
+        294
+      ],
+      "summary": "t_mirror_verify 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:297:t_fail_closed",
+      "type": "function",
+      "name": "t_fail_closed",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        297,
+        310
+      ],
+      "summary": "t_fail_closed 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:313:t_scaena_skills_assets",
+      "type": "function",
+      "name": "t_scaena_skills_assets",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        313,
+        345
+      ],
+      "summary": "t_scaena_skills_assets 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:349:t_eikona_skills_assets",
+      "type": "function",
+      "name": "t_eikona_skills_assets",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        349,
+        371
+      ],
+      "summary": "t_eikona_skills_assets 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:380:scaena_gen_assets",
+      "type": "function",
+      "name": "scaena_gen_assets",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        380,
+        411
+      ],
+      "summary": "scaena_gen_assets 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:413:scaena_gen_release",
+      "type": "function",
+      "name": "scaena_gen_release",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        413,
+        418
+      ],
+      "summary": "scaena_gen_release 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:420:scaena_verify",
+      "type": "function",
+      "name": "scaena_verify",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        420,
+        423
+      ],
+      "summary": "scaena_verify 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:426:t_scaena_policy_deterministic",
+      "type": "function",
+      "name": "t_scaena_policy_deterministic",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        426,
+        432
+      ],
+      "summary": "t_scaena_policy_deterministic 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:436:t_scaena_happy",
+      "type": "function",
+      "name": "t_scaena_happy",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        436,
+        449
+      ],
+      "summary": "t_scaena_happy 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:452:t_scaena_missing_worker_arm",
+      "type": "function",
+      "name": "t_scaena_missing_worker_arm",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        452,
+        458
+      ],
+      "summary": "t_scaena_missing_worker_arm 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:461:t_scaena_checksum_and_sbom",
+      "type": "function",
+      "name": "t_scaena_checksum_and_sbom",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        461,
+        471
+      ],
+      "summary": "t_scaena_checksum_and_sbom 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:476:t_scaena_sbom_missing",
+      "type": "function",
+      "name": "t_scaena_sbom_missing",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        476,
+        487
+      ],
+      "summary": "t_scaena_sbom_missing 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:490:t_scaena_handoff_missing",
+      "type": "function",
+      "name": "t_scaena_handoff_missing",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        490,
+        496
+      ],
+      "summary": "t_scaena_handoff_missing 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:499:t_scaena_prerelease_excluded",
+      "type": "function",
+      "name": "t_scaena_prerelease_excluded",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        499,
+        505
+      ],
+      "summary": "t_scaena_prerelease_excluded 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/test-offline.sh:508:t_scaena_mirror_digest_mismatch",
+      "type": "function",
+      "name": "t_scaena_mirror_digest_mismatch",
+      "filePath": "scripts/test-offline.sh",
+      "lineRange": [
+        508,
+        519
+      ],
+      "summary": "t_scaena_mirror_digest_mismatch 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:12:gh_api",
+      "type": "function",
+      "name": "gh_api",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        12,
+        22
+      ],
+      "summary": "gh_api 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:24:dist_root",
+      "type": "function",
+      "name": "dist_root",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        24,
+        30
+      ],
+      "summary": "dist_root 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:32:denied",
+      "type": "function",
+      "name": "denied",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        32,
+        43
+      ],
+      "summary": "denied 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:45:verify_policy_has",
+      "type": "function",
+      "name": "verify_policy_has",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        45,
+        47
+      ],
+      "summary": "verify_policy_has 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:52:policy_check_eligibility",
+      "type": "function",
+      "name": "policy_check_eligibility",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        52,
+        68
+      ],
+      "summary": "policy_check_eligibility 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:70:emit_fail",
+      "type": "function",
+      "name": "emit_fail",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        70,
+        72
+      ],
+      "summary": "emit_fail 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:74:checksum_digest_for_asset",
+      "type": "function",
+      "name": "checksum_digest_for_asset",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        74,
+        83
+      ],
+      "summary": "checksum_digest_for_asset 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:89:verify_declared_skills_assets",
+      "type": "function",
+      "name": "verify_declared_skills_assets",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        89,
+        195
+      ],
+      "summary": "verify_declared_skills_assets 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:201:verify_release_evidence",
+      "type": "function",
+      "name": "verify_release_evidence",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        201,
+        381
+      ],
+      "summary": "verify_release_evidence 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:385:verify_mirror_assets",
+      "type": "function",
+      "name": "verify_mirror_assets",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        385,
+        406
+      ],
+      "summary": "verify_mirror_assets 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:411:receipt_fingerprint",
+      "type": "function",
+      "name": "receipt_fingerprint",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        411,
+        417
+      ],
+      "summary": "receipt_fingerprint 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:423:write_receipt",
+      "type": "function",
+      "name": "write_receipt",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        423,
+        452
+      ],
+      "summary": "write_receipt 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:456:record_failed_attempt",
+      "type": "function",
+      "name": "record_failed_attempt",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        456,
+        464
+      ],
+      "summary": "record_failed_attempt 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:469:catalog_join_receipts",
+      "type": "function",
+      "name": "catalog_join_receipts",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        469,
+        489
+      ],
+      "summary": "catalog_join_receipts 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:495:rolled_back_versions",
+      "type": "function",
+      "name": "rolled_back_versions",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        495,
+        503
+      ],
+      "summary": "rolled_back_versions 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:505:_rolled_back_json",
+      "type": "function",
+      "name": "_rolled_back_json",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        505,
+        509
+      ],
+      "summary": "_rolled_back_json 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:515:catalog_pick_latest",
+      "type": "function",
+      "name": "catalog_pick_latest",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        515,
+        524
+      ],
+      "summary": "catalog_pick_latest 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:528:catalog_pick_verified_latest",
+      "type": "function",
+      "name": "catalog_pick_verified_latest",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        528,
+        537
+      ],
+      "summary": "catalog_pick_verified_latest 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/lib/verify.sh:541:hint_for_product",
+      "type": "function",
+      "name": "hint_for_product",
+      "filePath": "scripts/lib/verify.sh",
+      "lineRange": [
+        541,
+        547
+      ],
+      "summary": "hint_for_product 函数，参数数 0。",
+      "tags": [
+        "shell",
+        "function"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "module:project",
+      "target": "module:.github",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:.github",
+      "target": "module:.github/workflows",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "module:Casks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "module:bucket",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "module:docs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "module:openspec",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:openspec",
+      "target": "module:openspec/changes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "module:policy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "module:receipts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "module:schemas",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "module:scripts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts",
+      "target": "module:scripts/lib",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "module:tests",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests",
+      "target": "module:tests/fixtures",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:.github/workflows",
+      "target": "file:.github/workflows/ci.yml",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:.github/workflows",
+      "target": "file:.github/workflows/scaena-rc-channel.yml",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:.github/workflows",
+      "target": "file:.github/workflows/sync.yml",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "file:AGENTS.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:Casks",
+      "target": "file:Casks/anatomia.rb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:Casks",
+      "target": "file:Casks/auctra.rb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:Casks",
+      "target": "file:Casks/credentialctl.rb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:Casks",
+      "target": "file:Casks/eikona.rb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:Casks",
+      "target": "file:Casks/gitea-mcp.rb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:Casks",
+      "target": "file:Casks/pinax.rb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:Casks",
+      "target": "file:Casks/scaena.rb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:Casks",
+      "target": "file:Casks/sonora.rb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "file:MAINTAIN.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "file:README.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:bucket",
+      "target": "file:bucket/auctra.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:bucket",
+      "target": "file:bucket/credentialctl.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:bucket",
+      "target": "file:bucket/eikona.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:bucket",
+      "target": "file:bucket/gitea-mcp.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:bucket",
+      "target": "file:bucket/pinax.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:bucket",
+      "target": "file:bucket/sonora.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "file:catalog.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:docs",
+      "target": "file:docs/README.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:docs",
+      "target": "file:docs/delivery/ci-cd.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:docs",
+      "target": "file:docs/distribution-contracts.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "file:install.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:openspec/changes",
+      "target": "file:openspec/changes/scaena-v0-4-package-channels-v1/.openspec.yaml",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:openspec/changes",
+      "target": "file:openspec/changes/scaena-v0-4-package-channels-v1/README.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:openspec/changes",
+      "target": "file:openspec/changes/scaena-v0-4-package-channels-v1/design.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:openspec/changes",
+      "target": "file:openspec/changes/scaena-v0-4-package-channels-v1/proposal.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:openspec/changes",
+      "target": "file:openspec/changes/scaena-v0-4-package-channels-v1/specs/scaena-package-channels/spec.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:openspec/changes",
+      "target": "file:openspec/changes/scaena-v0-4-package-channels-v1/tasks.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/config.yaml",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/specs/product-agent-skills-assets/spec.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:openspec",
+      "target": "file:openspec/specs/template-registry-distribution/spec.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:policy",
+      "target": "file:policy/anatomia.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:policy",
+      "target": "file:policy/credentialctl.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:policy",
+      "target": "file:policy/scaena.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:policy",
+      "target": "file:policy/template-registry.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:project",
+      "target": "file:products.txt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:receipts",
+      "target": "file:receipts/anatomia/v0.3.0.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:receipts",
+      "target": "file:receipts/credentialctl/v0.3.0.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:receipts",
+      "target": "file:receipts/credentialctl/v0.4.0.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:receipts",
+      "target": "file:receipts/template-registry/v0.1.0.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:schemas",
+      "target": "file:schemas/dist-receipt-v1.schema.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/check.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/generate-package-manifests.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/generate-scaena-policy.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts/lib",
+      "target": "file:scripts/lib/catalog.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts/lib",
+      "target": "file:scripts/lib/scaena-packages.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts/lib",
+      "target": "file:scripts/lib/verify.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/rc-channel.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/rollback-manifests.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/sync.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/test-offline.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/test-scaena-packages.sh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/api/tag_obj_yeisme_anatomia_1111111111111111111111111111111111111111.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.2.0.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.0.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.1.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/api/tag_ref_yeisme_scaena_scaena_v0.4.0.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/golden/anatomia-v0.3.0.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/hints/good.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/hints/invalid.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/hints/other-product.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/hints/stale-tag.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/hints/wrong-revision.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/scaena/README.md",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "module:tests/fixtures",
+      "target": "file:tests/fixtures/scaena/scaena-dist-handoff_0.4.0-contract.json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/catalog.sh",
+      "target": "function:scripts/lib/catalog.sh:9:write_readme_products",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/scaena-packages.sh",
+      "target": "function:scripts/lib/scaena-packages.sh:12:scaena_package_product",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/scaena-packages.sh",
+      "target": "function:scripts/lib/scaena-packages.sh:21:scaena_package_prefix",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/scaena-packages.sh",
+      "target": "function:scripts/lib/scaena-packages.sh:31:scaena_package_binary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/scaena-packages.sh",
+      "target": "function:scripts/lib/scaena-packages.sh:39:scaena_package_defaults",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/rc-channel.sh",
+      "target": "function:scripts/rc-channel.sh:25:usage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/rc-channel.sh",
+      "target": "function:scripts/rc-channel.sh:46:stable_state_sig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/rollback-manifests.sh",
+      "target": "function:scripts/rollback-manifests.sh:40:usage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/rollback-manifests.sh",
+      "target": "function:scripts/rollback-manifests.sh:110:receipt_sig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:28:scaena_package_product",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:34:scaena_package_prefix",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:46:curl_json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:50:load_catalog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:58:product_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:66:list_products",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:80:usage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:123:die",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:141:catalog_has_product",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:150:latest_from_catalog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:164:latest_from_api",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:install.sh",
+      "target": "function:install.sh:216:pick_archive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/check.sh",
+      "target": "function:scripts/check.sh:9:check",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/sync.sh",
+      "target": "function:scripts/sync.sh:61:list_releases",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/sync.sh",
+      "target": "function:scripts/sync.sh:66:write_catalog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/sync.sh",
+      "target": "function:scripts/sync.sh:139:write_release_notes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:42:ok",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:43:bad",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:53:asset_digest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:55:scaena_asset_names",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:69:build_rc_release",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:91:scaena_v04_entry_json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:108:promote_catalog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:123:tree_sig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:128:t_rc_channel_lifecycle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:161:t_rc_refuses_non_prereleases",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:179:t_rc_refuses_incomplete_matrix",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:194:t_rc_generator_isolation_and_url_base",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:211:t_stable_generator_prerelease_guard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:225:t_catalog_pick_latest_semantics",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:255:t_rollback_drill",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:335:t_rollback_requires_previous_stable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:355:t_rollback_non_scaena_refused",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-channels-lifecycle.sh",
+      "target": "function:scripts/test-scaena-channels-lifecycle.sh:364:t_rollback_dry_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:43:ok",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:44:bad",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:72:build_archive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:122:build_release",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:134:prepare_catalog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:148:run_install",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:158:assert_root_clean",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:172:t_alias_table_no_drift",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:189:t_install_default_compat",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:199:t_install_api_alias_prefix",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:209:t_install_worker_alias",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:218:t_install_os_arch_matrix",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:237:t_install_zip_extraction",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:263:t_install_unsupported_os",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:273:t_install_checksum_mismatch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:295:t_install_explicit_version",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:306:t_install_uninstall_reinstall",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:320:t_manifest_group_generated",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:353:group_sig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:363:t_manifest_group_atomic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-scaena-packages.sh",
+      "target": "function:scripts/test-scaena-packages.sh:394:t_policy_deterministic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:46:load_release",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:76:digest_for",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:86:require_assets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:97:write_platform_block",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:118:write_cask",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:146:write_scoop",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:187:generate_product",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:204:scaena_matrix_complete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:223:scaena_legacy_ok",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:227:scaena_description",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/generate-package-manifests.sh",
+      "target": "function:scripts/generate-package-manifests.sh:238:scaena_render_matrix",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:34:ok",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:35:bad",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:37:reset_receipts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:39:gen_assets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:62:gen_release",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:69:verify",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:75:expect_reason",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:80:t_happy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:116:t_idempotent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:136:t_corrupt_retains_last_verified",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:168:t_missing_matrix",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:178:t_no_checksums",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:188:t_snapshot_excluded",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:201:t_hint_mismatch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:216:t_fingerprint_conflict",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:240:t_denied_asset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:252:t_catalog_join",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:281:t_mirror_verify",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:297:t_fail_closed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:313:t_scaena_skills_assets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:349:t_eikona_skills_assets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:380:scaena_gen_assets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:413:scaena_gen_release",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:420:scaena_verify",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:426:t_scaena_policy_deterministic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:436:t_scaena_happy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:452:t_scaena_missing_worker_arm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:461:t_scaena_checksum_and_sbom",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:476:t_scaena_sbom_missing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:490:t_scaena_handoff_missing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:499:t_scaena_prerelease_excluded",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/test-offline.sh",
+      "target": "function:scripts/test-offline.sh:508:t_scaena_mirror_digest_mismatch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:12:gh_api",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:24:dist_root",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:32:denied",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:45:verify_policy_has",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:52:policy_check_eligibility",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:70:emit_fail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:74:checksum_digest_for_asset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:89:verify_declared_skills_assets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:201:verify_release_evidence",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:385:verify_mirror_assets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:411:receipt_fingerprint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:423:write_receipt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:456:record_failed_attempt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:469:catalog_join_receipts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:495:rolled_back_versions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:505:_rolled_back_json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:515:catalog_pick_latest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:528:catalog_pick_verified_latest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/lib/verify.sh",
+      "target": "function:scripts/lib/verify.sh:541:hint_for_product",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:project",
+      "name": "项目总览",
+      "description": "项目根模块与高层目录关系。",
+      "nodeIds": [
+        "module:project"
+      ]
+    },
+    {
+      "id": "layer:core",
+      "name": "核心实现层",
+      "description": "未归入专门边界的主要实现模块。",
+      "nodeIds": [
+        "module:Casks",
+        "module:bucket",
+        "module:policy",
+        "module:receipts",
+        "module:schemas",
+        "file:Casks/anatomia.rb",
+        "file:Casks/auctra.rb",
+        "file:Casks/credentialctl.rb",
+        "file:Casks/eikona.rb",
+        "file:Casks/gitea-mcp.rb",
+        "file:Casks/pinax.rb",
+        "file:Casks/scaena.rb",
+        "file:Casks/sonora.rb",
+        "file:MAINTAIN.md",
+        "file:install.sh",
+        "file:products.txt",
+        "function:install.sh:28:scaena_package_product",
+        "function:install.sh:34:scaena_package_prefix",
+        "function:install.sh:46:curl_json",
+        "function:install.sh:50:load_catalog",
+        "function:install.sh:58:product_list",
+        "function:install.sh:66:list_products",
+        "function:install.sh:80:usage",
+        "function:install.sh:123:die",
+        "function:install.sh:141:catalog_has_product",
+        "function:install.sh:150:latest_from_catalog",
+        "function:install.sh:164:latest_from_api",
+        "function:install.sh:216:pick_archive"
+      ]
+    },
+    {
+      "id": "layer:tests",
+      "name": "测试层",
+      "description": "单元、集成、组件、系统与端到端验证。",
+      "nodeIds": [
+        "module:tests",
+        "module:tests/fixtures",
+        "file:tests/fixtures/api/tag_obj_yeisme_anatomia_1111111111111111111111111111111111111111.json",
+        "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.2.0.json",
+        "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.0.json",
+        "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.1.json",
+        "file:tests/fixtures/api/tag_ref_yeisme_scaena_scaena_v0.4.0.json",
+        "file:tests/fixtures/golden/anatomia-v0.3.0.json",
+        "file:tests/fixtures/hints/good.json",
+        "file:tests/fixtures/hints/invalid.json",
+        "file:tests/fixtures/hints/other-product.json",
+        "file:tests/fixtures/hints/stale-tag.json",
+        "file:tests/fixtures/hints/wrong-revision.json",
+        "file:tests/fixtures/scaena/scaena-dist-handoff_0.4.0-contract.json"
+      ]
+    },
+    {
+      "id": "layer:docs",
+      "name": "文档与规格层",
+      "description": "README、架构、OpenSpec 与维护说明。",
+      "nodeIds": [
+        "module:docs",
+        "module:openspec",
+        "module:openspec/changes",
+        "file:AGENTS.md",
+        "file:README.md",
+        "file:docs/README.md",
+        "file:docs/delivery/ci-cd.md",
+        "file:docs/distribution-contracts.md",
+        "file:openspec/changes/scaena-v0-4-package-channels-v1/.openspec.yaml",
+        "file:openspec/changes/scaena-v0-4-package-channels-v1/README.md",
+        "file:openspec/changes/scaena-v0-4-package-channels-v1/design.md",
+        "file:openspec/changes/scaena-v0-4-package-channels-v1/proposal.md",
+        "file:openspec/changes/scaena-v0-4-package-channels-v1/specs/scaena-package-channels/spec.md",
+        "file:openspec/changes/scaena-v0-4-package-channels-v1/tasks.md",
+        "file:openspec/config.yaml",
+        "file:openspec/specs/product-agent-skills-assets/spec.md",
+        "file:openspec/specs/template-registry-distribution/spec.md",
+        "file:tests/fixtures/scaena/README.md"
+      ]
+    },
+    {
+      "id": "layer:tooling",
+      "name": "工具与配置层",
+      "description": "脚本、构建、CI、部署和项目配置。",
+      "nodeIds": [
+        "module:.github",
+        "module:.github/workflows",
+        "module:scripts",
+        "module:scripts/lib",
+        "file:.github/workflows/ci.yml",
+        "file:.github/workflows/scaena-rc-channel.yml",
+        "file:.github/workflows/sync.yml",
+        "file:bucket/auctra.json",
+        "file:bucket/credentialctl.json",
+        "file:bucket/eikona.json",
+        "file:bucket/gitea-mcp.json",
+        "file:bucket/pinax.json",
+        "file:bucket/sonora.json",
+        "file:catalog.json",
+        "file:policy/anatomia.json",
+        "file:policy/credentialctl.json",
+        "file:policy/scaena.json",
+        "file:policy/template-registry.json",
+        "file:receipts/anatomia/v0.3.0.json",
+        "file:receipts/credentialctl/v0.3.0.json",
+        "file:receipts/credentialctl/v0.4.0.json",
+        "file:receipts/template-registry/v0.1.0.json",
+        "file:schemas/dist-receipt-v1.schema.json",
+        "file:scripts/check.sh",
+        "file:scripts/generate-package-manifests.sh",
+        "file:scripts/generate-scaena-policy.sh",
+        "file:scripts/lib/catalog.sh",
+        "file:scripts/lib/scaena-packages.sh",
+        "file:scripts/lib/verify.sh",
+        "file:scripts/rc-channel.sh",
+        "file:scripts/rollback-manifests.sh",
+        "file:scripts/sync.sh",
+        "file:scripts/test-offline.sh",
+        "file:scripts/test-scaena-channels-lifecycle.sh",
+        "file:scripts/test-scaena-packages.sh",
+        "function:scripts/lib/catalog.sh:9:write_readme_products",
+        "function:scripts/lib/scaena-packages.sh:12:scaena_package_product",
+        "function:scripts/lib/scaena-packages.sh:21:scaena_package_prefix",
+        "function:scripts/lib/scaena-packages.sh:31:scaena_package_binary",
+        "function:scripts/lib/scaena-packages.sh:39:scaena_package_defaults",
+        "function:scripts/rc-channel.sh:25:usage",
+        "function:scripts/rc-channel.sh:46:stable_state_sig",
+        "function:scripts/rollback-manifests.sh:40:usage",
+        "function:scripts/rollback-manifests.sh:110:receipt_sig",
+        "function:scripts/check.sh:9:check",
+        "function:scripts/sync.sh:61:list_releases",
+        "function:scripts/sync.sh:66:write_catalog",
+        "function:scripts/sync.sh:139:write_release_notes",
+        "function:scripts/test-scaena-channels-lifecycle.sh:42:ok",
+        "function:scripts/test-scaena-channels-lifecycle.sh:43:bad",
+        "function:scripts/test-scaena-channels-lifecycle.sh:53:asset_digest",
+        "function:scripts/test-scaena-channels-lifecycle.sh:55:scaena_asset_names",
+        "function:scripts/test-scaena-channels-lifecycle.sh:69:build_rc_release",
+        "function:scripts/test-scaena-channels-lifecycle.sh:91:scaena_v04_entry_json",
+        "function:scripts/test-scaena-channels-lifecycle.sh:108:promote_catalog",
+        "function:scripts/test-scaena-channels-lifecycle.sh:123:tree_sig",
+        "function:scripts/test-scaena-channels-lifecycle.sh:128:t_rc_channel_lifecycle",
+        "function:scripts/test-scaena-channels-lifecycle.sh:161:t_rc_refuses_non_prereleases",
+        "function:scripts/test-scaena-channels-lifecycle.sh:179:t_rc_refuses_incomplete_matrix",
+        "function:scripts/test-scaena-channels-lifecycle.sh:194:t_rc_generator_isolation_and_url_base",
+        "function:scripts/test-scaena-channels-lifecycle.sh:211:t_stable_generator_prerelease_guard",
+        "function:scripts/test-scaena-channels-lifecycle.sh:225:t_catalog_pick_latest_semantics",
+        "function:scripts/test-scaena-channels-lifecycle.sh:255:t_rollback_drill",
+        "function:scripts/test-scaena-channels-lifecycle.sh:335:t_rollback_requires_previous_stable",
+        "function:scripts/test-scaena-channels-lifecycle.sh:355:t_rollback_non_scaena_refused",
+        "function:scripts/test-scaena-channels-lifecycle.sh:364:t_rollback_dry_run",
+        "function:scripts/test-scaena-packages.sh:43:ok",
+        "function:scripts/test-scaena-packages.sh:44:bad",
+        "function:scripts/test-scaena-packages.sh:72:build_archive",
+        "function:scripts/test-scaena-packages.sh:122:build_release",
+        "function:scripts/test-scaena-packages.sh:134:prepare_catalog",
+        "function:scripts/test-scaena-packages.sh:148:run_install",
+        "function:scripts/test-scaena-packages.sh:158:assert_root_clean",
+        "function:scripts/test-scaena-packages.sh:172:t_alias_table_no_drift",
+        "function:scripts/test-scaena-packages.sh:189:t_install_default_compat",
+        "function:scripts/test-scaena-packages.sh:199:t_install_api_alias_prefix",
+        "function:scripts/test-scaena-packages.sh:209:t_install_worker_alias",
+        "function:scripts/test-scaena-packages.sh:218:t_install_os_arch_matrix",
+        "function:scripts/test-scaena-packages.sh:237:t_install_zip_extraction",
+        "function:scripts/test-scaena-packages.sh:263:t_install_unsupported_os",
+        "function:scripts/test-scaena-packages.sh:273:t_install_checksum_mismatch",
+        "function:scripts/test-scaena-packages.sh:295:t_install_explicit_version",
+        "function:scripts/test-scaena-packages.sh:306:t_install_uninstall_reinstall",
+        "function:scripts/test-scaena-packages.sh:320:t_manifest_group_generated",
+        "function:scripts/test-scaena-packages.sh:353:group_sig",
+        "function:scripts/test-scaena-packages.sh:363:t_manifest_group_atomic",
+        "function:scripts/test-scaena-packages.sh:394:t_policy_deterministic",
+        "function:scripts/generate-package-manifests.sh:46:load_release",
+        "function:scripts/generate-package-manifests.sh:76:digest_for",
+        "function:scripts/generate-package-manifests.sh:86:require_assets",
+        "function:scripts/generate-package-manifests.sh:97:write_platform_block",
+        "function:scripts/generate-package-manifests.sh:118:write_cask",
+        "function:scripts/generate-package-manifests.sh:146:write_scoop",
+        "function:scripts/generate-package-manifests.sh:187:generate_product",
+        "function:scripts/generate-package-manifests.sh:204:scaena_matrix_complete",
+        "function:scripts/generate-package-manifests.sh:223:scaena_legacy_ok",
+        "function:scripts/generate-package-manifests.sh:227:scaena_description",
+        "function:scripts/generate-package-manifests.sh:238:scaena_render_matrix",
+        "function:scripts/test-offline.sh:34:ok",
+        "function:scripts/test-offline.sh:35:bad",
+        "function:scripts/test-offline.sh:37:reset_receipts",
+        "function:scripts/test-offline.sh:39:gen_assets",
+        "function:scripts/test-offline.sh:62:gen_release",
+        "function:scripts/test-offline.sh:69:verify",
+        "function:scripts/test-offline.sh:75:expect_reason",
+        "function:scripts/test-offline.sh:80:t_happy",
+        "function:scripts/test-offline.sh:116:t_idempotent",
+        "function:scripts/test-offline.sh:136:t_corrupt_retains_last_verified",
+        "function:scripts/test-offline.sh:168:t_missing_matrix",
+        "function:scripts/test-offline.sh:178:t_no_checksums",
+        "function:scripts/test-offline.sh:188:t_snapshot_excluded",
+        "function:scripts/test-offline.sh:201:t_hint_mismatch",
+        "function:scripts/test-offline.sh:216:t_fingerprint_conflict",
+        "function:scripts/test-offline.sh:240:t_denied_asset",
+        "function:scripts/test-offline.sh:252:t_catalog_join",
+        "function:scripts/test-offline.sh:281:t_mirror_verify",
+        "function:scripts/test-offline.sh:297:t_fail_closed",
+        "function:scripts/test-offline.sh:313:t_scaena_skills_assets",
+        "function:scripts/test-offline.sh:349:t_eikona_skills_assets",
+        "function:scripts/test-offline.sh:380:scaena_gen_assets",
+        "function:scripts/test-offline.sh:413:scaena_gen_release",
+        "function:scripts/test-offline.sh:420:scaena_verify",
+        "function:scripts/test-offline.sh:426:t_scaena_policy_deterministic",
+        "function:scripts/test-offline.sh:436:t_scaena_happy",
+        "function:scripts/test-offline.sh:452:t_scaena_missing_worker_arm",
+        "function:scripts/test-offline.sh:461:t_scaena_checksum_and_sbom",
+        "function:scripts/test-offline.sh:476:t_scaena_sbom_missing",
+        "function:scripts/test-offline.sh:490:t_scaena_handoff_missing",
+        "function:scripts/test-offline.sh:499:t_scaena_prerelease_excluded",
+        "function:scripts/test-offline.sh:508:t_scaena_mirror_digest_mismatch",
+        "function:scripts/lib/verify.sh:12:gh_api",
+        "function:scripts/lib/verify.sh:24:dist_root",
+        "function:scripts/lib/verify.sh:32:denied",
+        "function:scripts/lib/verify.sh:45:verify_policy_has",
+        "function:scripts/lib/verify.sh:52:policy_check_eligibility",
+        "function:scripts/lib/verify.sh:70:emit_fail",
+        "function:scripts/lib/verify.sh:74:checksum_digest_for_asset",
+        "function:scripts/lib/verify.sh:89:verify_declared_skills_assets",
+        "function:scripts/lib/verify.sh:201:verify_release_evidence",
+        "function:scripts/lib/verify.sh:385:verify_mirror_assets",
+        "function:scripts/lib/verify.sh:411:receipt_fingerprint",
+        "function:scripts/lib/verify.sh:423:write_receipt",
+        "function:scripts/lib/verify.sh:456:record_failed_attempt",
+        "function:scripts/lib/verify.sh:469:catalog_join_receipts",
+        "function:scripts/lib/verify.sh:495:rolled_back_versions",
+        "function:scripts/lib/verify.sh:505:_rolled_back_json",
+        "function:scripts/lib/verify.sh:515:catalog_pick_latest",
+        "function:scripts/lib/verify.sh:528:catalog_pick_verified_latest",
+        "function:scripts/lib/verify.sh:541:hint_for_product"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "项目总览",
+      "description": "项目根模块与高层目录关系。",
+      "nodeIds": [
+        "module:project"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "核心实现层",
+      "description": "未归入专门边界的主要实现模块。",
+      "nodeIds": [
+        "module:Casks",
+        "module:bucket",
+        "module:policy",
+        "module:receipts",
+        "module:schemas",
+        "file:Casks/anatomia.rb",
+        "file:Casks/auctra.rb",
+        "file:Casks/credentialctl.rb"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "测试层",
+      "description": "单元、集成、组件、系统与端到端验证。",
+      "nodeIds": [
+        "module:tests",
+        "module:tests/fixtures",
+        "file:tests/fixtures/api/tag_obj_yeisme_anatomia_1111111111111111111111111111111111111111.json",
+        "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.2.0.json",
+        "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.0.json",
+        "file:tests/fixtures/api/tag_ref_yeisme_anatomia_v0.3.1.json",
+        "file:tests/fixtures/api/tag_ref_yeisme_scaena_scaena_v0.4.0.json",
+        "file:tests/fixtures/golden/anatomia-v0.3.0.json"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "文档与规格层",
+      "description": "README、架构、OpenSpec 与维护说明。",
+      "nodeIds": [
+        "module:docs",
+        "module:openspec",
+        "module:openspec/changes",
+        "file:AGENTS.md",
+        "file:README.md",
+        "file:docs/README.md",
+        "file:docs/delivery/ci-cd.md",
+        "file:docs/distribution-contracts.md"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "工具与配置层",
+      "description": "脚本、构建、CI、部署和项目配置。",
+      "nodeIds": [
+        "module:.github",
+        "module:.github/workflows",
+        "module:scripts",
+        "module:scripts/lib",
+        "file:.github/workflows/ci.yml",
+        "file:.github/workflows/scaena-rc-channel.yml",
+        "file:.github/workflows/sync.yml",
+        "file:bucket/auctra.json"
+      ]
+    }
+  ]
+}
