@@ -524,9 +524,9 @@ t_scaena_mirror_digest_mismatch() {
 
 t_scaena_exact_backport() {
   local tag
-  jq -n '{tag_name:"scaena/v0.3.2",draft:false,prerelease:false}' > "$SBX/backport.json"
+  jq -n '{tag_name:"scaena/v0.3.3",draft:false,prerelease:false}' > "$SBX/backport.json"
   policy_check_eligibility "$SBX/backport.json" "$POLICY_SCAENA" || return 1
-  for tag in scaena/v0.3.0 scaena/v0.3.1 scaena/v0.3.3 scaena/v0.3.2-rc.1; do
+  for tag in scaena/v0.3.0 scaena/v0.3.1 scaena/v0.3.2 scaena/v0.3.4 scaena/v0.3.3-rc.1; do
     jq -n --arg tag "$tag" '{tag_name:$tag,draft:false,prerelease:false}' > "$SBX/backport.json"
     policy_check_eligibility "$SBX/backport.json" "$POLICY_SCAENA" >/dev/null && return 1
   done
