@@ -309,9 +309,8 @@ t_fail_closed() {
   return 0
 }
 
-# 13. Shared Scaena install manifest declares an exact four-file Skills set.
-t_scaena_skills_assets() {
-  local dir="$SBX/scaena-skills" version=1.2.3
+scaena_skills_fixture() {
+  local dir="$1" version="$2"
   rm -rf "$dir"; mkdir -p "$dir"
   printf 'bundle\n' > "$dir/scaena-skills_${version}.tar.gz"
   printf '{"schema_version":"yeisme.agent_skills.bundle.v1"}\n' > "$dir/scaena-skills_${version}.json"
@@ -330,7 +329,12 @@ t_scaena_skills_assets() {
        catalog:{name:("scaena-skills-catalog_"+$version+".json"),kind:"skills_catalog",url:("https://example.invalid/scaena-skills-catalog_"+$version+".json"),sha256:("sha256:"+$catalog)}}}
   ' > "$dir/scaena-install-manifest.json"
   (cd "$dir" && sha256sum scaena-* > checksums.txt)
+}
 
+# 13. Shared Scaena install manifest declares an exact four-file Skills set.
+t_scaena_skills_assets() {
+  local dir="$SBX/scaena-skills" version=1.2.3
+  scaena_skills_fixture "$dir" "$version"
   local result
   result="$(verify_declared_skills_assets scaena "scaena/v$version" "$dir")" || return 1
   jq -e '.status == "verified" and (.assets | length == 4)
@@ -518,13 +522,41 @@ t_scaena_mirror_digest_mismatch() {
     "$SBX/s40" >/dev/null
 }
 
+t_scaena_exact_backport() {
+  local tag
+  jq -n '{tag_name:"scaena/v0.3.2",draft:false,prerelease:false}' > "$SBX/backport.json"
+  policy_check_eligibility "$SBX/backport.json" "$POLICY_SCAENA" || return 1
+  for tag in scaena/v0.3.0 scaena/v0.3.1 scaena/v0.3.3 scaena/v0.3.2-rc.1; do
+    jq -n --arg tag "$tag" '{tag_name:$tag,draft:false,prerelease:false}' > "$SBX/backport.json"
+    policy_check_eligibility "$SBX/backport.json" "$POLICY_SCAENA" >/dev/null && return 1
+  done
+  return 0
+}
+
+t_scaena_matrix_with_skills() {
+  scaena_gen_assets "$SBX/s40skills"
+  scaena_gen_release "$SBX/rel40skills.json" 0
+  scaena_skills_fixture "$SBX/skills-valid" 0.4.0
+  cp "$SBX/skills-valid/"scaena-* "$SBX/s40skills/"
+  # Recompute the combined release, not just the helper's original directory.
+  (cd "$SBX/s40skills" && find . -maxdepth 1 -type f ! -name checksums.txt -print0 | sort -z | xargs -0 sha256sum > checksums.txt)
+  local result
+  result="$(scaena_verify "$SBX/rel40skills.json" "$SBX/s40skills")" || { printf '%s\n' "$result" >&2; return 1; }
+  jq -e '(.verified.asset_matrix == {expected:18,matched:18}) and (.verified.upstream_assets|length == 22)' <<<"$result" >/dev/null || { printf '%s\n' "$result" >&2; return 1; }
+  printf 'bitrot\n' >> "$SBX/s40skills/scaena-skills_0.4.0.tar.gz"
+  (cd "$SBX/s40skills" && find . -maxdepth 1 -type f ! -name checksums.txt -print0 | sort -z | xargs -0 sha256sum > checksums.txt)
+  result="$(scaena_verify "$SBX/rel40skills.json" "$SBX/s40skills")" && return 1
+  expect_reason "$result" skills_asset_manifest_digest_mismatch || { printf '%s\n' "$result" >&2; return 1; }
+}
+
 tests=(t_happy t_idempotent t_corrupt_retains_last_verified t_missing_matrix
        t_no_checksums t_snapshot_excluded t_hint_mismatch t_fingerprint_conflict
        t_denied_asset t_catalog_join t_mirror_verify t_fail_closed
        t_scaena_skills_assets t_eikona_skills_assets
        t_scaena_policy_deterministic t_scaena_happy t_scaena_missing_worker_arm
        t_scaena_checksum_and_sbom t_scaena_sbom_missing t_scaena_handoff_missing
-       t_scaena_prerelease_excluded t_scaena_mirror_digest_mismatch)
+       t_scaena_prerelease_excluded t_scaena_mirror_digest_mismatch
+       t_scaena_exact_backport t_scaena_matrix_with_skills)
 for t in "${tests[@]}"; do
   if "$t"; then ok "$t"; else bad "$t"; fi
 done

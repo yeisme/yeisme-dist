@@ -45,8 +45,8 @@ archive_count="$(jq -r '.archives | length' "$FIXTURE")"
 [[ "$archive_count" -eq 18 ]] || {
   echo "fixture has $archive_count archives, want 18" >&2; exit 2; }
 
-# Scaena opts into the verify policy from v0.4.0; older tags stay on the
-# receipt-only mirror path (boundary mirrors credentialctl's v0.3 rule).
+# v0.3.2 ships the same complete matrix before the planned v0.4 boundary.
+# Admit only that backport; all other older tags remain ineligible.
 minor_boundary="$(cut -d. -f2 <<<"$fixture_version")"
 
 tmp="$(mktemp)"
@@ -65,7 +65,7 @@ jq -n \
     channel: "stable",
     # policy_check_eligibility matches the raw upstream tag, which for scaena
     # carries the "scaena/" release-tag prefix (products.txt column 3).
-    eligible_tag_pattern: ("^" + $tag_prefix + "v(0\\.([" + $boundary + "-9]|[1-9][0-9]+)\\.[0-9]+|[1-9][0-9]*\\.[0-9]+\\.[0-9]+)$"),
+    eligible_tag_pattern: ("^" + $tag_prefix + "v(0\\.3\\.2|0\\.([" + $boundary + "-9]|[1-9][0-9]+)\\.[0-9]+|[1-9][0-9]*\\.[0-9]+\\.[0-9]+)$"),
     exclude_prerelease: true,
     expected_assets: [$f.archives[].name],
     required_assets: [
@@ -75,7 +75,11 @@ jq -n \
     ],
     allowed_extra_assets: [
       "{expected_archive}.sbom.json",
-      "scaena.spdx.json"
+      "scaena.spdx.json",
+      "scaena-install-manifest.json",
+      "scaena-skills_{version}.tar.gz",
+      "scaena-skills_{version}.json",
+      "scaena-skills-catalog_{version}.json"
     ],
     source_revision_required: true,
     checksums: {

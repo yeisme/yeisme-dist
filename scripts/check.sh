@@ -72,10 +72,21 @@ if [[ -f catalog.json ]]; then
       fail=1
     fi
   done
-  if [[ ! -e bucket/scaena.json && ! -e bucket/anatomia.json ]]; then
-    echo "ok  Scoop excludes products without Windows archives"
+  if jq -e '.products[] | select(.name == "scaena") | .latest as $tag |
+      .releases[] | select(.tag == $tag) |
+      (.assets | index("scaena_windows_amd64.zip") != null)' catalog.json >/dev/null; then
+    for package in scaena scaena-api scaena-production-worker; do
+      check ruby -c "Casks/$package.rb"
+      check jq -e '.architecture | has("64bit") and has("arm64")' "bucket/$package.json"
+    done
+  elif [[ -e bucket/scaena.json ]]; then
+    echo "FAIL Scaena Scoop manifest generated without a Windows archive" >&2
+    fail=1
+  fi
+  if [[ ! -e bucket/anatomia.json ]]; then
+    echo "ok  Scoop excludes Anatomia without Windows archives"
   else
-    echo "FAIL Scoop manifest generated without a Windows archive" >&2
+    echo "FAIL Anatomia Scoop manifest generated without a Windows archive" >&2
     fail=1
   fi
   rm -rf "$package_tmp"
