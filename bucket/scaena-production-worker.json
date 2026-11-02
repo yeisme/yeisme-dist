@@ -1,0 +1,17 @@
+{
+  "version": "0.3.3",
+  "description": "Durable production worker for AI drama generation.",
+  "homepage": "https://github.com/yeisme/yeisme-dist",
+  "license": "Proprietary",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/scaena/v0.3.3/scaena-production-worker_windows_amd64.zip",
+      "hash": "383ae6f7574f984f60cfd2c0bffd9e8401bf673279cae1f6197a42cd93aae03d"
+    },
+    "arm64": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/scaena/v0.3.3/scaena-production-worker_windows_arm64.zip",
+      "hash": "3fab13e5882c1d81b08f421ff86fa33596d4567fe3e9adb408136ff775ec25dc"
+    }
+  },
+  "bin": "scaena-production-worker.exe"
+}

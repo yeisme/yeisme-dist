@@ -1,0 +1,17 @@
+{
+  "version": "0.3.3",
+  "description": "Production API control plane for AI drama production.",
+  "homepage": "https://github.com/yeisme/yeisme-dist",
+  "license": "Proprietary",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/scaena/v0.3.3/scaena-api_windows_amd64.zip",
+      "hash": "f0a800afec3bc286e5a7c83dc7693c336cc7abda51fe1aba819ba28f8fe6ddd7"
+    },
+    "arm64": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/scaena/v0.3.3/scaena-api_windows_arm64.zip",
+      "hash": "7cc925d0ef5b31ba05c674017f249a50a52e8160339bdb057a8c9245c7c1e6a4"
+    }
+  },
+  "bin": "scaena-api.exe"
+}

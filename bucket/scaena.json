@@ -1,0 +1,17 @@
+{
+  "version": "0.3.3",
+  "description": "CLI and agent runtime for AI drama production workflows.",
+  "homepage": "https://github.com/yeisme/yeisme-dist",
+  "license": "Proprietary",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/scaena/v0.3.3/scaena_windows_amd64.zip",
+      "hash": "bf3d7da45b7a0f4f0d3177b35257f9e8bab575bf304afe19d81295f78c7eb687"
+    },
+    "arm64": {
+      "url": "https://github.com/yeisme/yeisme-dist/releases/download/scaena/v0.3.3/scaena_windows_arm64.zip",
+      "hash": "5ac9d2a9163539e704bb7d5edded8fa5826c788afa76969d825a9cc97110e104"
+    }
+  },
+  "bin": "scaena.exe"
+}
